@@ -5067,13 +5067,16 @@ void CvCityReligions::LogPressureChange(CvReligiousFollowChangeReason eReason, R
 void CvCityReligions::AddReligiousPressure(CvReligiousFollowChangeReason eReason, ReligionTypes eReligion, int iPressureChange, PlayerTypes eResponsiblePlayer)
 {
 	bool bExisting = false;
+	CvReligionInCity pFoundReligion;
 
 	ReligionInCityList::iterator it;
 	for(it = m_ReligionStatus.begin(); it != m_ReligionStatus.end(); it++)
 	{
 		if(it->m_eReligion == eReligion)
 		{
+			pFoundReligion = it;
 			it->m_iPressure += iPressureChange;
+			
 			bExisting = true;
 
 			LogPressureChange(eReason, eReligion, iPressureChange, it->m_iPressure, eResponsiblePlayer);
