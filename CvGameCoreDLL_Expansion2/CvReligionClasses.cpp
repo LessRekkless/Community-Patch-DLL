@@ -5208,7 +5208,7 @@ void CvCityReligions::SimulateProphetSpread(ReligionTypes eReligion, int iPressu
 	SimulateFollowers();
 }
 
-/// Simulate religious pressure addition
+/// Simulate religious pressure addition from prophet/missionary
 void CvCityReligions::SimulateReligiousPressure(ReligionTypes eReligion, int iPressure)
 {
 	if(eReligion == NO_RELIGION)
@@ -5229,8 +5229,8 @@ void CvCityReligions::SimulateReligiousPressure(ReligionTypes eReligion, int iPr
 		else if(eReligion > RELIGION_PANTHEON && it->m_eReligion == RELIGION_PANTHEON)
 		{
 #if defined(MOD_CORE_RESILIENT_PANTHEONS)
-			//don't need to check for CvReligiousFollowChangeReason - this method is only used for prophets/missionaries
-			it->m_iPressure = max(0, (it->m_iPressure - iPressure/2));
+			// Only incoming passive pressure reduces pantheon pressure.
+			// do nothing because this method is only used for prophets/missionaries
 #else
 			it->m_iPressure = max(0, (it->m_iPressure - iPressure));
 #endif
