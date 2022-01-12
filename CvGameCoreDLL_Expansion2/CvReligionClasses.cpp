@@ -4545,7 +4545,7 @@ bool CvCityReligions::IsHolyCityAnyReligion()
 	return NO_RELIGION != GC.getGame().GetGameReligions()->GetHolyCityReligion(m_pCity);
 }
 
-/// Is this the holy city for any religion?
+/// What religion is this the holy city for?
 ReligionTypes CvCityReligions::GetReligionForHolyCity()
 {
 	return GC.getGame().GetGameReligions()->GetHolyCityReligion(m_pCity);
@@ -4894,18 +4894,37 @@ int CvCityReligions::GetPressurePerTurn(ReligionTypes eReligion, int* piNumSourc
 	}
 
 	// Holy city for this religion?
-	if (IsHolyCityForReligion(eReligion))
-	{
-		int iHolyCityPressure = GC.getGame().getGameSpeedInfo().getReligiousPressureAdjacentCity();
-		iHolyCityPressure *=  /*5*/ GD_INT_GET(RELIGION_PER_TURN_FOUNDING_CITY_PRESSURE);
-		iPressure += iHolyCityPressure;
-	}
+	iPressure += GetHolyCityPressure(eReligion);
 	
 	if (piNumSourceCities)
 		*piNumSourceCities = iCount;
 
 	// CUSTOMLOG("GetPressurePerTurn for %i on %s is %i", eReligion, m_pCity->getName().c_str(), iPressure);
 	return iPressure;
+}
+
+/// Pressure exerted by one religion via adjacent city pressure
+
+/// Pressure exerted by one religion via "Underground Sects"
+int CvCityReligions::GetSecretPressure(ReligionTypes eReligion, CvPlayer &kPlayer)
+
+/// Pressure exerted by one religion by being a Holy City
+int CvCityReligions::GetHolyCityPressure(ReligionTypes eReligion)
+{
+	if (IsHolyCityForReligion(eReligion))
+	{
+		int iHolyCityPressure = GC.getGame().getGameSpeedInfo().getReligiousPressureAdjacentCity();
+		return iHolyCityPressure * /*5*/ GD_INT_GET(RELIGION_PER_TURN_FOUNDING_CITY_PRESSURE);
+	}
+	else
+		return 0;
+}
+
+/// Pressure exerted onto pantheon by each religion per turn
+int CvCityReligions::GetPantheonPressurePerTurn(int* piNumSourceCities)
+{
+	int iPressure = 0;
+	int iCount = 0;
 }
 
 /// How many trade routes are applying pressure to this city
@@ -5322,7 +5341,7 @@ void CvCityReligions::AddHolyCityPressure()
 	ReligionTypes eHolyReligion = GetReligionForHolyCity();
 	if (eHolyReligion != NO_RELIGION)
 	{
-		int iHolyPressure = GC.getGame().getGameSpeedInfo().getReligiousPressureAdjacentCity() *  /*5*/ GD_INT_GET(RELIGION_PER_TURN_FOUNDING_CITY_PRESSURE);
+		int iHolyPressure = GetHolyCityPressure(eHolyReligion);
 		AddReligiousPressure(FOLLOWER_CHANGE_HOLY_CITY, eHolyReligion, iHolyPressure);
 		RecomputeFollowers(FOLLOWER_CHANGE_HOLY_CITY);
 	}
