@@ -5064,30 +5064,33 @@ void CvCityReligions::LogPressureChange(CvReligiousFollowChangeReason eReason, R
 }
 
 /// Add pressure to recruit followers to a religion
-void CvCityReligions::AddReligiousPressure(CvReligiousFollowChangeReason eReason, ReligionTypes eReligion, int iPressureChange, PlayerTypes eResponsiblePlayer)
+void CvCityReligions::AddReligiousPressure(CvReligiousFollowChangeReason eReason, ReligionTypes eReligion, int iBasePressureChange, PlayerTypes eResponsiblePlayer)
 {
-	bool bExisting = false;
-	CvReligionInCity pFoundReligion;
-
+	int iPressureChange = iBasePressureChange;
+	int iExistingIndex = -1;
+	
 	ReligionInCityList::iterator it;
 	for(it = m_ReligionStatus.begin(); it != m_ReligionStatus.end(); it++)
 	{
 		if(it->m_eReligion == eReligion)
-		{
-			pFoundReligion = it;
-			it->m_iPressure += iPressureChange;
-			
-			bExisting = true;
-
-			LogPressureChange(eReason, eReligion, iPressureChange, it->m_iPressure, eResponsiblePlayer);
-		}
+			iExistingIndex = it - m_ReligionStatus.begin();
 		// If this is pressure from a real religion, reduce presence of pantheon by the same amount
 		else if(eReligion > RELIGION_PANTHEON && it->m_eReligion == RELIGION_PANTHEON && it->m_iPressure > 0)
 		{
 #if defined(MOD_CORE_RESILIENT_PANTHEONS)
-			//do it a bit more slowly
-			it->m_iPressure = max(0, (it->m_iPressure - iPressureChange/2));
-			LogPressureChange(eReason, it->m_eReligion, -iPressureChange/2, it->m_iPressure, eResponsiblePlayer);
+			// Only incoming passive pressure reduces pantheon pressure.
+			if (eReason == FOLLOWER_CHANGE_ADJACENT_PRESSURE)
+			{
+				const CvReligion* pToReligion = GC.getGame().GetGameReligions()->GetReligion(eReligion, eResponsiblePlayer);
+				int iPantheonPressureChange = iBasePressureChange; // change rate of pantheon reduction/conversion here (maybe should be global variable?)	
+				iPantheonPressureChange = min(it->m_iPressure, iPantheonPressureChange);
+				it->m_iPressure -= iPantheonPressureChange;
+
+				LogPressureChange(eReason, it->m_eReligion, -iPantheonPressureChange, it->m_iPressure, eResponsiblePlayer);
+				// If the founder of the religion is also the founder of the pantheon (pantheons only exist in cities owned by the founder), convert pantheon pressure to religion.
+				if (pToReligion->m_eFounder == m_pCity->getOwner())
+					iPressureChange += iPantheonPressureChange;
+			}
 #else
 			it->m_iPressure = max(0, (it->m_iPressure - iPressureChange));
 			LogPressureChange(eReason, it->m_eReligion, iPressureChange, it->m_iPressure, eResponsiblePlayer);
@@ -5095,14 +5098,18 @@ void CvCityReligions::AddReligiousPressure(CvReligiousFollowChangeReason eReason
 		}
 	}
 
-	// Didn't find it, add new entry
-	if(!bExisting)
+	// Didn't find the desired religion, add new entry
+	if (iExistingIndex < 0)
 	{
 		CvReligionInCity newReligion(eReligion, 0, iPressureChange);
 		m_ReligionStatus.push_back(newReligion);
 
-		LogPressureChange(eReason, eReligion, iPressureChange, iPressureChange, eResponsiblePlayer);
 	}
+	// Found it, apply pressure
+	else
+		m_ReligionStatus[iExistingIndex].m_iPressure += iPressureChange;
+
+	LogPressureChange(eReason, eReligion, iPressureChange, iPressureChange, eResponsiblePlayer);
 }
 
 void CvCityReligions::ErodeOtherReligiousPressure(CvReligiousFollowChangeReason eReason, ReligionTypes eExemptedReligion, int iErosionPercent, bool bAllowRetention, bool bLeaveAtheists, PlayerTypes eResponsiblePlayer)
