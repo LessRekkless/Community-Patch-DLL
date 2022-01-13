@@ -2459,7 +2459,7 @@ bool CvGameReligions::IsCityStateFriendOfReligionFounder(ReligionTypes eReligion
 	return false;
 }
 
-/// Get the religion this player created
+/// Get the religion this player created (and still owns)
 ReligionTypes CvGameReligions::GetReligionCreatedByPlayer(PlayerTypes ePlayer) const
 {
 	ReligionList::const_iterator it;
@@ -4207,17 +4207,17 @@ int CvPlayerReligions::GetNumCitiesWithStateReligion(ReligionTypes eReligion)
 	else
 	{
 		int iLoop;
-			CvCity* pLoopCity;
-			for(pLoopCity = m_pPlayer->firstCity(&iLoop); pLoopCity != NULL; pLoopCity = m_pPlayer->nextCity(&iLoop))
+		CvCity* pLoopCity;
+		for(pLoopCity = m_pPlayer->firstCity(&iLoop); pLoopCity != NULL; pLoopCity = m_pPlayer->nextCity(&iLoop))
+		{
+			if(pLoopCity != NULL)
 			{
-				if(pLoopCity != NULL)
+				if(pLoopCity->GetCityReligions()->GetReligiousMajority() == eReligion)
 				{
-					if(pLoopCity->GetCityReligions()->GetReligiousMajority() == eReligion)
-					{
-						iNum++;
-					}
+					iNum++;
 				}
 			}
+		}
 	}
 
 	return iNum;
@@ -4879,14 +4879,25 @@ int CvCityReligions::GetPressurePerTurn(ReligionTypes eReligion, int* piNumSourc
 			}
 
 			// Include any pressure from "Underground Sects"
-			if (eReligion > RELIGION_PANTHEON && (kPlayer.GetReligions()->GetReligionInMostCities() == eReligion || GC.getGame().GetGameReligions()->GetFounderBenefitsReligion(kPlayer.GetID()) == eReligion))
+			int iSpyPressure = kPlayer.GetReligions()->GetSpyPressure((PlayerTypes)iI);
+				if (iSpyPressure > 0)
+				{
+					if (kPlayer.GetEspionage()->GetSpyIndexInCity(pCity) != -1)
+					{
+
+					}
+				}
+			if (eReligion > RELIGION_PANTHEON 
+				&& (kPlayer.GetReligions()->GetReligionInMostCities() == eReligion 
+				    || GC.getGame().GetGameReligions()->GetFounderBenefitsReligion(kPlayer.GetID()) == eReligion)
+			)
 			{
 				int iSpyPressure = kPlayer.GetReligions()->GetSpyPressure((PlayerTypes)iI);
 				if (iSpyPressure > 0)
 				{
 					if (kPlayer.GetEspionage()->GetSpyIndexInCity(m_pCity) != -1)
 					{
-						iPressure += iSpyPressure * max(1, GC.getGame().getGameSpeedInfo().getReligiousPressureAdjacentCity());
+						iPressure += iSpyPressure * GC.getGame().getGameSpeedInfo().getReligiousPressureAdjacentCity();
 					}
 				}
 			}
