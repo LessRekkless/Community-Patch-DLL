@@ -452,7 +452,8 @@ function RefreshWorldReligions()
 	for religion in GameInfo.Religions() do
 		local eReligion = religion.ID
 		local holyCity = Game.GetHolyCityForReligion(eReligion, -1);
-		if holyCity then
+		if eReligion then
+			if holyCity then
 			local pPlayer = Players[holyCity:GetOwner()]
 			local holyCityName = holyCity:GetName();
 			local civName = pPlayer:GetCivilizationDescription();
@@ -464,7 +465,9 @@ function RefreshWorldReligions()
 				holyCityName = "TXT_KEY_RO_WR_UNKNOWN_HOLY_CITY";
 				civName = "TXT_KEY_RO_WR_UNKNOWN_CIV";
 			end
-			
+			else
+
+			end
 			table.insert(religions, {
 				Name = Locale.Lookup(Game.GetReligionName(eReligion)),
 				ReligionIconIndex = religion.PortraitIndex,
@@ -474,7 +477,7 @@ function RefreshWorldReligions()
 				Founder = Locale.Lookup(civName),
 				NumCities = Game.GetNumCitiesFollowing(eReligion),
 			});
-		end
+	end
 	end
 	
 	-- for iPlayer = 0, GameDefines.MAX_CIV_PLAYERS - 1 do	
