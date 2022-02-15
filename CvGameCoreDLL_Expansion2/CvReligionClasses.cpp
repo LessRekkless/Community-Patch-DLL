@@ -3983,45 +3983,58 @@ bool CvPlayerReligions::UpdateStateReligion()
 
 bool CvPlayerReligions::SetStateReligion(ReligionTypes eNewStateReligion, bool bOwnsReligion)
 {
-	//we may own our state religion's holy city now
-	m_bOwnsStateReligion = bOwnsReligion;
-	//no change, nothing to do
-	if (GetStateReligion() == eNewStateReligion)
-		return false;
-
-	if(GetStateReligion() == NO_RELIGION)
+	bool bChangedState = false;
+	//We may have a new owned religion (whether our old state religion or not), or we may have lost it
+	if ( (bOwnsReligion && GetOwnedReligion() != eNewStateReligion) || m_bOwnsStateReligion != bOwnsReligion)
 	{
-		GAMEEVENTINVOKE_HOOK(GAMEEVENT_StateReligionAdopted, m_pPlayer->GetID(), eNewStateReligion, GetStateReligion());
-	}
-	else
-	{
-		GAMEEVENTINVOKE_HOOK(GAMEEVENT_StateReligionChanged, m_pPlayer->GetID(), eNewStateReligion, GetStateReligion());
-	}
-
-	// Message slightly different for founder player
-	if (MOD_BALANCE_CORE_BELIEFS && m_pPlayer->GetNotifications() && bOwnsReligion)
-	{
-		const CvReligion* pReligion = GC.getGame().GetGameReligions()->GetReligion(eNewStateReligion, m_pPlayer->GetID());
-		if (pReligion)
+		// if player gains new owned religion, notify with extra information
+		if (MOD_BALANCE_CORE_BELIEFS && m_pPlayer->GetNotifications() && bOwnsReligion)
 		{
-			CvString szReligionName = pReligion->GetName();
-			Localization::String strSummary = Localization::Lookup("TXT_KEY_NOTIFICATION_RELIGION_NEW_PLAYER_STATE_RELIGION_S");
-			strSummary << szReligionName;
-			Localization::String localizedText = Localization::Lookup("TXT_KEY_NOTIFICATION_RELIGION_NEW_PLAYER_STATE_RELIGION");
-			localizedText << szReligionName;
-			m_pPlayer->GetNotifications()->Add(NOTIFICATION_RELIGION_FOUNDED_ACTIVE_PLAYER, localizedText.toUTF8(), strSummary.toUTF8(), -1, -1, eNewStateReligion, -1);
+			const CvReligion* pReligion = GC.getGame().GetGameReligions()->GetReligion(eNewStateReligion, m_pPlayer->GetID());
+			if (pReligion)
+			{
+				CvString szReligionName = pReligion->GetName();
+				Localization::String strSummary = Localization::Lookup("TXT_KEY_NOTIFICATION_RELIGION_NEW_PLAYER_OWNED_RELIGION_S");
+				strSummary << szReligionName;
+				Localization::String localizedText;
+
+				// Compensate zeroing of faith with golden age points. 
+				// Does not trigger if player is only switching their owned religion, already founded a religion, or can always found a religion
+				if (!m_bOwnsStateReligion && !m_pPlayer->GetPlayerTraits()->IsAlwaysReligion() && GetOriginalReligionCreatedByPlayer() <= RELIGION_PANTHEON )
+				{
+					if (m_pPlayer->GetFaith() > 0)
+					{
+						m_pPlayer->ChangeGoldenAgeProgressMeter(m_pPlayer->GetFaith());
+						m_pPlayer->changeInstantYieldValue(YIELD_GOLDEN_AGE_POINTS, m_pPlayer->GetFaith());
+						m_pPlayer->SetFaith(0);
+					}	
+
+					localizedText = Localization::Lookup("TXT_KEY_NOTIFICATION_RELIGION_NEW_PLAYER_OWNED_RELIGION_LOSE_FAITH");
+				}
+				else
+				{
+					localizedText = Localization::Lookup("TXT_KEY_NOTIFICATION_RELIGION_NEW_PLAYER_OWNED_RELIGION");
+				}
+				localizedText << szReligionName;
+				m_pPlayer->GetNotifications()->Add(NOTIFICATION_RELIGION_FOUNDED_ACTIVE_PLAYER, localizedText.toUTF8(), strSummary.toUTF8(), -1, -1, eNewStateReligion, -1);
+			}
 		}
-		// Compensate zeroing of faith with golden age points
-		if (m_pPlayer->GetFaith() > 0 && !m_pPlayer->GetPlayerTraits()->IsAlwaysReligion())
-		{
-			m_pPlayer->ChangeGoldenAgeProgressMeter(m_pPlayer->GetFaith());
-			m_pPlayer->changeInstantYieldValue(YIELD_GOLDEN_AGE_POINTS, m_pPlayer->GetFaith());
-			m_pPlayer->SetFaith(0);
-		}
+		m_bOwnsStateReligion = bOwnsReligion;
+		bChangedState = true;
+	}
+	// change state religion here so it doesn't interfere with GetOwnedReligion() above
+	if (GetStateReligion(true) != eNewStateReligion)
+	{
+		if (GetStateReligion() == NO_RELIGION)
+			GAMEEVENTINVOKE_HOOK(GAMEEVENT_StateReligionAdopted, m_pPlayer->GetID(), eNewStateReligion, GetStateReligion());
+		else
+			GAMEEVENTINVOKE_HOOK(GAMEEVENT_StateReligionChanged, m_pPlayer->GetID(), eNewStateReligion, GetStateReligion());
+
+		m_eStateReligion = eNewStateReligion;
+		bChangedState = true;
 	}
 
-	m_eStateReligion = eNewStateReligion;
-	return true;
+	return bChangedState;
 }
 
 void CvPlayerReligions::SetStateReligionOverride(ReligionTypes eReligion)
@@ -4083,11 +4096,9 @@ bool CvPlayerReligions::ComputeMajority(bool bNotifications)
 		ReligionTypes eReligion = (ReligionTypes)iI;
 		if (HasReligionInMostCities(eReligion))
 		{
-#if defined(MOD_BALANCE_CORE)
-			//New state faith? Let's announce this.
-			if(bNotifications && m_eMajorityReligion != eReligion && m_eMajorityReligion != NO_RELIGION)
+			//New majority faith? Let's announce this.
+			if(MOD_BALANCE_CORE_BELIEFS && bNotifications && m_eMajorityReligion != eReligion && eReligion > RELIGION_PANTHEON)
 			{
-				// Message slightly different for founder player
 				if(m_pPlayer->GetNotifications())
 				{
 					const CvReligion* pReligion = GC.getGame().GetGameReligions()->GetReligion(eReligion, m_pPlayer->GetID());
@@ -4102,10 +4113,15 @@ bool CvPlayerReligions::ComputeMajority(bool bNotifications)
 					}
 				}
 			}
-#endif
 			m_eMajorityReligion = eReligion;
 			return true;
 		}
+	}
+	if (MOD_BALANCE_CORE_BELIEFS && m_eMajorityReligion != NO_RELIGION)
+	{
+		Localization::String strSummary = Localization::Lookup("TXT_KEY_NOTIFICATION_RELIGION_LOST_PLAYER_MAJORITY_S");
+		Localization::String localizedText = Localization::Lookup("TXT_KEY_NOTIFICATION_RELIGION_LOST_PLAYER_MAJORITY");
+		m_pPlayer->GetNotifications()->Add(NOTIFICATION_RELIGION_FOUNDED_ACTIVE_PLAYER, localizedText.toUTF8(), strSummary.toUTF8(), -1, -1, NO_RELIGION, -1);
 	}
 	m_eMajorityReligion = NO_RELIGION;
 	return false;
@@ -7908,7 +7924,7 @@ int CvReligionAI::ScoreBeliefAtPlot(CvBeliefEntry* pEntry, CvPlot* pPlot) const
 	return iTotalRtnValue;
 }
 
-/// AI's evaluation of this belief's usefulness at this one plot
+/// AI's evaluation of this belief's usefulness in this city
 int CvReligionAI::ScoreBeliefAtCity(CvBeliefEntry* pEntry, CvCity* pCity) const
 {
 	int iRtnValue = 0;

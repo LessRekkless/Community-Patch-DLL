@@ -6194,13 +6194,22 @@
 			<Text>{1_ReligionName} is now your majority [ICON_RELIGION] Religion!</Text>
 		</Row>
 		<Row Tag="TXT_KEY_NOTIFICATION_RELIGION_NEW_PLAYER_MAJORITY">
-			<Text>{1_ReligionName} has become your new majority [ICON_RELIGION] Religion. This shift in religious status may affect your relationship with other Civilizations, as well as your own population.</Text>
+			<Text>{1_ReligionName} has become your Civilization's new majority [ICON_RELIGION] Religion. This shift in religious status may affect your relationship with other Civilizations, as well as your own population.</Text>
 		</Row>
-		<Row Tag="TXT_KEY_NOTIFICATION_RELIGION_NEW_PLAYER_STATE_RELIGION_S">
-			<Text>{1_ReligionName} now your primary [ICON_RELIGION] Religion!</Text>
+		<Row Tag="TXT_KEY_NOTIFICATION_RELIGION_LOST_PLAYER_MAJORITY_S">
+			<Text>You no longer have a majority [ICON_RELIGION] Religion!</Text>
 		</Row>
-		<Row Tag="TXT_KEY_NOTIFICATION_RELIGION_NEW_PLAYER_STATE_RELIGION">
-			<Text>{1_ReligionName} is now your primary [ICON_RELIGION] Religion. You alone will benefit from Founder and Enhancer Beliefs related to {1_ReligionName}, and any Founder or Enhancer Beliefs related to prior [ICON_RELIGION] Religions are no longer valid. All stored [ICON_PEACE] Faith is converted into [ICON_GOLDEN_AGE] Golden Age Points (except for Civilizations guaranteed a [ICON_RELIGION] Religion).</Text>
+		<Row Tag="TXT_KEY_NOTIFICATION_RELIGION_LOST_PLAYER_MAJORITY">
+			<Text>Your Civilization no longer has a [ICON_RELIGION] Religion, and has lost any empire-wide benefits it had access to.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_NOTIFICATION_RELIGION_NEW_PLAYER_OWNED_RELIGION_S">
+			<Text>{1_ReligionName} is now your primary [ICON_RELIGION] Religion!</Text>
+		</Row>
+		<Row Tag="TXT_KEY_NOTIFICATION_RELIGION_NEW_PLAYER_OWNED_RELIGION">
+			<Text>{1_ReligionName} has become your Civilization's new primary [ICON_RELIGION] Religion. You alone will benefit from Founder and Enhancer Beliefs related to {1_ReligionName}, and any Founder or Enhancer Beliefs related to prior [ICON_RELIGION] Religions are no longer valid.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_NOTIFICATION_RELIGION_NEW_PLAYER_OWNED_RELIGION_LOSE_FAITH">
+			<Text>You have adopted {1_ReligionName} as your Civilization's primary [ICON_RELIGION] Religion. You alone will benefit from Founder and Enhancer Beliefs related to {1_ReligionName}. All stored [ICON_PEACE] Faith have been converted into [ICON_GOLDEN_AGE] Golden Age Points.</Text>
 		</Row>
 
 		<!-- Holy City Lost/Gained-->
