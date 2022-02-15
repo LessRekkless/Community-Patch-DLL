@@ -4106,7 +4106,7 @@ bool CvPlayerReligions::ComputeMajority(bool bNotifications)
 			//New majority faith? Let's announce this.
 			if (MOD_BALANCE_CORE_BELIEFS && bNotifications && m_eMajorityReligion != eReligion && eReligion > RELIGION_PANTHEON)
 			{
-				if (m_pPlayer->GetNotifications())
+				if (m_pPlayer->GetNotifications() && GetOwnedReligion() == NO_RELIGION)
 				{
 					const CvReligion* pReligion = GC.getGame().GetGameReligions()->GetReligion(eReligion, m_pPlayer->GetID());
 					if(pReligion)
@@ -4125,7 +4125,7 @@ bool CvPlayerReligions::ComputeMajority(bool bNotifications)
 		}
 	}
 	// notify player if they lost their majority religion
-	if (MOD_BALANCE_CORE_BELIEFS && m_eMajorityReligion > RELIGION_PANTHEON && m_pPlayer->GetNotifications())
+	if (MOD_BALANCE_CORE_BELIEFS && m_eMajorityReligion > RELIGION_PANTHEON && m_pPlayer->GetNotifications() && GetOwnedReligion() == NO_RELIGION)
 	{
 		const CvReligion* pReligion = GC.getGame().GetGameReligions()->GetReligion(m_eMajorityReligion, m_pPlayer->GetID());
 		if (pReligion)
