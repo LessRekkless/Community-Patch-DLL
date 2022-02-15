@@ -4029,14 +4029,15 @@ bool CvPlayerReligions::SetStateReligion(ReligionTypes eNewStateReligion, bool b
 		bChangedState = true;
 	}
 	// change state religion here so it doesn't interfere with GetOwnedReligion() above
-	if (GetStateReligion(true) != eNewStateReligion)
+	if (m_eStateReligion != eNewStateReligion)
 	{
-		if (GetStateReligion() == NO_RELIGION)
-			GAMEEVENTINVOKE_HOOK(GAMEEVENT_StateReligionAdopted, m_pPlayer->GetID(), eNewStateReligion, GetStateReligion());
+		if (m_eStateReligion <= RELIGION_PANTHEON)
+			GAMEEVENTINVOKE_HOOK(GAMEEVENT_StateReligionAdopted, m_pPlayer->GetID(), eNewStateReligion, NO_RELIGION);
 		else
-			GAMEEVENTINVOKE_HOOK(GAMEEVENT_StateReligionChanged, m_pPlayer->GetID(), eNewStateReligion, GetStateReligion());
+			GAMEEVENTINVOKE_HOOK(GAMEEVENT_StateReligionChanged, m_pPlayer->GetID(), eNewStateReligion, m_eStateReligion);
 
 		m_eStateReligion = eNewStateReligion;
+
 		bChangedState = true;
 	}
 
