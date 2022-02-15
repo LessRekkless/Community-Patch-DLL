@@ -3907,6 +3907,8 @@ ReligionTypes CvPlayerReligions::GetReligionInMostCities() const
 }
 
 /// What is our state religion?
+/// Similar to GetReligionInMostCities(); I don't exactly know what's different but majority religion is used in SO many places
+/// If you own at least one holy city, State Religion is forced to be one of those religions and not what's in the majority of your cities
 ReligionTypes CvPlayerReligions::GetStateReligion(bool bIncludePantheon) const
 {
 	if (!bIncludePantheon && m_eStateReligion == RELIGION_PANTHEON)
@@ -3915,7 +3917,8 @@ ReligionTypes CvPlayerReligions::GetStateReligion(bool bIncludePantheon) const
 	return m_eStateReligion;
 }
 
-// Do we own the holy city of our state religion?
+/// What is our owned religion? (Do we own the holy city of our state religion?)
+/// Synonymous with GetFounderBenefitsReligion() but the calculation has already been done
 ReligionTypes CvPlayerReligions::GetOwnedReligion() const
 {
 	if (!m_bOwnsStateReligion || m_eStateReligion == RELIGION_PANTHEON)
@@ -3924,7 +3927,7 @@ ReligionTypes CvPlayerReligions::GetOwnedReligion() const
 	return m_eStateReligion;
 }
 
-/// What is our state religion?
+/// Choose our state and owned religions
 bool CvPlayerReligions::UpdateStateReligion()
 {
 	PlayerTypes ePlayer = m_pPlayer->GetID();
@@ -3981,6 +3984,9 @@ bool CvPlayerReligions::UpdateStateReligion()
 	return SetStateReligion(eNewStateReligion, bOwnsReligion);
 }
 
+/// Sets the player's:
+/// State Religion ( should be the same as Majority Religion, but forces a religion with an owned holy city )
+/// Owned Religion ( Gains the Founder Benefits of the State Religion; synonymous with GetFounderBenefitsReligion() )
 bool CvPlayerReligions::SetStateReligion(ReligionTypes eNewStateReligion, bool bOwnsReligion)
 {
 	bool bChangedState = false;
