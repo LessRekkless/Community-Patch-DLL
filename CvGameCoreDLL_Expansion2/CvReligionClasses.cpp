@@ -4103,9 +4103,9 @@ bool CvPlayerReligions::ComputeMajority(bool bNotifications)
 		if (HasReligionInMostCities(eReligion))
 		{
 			//New majority faith? Let's announce this.
-			if(MOD_BALANCE_CORE_BELIEFS && bNotifications && m_eMajorityReligion != eReligion && eReligion > RELIGION_PANTHEON)
+			if (MOD_BALANCE_CORE_BELIEFS && bNotifications && m_eMajorityReligion != eReligion && eReligion > RELIGION_PANTHEON)
 			{
-				if(m_pPlayer->GetNotifications())
+				if (m_pPlayer->GetNotifications())
 				{
 					const CvReligion* pReligion = GC.getGame().GetGameReligions()->GetReligion(eReligion, m_pPlayer->GetID());
 					if(pReligion)
@@ -4123,11 +4123,18 @@ bool CvPlayerReligions::ComputeMajority(bool bNotifications)
 			return true;
 		}
 	}
-	if (MOD_BALANCE_CORE_BELIEFS && m_eMajorityReligion != NO_RELIGION)
+	// notify player if they lost their majority religion
+	if (MOD_BALANCE_CORE_BELIEFS && m_eMajorityReligion > RELIGION_PANTHEON && m_pPlayer->GetNotifications())
 	{
-		Localization::String strSummary = Localization::Lookup("TXT_KEY_NOTIFICATION_RELIGION_LOST_PLAYER_MAJORITY_S");
-		Localization::String localizedText = Localization::Lookup("TXT_KEY_NOTIFICATION_RELIGION_LOST_PLAYER_MAJORITY");
-		m_pPlayer->GetNotifications()->Add(NOTIFICATION_RELIGION_FOUNDED_ACTIVE_PLAYER, localizedText.toUTF8(), strSummary.toUTF8(), -1, -1, NO_RELIGION, -1);
+		const CvReligion* pReligion = GC.getGame().GetGameReligions()->GetReligion(m_eMajorityReligion, m_pPlayer->GetID());
+		if (pReligion)
+		{
+			CvString szReligionName = pReligion->GetName();
+			Localization::String strSummary = Localization::Lookup("TXT_KEY_NOTIFICATION_RELIGION_LOST_PLAYER_MAJORITY_S");
+			Localization::String localizedText = Localization::Lookup("TXT_KEY_NOTIFICATION_RELIGION_LOST_PLAYER_MAJORITY");
+			localizedText << szReligionName;
+			m_pPlayer->GetNotifications()->Add(NOTIFICATION_RELIGION_FOUNDED_ACTIVE_PLAYER, localizedText.toUTF8(), strSummary.toUTF8(), -1, -1, NO_RELIGION, -1);
+		}
 	}
 	m_eMajorityReligion = NO_RELIGION;
 	return false;

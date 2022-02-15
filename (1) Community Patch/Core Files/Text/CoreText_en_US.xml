@@ -6200,7 +6200,7 @@
 			<Text>You no longer have a majority [ICON_RELIGION] Religion!</Text>
 		</Row>
 		<Row Tag="TXT_KEY_NOTIFICATION_RELIGION_LOST_PLAYER_MAJORITY">
-			<Text>Your Civilization no longer has a [ICON_RELIGION] Religion, and has lost any empire-wide benefits it had access to.</Text>
+			<Text>{1_ReligionName} is no longer your Civilization's majority [ICON_RELIGION] Religion, and you have lost any empire-wide benefits it provided.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_NOTIFICATION_RELIGION_NEW_PLAYER_OWNED_RELIGION_S">
 			<Text>{1_ReligionName} is now your primary [ICON_RELIGION] Religion!</Text>
