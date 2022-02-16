@@ -4006,7 +4006,8 @@ bool CvPlayerReligions::SetStateReligion(ReligionTypes eNewStateReligion, bool b
 
 				// Compensate zeroing of faith with golden age points. 
 				// Does not trigger if player is only switching their owned religion, already founded a religion, or can always found a religion
-				if (!m_bOwnsStateReligion && !m_pPlayer->GetPlayerTraits()->IsAlwaysReligion() && GetOriginalReligionCreatedByPlayer() <= RELIGION_PANTHEON )
+// IsFoundingReligion() is currently only ever true for human players
+				if (IsFoundingReligion() || (!m_bOwnsStateReligion && !m_pPlayer->GetPlayerTraits()->IsAlwaysReligion() && GetOriginalReligionCreatedByPlayer() <= RELIGION_PANTHEON) )
 				{
 					if (m_pPlayer->GetFaith() > 0)
 					{
