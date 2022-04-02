@@ -1231,7 +1231,7 @@ ALTER TABLE UnitPromotions ADD COLUMN 'DisembarkFlatCost' BOOLEAN DEFAULT 0;
 ALTER TABLE UnitPromotions ADD COLUMN 'NumRepairCharges' INTEGER DEFAULT 0;
 
 -- Base damage dealth to adjacent air units after an unintercepted air sweep
-ALTER TABLE UnitPromotions ADD COLUMN 'GetGroundAttackDamage' INTEGER DEFAULT 0;
+ALTER TABLE UnitPromotions ADD COLUMN 'GroundAttackDamage' INTEGER DEFAULT 0;
 
 -- Allows for Unit to increase your supply cap when expended.
 ALTER TABLE UnitPromotions ADD COLUMN 'MilitaryCapChange' INTEGER DEFAULT 0;
