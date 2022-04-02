@@ -28903,6 +28903,10 @@ bool CvUnit::attemptGroundAttacks(const CvPlot& pPlot)
 
 	int iAirSweepDamage = getGroundAttackDamage();
 
+	// if the unit won't actually deal any damage to anything, exit early
+	if (iAirSweepDamage <= 0)
+		return bFoundSomething;
+
 	CvString strAppendText = GetLocalizedText("TXT_KEY_PROMOTION_AIR_SWEEP");
 
 	int iRange = 1;

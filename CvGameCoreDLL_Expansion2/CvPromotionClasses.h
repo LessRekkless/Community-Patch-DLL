@@ -446,7 +446,7 @@ protected:
 	int m_iNoAdjacentUnitMod;
 	int m_iAttackMod;
 	int m_iDefenseMod;
-	int m_iGetGroundAttackDamage;
+	int m_iGroundAttackDamage;
 	int m_iDropRange;
 	int m_iExtraNavalMoves;
 	int m_iHPHealedIfDefeatEnemy;

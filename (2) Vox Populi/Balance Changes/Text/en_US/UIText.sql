@@ -861,14 +861,6 @@ UPDATE Language_en_US
 SET Text = 'Renewable, or alternative energy is energy that is collected from renewable resources, which are naturally replenished on a human timescale, such as sunlight, wind, rain, tides, waves, and geothermal heat. Renewable energy often provides energy in four important areas: electricity generation, air and water heating/cooling, transportation, and rural (off-grid) energy services.'
 WHERE Tag = 'TXT_KEY_TECH_ECOLOGY_DESC';
 
-UPDATE Language_en_US
-SET Text = 'Can Air Sweep to clear intercepting Units. If no interceptors found, it will deal 10% of it''s [ICON_RANGE_STRENGTH] Ranged Combat Strength to all enemy Air Units within 3 tiles of the target Tile.' 
-WHERE Tag = 'TXT_KEY_PROMOTION_AIR_SWEEP_HELP';
-
-UPDATE Language_en_US
-SET Text = 'Order the unit to sweep an area for air and ground-based interceptors. If no interceptors found, it will deal 10% of it''s [ICON_RANGE_STRENGTH] Ranged Combat Strength to all enemy Air and Anti-Air Units in and adjacent to the target Tile.' 
-WHERE Tag = 'TXT_KEY_INTERFACEMODE_AIR_SWEEP_HELP';
-
 -- Bully Changes
 
 UPDATE Language_en_US
