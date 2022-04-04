@@ -1,5 +1,5 @@
 /*	-------------------------------------------------------------------------------------------------------
-	© 1991-2012 Take-Two Interactive Software and its subsidiaries.  Developed by Firaxis Games.  
+	Â© 1991-2012 Take-Two Interactive Software and its subsidiaries.  Developed by Firaxis Games.  
 	Sid Meier's Civilization V, Civ, Civilization, 2K Games, Firaxis Games, Take-Two Interactive Software 
 	and their respective logos are all trademarks of Take-Two interactive Software, Inc.  
 	All other marks and trademarks are the property of their respective owners.  
@@ -697,6 +697,8 @@ int CvDangerPlotContents::GetAirUnitDamage(const CvUnit* pUnit, AirActionType iA
 			iAttackerStrength /= 100;
 
 			int iDefenderStrength = pUnit->GetMaxRangedCombatStrength(pUnit, /*pCity*/ NULL, false);
+			iDefenderStrength *= (100 + pUnit->GetInterceptionCombatModifier());
+			iDefenderStrength /= 100;
 			iCurrentAirSweepDamage = pUnit->getCombatDamage(iDefenderStrength, iAttackerStrength,
 				/*bIncludeRand*/ false, /*bAttackerIsCity*/ false, /*bDefenderIsCity*/ false);
 
@@ -730,7 +732,7 @@ int CvDangerPlotContents::GetAirUnitDamage(const CvUnit* pUnit, AirActionType iA
 			{
 				if (pInterceptor->getDomainType() != DOMAIN_AIR)
 				{
-					return (pInterceptor->GetInterceptionDamage(pUnit, false, m_pPlot) * (100 + /*-50*/ GD_INT_GET(AIR_SWEEP_INTERCEPTION_DAMAGE_MOD)))/100;
+					return (pInterceptor->GetInterceptionDamage(pUnit, false, m_pPlot, true) * (100 + /*-50*/ GD_INT_GET(AIR_SWEEP_INTERCEPTION_DAMAGE_MOD)))/100;
 				}
 				else
 				{
@@ -738,6 +740,8 @@ int CvDangerPlotContents::GetAirUnitDamage(const CvUnit* pUnit, AirActionType iA
 					iAttackerStrength *= (100 + pUnit->GetAirSweepCombatModifier());
 					iAttackerStrength /= 100;
 					int iDefenderStrength = pInterceptor->GetMaxRangedCombatStrength(pUnit, /*pCity*/ NULL, false);
+					iDefenderStrength *= (100 + pInterceptor->GetInterceptionCombatModifier());
+					iDefenderStrength /= 100;
 					int iReceiveDamage = pInterceptor->getCombatDamage(iDefenderStrength, iAttackerStrength,
 						/*bIncludeRand*/ false, /*bAttackerIsCity*/ false, /*bDefenderIsCity*/ false);
 					if (iReceiveDamage >= pUnit->GetCurrHitPoints())

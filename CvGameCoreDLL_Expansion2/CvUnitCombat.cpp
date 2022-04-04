@@ -303,47 +303,30 @@ void CvUnitCombat::GenerateMeleeCombatInfo(CvUnit& kAttacker, CvUnit* pkDefender
 		// Fear Damage
 		pkCombatInfo->setFearDamageInflicted(BATTLE_UNIT_ATTACKER, kAttacker.getCombatDamage(iAttackerStrength, iDefenderStrength, bIncludeRand, false, true));
 
-		int iAttackerEffectiveStrength = iAttackerStrength * (iAttackerMaxHP - range(kAttacker.getDamage(), 0, iAttackerMaxHP - 1)) / iAttackerMaxHP;
-		iAttackerEffectiveStrength = iAttackerEffectiveStrength > 0 ? iAttackerEffectiveStrength : 1;
-		int iDefenderEffectiveStrength = iDefenderStrength * (iDefenderMaxHP - range(pkDefender->getDamage(), 0, iDefenderMaxHP - 1)) / iDefenderMaxHP;
-		iDefenderEffectiveStrength = iDefenderEffectiveStrength > 0 ? iDefenderEffectiveStrength : 1;
-
-		//int iExperience = kAttacker.defenseXPValue();
-		//iExperience = ((iExperience * iAttackerEffectiveStrength) / iDefenderEffectiveStrength); // is this right? looks like more for less [Jon: Yes, it's XP for the defender]
-		//iExperience = range(iExperience, GC.getMIN_EXPERIENCE_PER_COMBAT(), GC.getMAX_EXPERIENCE_PER_COMBAT());
-		int iExperience = /*4*/ GC.getEXPERIENCE_DEFENDING_UNIT_MELEE();
+		int iExperience = /*4*/ GD_INT_GET(EXPERIENCE_DEFENDING_UNIT_MELEE);
 		pkCombatInfo->setExperience(BATTLE_UNIT_DEFENDER, iExperience);
 		pkCombatInfo->setMaxExperienceAllowed(BATTLE_UNIT_DEFENDER, kAttacker.maxXPValue());
 		pkCombatInfo->setInBorders(BATTLE_UNIT_DEFENDER, plot.getOwner() == pkDefender->getOwner());
-#if defined(MOD_BARBARIAN_GG_GA_POINTS)
-		if(GC.getGame().isOption(GAMEOPTION_BARB_GG_GA_POINTS))
-		{
-			pkCombatInfo->setUpdateGlobal(BATTLE_UNIT_DEFENDER, true);
-		}
-		else
-		{
-			pkCombatInfo->setUpdateGlobal(BATTLE_UNIT_DEFENDER, pkDefender->isGGFromBarbarians() || !kAttacker.isBarbarian());
-		}
-#else	
-		pkCombatInfo->setUpdateGlobal(BATTLE_UNIT_DEFENDER, !kAttacker.isBarbarian());
-#endif
-		//iExperience = ((iExperience * iDefenderEffectiveStrength) / iAttackerEffectiveStrength);
-		//iExperience = range(iExperience, GC.getMIN_EXPERIENCE_PER_COMBAT(), GC.getMAX_EXPERIENCE_PER_COMBAT());
+
 		iExperience = /*5*/ GD_INT_GET(EXPERIENCE_ATTACKING_UNIT_MELEE);
 		pkCombatInfo->setExperience(BATTLE_UNIT_ATTACKER, iExperience);
 		pkCombatInfo->setMaxExperienceAllowed(BATTLE_UNIT_ATTACKER, pkDefender->maxXPValue());
 		pkCombatInfo->setInBorders(BATTLE_UNIT_ATTACKER, plot.getOwner() == kAttacker.getOwner());
+		
 #if defined(MOD_BARBARIAN_GG_GA_POINTS)
 		if(GC.getGame().isOption(GAMEOPTION_BARB_GG_GA_POINTS))
 		{
 			pkCombatInfo->setUpdateGlobal(BATTLE_UNIT_ATTACKER, true);
+			pkCombatInfo->setUpdateGlobal(BATTLE_UNIT_DEFENDER, true);
 		}
 		else
 		{
 			pkCombatInfo->setUpdateGlobal(BATTLE_UNIT_ATTACKER, kAttacker.isGGFromBarbarians() || !pkDefender->isBarbarian());
+			pkCombatInfo->setUpdateGlobal(BATTLE_UNIT_DEFENDER, pkDefender->isGGFromBarbarians() || !kAttacker.isBarbarian());
 		}
 #else	
 		pkCombatInfo->setUpdateGlobal(BATTLE_UNIT_ATTACKER, !pkDefender->isBarbarian());
+		pkCombatInfo->setUpdateGlobal(BATTLE_UNIT_DEFENDER, !kAttacker.isBarbarian());
 #endif
 		pkCombatInfo->setAttackIsRanged(false);
 
@@ -460,7 +443,8 @@ void CvUnitCombat::ResolveMeleeCombat(const CvCombatInfo& kCombatInfo, uint uiPa
 		// only gain XP for the first attack made per turn.
 		if(!MOD_BALANCE_CORE_XP_ON_FIRST_ATTACK || pkAttacker->getNumAttacksMadeThisTurn() <= 1)
 		{
-			pkAttacker->changeExperienceTimes100(100 * kCombatInfo.getExperience(BATTLE_UNIT_ATTACKER),
+			pkAttacker->changeExperienceTimes100(100 * 
+				kCombatInfo.getExperience(BATTLE_UNIT_ATTACKER),
 				kCombatInfo.getMaxExperienceAllowed(BATTLE_UNIT_ATTACKER),
 				true,
 				kCombatInfo.getInBorders(BATTLE_UNIT_ATTACKER),
@@ -1003,8 +987,6 @@ void CvUnitCombat::ResolveRangedUnitVsCombat(const CvCombatInfo& kCombatInfo, ui
 {
 	bool bTargetDied = false;
 	int iDamage = kCombatInfo.getDamageInflicted(BATTLE_UNIT_ATTACKER);
-//	int iExperience = kCombatInfo.getExperience(BATTLE_UNIT_ATTACKER);
-//	int iMaxXP = kCombatInfo.getMaxExperienceAllowed(BATTLE_UNIT_ATTACKER);
 
 	CvUnit* pkAttacker = kCombatInfo.getUnit(BATTLE_UNIT_ATTACKER);
 	CvAssert_Debug(pkAttacker);
@@ -1133,11 +1115,11 @@ void CvUnitCombat::ResolveRangedUnitVsCombat(const CvCombatInfo& kCombatInfo, ui
 
 					// Update experience
 					pkDefender->changeExperienceTimes100(100 * 
-					    kCombatInfo.getExperience(BATTLE_UNIT_DEFENDER),
-					    kCombatInfo.getMaxExperienceAllowed(BATTLE_UNIT_DEFENDER),
-					    true,
-					    kCombatInfo.getInBorders(BATTLE_UNIT_DEFENDER),
-					    kCombatInfo.getUpdateGlobal(BATTLE_UNIT_DEFENDER));
+						kCombatInfo.getExperience(BATTLE_UNIT_DEFENDER),
+						kCombatInfo.getMaxExperienceAllowed(BATTLE_UNIT_DEFENDER),
+						true,
+						kCombatInfo.getInBorders(BATTLE_UNIT_DEFENDER),
+						kCombatInfo.getUpdateGlobal(BATTLE_UNIT_DEFENDER));
 				}
 
 				pkDefender->setCombatUnit(NULL);
@@ -1210,7 +1192,8 @@ void CvUnitCombat::ResolveRangedUnitVsCombat(const CvCombatInfo& kCombatInfo, ui
 			// only gain XP for the first attack made per turn. A Ranged Support Fire attack shouldn't reward XP unless it kills the target
 			if(!MOD_BALANCE_CORE_XP_ON_FIRST_ATTACK || (pkAttacker->getNumAttacksMadeThisTurn() <= 1 && (bTargetDied || !pkAttacker->isRangedSupportFire())))
 			{
-				pkAttacker->changeExperienceTimes100(100 * kCombatInfo.getExperience(BATTLE_UNIT_ATTACKER),
+				pkAttacker->changeExperienceTimes100(100 * 
+					kCombatInfo.getExperience(BATTLE_UNIT_ATTACKER),
 					kCombatInfo.getMaxExperienceAllowed(BATTLE_UNIT_ATTACKER),
 					true,
 					kCombatInfo.getInBorders(BATTLE_UNIT_ATTACKER),
@@ -1371,7 +1354,8 @@ void CvUnitCombat::ResolveCityMeleeCombat(const CvCombatInfo& kCombatInfo, uint 
 		// only gain XP for the first attack made per turn.
 		if(!MOD_BALANCE_CORE_XP_ON_FIRST_ATTACK || pkAttacker->getNumAttacksMadeThisTurn() <= 1)
 		{
-			pkAttacker->changeExperienceTimes100(100 * kCombatInfo.getExperience(BATTLE_UNIT_ATTACKER),
+			pkAttacker->changeExperienceTimes100(100 * 
+				kCombatInfo.getExperience(BATTLE_UNIT_ATTACKER),
 				kCombatInfo.getMaxExperienceAllowed(BATTLE_UNIT_ATTACKER),
 				true,
 				false,
@@ -1554,33 +1538,35 @@ void CvUnitCombat::GenerateAirCombatInfo(CvUnit& kAttacker, CvUnit* pkDefender, 
 		//set these even if the interception failed (ie zero damage)
 		pkCombatInfo->setUnit(BATTLE_UNIT_INTERCEPTOR, pInterceptor);
 		pkCombatInfo->setDamageInflicted(BATTLE_UNIT_INTERCEPTOR, iInterceptionDamage);
-		pkCombatInfo->setInBorders( BATTLE_UNIT_INTERCEPTOR, plot.getOwner() == kAttacker.getOwner() );
-		pkCombatInfo->setUpdateGlobal( BATTLE_UNIT_INTERCEPTOR, true );
+		pkCombatInfo->setInBorders(BATTLE_UNIT_INTERCEPTOR, plot.getOwner() == kAttacker.getOwner() );
+		pkCombatInfo->setUpdateGlobal(BATTLE_UNIT_INTERCEPTOR, true );
 		pkCombatInfo->setAttackIsBombingMission(true);
 		pkCombatInfo->setDefenderRetaliates(false);
 		//no experience by default, may be overwritten
-		pkCombatInfo->setExperience( BATTLE_UNIT_INTERCEPTOR, iExperience );
+		pkCombatInfo->setExperience(BATTLE_UNIT_INTERCEPTOR, iExperience );
 
 		//is the attack aborted?
 		if (iInterceptionDamage > 0)
 		{
-			int iExperience = /*2*/ GD_INT_GET(EXPERIENCE_DEFENDING_AIR_SWEEP_GROUND);
-			pkCombatInfo->setExperience( BATTLE_UNIT_INTERCEPTOR, iExperience );
-			pkCombatInfo->setMaxExperienceAllowed( BATTLE_UNIT_INTERCEPTOR, MAX_INT );
+			int iInterceptorExperience = /*2*/ GD_INT_GET(EXPERIENCE_DEFENDING_AIR_SWEEP_GROUND);
+			int iAttackerExperience = /*2*/ GD_INT_GET(EXPERIENCE_ATTACKING_AIR_SWEEP_GROUND);
 
-			//make sure we have zero values everywhere else
-			pkCombatInfo->setFinalDamage(BATTLE_UNIT_ATTACKER, 0);
+			pkCombatInfo->setExperience(BATTLE_UNIT_INTERCEPTOR, iInterceptorExperience);
+			pkCombatInfo->setMaxExperienceAllowed(BATTLE_UNIT_INTERCEPTOR, kAttacker.maxXPValue());
+
+			int iTotalDamage = std::max(kAttacker.getDamage(), kAttacker.getDamage() + iInterceptionDamage);
+			pkCombatInfo->setFinalDamage(BATTLE_UNIT_ATTACKER, iTotalDamage);
 			pkCombatInfo->setDamageInflicted(BATTLE_UNIT_ATTACKER, 0);
-			pkCombatInfo->setFinalDamage(BATTLE_UNIT_DEFENDER, 0);
-			pkCombatInfo->setDamageInflicted(BATTLE_UNIT_DEFENDER, 0);
-
 			pkCombatInfo->setFearDamageInflicted(BATTLE_UNIT_ATTACKER, 0);
 
-			pkCombatInfo->setExperience(BATTLE_UNIT_ATTACKER, 0);
-			pkCombatInfo->setMaxExperienceAllowed(BATTLE_UNIT_ATTACKER, 0);
+			pkCombatInfo->setExperience(BATTLE_UNIT_ATTACKER, iAttackerExperience);
+			pkCombatInfo->setMaxExperienceAllowed(BATTLE_UNIT_ATTACKER, pInterceptor->maxXPValue());
 			pkCombatInfo->setInBorders(BATTLE_UNIT_ATTACKER, plot.getOwner() != kAttacker.getOwner());
 			pkCombatInfo->setUpdateGlobal(BATTLE_UNIT_ATTACKER, true);
 
+			//defender doesn't interact in combat
+			pkCombatInfo->setFinalDamage(BATTLE_UNIT_DEFENDER, 0);
+			pkCombatInfo->setDamageInflicted(BATTLE_UNIT_DEFENDER, 0);
 			pkCombatInfo->setExperience(BATTLE_UNIT_DEFENDER, 0);
 			pkCombatInfo->setMaxExperienceAllowed(BATTLE_UNIT_DEFENDER, 0);
 			pkCombatInfo->setInBorders(BATTLE_UNIT_DEFENDER, plot.getOwner() == kAttacker.getOwner());
@@ -1787,7 +1773,7 @@ void CvUnitCombat::GenerateAirCombatInfo(CvUnit& kAttacker, CvUnit* pkDefender, 
 
 	iExperience = /*2*/ GD_INT_GET(EXPERIENCE_DEFENDING_UNIT_AIR);
 	pkCombatInfo->setExperience(BATTLE_UNIT_DEFENDER, iExperience);
-	pkCombatInfo->setMaxExperienceAllowed(BATTLE_UNIT_DEFENDER, MAX_INT);
+	pkCombatInfo->setMaxExperienceAllowed(BATTLE_UNIT_DEFENDER, kAttacker.maxXPValue());
 	pkCombatInfo->setInBorders(BATTLE_UNIT_DEFENDER, plot.getOwner() == kAttacker.getOwner());
 
 #if defined(MOD_BARBARIAN_GG_GA_POINTS)
@@ -2145,7 +2131,8 @@ void CvUnitCombat::ResolveAirUnitVsCombat(const CvCombatInfo& kCombatInfo, uint 
 				// only gain XP for the first attack made per turn.
 				if (!MOD_BALANCE_CORE_XP_ON_FIRST_ATTACK || pkAttacker->getNumAttacksMadeThisTurn() <= 1)
 				{
-					pkAttacker->changeExperienceTimes100(100 * kCombatInfo.getExperience(BATTLE_UNIT_ATTACKER),
+					pkAttacker->changeExperienceTimes100(100 * 
+						kCombatInfo.getExperience(BATTLE_UNIT_ATTACKER),
 						kCombatInfo.getMaxExperienceAllowed(BATTLE_UNIT_ATTACKER),
 						true,
 						kCombatInfo.getInBorders(BATTLE_UNIT_ATTACKER),
@@ -2154,8 +2141,6 @@ void CvUnitCombat::ResolveAirUnitVsCombat(const CvCombatInfo& kCombatInfo, uint 
 					// Promotion time?
 					pkAttacker->testPromotionReady();
 				}
-
-
 			}
 
 			// Clean up some stuff
@@ -2181,43 +2166,43 @@ void CvUnitCombat::GenerateAirSweepCombatInfo(CvUnit& kAttacker, CvUnit* pkDefen
 {
 	BATTLE_STARTED(BATTLE_TYPE_SWEEP, plot);
 
-	int iAttackerMaxHP = kAttacker.GetMaxHitPoints();
-
 	pkCombatInfo->setUnit(BATTLE_UNIT_ATTACKER, &kAttacker);
 	pkCombatInfo->setUnit(BATTLE_UNIT_DEFENDER, pkDefender);
 	pkCombatInfo->setPlot(&plot);
 
-	// Unit vs. Unit
-	int iAttackerStrength = kAttacker.GetMaxRangedCombatStrength(pkDefender, /*pCity*/ NULL, true);
-
-	// Mod to air sweep strength
-	iAttackerStrength *= (100 + kAttacker.GetAirSweepCombatModifier());
-	iAttackerStrength /= 100;
-
-	int iDefenderStrength = 0;
+	int iAttackerExperience = 0;
 	int iDefenderExperience = 0;
 
-	// Ground AA interceptor
+	bool bIncludeRand = !GC.getGame().isGameMultiPlayer();
+
+	// Ground AA interceptor - Attacker does not deal damage to anything
 	if(pkDefender->getDomainType() != DOMAIN_AIR)
 	{
-		bool bIncludeRand = !GC.getGame().isGameMultiPlayer();
-		int iInterceptionDamage = pkDefender->GetInterceptionDamage(&kAttacker, bIncludeRand, &plot);
+		int iInterceptionDamage = pkDefender->GetInterceptionDamage(&kAttacker, bIncludeRand, &plot, true);
 
 		// Reduce damage for performing a sweep
 		iInterceptionDamage *= 100 + /*-50*/ GD_INT_GET(AIR_SWEEP_INTERCEPTION_DAMAGE_MOD);
 		iInterceptionDamage /= 100;
-
-		iDefenderExperience = /*2*/ GD_INT_GET(EXPERIENCE_DEFENDING_AIR_SWEEP_GROUND);
+		int iDefenderTotalDamageInflicted = iInterceptionDamage + kAttacker.getDamage();
 
 		pkCombatInfo->setDamageInflicted(BATTLE_UNIT_DEFENDER, iInterceptionDamage);		// Damage inflicted this round
+		pkCombatInfo->setFinalDamage(BATTLE_UNIT_ATTACKER, iDefenderTotalDamageInflicted);
+		
+		iDefenderExperience = /*2*/ GD_INT_GET(EXPERIENCE_DEFENDING_AIR_SWEEP_GROUND);
+		iAttackerExperience = /*2*/ GD_INT_GET(EXPERIENCE_ATTACKING_AIR_SWEEP_GROUND);
 	}
-	// Air interceptor
+	// Air interceptor - Attacker and Interceptor deal damage to each other
 	else
 	{
-		iDefenderStrength = pkDefender->GetMaxRangedCombatStrength(&kAttacker, /*pCity*/ NULL, false);
-		int iDefenderMaxHP = pkDefender->GetMaxHitPoints();
+		int iAttackerStrength = kAttacker.GetMaxRangedCombatStrength(pkDefender, /*pCity*/ NULL, true);
+		iAttackerStrength *= (100 + kAttacker.GetAirSweepCombatModifier());
+		iAttackerStrength /= 100;	
+		int iAttackerMaxHP = kAttacker.GetMaxHitPoints();
 
-		bool bIncludeRand = !GC.getGame().isGameMultiPlayer();
+		int iDefenderStrength = pkDefender->GetMaxRangedCombatStrength(&kAttacker, /*pCity*/ NULL, false);
+		iDefenderStrength *= (100 + pkDefender->GetInterceptionCombatModifier());
+		iDefenderStrength /= 100;
+		int iDefenderMaxHP = pkDefender->GetMaxHitPoints();
 
 		int iAttackerDamageInflicted = kAttacker.getCombatDamage(iAttackerStrength, iDefenderStrength, /*bIncludeRand*/ bIncludeRand, /*bAttackerIsCity*/ false, /*bDefenderIsCity*/ false);
 		int iDefenderDamageInflicted = pkDefender->getCombatDamage(iDefenderStrength, iAttackerStrength, /*bIncludeRand*/ bIncludeRand, /*bAttackerIsCity*/ false, /*bDefenderIsCity*/ false);
@@ -2243,8 +2228,6 @@ void CvUnitCombat::GenerateAirSweepCombatInfo(CvUnit& kAttacker, CvUnit* pkDefen
 			}
 		}
 
-		iDefenderExperience = /*5*/ GD_INT_GET(EXPERIENCE_DEFENDING_AIR_SWEEP_AIR);
-
 		pkCombatInfo->setFinalDamage(BATTLE_UNIT_ATTACKER, iDefenderTotalDamageInflicted);
 		pkCombatInfo->setDamageInflicted(BATTLE_UNIT_ATTACKER, iAttackerDamageInflicted);
 		pkCombatInfo->setFinalDamage(BATTLE_UNIT_DEFENDER, iAttackerTotalDamageInflicted);
@@ -2254,51 +2237,31 @@ void CvUnitCombat::GenerateAirSweepCombatInfo(CvUnit& kAttacker, CvUnit* pkDefen
 		//pkCombatInfo->setFearDamageInflicted( BATTLE_UNIT_ATTACKER, kAttacker.getCombatDamage(iAttackerStrength, iDefenderStrength, kAttacker.getDamage(), true, false, true) );
 		//	pkCombatInfo->setFearDamageInflicted( BATTLE_UNIT_DEFENDER, getCombatDamage(iDefenderStrength, iAttackerStrength, pDefender->getDamage(), true, false, true) );
 
-		int iAttackerEffectiveStrength = iAttackerStrength * (iAttackerMaxHP - range(kAttacker.getDamage(), 0, iAttackerMaxHP - 1)) / iAttackerMaxHP;
-		iAttackerEffectiveStrength = iAttackerEffectiveStrength > 0 ? iAttackerEffectiveStrength : 1;
-		int iDefenderEffectiveStrength = iDefenderStrength * (iDefenderMaxHP - range(pkDefender->getDamage(), 0, iDefenderMaxHP - 1)) / iDefenderMaxHP;
-		iDefenderEffectiveStrength = iDefenderEffectiveStrength > 0 ? iDefenderEffectiveStrength : 1;
-
-		//int iExperience = kAttacker.defenseXPValue();
-		//iExperience = ((iExperience * iAttackerEffectiveStrength) / iDefenderEffectiveStrength); // is this right? looks like more for less [Jon: Yes, it's XP for the defender]
-		//iExperience = range(iExperience, GC.getMIN_EXPERIENCE_PER_COMBAT(), GC.getMAX_EXPERIENCE_PER_COMBAT());
-		pkCombatInfo->setExperience(BATTLE_UNIT_DEFENDER, iDefenderExperience);
-		pkCombatInfo->setMaxExperienceAllowed(BATTLE_UNIT_ATTACKER, pkDefender->maxXPValue());
-		pkCombatInfo->setInBorders(BATTLE_UNIT_ATTACKER, plot.getOwner() == pkDefender->getOwner());
-
-#if defined(MOD_BARBARIAN_GG_GA_POINTS)
-		if(GC.getGame().isOption(GAMEOPTION_BARB_GG_GA_POINTS))
-		{
-			pkCombatInfo->setUpdateGlobal(BATTLE_UNIT_ATTACKER, true);
-		}
-		else
-		{
-			pkCombatInfo->setUpdateGlobal(BATTLE_UNIT_ATTACKER, kAttacker.isGGFromBarbarians() || !kAttacker.isBarbarian());
-		}
-#else
-		pkCombatInfo->setUpdateGlobal(BATTLE_UNIT_ATTACKER, !kAttacker.isBarbarian());
-#endif
-
-		//iExperience = ((iExperience * iDefenderEffectiveStrength) / iAttackerEffectiveStrength);
-		//iExperience = range(iExperience, GC.getMIN_EXPERIENCE_PER_COMBAT(), GC.getMAX_EXPERIENCE_PER_COMBAT());
-		int iExperience = /*5*/ GD_INT_GET(EXPERIENCE_ATTACKING_AIR_SWEEP);
-		pkCombatInfo->setExperience(BATTLE_UNIT_ATTACKER, iExperience);
-		pkCombatInfo->setMaxExperienceAllowed(BATTLE_UNIT_DEFENDER, kAttacker.maxXPValue());
-		pkCombatInfo->setInBorders(BATTLE_UNIT_DEFENDER, plot.getOwner() == kAttacker.getOwner());
-
-#if defined(MOD_BARBARIAN_GG_GA_POINTS)
-		if(GC.getGame().isOption(GAMEOPTION_BARB_GG_GA_POINTS))
-		{
-			pkCombatInfo->setUpdateGlobal(BATTLE_UNIT_DEFENDER, true);
-		}
-		else
-		{
-			pkCombatInfo->setUpdateGlobal(BATTLE_UNIT_DEFENDER, pkDefender->isGGFromBarbarians() || !pkDefender->isBarbarian());
-		}
-#else
-		pkCombatInfo->setUpdateGlobal(BATTLE_UNIT_DEFENDER, !pkDefender->isBarbarian());
-#endif
+		iDefenderExperience = /*5*/ GD_INT_GET(EXPERIENCE_DEFENDING_AIR_SWEEP_AIR);
+		iAttackerExperience = /*5*/ GD_INT_GET(EXPERIENCE_ATTACKING_AIR_SWEEP_AIR);
 	}
+	// Set Combat/GG Experience
+	pkCombatInfo->setExperience(BATTLE_UNIT_ATTACKER, iAttackerExperience);
+	pkCombatInfo->setMaxExperienceAllowed(BATTLE_UNIT_ATTACKER, pkDefender->maxXPValue());
+	pkCombatInfo->setInBorders(BATTLE_UNIT_ATTACKER, plot.getOwner() == pkDefender->getOwner());
+	pkCombatInfo->setExperience(BATTLE_UNIT_DEFENDER, iDefenderExperience);
+	pkCombatInfo->setMaxExperienceAllowed(BATTLE_UNIT_DEFENDER, kAttacker.maxXPValue());
+	pkCombatInfo->setInBorders(BATTLE_UNIT_DEFENDER, plot.getOwner() == kAttacker.getOwner());
+#if defined(MOD_BARBARIAN_GG_GA_POINTS)
+	if(GC.getGame().isOption(GAMEOPTION_BARB_GG_GA_POINTS))
+	{
+		pkCombatInfo->setUpdateGlobal(BATTLE_UNIT_ATTACKER, true);
+		pkCombatInfo->setUpdateGlobal(BATTLE_UNIT_DEFENDER, true);
+	}
+	else
+	{
+		pkCombatInfo->setUpdateGlobal(BATTLE_UNIT_ATTACKER, kAttacker.isGGFromBarbarians() || !kAttacker.isBarbarian());
+		pkCombatInfo->setUpdateGlobal(BATTLE_UNIT_DEFENDER, pkDefender->isGGFromBarbarians() || !pkDefender->isBarbarian());
+	}
+#else
+	pkCombatInfo->setUpdateGlobal(BATTLE_UNIT_ATTACKER, !kAttacker.isBarbarian());
+	pkCombatInfo->setUpdateGlobal(BATTLE_UNIT_DEFENDER, !pkDefender->isBarbarian());
+#endif
 
 	pkCombatInfo->setAttackIsRanged(false);
 	pkCombatInfo->setAttackIsAirSweep(true);
@@ -2345,18 +2308,11 @@ void CvUnitCombat::ResolveAirSweep(const CvCombatInfo& kCombatInfo, uint uiParen
 
 			// Update experience for both sides.
 			pkDefender->changeExperienceTimes100(100 *
-			    kCombatInfo.getExperience(BATTLE_UNIT_DEFENDER),
-			    kCombatInfo.getMaxExperienceAllowed(BATTLE_UNIT_DEFENDER),
-			    true,
-			    kCombatInfo.getInBorders(BATTLE_UNIT_DEFENDER),
-			    kCombatInfo.getUpdateGlobal(BATTLE_UNIT_DEFENDER));
-
-			pkAttacker->changeExperienceTimes100(100 * 
-			    kCombatInfo.getExperience(BATTLE_UNIT_ATTACKER),
-			    kCombatInfo.getMaxExperienceAllowed(BATTLE_UNIT_ATTACKER),
-			    true,
-			    kCombatInfo.getInBorders(BATTLE_UNIT_ATTACKER),
-			    kCombatInfo.getUpdateGlobal(BATTLE_UNIT_ATTACKER));
+				kCombatInfo.getExperience(BATTLE_UNIT_DEFENDER),
+				kCombatInfo.getMaxExperienceAllowed(BATTLE_UNIT_DEFENDER),
+				true,
+				kCombatInfo.getInBorders(BATTLE_UNIT_DEFENDER),
+				kCombatInfo.getUpdateGlobal(BATTLE_UNIT_DEFENDER));
 
 			// Anyone eat it?
 			bAttackerDead = (pkAttacker->getDamage() >= pkAttacker->GetMaxHitPoints());
@@ -2479,6 +2435,17 @@ void CvUnitCombat::ResolveAirSweep(const CvCombatInfo& kCombatInfo, uint uiParen
 
 	if(pkAttacker)
 	{
+		// add XP if sweeper gained any
+		if(!MOD_BALANCE_CORE_XP_ON_FIRST_ATTACK || pkAttacker->getNumAttacksMadeThisTurn() <= 1)
+		{
+			pkAttacker->changeExperienceTimes100(100 * 
+				kCombatInfo.getExperience(BATTLE_UNIT_ATTACKER),
+				kCombatInfo.getMaxExperienceAllowed(BATTLE_UNIT_ATTACKER),
+				true,
+				kCombatInfo.getInBorders(BATTLE_UNIT_ATTACKER),
+				kCombatInfo.getUpdateGlobal(BATTLE_UNIT_ATTACKER));
+		}
+
 		pkAttacker->setCombatUnit(NULL);
 		pkAttacker->ClearMissionQueue(false,GetPostCombatDelay());
 
@@ -4221,7 +4188,8 @@ CvUnitCombat::ATTACK_RESULT CvUnitCombat::AttackAirSweep(CvUnit& kAttacker, CvPl
 
 		if (bFallbackAttack)
 		{
-			int iExperience = /*5*/ GD_INT_GET(EXPERIENCE_ATTACKING_AIR_SWEEP);
+			
+			int iExperience = /*2*/ GD_INT_GET(EXPERIENCE_ATTACKING_AIR_SWEEP_GROUND);
 			kAttacker.changeExperienceTimes100(100 * iExperience, -1, true, targetPlot.getOwner() == kAttacker.getOwner(), true);
 			kAttacker.testPromotionReady();
 
@@ -4232,7 +4200,8 @@ CvUnitCombat::ATTACK_RESULT CvUnitCombat::AttackAirSweep(CvUnit& kAttacker, CvPl
 				Localization::String localizedText = Localization::Lookup("TXT_KEY_AIR_PATROL_BOMBED_GROUND_TARGETS");
 				localizedText << kAttacker.getUnitInfo().GetTextKey();
 				GC.GetEngineUserInterface()->AddMessage(0, kAttacker.getOwner(), false, /*10*/ GD_INT_GET(EVENT_MESSAGE_TIME), localizedText.toUTF8());
-		}
+			}
+			kAttacker.setMadeAttack(true);
 		}
 		else
 		{
@@ -4247,8 +4216,8 @@ CvUnitCombat::ATTACK_RESULT CvUnitCombat::AttackAirSweep(CvUnit& kAttacker, CvPl
 		// Spend a move for this attack
 		kAttacker.changeMoves(-GD_INT_GET(MOVE_DENOMINATOR));
 
-		// Can't move or attack again (no attack was spent but anyway)
-		if(!kAttacker.canMoveAfterAttacking())
+		// Can't move or attack again
+		if(!kAttacker.canMoveAfterAttacking() && kAttacker.isOutOfAttacks())
 		{
 			kAttacker.finishMoves();
 		}

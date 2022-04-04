@@ -17063,7 +17063,7 @@ int CvUnit::GetAirStrikeDefenseDamage(const CvUnit* pAttacker, bool bIncludeRand
 
 //	--------------------------------------------------------------------------------
 /// Amount of damage done by this unit when intercepting pAttacker
-int CvUnit::GetInterceptionDamage(const CvUnit* pInterceptedAttacker, bool bIncludeRand, const CvPlot* pTargetPlot) const
+int CvUnit::GetInterceptionDamage(const CvUnit* pInterceptedAttacker, bool bIncludeRand, const CvPlot* pTargetPlot, bool bIsSweep) const
 {
 	if (pTargetPlot == NULL)
 		pTargetPlot = plot();
@@ -17108,7 +17108,12 @@ int CvUnit::GetInterceptionDamage(const CvUnit* pInterceptedAttacker, bool bIncl
 			CvAssert(false);
 			break;
 	}
-
+	// Mod to sweeper strength
+	if (bIsSweep)
+	{
+		iInterceptedAttackerStrength *= (100 + pInterceptedAttacker->GetAirSweepCombatModifier());
+		iInterceptedAttackerStrength /= 100;
+	}
 	// Mod to interceptor strength
 	iInterceptorStrength *= (100 + GetInterceptionCombatModifier());
 	iInterceptorStrength /= 100;
