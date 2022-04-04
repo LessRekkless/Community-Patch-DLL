@@ -406,11 +406,12 @@
 	SET Text = '+50% [ICON_RANGE_STRENGTH] Strength VS [COLOR_POSITIVE_TEXT]Armored[ENDCOLOR] Units.'
 	WHERE Tag = 'TXT_KEY_PROMOTION_AIR_AMBUSH_1_HELP';
 
+	-- AIR_AMBUSH_2 can't be given to bombers if it has interceptions
 	--UPDATE Language_en_US
 	--SET Text = '1 Extra [COLOR_POSITIVE_TEXT]Interception[ENDCOLOR] may be made per turn. +33% [ICON_RANGE_STRENGTH] Strength VS [COLOR_POSITIVE_TEXT]Armored[ENDCOLOR] Units.'
 	--WHERE Tag = 'TXT_KEY_PROMOTION_AIR_AMBUSH_2_HELP';
-	INSERT INTO Language_en_US (Tag, Text) -- vanila uses March for this
-	VALUES ('TXT_KEY_PROMOTION_AIR_AMBUSH_2_HELP', '1 Extra [COLOR_POSITIVE_TEXT]Interception[ENDCOLOR] may be made per turn. +25% [ICON_RANGE_STRENGTH] Strength VS [COLOR_POSITIVE_TEXT]Armored[ENDCOLOR] Units.');
+	-- INSERT INTO Language_en_US (Tag, Text)
+	-- VALUES ('TXT_KEY_PROMOTION_AIR_AMBUSH_2_HELP', '1 Extra [COLOR_POSITIVE_TEXT]Interception[ENDCOLOR] may be made per turn. +25% [ICON_RANGE_STRENGTH] Strength VS [COLOR_POSITIVE_TEXT]Armored[ENDCOLOR] Units.');
 
 	-- Bomber Siege
 	UPDATE Language_en_US
