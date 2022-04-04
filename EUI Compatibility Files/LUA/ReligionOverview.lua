@@ -451,32 +451,42 @@ function RefreshWorldReligions()
 	-- Pantheon and Religion info (JFD: Changes made to register religions 'founded' by the same player)
 	for religion in GameInfo.Religions() do
 		local eReligion = religion.ID
-		local holyCity = Game.GetHolyCityForReligion(eReligion, -1);
 		if eReligion then
+			local holyCity = Game.GetHolyCityForReligion(eReligion, -1);
 			if holyCity then
-			local pPlayer = Players[holyCity:GetOwner()]
-			local holyCityName = holyCity:GetName();
-			local civName = pPlayer:GetCivilizationDescription();
-			
-			local founderID = pPlayer:GetID();
-			
-			if(not activeTeam:IsHasMet(pPlayer:GetTeam())) then
-				founderID = -1;
-				holyCityName = "TXT_KEY_RO_WR_UNKNOWN_HOLY_CITY";
-				civName = "TXT_KEY_RO_WR_UNKNOWN_CIV";
-			end
+				local pPlayer = Players[holyCity:GetOwner()]
+				local holyCityName = holyCity:GetName();
+				local civName = pPlayer:GetCivilizationDescription();
+				
+				local founderID = pPlayer:GetID();
+				
+				if(not activeTeam:IsHasMet(pPlayer:GetTeam())) then
+					founderID = -1;
+					holyCityName = "TXT_KEY_RO_WR_UNKNOWN_HOLY_CITY";
+					civName = "TXT_KEY_RO_WR_UNKNOWN_CIV";
+				end
+				table.insert(religions, {
+					Name = Locale.Lookup(Game.GetReligionName(eReligion)),
+					ReligionIconIndex = religion.PortraitIndex,
+					ReligionIconAtlas = religion.IconAtlas,
+					FounderID = founderID,
+					HolyCity= Locale.Lookup(holyCityName),
+					Founder = Locale.Lookup(civName),
+					NumCities = Game.GetNumCitiesFollowing(eReligion),
+				});
 			else
-
+				founderID = nil;
+				holyCitName = "";
+				civName = "";
+				table.insert(religions, {
+					Name = Locale.Lookup(Game.GetReligionName(eReligion)),
+					ReligionIconIndex = religion.PortraitIndex,
+					ReligionIconAtlas = religion.IconAtlas,
+					FounderID = founderID,
+					NumCities = Game.GetNumCitiesFollowing(eReligion)
+				});
 			end
-			table.insert(religions, {
-				Name = Locale.Lookup(Game.GetReligionName(eReligion)),
-				ReligionIconIndex = religion.PortraitIndex,
-				ReligionIconAtlas = religion.IconAtlas,
-				FounderID = founderID,
-				HolyCity= Locale.Lookup(holyCityName),
-				Founder = Locale.Lookup(civName),
-				NumCities = Game.GetNumCitiesFollowing(eReligion),
-			});
+			
 	end
 	end
 	
