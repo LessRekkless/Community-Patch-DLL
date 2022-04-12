@@ -38,7 +38,7 @@
     <Row Class="5" Name="GLOBAL_LOCAL_GENERALS" Value="0"/>
 	
     <!-- Great Generals and Admirals gained from combat experience spawn in city closest to the war-zone -->
-    <!-- Reqires "Global - Local Generals" -->
+    <!-- Requires "Global - Local Generals" -->
     <Row Class="5" Name="LOCAL_GENERALS_NEAREST_CITY" Value="0"/>
 
     <!-- Separates out the repair fleet and change port abilities of the Great Admiral (v61) -->
@@ -332,7 +332,7 @@
     <!-- See also: "Promotions - Terrain Crossing" -->
     <Row Class="2" Name="PROMOTIONS_DEEP_WATER_EMBARKATION" Value="1" DbUpdates="1"/>
     <!-- Permits naval units to transfer their moves to Great Admirals (like land units can to Great Generals) (v39) -->
-    <!-- See also: "Promotions - Flagship" -->
+    <!-- See also: "Promotions - Flagship", "Global - Local Generals" -->
     <Row Class="2" Name="PROMOTIONS_FLAGSHIP" Value="0"/>
     <!-- Permits promotions to change the base name of units, eg "Kris Swordsman" to "Kris Swordsman (Heroism)" (v46) -->
     <!-- See also: "Civilization - Morindim" -->

@@ -2453,7 +2453,7 @@ int CvLuaUnit::lIsFound(lua_State* L)
 	return 1;
 }
 //------------------------------------------------------------------------------
-//bool isFound();
+//bool isFoundAbroad();
 int CvLuaUnit::lIsFoundAbroad(lua_State* L)
 {
 	CvUnit* pkUnit = GetInstance(L);

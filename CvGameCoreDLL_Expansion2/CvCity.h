@@ -1,5 +1,5 @@
 /*	-------------------------------------------------------------------------------------------------------
-	© 1991-2012 Take-Two Interactive Software and its subsidiaries.  Developed by Firaxis Games.
+	Â© 1991-2012 Take-Two Interactive Software and its subsidiaries.  Developed by Firaxis Games.
 	Sid Meier's Civilization V, Civ, Civilization, 2K Games, Firaxis Games, Take-Two Interactive Software
 	and their respective logos are all trademarks of Take-Two interactive Software, Inc.
 	All other marks and trademarks are the property of their respective owners.
@@ -209,13 +209,8 @@ public:
 	void SetRouteToCapitalConnected(bool bValue, bool bIgnoreUpdate = false);
 	bool IsRouteToCapitalConnected(void) const;
 
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
 	void createGreatGeneral(UnitTypes eGreatPersonUnit, bool bIsFree);
 	void createGreatAdmiral(UnitTypes eGreatPersonUnit, bool bIsFree);
-#else
-	void createGreatGeneral(UnitTypes eGreatPersonUnit);
-	void createGreatAdmiral(UnitTypes eGreatPersonUnit);
-#endif
 
 	CityTaskResult doTask(TaskTypes eTask, int iData1 = -1, int iData2 = -1, bool bOption = false, bool bAlt = false, bool bShift = false, bool bCtrl = false);
 

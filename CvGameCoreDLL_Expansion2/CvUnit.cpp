@@ -20995,21 +20995,9 @@ void CvUnit::changeExperienceTimes100(int iChangeTimes100, int iMax, bool bFromC
 			if(iMax == -1)
 			{
 				if(getDomainType() == DOMAIN_SEA)
-				{
-#if defined(MOD_GLOBAL_LOCAL_GENERALS)
 					kPlayer.changeNavalCombatExperienceTimes100((iChangeTimes100 * iCombatExperienceMod) / 100, (MOD_GLOBAL_LOCAL_GENERALS ? this : NULL));
-#else
-					kPlayer.changeNavalCombatExperienceTimes100((iChangeTimes100 * iCombatExperienceMod) / 100);
-#endif
-				}
 				else
-				{
-#if defined(MOD_GLOBAL_LOCAL_GENERALS)
 					kPlayer.changeCombatExperienceTimes100((iChangeTimes100 * iCombatExperienceMod) / 100, (MOD_GLOBAL_LOCAL_GENERALS ? this : NULL));
-#else
-					kPlayer.changeCombatExperienceTimes100((iChangeTimes100 * iCombatExperienceMod) / 100);
-#endif
-				}
 			}
 			else
 			{
@@ -21017,21 +21005,9 @@ void CvUnit::changeExperienceTimes100(int iChangeTimes100, int iMax, bool bFromC
 				if (iModdedChangeTimes100 > 0)
 				{
 					if(getDomainType() == DOMAIN_SEA)
-					{
-#if defined(MOD_GLOBAL_LOCAL_GENERALS)
 						kPlayer.changeNavalCombatExperienceTimes100((iModdedChangeTimes100 * iCombatExperienceMod) / 100, (MOD_GLOBAL_LOCAL_GENERALS ? this : NULL));
-#else
-						kPlayer.changeNavalCombatExperienceTimes100((iModdedChangeTimes100 * iCombatExperienceMod) / 100);
-#endif
-					}
 					else
-					{
-#if defined(MOD_GLOBAL_LOCAL_GENERALS)
 						kPlayer.changeCombatExperienceTimes100((iModdedChangeTimes100 * iCombatExperienceMod) / 100, (MOD_GLOBAL_LOCAL_GENERALS ? this : NULL));
-#else
-						kPlayer.changeCombatExperienceTimes100((iModdedChangeTimes100 * iCombatExperienceMod) / 100);
-#endif
-					}
 				}
 			}
 		}

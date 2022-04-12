@@ -7399,33 +7399,17 @@ bool CvCity::IsRouteToCapitalConnected(void) const
 
 
 //	--------------------------------------------------------------------------------
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
 void CvCity::createGreatGeneral(UnitTypes eGreatPersonUnit, bool bIsFree)
-#else
-void CvCity::createGreatGeneral(UnitTypes eGreatPersonUnit)
-#endif
 {
 	VALIDATE_OBJECT
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
 	GET_PLAYER(getOwner()).createGreatGeneral(eGreatPersonUnit, getX(), getY(), bIsFree);
-#else
-	GET_PLAYER(getOwner()).createGreatGeneral(eGreatPersonUnit, getX(), getY());
-#endif
 }
 
 //	--------------------------------------------------------------------------------
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
 void CvCity::createGreatAdmiral(UnitTypes eGreatPersonUnit, bool bIsFree)
-#else
-void CvCity::createGreatAdmiral(UnitTypes eGreatPersonUnit)
-#endif
 {
 	VALIDATE_OBJECT
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
 	GET_PLAYER(getOwner()).createGreatAdmiral(eGreatPersonUnit, getX(), getY(), bIsFree);
-#else
-	GET_PLAYER(getOwner()).createGreatAdmiral(eGreatPersonUnit, getX(), getY());
-#endif
 }
 
 //	--------------------------------------------------------------------------------
@@ -11802,11 +11786,7 @@ int CvCity::GetFaithPurchaseCost(UnitTypes eUnit, bool bIncludeBeliefDiscounts)
 					}
 					else
 					{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
 						iCost = kPlayer.GetReligions()->GetCostNextProphet(true /*bIncludeBeliefDiscounts*/, false /*bAdjustForSpeedDifficulty*/, MOD_GLOBAL_TRULY_FREE_GP);
-#else
-						iCost = kPlayer.GetReligions()->GetCostNextProphet(true /*bIncludeBeliefDiscounts*/, false /*bAdjustForSpeedDifficulty*/);
-#endif
 					}
 				}
 				else if (eThisPlayersUnitType == eUnit)
@@ -11855,13 +11835,11 @@ int CvCity::GetFaithPurchaseCost(UnitTypes eUnit, bool bIncludeBeliefDiscounts)
 						eBranch = (PolicyBranchTypes)GC.getInfoTypeForString("POLICY_BRANCH_EXPLORATION", true /*bHideAssert*/);
 						iNum = kPlayer.getAdmiralsFromFaith();
 					}
-#if defined(MOD_DIPLOMACY_CITYSTATES)
 					else if (MOD_DIPLOMACY_CITYSTATES && eUnitClass == GC.getInfoTypeForString("UNITCLASS_GREAT_DIPLOMAT", true /*bHideAssert*/))
 					{
 						eBranch = (PolicyBranchTypes)GC.getInfoTypeForString("POLICY_BRANCH_PATRONAGE", true /*bHideAssert*/);
 						iNum = kPlayer.getDiplomatsFromFaith();
 					}
-#endif
 #if defined(MOD_BALANCE_CORE)
 					if (pkUnitInfo->IsGPExtra() == 1)
 					{
@@ -14023,21 +14001,18 @@ void CvCity::processBuilding(BuildingTypes eBuilding, int iChange, bool bFirst, 
 					for (iFreeUnitLoop = 0; iFreeUnitLoop < pBuildingInfo->GetNumFreeUnits(iUnitLoop); iFreeUnitLoop++)
 					{
 						// Get the right unit of this class for this civ
-						const UnitTypes eFreeUnitType = owningPlayer.GetSpecificUnitType((UnitClassTypes)pkUnitInfo->GetUnitClassType());
-#if defined(MOD_BALANCE_CORE)
+						UnitTypes eFreeUnitType = owningPlayer.GetSpecificUnitType((UnitClassTypes)pkUnitInfo->GetUnitClassType());
+
 						//Test for forbidden or locked units.
 						if (eFreeUnitType == NO_UNIT)
+							eFreeUnitType = eUnit;
+						
+						// Great prophet?
+						if (GC.GetGameUnits()->GetEntry(eUnit)->IsFoundReligion())
 						{
-							// Great prophet?
-							if (GC.GetGameUnits()->GetEntry(eUnit)->IsFoundReligion())
-							{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
-								GetCityCitizens()->DoSpawnGreatPerson(eUnit, true /*bIncrementCount*/, true, MOD_GLOBAL_TRULY_FREE_GP);
-#else
-								GetCityCitizens()->DoSpawnGreatPerson(eUnit, true /*bIncrementCount*/, true);
-#endif
-							}
-							else
+							GetCityCitizens()->DoSpawnGreatPerson(eUnit, true /*bIncrementCount*/, true, MOD_GLOBAL_TRULY_FREE_GP);
+						}
+						else
 							{
 #if defined(MOD_BALANCE_CORE)
 								// for venice
@@ -14045,7 +14020,7 @@ void CvCity::processBuilding(BuildingTypes eBuilding, int iChange, bool bFirst, 
 								if (pkUnitInfo->IsFound() && owningPlayer.GetPlayerTraits()->IsNoAnnexing())
 								{
 									// drop a merchant of venice instead
-									// find the eUnit replacement that's the merchant of venice
+									// find the eFreeUnit replacement that's the merchant of venice
 									for (int iVeniceSearch = 0; iVeniceSearch < GC.getNumUnitClassInfos(); iVeniceSearch++)
 									{
 										const UnitClassTypes eVeniceUnitClass = static_cast<UnitClassTypes>(iVeniceSearch);
@@ -14058,33 +14033,63 @@ void CvCity::processBuilding(BuildingTypes eBuilding, int iChange, bool bFirst, 
 												CvUnitEntry* pVeniceUnitEntry = GC.getUnitInfo(eMerchantOfVeniceUnit);
 												if (pVeniceUnitEntry->IsCanBuyCityState())
 												{
-													pFreeUnit = owningPlayer.initUnit(eMerchantOfVeniceUnit, getX(), getY());
+													eFreeUnitType = eMerchantOfVeniceUnit;
+													pkUnitInfo = pVeniceUnitEntry;
 													break;
 												}
 											}
 										}
 									}
 								}
+#endif
+								pFreeUnit = owningPlayer.initUnit(eFreeUnitType, getX(), getY());
+
+								bool bJumpSuccess = false;
+								if (pFreeUnit->IsGreatAdmiral())
+								{
+									CvPlot* pSpawnPlot = owningPlayer.GetBestCoastalSpawnPlot(pFreeUnit);
+									if (pSpawnPlot)
+									{
+										bJumpSuccess = true;
+										if (pFreeUnit->plot() != pSpawnPlot)
+										{
+											pFreeUnit->setXY(pSpawnPlot->getX(), pSpawnPlot->getY());
+										}
+
+									}
+
+								}
 								else
 								{
-#endif
-									pFreeUnit = owningPlayer.initUnit(eUnit, getX(), getY());
-									bool bJumpSuccess = pFreeUnit->jumpToNearestValidPlot();
-									if (bJumpSuccess)
-									{
-										addProductionExperience(pFreeUnit);
-										if (getFirstUnitOrder(eUnit) == 0)
-										{
-											clearOrderQueue();
-											chooseProduction();
-										}
-									}
-									else
-									{
-										pFreeUnit->kill(false);
-									}
-#if defined(MOD_BALANCE_CORE)
+									bJumpSuccess = pFreeUnit->jumpToNearestValidPlot();
 								}
+
+								if (bJumpSuccess)
+								{
+									addProductionExperience(pFreeUnit);
+									if (getFirstUnitOrder(eFreeUnitType) == 0)
+									{
+										clearOrderQueue();
+										chooseProduction();
+									}
+								}
+								else
+								{
+									pFreeUnit->kill(false);	// Could not find a valid spot!
+								}
+
+#if defined(MOD_BALANCE_CORE)
+								if (pFreeUnit->isTrade())
+								{
+									if (GC.getLogging() && GC.getAILogging())
+									{
+										CvString strCiv = GET_PLAYER(getOwner()).getCivilizationAdjective();
+										CvString strLogString;
+										strLogString.Format("FREE TRADE UNIT CREATED: %s %s at %d,d", strCiv.c_str(), pFreeUnit->getName().c_str(), pFreeUnit->getX(), pFreeUnit->getY());
+										GET_PLAYER(getOwner()).GetHomelandAI()->LogHomelandMessage(strLogString);
+									}
+								}
+
 								if (pFreeUnit->IsGreatPerson())
 								{
 									if (owningPlayer.GetPlayerTraits()->IsGPWLTKD())
@@ -14163,505 +14168,47 @@ void CvCity::processBuilding(BuildingTypes eBuilding, int iChange, bool bFirst, 
 #endif
 								// Bump up the count
 								if (pFreeUnit->IsGreatGeneral())
-								{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
 									owningPlayer.incrementGreatGeneralsCreated(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-									owningPlayer.incrementGreatGeneralsCreated();
-#endif
-									bool bJumpSuccess = pFreeUnit->jumpToNearestValidPlot();
-									if (bJumpSuccess)
-									{
-										addProductionExperience(pFreeUnit);
-									}
-									else
-									{
-										pFreeUnit->kill(false);
-									}
-								}
 								else if (pFreeUnit->IsGreatAdmiral())
 								{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
 									owningPlayer.incrementGreatAdmiralsCreated(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-									owningPlayer.incrementGreatAdmiralsCreated();
-#endif
-									CvPlot* pSpawnPlot = owningPlayer.GetBestCoastalSpawnPlot(pFreeUnit);
-									if (pFreeUnit->plot() != pSpawnPlot)
-									{
-										pFreeUnit->setXY(pSpawnPlot->getX(), pSpawnPlot->getY());
-										addProductionExperience(pFreeUnit);
-									}
 								}
 								else if (pkUnitInfo->GetUnitClassType() == GC.getInfoTypeForString("UNITCLASS_WRITER"))
-								{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
 									owningPlayer.incrementGreatWritersCreated(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-									owningPlayer.incrementGreatWritersCreated();
-#endif
-									if (!pFreeUnit->jumpToNearestValidPlot())
-										pFreeUnit->kill(false);	// Could not find a valid spot!
-								}
 								else if (pkUnitInfo->GetUnitClassType() == GC.getInfoTypeForString("UNITCLASS_ARTIST"))
-								{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
 									owningPlayer.incrementGreatArtistsCreated(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-									owningPlayer.incrementGreatArtistsCreated();
-#endif
-									if (!pFreeUnit->jumpToNearestValidPlot())
-										pFreeUnit->kill(false);	// Could not find a valid spot!
-								}
 								else if (pkUnitInfo->GetUnitClassType() == GC.getInfoTypeForString("UNITCLASS_MUSICIAN"))
-								{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
 									owningPlayer.incrementGreatMusiciansCreated(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-									owningPlayer.incrementGreatMusiciansCreated();
-#endif
-									if (!pFreeUnit->jumpToNearestValidPlot())
-										pFreeUnit->kill(false);	// Could not find a valid spot!
-								}
-#if defined(MOD_DIPLOMACY_CITYSTATES)
 								else if (MOD_DIPLOMACY_CITYSTATES && pkUnitInfo->GetUnitClassType() == GC.getInfoTypeForString("UNITCLASS_GREAT_DIPLOMAT"))
-								{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
 									owningPlayer.incrementGreatDiplomatsCreated(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-									owningPlayer.incrementGreatDiplomatsCreated();
-#endif
-									if (!pFreeUnit->jumpToNearestValidPlot())
-										pFreeUnit->kill(false);	// Could not find a valid spot!
-								}
-#endif
 #if defined(MOD_BALANCE_CORE)
 								else if (pkUnitInfo->IsGPExtra() == 1)
-								{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
 									owningPlayer.incrementGPExtra1Created(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-									owningPlayer.incrementGPExtra1Created();
-#endif
-									if (!pFreeUnit->jumpToNearestValidPlot())
-										pFreeUnit->kill(false);	// Could not find a valid spot!
-								}
 								else if (pkUnitInfo->IsGPExtra() == 2)
-								{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
 									owningPlayer.incrementGPExtra2Created(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-									owningPlayer.incrementGPExtra2Created();
-#endif
-									if (!pFreeUnit->jumpToNearestValidPlot())
-										pFreeUnit->kill(false);	// Could not find a valid spot!
-								}
 								else if (pkUnitInfo->IsGPExtra() == 3)
-								{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
 									owningPlayer.incrementGPExtra3Created(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-									owningPlayer.incrementGPExtra3Created();
-#endif
-									if (!pFreeUnit->jumpToNearestValidPlot())
-										pFreeUnit->kill(false);	// Could not find a valid spot!
-								}
 								else if (pkUnitInfo->IsGPExtra() == 4)
-								{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
 									owningPlayer.incrementGPExtra4Created(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-									owningPlayer.incrementGPExtra4Created();
-#endif
-									if (!pFreeUnit->jumpToNearestValidPlot())
-										pFreeUnit->kill(false);	// Could not find a valid spot!
-								}
 								else if (pkUnitInfo->IsGPExtra() == 5)
-								{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
 									owningPlayer.incrementGPExtra5Created(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-									owningPlayer.incrementGPExtra5Created();
-#endif
-									if (!pFreeUnit->jumpToNearestValidPlot())
-										pFreeUnit->kill(false);	// Could not find a valid spot!
-								}
 #endif
 								else if (pFreeUnit->IsGreatPerson())
 								{
-#if defined(MOD_GLOBAL_SEPARATE_GP_COUNTERS)
 									if (MOD_GLOBAL_SEPARATE_GP_COUNTERS)
 									{
 										if (pkUnitInfo->GetUnitClassType() == GC.getInfoTypeForString("UNITCLASS_MERCHANT"))
-										{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
 											owningPlayer.incrementGreatMerchantsCreated(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-											owningPlayer.incrementGreatMerchantsCreated();
-#endif
-										}
 										else if (pkUnitInfo->GetUnitClassType() == GC.getInfoTypeForString("UNITCLASS_SCIENTIST"))
-										{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
 											owningPlayer.incrementGreatScientistsCreated(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-											owningPlayer.incrementGreatScientistsCreated();
-#endif
-										}
 										else
-										{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
 											owningPlayer.incrementGreatEngineersCreated(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-											owningPlayer.incrementGreatEngineersCreated();
-#endif
-										}
 									}
 									else
-#endif
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
 										owningPlayer.incrementGreatPeopleCreated(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-										owningPlayer.incrementGreatPeopleCreated();
-#endif
-									bool bJumpSuccess = pFreeUnit->jumpToNearestValidPlot();
-									if (bJumpSuccess)
-									{
-										addProductionExperience(pFreeUnit);
-									}
-									else
-									{
-										pFreeUnit->kill(false);
-									}
 								}
 							}
-						}
-#endif
-#if defined(MOD_BALANCE_CORE)
-						//Test for forbidden or locked units.
-						if (eFreeUnitType != NO_UNIT)
-						{
-#endif
-							// Great prophet?
-							if (GC.GetGameUnits()->GetEntry(eFreeUnitType)->IsFoundReligion())
-							{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
-								GetCityCitizens()->DoSpawnGreatPerson(eFreeUnitType, true /*bIncrementCount*/, true, MOD_GLOBAL_TRULY_FREE_GP);
-#else
-								GetCityCitizens()->DoSpawnGreatPerson(eFreeUnitType, true /*bIncrementCount*/, true);
-#endif
-							}
-							else
-							{
-#if defined(MOD_BALANCE_CORE)
-								// for venice
-								pFreeUnit = NULL;
-								if (pkUnitInfo->IsFound() && owningPlayer.GetPlayerTraits()->IsNoAnnexing())
-								{
-									// drop a merchant of venice instead
-									// find the eUnit replacement that's the merchant of venice
-									for (int iVeniceSearch = 0; iVeniceSearch < GC.getNumUnitClassInfos(); iVeniceSearch++)
-									{
-										const UnitClassTypes eVeniceUnitClass = static_cast<UnitClassTypes>(iVeniceSearch);
-										CvUnitClassInfo* pkVeniceUnitClassInfo = GC.getUnitClassInfo(eVeniceUnitClass);
-										if (pkVeniceUnitClassInfo)
-										{
-											const UnitTypes eMerchantOfVeniceUnit = owningPlayer.GetSpecificUnitType(eVeniceUnitClass);
-											if (eMerchantOfVeniceUnit != NO_UNIT)
-											{
-												CvUnitEntry* pVeniceUnitEntry = GC.getUnitInfo(eMerchantOfVeniceUnit);
-												if (pVeniceUnitEntry->IsCanBuyCityState())
-												{
-													pFreeUnit = owningPlayer.initUnit(eMerchantOfVeniceUnit, getX(), getY());
-													break;
-												}
-											}
-										}
-									}
-								}
-								else
-								{
-#endif
-									pFreeUnit = owningPlayer.initUnit(eFreeUnitType, getX(), getY());
-#if defined(MOD_BALANCE_CORE)
-									if (pFreeUnit)
-									{
-										if (pFreeUnit->isTrade())
-										{
-											if (GC.getLogging() && GC.getAILogging())
-											{
-												CvString strCiv = GET_PLAYER(getOwner()).getCivilizationAdjective();
-												CvString strLogString;
-												strLogString.Format("FREE TRADE UNIT CREATED: %s %s at %d,d", strCiv.c_str(), pFreeUnit->getName().c_str(), pFreeUnit->getX(), pFreeUnit->getY());
-												GET_PLAYER(getOwner()).GetHomelandAI()->LogHomelandMessage(strLogString);
-											}
-										}
-										bool bJumpSuccess = pFreeUnit->jumpToNearestValidPlot();
-										if (bJumpSuccess)
-										{
-											addProductionExperience(pFreeUnit);
-										}
-										else
-										{
-											pFreeUnit->kill(false);
-										}
-									}
-#endif
-#if defined(MOD_BALANCE_CORE)
-								}
-								if (pFreeUnit->IsGreatPerson())
-								{
-									if (owningPlayer.GetPlayerTraits()->IsGPWLTKD())
-									{
-										int iWLTKD = /*6*/ GD_INT_GET(CITY_RESOURCE_WLTKD_TURNS) / 3;
-										iWLTKD *= GC.getGame().getGameSpeedInfo().getTrainPercent();
-										iWLTKD /= 100;
-
-										if (iWLTKD > 0)
-										{
-											this->ChangeWeLoveTheKingDayCounter(iWLTKD, true);
-											CvNotifications* pNotifications = owningPlayer.GetNotifications();
-											if (pNotifications)
-											{
-												Localization::String strText = Localization::Lookup("TXT_KEY_NOTIFICATION_CITY_WLTKD_UA");
-												strText << pFreeUnit->getNameKey() << this->getNameKey();
-												Localization::String strSummary = Localization::Lookup("TXT_KEY_NOTIFICATION_SUMMARY_CITY_WLTKD_UA");
-												strSummary << this->getNameKey();
-												pNotifications->Add(NOTIFICATION_GENERIC, strText.toUTF8(), strSummary.toUTF8(), this->getX(), this->getY(), -1);
-											}
-										}
-									}
-									if (pFreeUnit->isWLKTKDOnBirth())
-									{
-										CvCity* pLoopCity;
-										int iLoop;
-										for (pLoopCity = owningPlayer.firstCity(&iLoop); pLoopCity != NULL; pLoopCity = owningPlayer.nextCity(&iLoop))
-										{
-											if (pLoopCity != NULL && pLoopCity->getOwner() == owningPlayer.GetID())
-											{
-												int iWLTKD = /*6*/ GD_INT_GET(CITY_RESOURCE_WLTKD_TURNS) / 3;
-												iWLTKD *= GC.getGame().getGameSpeedInfo().getTrainPercent();
-												iWLTKD /= 100;
-
-												if (iWLTKD > 0)
-												{
-													pLoopCity->ChangeWeLoveTheKingDayCounter(iWLTKD, true);
-													CvNotifications* pNotifications = owningPlayer.GetNotifications();
-													if (pNotifications)
-													{
-														Localization::String strText = Localization::Lookup("TXT_KEY_NOTIFICATION_CITY_WLTKD_UNIT");
-														strText << pFreeUnit->getNameKey() << pLoopCity->getNameKey();
-														Localization::String strSummary = Localization::Lookup("TXT_KEY_NOTIFICATION_SUMMARY_CITY_WLTKD_UNIT");
-														strSummary << pLoopCity->getNameKey();
-														pNotifications->Add(NOTIFICATION_GENERIC, strText.toUTF8(), strSummary.toUTF8(), pLoopCity->getX(), pLoopCity->getY(), -1);
-													}
-												}
-											}
-										}
-									}
-									if (pFreeUnit->isGoldenAgeOnBirth())
-									{
-										int iGoldenAgeTurns = owningPlayer.getGoldenAgeLength();
-										int iValue = owningPlayer.GetGoldenAgeProgressMeter();
-										owningPlayer.changeGoldenAgeTurns(iGoldenAgeTurns, iValue);
-									}
-									if (pFreeUnit->isCultureBoost())
-									{
-										int iValue = owningPlayer.GetTotalJONSCulturePerTurn() * 4;
-										owningPlayer.changeJONSCulture(iValue);
-										if (owningPlayer.getCapitalCity() != NULL)
-										{
-											owningPlayer.getCapitalCity()->ChangeJONSCultureStored(iValue);
-										}
-										CvNotifications* pNotifications = owningPlayer.GetNotifications();
-										if (pNotifications)
-										{
-											Localization::String strText = Localization::Lookup("TXT_KEY_NOTIFICATION_CULTURE_UNIT");
-											strText << pFreeUnit->getNameKey();
-											Localization::String strSummary = Localization::Lookup("TXT_KEY_NOTIFICATION_SUMMARY_CULTURE_UNIT");
-											strSummary << pFreeUnit->getNameKey();
-											pNotifications->Add(NOTIFICATION_GENERIC, strText.toUTF8(), strSummary.toUTF8(), pFreeUnit->getX(), pFreeUnit->getY(), -1);
-										}
-									}
-								}
-#endif
-								// Bump up the count
-								if (pFreeUnit->IsGreatGeneral())
-								{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
-									owningPlayer.incrementGreatGeneralsCreated(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-									owningPlayer.incrementGreatGeneralsCreated();
-#endif
-									bool bJumpSuccess = pFreeUnit->jumpToNearestValidPlot();
-									if (bJumpSuccess)
-									{
-										addProductionExperience(pFreeUnit);
-									}
-									else
-									{
-										pFreeUnit->kill(false);
-									}
-								}
-								else if (pFreeUnit->IsGreatAdmiral())
-								{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
-									owningPlayer.incrementGreatAdmiralsCreated(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-									owningPlayer.incrementGreatAdmiralsCreated();
-#endif
-									CvPlot* pSpawnPlot = owningPlayer.GetBestCoastalSpawnPlot(pFreeUnit);
-									if (pFreeUnit->plot() != pSpawnPlot)
-									{
-										pFreeUnit->setXY(pSpawnPlot->getX(), pSpawnPlot->getY());
-										addProductionExperience(pFreeUnit);
-									}
-								}
-								else if (pkUnitInfo->GetUnitClassType() == GC.getInfoTypeForString("UNITCLASS_WRITER"))
-								{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
-									owningPlayer.incrementGreatWritersCreated(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-									owningPlayer.incrementGreatWritersCreated();
-#endif
-									if (!pFreeUnit->jumpToNearestValidPlot())
-										pFreeUnit->kill(false);	// Could not find a valid spot!
-								}
-								else if (pkUnitInfo->GetUnitClassType() == GC.getInfoTypeForString("UNITCLASS_ARTIST"))
-								{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
-									owningPlayer.incrementGreatArtistsCreated(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-									owningPlayer.incrementGreatArtistsCreated();
-#endif
-									if (!pFreeUnit->jumpToNearestValidPlot())
-										pFreeUnit->kill(false);	// Could not find a valid spot!
-								}
-								else if (pkUnitInfo->GetUnitClassType() == GC.getInfoTypeForString("UNITCLASS_MUSICIAN"))
-								{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
-									owningPlayer.incrementGreatMusiciansCreated(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-									owningPlayer.incrementGreatMusiciansCreated();
-#endif
-									if (!pFreeUnit->jumpToNearestValidPlot())
-										pFreeUnit->kill(false);	// Could not find a valid spot!
-								}
-#if defined(MOD_DIPLOMACY_CITYSTATES)
-								else if (MOD_DIPLOMACY_CITYSTATES && pkUnitInfo->GetUnitClassType() == GC.getInfoTypeForString("UNITCLASS_GREAT_DIPLOMAT"))
-								{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
-									owningPlayer.incrementGreatDiplomatsCreated(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-									owningPlayer.incrementGreatDiplomatsCreated();
-#endif
-									if (!pFreeUnit->jumpToNearestValidPlot())
-										pFreeUnit->kill(false);	// Could not find a valid spot!
-								}
-#endif
-#if defined(MOD_BALANCE_CORE)
-								else if (pkUnitInfo->IsGPExtra() == 1)
-								{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
-									owningPlayer.incrementGPExtra1Created(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-									owningPlayer.incrementGPExtra1Created();
-#endif
-									if (!pFreeUnit->jumpToNearestValidPlot())
-										pFreeUnit->kill(false);	// Could not find a valid spot!
-								}
-								else if (pkUnitInfo->IsGPExtra() == 2)
-								{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
-									owningPlayer.incrementGPExtra2Created(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-									owningPlayer.incrementGPExtra2Created();
-#endif
-									if (!pFreeUnit->jumpToNearestValidPlot())
-										pFreeUnit->kill(false);	// Could not find a valid spot!
-								}
-								else if (pkUnitInfo->IsGPExtra() == 3)
-								{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
-									owningPlayer.incrementGPExtra3Created(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-									owningPlayer.incrementGPExtra3Created();
-#endif
-									if (!pFreeUnit->jumpToNearestValidPlot())
-										pFreeUnit->kill(false);	// Could not find a valid spot!
-								}
-								else if (pkUnitInfo->IsGPExtra() == 4)
-								{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
-									owningPlayer.incrementGPExtra4Created(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-									owningPlayer.incrementGPExtra4Created();
-#endif
-									if (!pFreeUnit->jumpToNearestValidPlot())
-										pFreeUnit->kill(false);	// Could not find a valid spot!
-								}
-								else if (pkUnitInfo->IsGPExtra() == 5)
-								{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
-									owningPlayer.incrementGPExtra5Created(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-									owningPlayer.incrementGPExtra5Created();
-#endif
-									if (!pFreeUnit->jumpToNearestValidPlot())
-										pFreeUnit->kill(false);	// Could not find a valid spot!
-								}
-#endif
-								else if (pFreeUnit->IsGreatPerson())
-								{
-#if defined(MOD_GLOBAL_SEPARATE_GP_COUNTERS)
-									if (MOD_GLOBAL_SEPARATE_GP_COUNTERS)
-									{
-										if (pkUnitInfo->GetUnitClassType() == GC.getInfoTypeForString("UNITCLASS_MERCHANT"))
-										{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
-											owningPlayer.incrementGreatMerchantsCreated(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-											owningPlayer.incrementGreatMerchantsCreated();
-#endif
-										}
-										else if (pkUnitInfo->GetUnitClassType() == GC.getInfoTypeForString("UNITCLASS_SCIENTIST"))
-										{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
-											owningPlayer.incrementGreatScientistsCreated(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-											owningPlayer.incrementGreatScientistsCreated();
-#endif
-										}
-										else
-										{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
-											owningPlayer.incrementGreatEngineersCreated(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-											owningPlayer.incrementGreatEngineersCreated();
-#endif
-										}
-									}
-									else
-#endif
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
-										owningPlayer.incrementGreatPeopleCreated(MOD_GLOBAL_TRULY_FREE_GP);
-#else
-										owningPlayer.incrementGreatPeopleCreated();
-#endif
-									bool bJumpSuccess = pFreeUnit->jumpToNearestValidPlot();
-									if (bJumpSuccess)
-									{
-										addProductionExperience(pFreeUnit);
-									}
-									else
-									{
-										pFreeUnit->kill(false);
-									}
-								}
-#if defined(MOD_BALANCE_CORE)
-							}
-#endif
-						}
+						
 					}
 #if defined(MOD_BALANCE_CORE)
 					for (iFreeSpecUnitLoop = 0; iFreeSpecUnitLoop < pBuildingInfo->GetNumFreeSpecialUnits(iUnitLoop); iFreeSpecUnitLoop++)
@@ -31727,18 +31274,12 @@ void CvCity::Purchase(UnitTypes eUnitType, BuildingTypes eBuildingType, ProjectT
 			}
 			else if (eUnitClass == GC.getInfoTypeForString("UNITCLASS_PROPHET"))
 			{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
 				kPlayer.GetReligions()->ChangeNumProphetsSpawned(1, false);
-#else
-				kPlayer.GetReligions()->ChangeNumProphetsSpawned(1);
-#endif
 			}
-#if defined(MOD_DIPLOMACY_CITYSTATES)
 			else if (MOD_DIPLOMACY_CITYSTATES && eUnitClass == GC.getInfoTypeForString("UNITCLASS_GREAT_DIPLOMAT"))
 			{
 				kPlayer.incrementDiplomatsFromFaith();
 			}
-#endif
 #if defined(MOD_BALANCE_CORE)
 			else if (pUnit->getUnitInfo().IsGPExtra() == 1)
 			{

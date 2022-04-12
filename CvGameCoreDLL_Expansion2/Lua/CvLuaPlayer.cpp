@@ -3839,11 +3839,8 @@ int CvLuaPlayer::lGetMinimumFaithNextGreatProphet(lua_State* L)
 {
 	CvPlayerAI* pkPlayer = GetInstance(L);
 
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
 	int iFaith = pkPlayer->GetReligions()->GetCostNextProphet(true /*bIncludeBeliefDiscounts*/, true /*bAdjustForSpeedDifficulty*/, MOD_GLOBAL_TRULY_FREE_GP);
-#else
-	int iFaith = pkPlayer->GetReligions()->GetCostNextProphet(true /*bIncludeBeliefDiscounts*/, true /*bAdjustForSpeedDifficulty*/);
-#endif
+
 	lua_pushinteger(L, iFaith);
 
 	return 1;
@@ -7273,12 +7270,12 @@ int CvLuaPlayer::lCreateGreatGeneral(lua_State* L)
 	const int x = lua_tointeger(L, 3);
 	const int y = lua_tointeger(L, 4);
 
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
-	const bool bIsFree = luaL_optint(L, 5, 0);
+	bool bIsFree = false;
+	if(MOD_GLOBAL_TRULY_FREE_GP)
+		bIsFree = luaL_optint(L, 5, 0);
+
 	pkPlayer->createGreatGeneral(eGreatPersonUnit, x, y, bIsFree);
-#else
-	pkPlayer->createGreatGeneral(eGreatPersonUnit, x, y);
-#endif
+
 	return 0;
 }
 //------------------------------------------------------------------------------

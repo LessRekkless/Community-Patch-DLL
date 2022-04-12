@@ -3218,138 +3218,42 @@ bool CvGameReligions::CheckSpawnGreatProphet(CvPlayer& kPlayer)
 	{
 		return false;
 	}
-#if defined(MOD_NO_AUTO_SPAWN_PROPHET)
-	bool prophetboughtwithfaith = false;
-#endif
+
 	const CvReligion* pReligion = NULL;
 	const int iFaith = kPlayer.GetFaith();
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
 	int iCost = kPlayer.GetReligions()->GetCostNextProphet(true /*bIncludeBeliefDiscounts*/, true /*bAdjustForSpeedDifficulty*/, MOD_GLOBAL_TRULY_FREE_GP);
-#else
-	int iCost = kPlayer.GetReligions()->GetCostNextProphet(true /*bIncludeBeliefDiscounts*/, true /*bAdjustForSpeedDifficulty*/);
-#endif
 
 	ReligionTypes ePlayerReligion = GetReligionCreatedByPlayer(kPlayer.GetID());
 	if(ePlayerReligion > RELIGION_PANTHEON)
-	{
 		pReligion = GetReligion(ePlayerReligion, kPlayer.GetID());
-	}
-
 	// If player hasn't founded a religion yet, drop out of this if all religions have been founded
-#if defined(MOD_BALANCE_CORE)
 	else if(GetNumReligionsStillToFound() <= 0 && !kPlayer.GetPlayerTraits()->IsAlwaysReligion())
-#else
-	else if(GetNumReligionsStillToFound() <= 0)
-#endif
-	{
 		return false;
-	}
-
-	if(iFaith < iCost)
-	{
+	else if(iFaith < iCost)
 		return false;
-	}
 
-	int iChance = /*5 in CP, 100 in CBO*/ GD_INT_GET(RELIGION_BASE_CHANCE_PROPHET_SPAWN);
-
-#if defined(MOD_RELIGION_KEEP_PROPHET_OVERFLOW)
-	int iBaseChance = iChance;
-#endif
-
-	iChance += (iFaith - iCost);
+	// Will the prophet spawn this turn?
+	int iBaseChance = /*5 in CP, 100 in CBO*/ GD_INT_GET(RELIGION_BASE_CHANCE_PROPHET_SPAWN);
+	int iChance = iBaseChance + (iFaith - iCost);
 
 	int iRand = GC.getGame().getSmallFakeRandNum(100, kPlayer.GetPseudoRandomSeed());
 	if(iRand >= iChance)
-	{
 		return false;
-	}
+
+	// By default, lose all faith when Prophet spawns
+	if (!MOD_RELIGION_KEEP_PROPHET_OVERFLOW || iBaseChance <= 100)
+		iCost = kPlayer.GetFaith();
+	// By default, spawn a prophet
+	bool prophetboughtwithfaith = true;
 
 	CvCity* pSpawnCity = pReligion ? pReligion->GetHolyCity() : NULL;
-	if(pSpawnCity != NULL && pSpawnCity->getOwner() == kPlayer.GetID())
+	// Don't have a Holy City; spawn prophet somewhere else
+	if (!pSpawnCity)
 	{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
-#if defined(MOD_NO_AUTO_SPAWN_PROPHET)
-		if(MOD_NO_AUTO_SPAWN_PROPHET)
-		{
-			if (kPlayer.isHuman())
-			{
-				switch (kPlayer.GetFaithPurchaseType())
-				{
-					case FAITH_PURCHASE_SAVE_PROPHET:
-						pSpawnCity->GetCityCitizens()->DoSpawnGreatPerson(eUnit, true /*bIncrementCount*/, true, false);
-						prophetboughtwithfaith = true;
-						break;
-					case NO_AUTOMATIC_FAITH_PURCHASE:
-						CvNotifications* pNotifications = kPlayer.GetNotifications();
-						if(pNotifications)
-						{
-							CvString strBuffer = GetLocalizedText("TXT_KEY_NOTIFICATION_ENOUGH_FAITH_FOR_MISSIONARY");
-							CvString strSummary = GetLocalizedText("TXT_KEY_NOTIFICATION_SUMMARY_ENOUGH_FAITH_FOR_MISSIONARY");
-							pNotifications->Add(NOTIFICATION_CAN_BUILD_MISSIONARY, strBuffer, strSummary, -1, -1, -1);
-							kPlayer.GetReligions()->SetFaithAtLastNotify(kPlayer.GetFaith());
-						}
-						break;
-				}
-			}
-			else
-			{		
-				pSpawnCity->GetCityCitizens()->DoSpawnGreatPerson(eUnit, true /*bIncrementCount*/, true, false);
-			}
-		}
-		else
-			pSpawnCity->GetCityCitizens()->DoSpawnGreatPerson(eUnit, true /*bIncrementCount*/, true, false);
-#else
-		pSpawnCity->GetCityCitizens()->DoSpawnGreatPerson(eUnit, true /*bIncrementCount*/, true, false);
-#endif	
-#else
-		pSpawnCity->GetCityCitizens()->DoSpawnGreatPerson(eUnit, true /*bIncrementCount*/, true);
-#endif
-#if defined(MOD_RELIGION_KEEP_PROPHET_OVERFLOW)
-		if (MOD_RELIGION_KEEP_PROPHET_OVERFLOW && iBaseChance >= 100)
-		{
-#if defined(MOD_NO_AUTO_SPAWN_PROPHET)
-			if(MOD_NO_AUTO_SPAWN_PROPHET)
-			{
-				if (!kPlayer.isHuman() || prophetboughtwithfaith)
-				{
-					kPlayer.ChangeFaith(-1 * iCost);
-				}
-			}
-			else
-				kPlayer.ChangeFaith(-1 * iCost);
-#else
-			kPlayer.ChangeFaith(-1 * iCost);
-#endif
-		}
-		else
-		{
-#if defined(MOD_NO_AUTO_SPAWN_PROPHET)
-			if(MOD_NO_AUTO_SPAWN_PROPHET)
-			{
-				if (!kPlayer.isHuman() || prophetboughtwithfaith)
-				{
-					kPlayer.SetFaith(0);
-				}
-			}
-			else
-				kPlayer.SetFaith(0);
-#endif
-#endif
-		kPlayer.SetFaith(0);
-
-#if defined(MOD_RELIGION_KEEP_PROPHET_OVERFLOW)
-		}
-#endif
-	}
-	else
-	{
-#if defined(MOD_BALANCE_CORE_BELIEFS)
-		//Random GP spawn/holy city.
-		CvCity* pBestCity = NULL;
 		if(MOD_BALANCE_CORE_BELIEFS)
-		{		
+		{
+			// Spawn prophet in a random city that has a lot of faith per turn
 			int iBestWeight = 0;
-
 			int iTempWeight;
 
 			CvCity* pLoopCity;
@@ -3363,110 +3267,61 @@ bool CvGameReligions::CheckSpawnGreatProphet(CvPlayer& kPlayer)
 				if(iTempWeight > iBestWeight)
 				{
 					iBestWeight = iTempWeight;
-					pBestCity = pLoopCity;
+					pSpawnCity = pLoopCity;
 				}
 			}
 		}
-		if(pBestCity != NULL)
-		{
-			pSpawnCity = pBestCity;
-		}
-		else
-		{
-#endif
-		pSpawnCity = kPlayer.getCapitalCity();
-#if defined(MOD_BALANCE_CORE_BELIEFS)
-		}
-#endif
-		if(pSpawnCity != NULL)
-		{
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
-#if defined(MOD_NO_AUTO_SPAWN_PROPHET)
-			if(MOD_NO_AUTO_SPAWN_PROPHET)
-			{
-				if (kPlayer.isHuman())
-				{
-					switch (kPlayer.GetFaithPurchaseType())
-					{
-						case FAITH_PURCHASE_SAVE_PROPHET:
-							pSpawnCity->GetCityCitizens()->DoSpawnGreatPerson(eUnit, true /*bIncrementCount*/, true, false);
-							prophetboughtwithfaith = true;
-							break;
-						case NO_AUTOMATIC_FAITH_PURCHASE:
-							CvNotifications* pNotifications = kPlayer.GetNotifications();
-							if(pNotifications)
-							{
-								CvString strBuffer = GetLocalizedText("TXT_KEY_NOTIFICATION_ENOUGH_FAITH_FOR_MISSIONARY");
-								CvString strSummary = GetLocalizedText("TXT_KEY_NOTIFICATION_SUMMARY_ENOUGH_FAITH_FOR_MISSIONARY");
-								pNotifications->Add(NOTIFICATION_CAN_BUILD_MISSIONARY, strBuffer, strSummary, -1, -1, -1);
-								kPlayer.GetReligions()->SetFaithAtLastNotify(kPlayer.GetFaith());
-							}
-							break;
-					}
-				}
-				else
-				{		
-					pSpawnCity->GetCityCitizens()->DoSpawnGreatPerson(eUnit, true /*bIncrementCount*/, true, false);
-				}
-			}
-			else
-				pSpawnCity->GetCityCitizens()->DoSpawnGreatPerson(eUnit, true /*bIncrementCount*/, true, false);
-#else
-			pSpawnCity->GetCityCitizens()->DoSpawnGreatPerson(eUnit, true /*bIncrementCount*/, true, false);
-#endif	
-#else
-			pSpawnCity->GetCityCitizens()->DoSpawnGreatPerson(eUnit, true /*bIncrementCount*/, true);
-#endif
-#if defined(MOD_RELIGION_KEEP_PROPHET_OVERFLOW)
-		if (MOD_RELIGION_KEEP_PROPHET_OVERFLOW && iBaseChance >= 100)
-		{
-#if defined(MOD_NO_AUTO_SPAWN_PROPHET)
-			if(MOD_NO_AUTO_SPAWN_PROPHET)
-			{			
-				if (!kPlayer.isHuman() || prophetboughtwithfaith)
-				{
-					kPlayer.ChangeFaith(-1 * iCost);
-				}
-			}
-			else
-				kPlayer.ChangeFaith(-1 * iCost);
-		}
-#else
-			kPlayer.ChangeFaith(-1 * iCost);
-#endif
-		else
-		{
-#if defined(MOD_NO_AUTO_SPAWN_PROPHET)
-			if(MOD_NO_AUTO_SPAWN_PROPHET)
-			{
-				if (!kPlayer.isHuman() || prophetboughtwithfaith)
-				{
-					kPlayer.SetFaith(0);
-				}
-			}
-			else
-				kPlayer.SetFaith(0);
-#endif
-#endif
-		kPlayer.SetFaith(0);
-#if defined(MOD_RELIGION_KEEP_PROPHET_OVERFLOW)
-		}
-#endif
-		}
+		// no cities have faith per turn or use capital city
+		if (!pSpawnCity)
+			pSpawnCity = kPlayer.getCapitalCity();
 	}
-
-	// Logging
-	if(GC.getLogging() && pSpawnCity)
+	
+	if(pSpawnCity && pSpawnCity->getOwner() == kPlayer.GetID())
 	{
-		CvString strLogMsg;
-		strLogMsg = kPlayer.getCivilizationShortDescription();
-		strLogMsg += ", PROPHET SPAWNED, ";
-		strLogMsg += pSpawnCity->getName();
-		strLogMsg += ", Faith: 0";
-		LogReligionMessage(strLogMsg);
-	}
+		if(MOD_NO_AUTO_SPAWN_PROPHET && kPlayer.isHuman())
+		{
+			// Do not spawn a prophet unless the player wants to
+			switch (kPlayer.GetFaithPurchaseType())
+			{
+				case FAITH_PURCHASE_SAVE_PROPHET:
+					pSpawnCity->GetCityCitizens()->DoSpawnGreatPerson(eUnit, true /*bIncrementCount*/, true, false);
+					break;
+				case NO_AUTOMATIC_FAITH_PURCHASE:
+					prophetboughtwithfaith = false;
+					CvNotifications* pNotifications = kPlayer.GetNotifications();
+					if(pNotifications)
+					{
+						CvString strBuffer = GetLocalizedText("TXT_KEY_NOTIFICATION_ENOUGH_FAITH_FOR_MISSIONARY");
+						CvString strSummary = GetLocalizedText("TXT_KEY_NOTIFICATION_SUMMARY_ENOUGH_FAITH_FOR_MISSIONARY");
+						pNotifications->Add(NOTIFICATION_CAN_BUILD_MISSIONARY, strBuffer, strSummary, -1, -1, -1);
+						kPlayer.GetReligions()->SetFaithAtLastNotify(kPlayer.GetFaith());
+					}
+					break;
+			}
+		}
+		else
+			pSpawnCity->GetCityCitizens()->DoSpawnGreatPerson(eUnit, true /*bIncrementCount*/, true, false);
+		
+		// Pay for the prophet
+		if(prophetboughtwithfaith)
+			kPlayer.ChangeFaith(-1 * iCost);
 
-	return true;
+		// Logging
+		if(GC.getLogging() && pSpawnCity)
+		{
+			CvString strLogMsg;
+			strLogMsg = kPlayer.getCivilizationShortDescription();
+			strLogMsg += ", PROPHET SPAWNED, ";
+			strLogMsg += pSpawnCity->getName();
+			strLogMsg += ", Faith: ";
+			strLogMsg += kPlayer.GetFaith();
+			LogReligionMessage(strLogMsg);
+		}
+		return true;
+	}
+	
+	// If I don't have any viable cities (not even a capital city), then don't spawn a prophet
+	return false;
 }
 
 /// Log a message with status information

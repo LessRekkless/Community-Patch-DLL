@@ -1,5 +1,5 @@
 /*	-------------------------------------------------------------------------------------------------------
-	© 1991-2012 Take-Two Interactive Software and its subsidiaries.  Developed by Firaxis Games.  
+	Â© 1991-2012 Take-Two Interactive Software and its subsidiaries.  Developed by Firaxis Games.  
 	Sid Meier's Civilization V, Civ, Civilization, 2K Games, Firaxis Games, Take-Two Interactive Software 
 	and their respective logos are all trademarks of Take-Two interactive Software, Inc.  
 	All other marks and trademarks are the property of their respective owners.  
@@ -952,15 +952,9 @@ public:
 	void changeGoldenAgeModifier(int iChange);
 
 	// Great People Stuff
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
-	void createGreatGeneral(UnitTypes eGreatPersonUnit, int iX, int iY, bool bIsFree);
-	void createGreatAdmiral(UnitTypes eGreatPersonUnit, int iX, int iY, bool bIsFree);
-#else
-	void createGreatGeneral(UnitTypes eGreatPersonUnit, int iX, int iY);
-	void createGreatAdmiral(UnitTypes eGreatPersonUnit, int iX, int iY);
-#endif
+	void createGreatGeneral(UnitTypes eGreatPersonUnit, int iX, int iY, bool bIsFree = false);
+	void createGreatAdmiral(UnitTypes eGreatPersonUnit, int iX, int iY, bool bIsFree = false);
 
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
 	int getGreatPeopleCreated(bool bExcludeFree) const;
 	void incrementGreatPeopleCreated(bool bIsFree);
 
@@ -968,24 +962,20 @@ public:
 	void incrementGreatGeneralsCreated(bool bIsFree);
 	int getGreatAdmiralsCreated(bool bExcludeFree) const;
 	void incrementGreatAdmiralsCreated(bool bIsFree);
-#if defined(MOD_GLOBAL_SEPARATE_GP_COUNTERS)
 	int getGreatMerchantsCreated(bool bExcludeFree) const;
 	void incrementGreatMerchantsCreated(bool bIsFree);
 	int getGreatScientistsCreated(bool bExcludeFree) const;
 	void incrementGreatScientistsCreated(bool bIsFree);
 	int getGreatEngineersCreated(bool bExcludeFree) const;
 	void incrementGreatEngineersCreated(bool bIsFree);
-#endif
 	int getGreatWritersCreated(bool bExcludeFree) const;
 	void incrementGreatWritersCreated(bool bIsFree);
 	int getGreatArtistsCreated(bool bExcludeFree) const;
 	void incrementGreatArtistsCreated(bool bIsFree);
 	int getGreatMusiciansCreated(bool bExcludeFree) const;
 	void incrementGreatMusiciansCreated(bool bIsFree);
-#if defined(MOD_DIPLOMACY_CITYSTATES)
 	int getGreatDiplomatsCreated(bool bExcludeFree) const;
 	void incrementGreatDiplomatsCreated(bool bIsFree);
-#endif
 #if defined(MOD_BALANCE_CORE)
 	int getGPExtra1Created(bool bExcludeFree) const;
 	void incrementGPExtra1Created(bool bIsFree);
@@ -1001,49 +991,6 @@ public:
 
 	int getGPExtra5Created(bool bExcludeFree) const;
 	void incrementGPExtra5Created(bool bIsFree);
-#endif
-#else
-	int getGreatPeopleCreated() const;
-	void incrementGreatPeopleCreated();
-
-	int getGreatGeneralsCreated() const;
-	void incrementGreatGeneralsCreated();
-	int getGreatAdmiralsCreated() const;
-	void incrementGreatAdmiralsCreated();
-#if defined(MOD_GLOBAL_SEPARATE_GP_COUNTERS)
-	int getGreatMerchantsCreated() const;
-	void incrementGreatMerchantsCreated();
-	int getGreatScientistsCreated() const;
-	void incrementGreatScientistsCreated();
-	int getGreatEngineersCreated() const;
-	void incrementGreatEngineersCreated();
-#endif
-	int getGreatWritersCreated() const;
-	void incrementGreatWritersCreated();
-	int getGreatArtistsCreated() const;
-	void incrementGreatArtistsCreated();
-	int getGreatMusiciansCreated() const;
-	void incrementGreatMusiciansCreated();
-#if defined(MOD_DIPLOMACY_CITYSTATES)
-	int getGreatDiplomatsCreated() const;
-	void incrementGreatDiplomatsCreated();
-#endif
-#if defined(MOD_BALANCE_CORE)
-	int getGPExtra1Created() const;
-	void incrementGPExtra1Created();
-	
-	int getGPExtra2Created() const;
-	void incrementGPExtra2Created();
-
-	int getGPExtra3Created() const;
-	void incrementGPExtra3Created();
-
-	int getGPExtra4Created() const;
-	void incrementGPExtra4Created();
-
-	int getGPExtra5Created() const;
-	void incrementGPExtra5Created();
-#endif
 #endif
 
 	int getMerchantsFromFaith() const;
@@ -1062,10 +1009,8 @@ public:
 	void incrementAdmiralsFromFaith();
 	int getEngineersFromFaith() const;
 	void incrementEngineersFromFaith();
-#if defined(MOD_DIPLOMACY_CITYSTATES)
 	int getDiplomatsFromFaith() const;
 	void incrementDiplomatsFromFaith();
-#endif
 #if defined(MOD_BALANCE_CORE)
 	int getGPExtra1FromFaith() const;
 	void incrementGPExtra1FromFaith();
@@ -1166,11 +1111,7 @@ public:
 	void SetGreatPeopleSpawnCounter(int iValue);
 	void ChangeGreatPeopleSpawnCounter(int iChange);
 
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
 	void DoSpawnGreatPerson(PlayerTypes eMinor, bool bIsFree);
-#else
-	void DoSpawnGreatPerson(PlayerTypes eMinor);
-#endif
 	void DoGreatPeopleSpawnTurn();
 	CvCity* GetGreatPersonSpawnCity(UnitTypes eUnit);
 
@@ -1663,22 +1604,12 @@ public:
 	void ResetMightCalcTurn();
 
 	int getCombatExperienceTimes100() const;
-#if defined(MOD_GLOBAL_LOCAL_GENERALS)
 	void setCombatExperienceTimes100(int iExperienceTimes100, CvUnit* pFromUnit = NULL);
 	void changeCombatExperienceTimes100(int iChangeTimes100, CvUnit* pFromUnit = NULL);
-#else
-	void setCombatExperienceTimes100(int iExperienceTimes100);
-	void changeCombatExperienceTimes100(int iChangeTimes100);
-#endif
 	int getLifetimeCombatExperienceTimes100() const;
 	int getNavalCombatExperienceTimes100() const;
-#if defined(MOD_GLOBAL_LOCAL_GENERALS)
 	void setNavalCombatExperienceTimes100(int iExperienceTimes100, CvUnit* pFromUnit = NULL);
 	void changeNavalCombatExperienceTimes100(int iChangeTimes100, CvUnit* pFromUnit = NULL);
-#else
-	void setNavalCombatExperienceTimes100(int iExperienceTimes100);
-	void changeNavalCombatExperienceTimes100(int iChangeTimes100);
-#endif
 
 	int getBorderObstacleCount() const;
 	bool isBorderObstacle() const;
@@ -3064,23 +2995,18 @@ protected:
 	int m_iNumUnitGoldenAges;
 	int m_iStrikeTurns;
 	int m_iGoldenAgeModifier;
-#if defined(MOD_GLOBAL_TRULY_FREE_GP)
 	int m_iProductionBonusTurnsConquest;
 	int m_iCultureBonusTurnsConquest;
 	int m_iFreeGreatPeopleCreated;
 	int m_iFreeGreatGeneralsCreated;
 	int m_iFreeGreatAdmiralsCreated;
-#if defined(MOD_GLOBAL_SEPARATE_GP_COUNTERS)
 	int m_iFreeGreatMerchantsCreated;
 	int m_iFreeGreatScientistsCreated;
 	int m_iFreeGreatEngineersCreated;
-#endif
 	int m_iFreeGreatWritersCreated;
 	int m_iFreeGreatArtistsCreated;
 	int m_iFreeGreatMusiciansCreated;
-#if defined(MOD_DIPLOMACY_CITYSTATES)
 	int m_iFreeGreatDiplomatsCreated;
-#endif
 #if defined(MOD_BALANCE_CORE)
 	int m_iGPExtra1Created;
 	int m_iGPExtra2Created;
@@ -3093,22 +3019,17 @@ protected:
 	int m_iFreeGPExtra4Created;
 	int m_iFreeGPExtra5Created;
 #endif
-#endif
 	int m_iGreatPeopleCreated;
 	int m_iGreatGeneralsCreated;
 	int m_iGreatAdmiralsCreated;
-#if defined(MOD_GLOBAL_SEPARATE_GP_COUNTERS)
 	int m_iGreatMerchantsCreated;
 	int m_iGreatScientistsCreated;
 	int m_iGreatEngineersCreated;
-#endif
 	int m_iGreatWritersCreated;
 	int m_iGreatArtistsCreated;
 	int m_iGreatMusiciansCreated;
-#if defined(MOD_DIPLOMACY_CITYSTATES)
 	int m_iGreatDiplomatsCreated;
 	int m_iDiplomatsFromFaith;
-#endif
 #if defined(MOD_BALANCE_CORE)
 	int m_iGPExtra1FromFaith;
 	int m_iGPExtra2FromFaith;
@@ -3140,9 +3061,7 @@ protected:
 	int m_iGreatArtistRateModifier;
 	int m_iGreatMusicianRateModifier;
 	int m_iGreatMerchantRateModifier;
-#if defined(MOD_DIPLOMACY_CITYSTATES)
 	int m_iGreatDiplomatRateModifier;
-#endif
 	int m_iGreatScientistRateModifier;
 	int m_iGreatScientistBeakerModifier;
 	int m_iGreatEngineerHurryMod;
