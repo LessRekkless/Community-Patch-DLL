@@ -32754,77 +32754,49 @@ void CvPlayer::setCombatExperienceTimes100(int iExperienceTimes100, CvUnit* pFro
 			int iExperienceThresholdTimes100 = greatGeneralThreshold() * 100;
 			if (m_iCombatExperienceTimes100 >= iExperienceThresholdTimes100 && iExperienceThresholdTimes100 > 0)
 			{
-				// create great person
-				CvCity* pBestCity = NULL;
-				if(pFromUnit == NULL)
+				// Figure out which Promotion is the one which makes a unit a Great General
+				for(int iI = 0; iI < GC.getNumPromotionInfos(); iI++)
 				{
-					int iBestValue = INT_MAX;
-					int iLoop;
-					for(CvCity* pLoopCity = firstCity(&iLoop); pLoopCity != NULL; pLoopCity = nextCity(&iLoop))
+					const PromotionTypes eLoopPromotion = static_cast<PromotionTypes>(iI);
+					CvPromotionEntry* pkPromotionInfo = GC.getPromotionInfo(eLoopPromotion);
+					if(pkPromotionInfo && pkPromotionInfo->IsGreatGeneral())
 					{
-						int iValue = 4 * GC.getGame().getSmallFakeRandNum(getNumCities(), GetPseudoRandomSeed() + iLoop);
-
-						for(int i = 0; i < NUM_YIELD_TYPES; i++)
+						for(int iI = 0; iI < GC.getNumUnitInfos(); iI++)
 						{
-							iValue += pLoopCity->findYieldRateRank((YieldTypes)i);
-						}
-						iValue += pLoopCity->findPopulationRank();
-
-						if(iValue < iBestValue)
-						{
-							pBestCity = pLoopCity;
-							iBestValue = iValue;
-						}
-					}
-				}
-
-				if(pBestCity || pFromUnit)
-				{
-					// Figure out which Promotion is the one which makes a unit a Great General
-					for(int iI = 0; iI < GC.getNumPromotionInfos(); iI++)
-					{
-						const PromotionTypes eLoopPromotion = static_cast<PromotionTypes>(iI);
-						CvPromotionEntry* pkPromotionInfo = GC.getPromotionInfo(eLoopPromotion);
-						if(pkPromotionInfo)
-						{
-							if(pkPromotionInfo->IsGreatGeneral())
+							const UnitTypes eLoopUnit = static_cast<UnitTypes>(iI);
+							CvUnitEntry* pkUnitInfo = GC.getUnitInfo(eLoopUnit);
+							if(pkUnitInfo)
 							{
-								for(int iI = 0; iI < GC.getNumUnitInfos(); iI++)
+								if(pkUnitInfo->GetFreePromotions(eLoopPromotion))
 								{
-									const UnitTypes eLoopUnit = static_cast<UnitTypes>(iI);
-									CvUnitEntry* pkUnitInfo = GC.getUnitInfo(eLoopUnit);
-									if(pkUnitInfo)
+									// Is this the right unit of this class for this civ?
+									const UnitTypes eUnit = GetSpecificUnitType((UnitClassTypes)pkUnitInfo->GetUnitClassType());
+
+									if(eUnit == eLoopUnit)
 									{
-										if(pkUnitInfo->GetFreePromotions(eLoopPromotion))
+										if (pFromUnit && MOD_GLOBAL_LOCAL_GENERALS && !MOD_LOCAL_GENERALS_NEAREST_CITY)
 										{
-											// Is this the right unit of this class for this civ?
-											const UnitTypes eUnit = GetSpecificUnitType((UnitClassTypes)pkUnitInfo->GetUnitClassType());
 
-											if(eUnit == eLoopUnit)
-											{
-												if (pFromUnit && !MOD_LOCAL_GENERALS_NEAREST_CITY)
-												{
-
-													CUSTOMLOG("Create Great General at (%d, %d) from unit %s", pFromUnit->plot()->getX(), pFromUnit->plot()->getY(), pFromUnit->getName().GetCString());
-													createGreatGeneral(eUnit, pFromUnit->plot()->getX(), pFromUnit->plot()->getY(), false);
-												}
-												else if (pFromUnit && MOD_LOCAL_GENERALS_NEAREST_CITY)
-												{ 
-													CvCity* pNearestCity = GetClosestCityByPathLength(pFromUnit->plot());
-
-													CUSTOMLOG("Create Great General at (%d, %d) from unit %s", pNearestCity->plot()->getX(), pNearestCity->plot()->getY(), pFromUnit->getName().GetCString());
-													createGreatGeneral(eUnit, pNearestCity->plot()->getX(), pNearestCity->plot()->getY(), false);
-												}
-												else
-												{
-													pBestCity->createGreatGeneral(eUnit, false);
-													pBestCity->createGreatGeneral(eUnit);
-												}
-
-												setCombatExperienceTimes100(getCombatExperienceTimes100() - iExperienceThresholdTimes100);
-												break;
-											}
+											CUSTOMLOG("Create Great General at (%d, %d) from unit %s", pFromUnit->plot()->getX(), pFromUnit->plot()->getY(), pFromUnit->getName().GetCString());
+											createGreatGeneral(eUnit, pFromUnit->plot()->getX(), pFromUnit->plot()->getY(), false);
 										}
+										else if (pFromUnit && MOD_LOCAL_GENERALS_NEAREST_CITY)
+										{ 
+											CvCity* pNearestCity = GetClosestCityByPathLength(pFromUnit->plot());
+
+											CUSTOMLOG("Create Great General at (%d, %d) from unit %s", pNearestCity->plot()->getX(), pNearestCity->plot()->getY(), pFromUnit->getName().GetCString());
+											createGreatGeneral(eUnit, pNearestCity->plot()->getX(), pNearestCity->plot()->getY(), false);
+										}
+										else
+										{
+											// choose the best city to spawn the general at (if not spawning a general locally or at the nearest city)
+											CvCity* pBestCity = GetGreatPersonSpawnCity(eUnit);
+											if (pBestCity)
+												pBestCity->createGreatGeneral(eUnit, false);
+										}
+
+										setCombatExperienceTimes100(getCombatExperienceTimes100() - iExperienceThresholdTimes100);
+										break;
 									}
 								}
 							}
@@ -32870,85 +32842,57 @@ void CvPlayer::setNavalCombatExperienceTimes100(int iExperienceTimes100, CvUnit*
 			{
 				// create great person
 				CvCity* pBestCity = NULL;
-				if(pFromUnit == NULL)
-				{
-					int iBestValue = INT_MAX;
-					int iLoop;
-					for(CvCity* pLoopCity = firstCity(&iLoop); pLoopCity != NULL; pLoopCity = nextCity(&iLoop))
-					{
-						if(!pLoopCity->isCoastal())
-						{
-							continue;
-						}
-
-						int iValue = 4 * GC.getGame().getSmallFakeRandNum(getNumCities(), GetPseudoRandomSeed() + iLoop);
-
-						for(int i = 0; i < NUM_YIELD_TYPES; i++)
-						{
-							iValue += pLoopCity->findYieldRateRank((YieldTypes)i);
-						}
-						iValue += pLoopCity->findPopulationRank();
-
-						if(iValue < iBestValue)
-						{
-							pBestCity = pLoopCity;
-							iBestValue = iValue;
-						}
-					}
-				}
+				// put the best city in the capital for now.  The Admiral will be moved soon.
+				if(pFromUnit == NULL || !MOD_GLOBAL_LOCAL_GENERALS)
+					pBestCity = getCapitalCity();
 
 				if(pBestCity || pFromUnit)
 				{
+					// Figure out which Promotion is the one which makes a unit a Great Admiral															
 					for(int iI = 0; iI < GC.getNumPromotionInfos(); iI++)
 					{
 						const PromotionTypes eLoopPromotion = static_cast<PromotionTypes>(iI);
 						CvPromotionEntry* pkPromotionInfo = GC.getPromotionInfo(eLoopPromotion);
-						if(pkPromotionInfo)
+						if(pkPromotionInfo && pkPromotionInfo->IsGreatAdmiral())
 						{
-							if(pkPromotionInfo->IsGreatAdmiral())
+							for(int iI = 0; iI < GC.getNumUnitInfos(); iI++)
 							{
-								for(int iI = 0; iI < GC.getNumUnitInfos(); iI++)
+								const UnitTypes eLoopUnit = static_cast<UnitTypes>(iI);
+								CvUnitEntry* pkUnitInfo = GC.getUnitInfo(eLoopUnit);
+								if(pkUnitInfo)
 								{
-									const UnitTypes eLoopUnit = static_cast<UnitTypes>(iI);
-									CvUnitEntry* pkUnitInfo = GC.getUnitInfo(eLoopUnit);
-									if(pkUnitInfo)
+									if(pkUnitInfo->GetFreePromotions(eLoopPromotion))
 									{
-										if(pkUnitInfo->GetFreePromotions(eLoopPromotion))
+										// Is this the right unit of this class for this civ?
+										const UnitTypes eUnit = GetSpecificUnitType((UnitClassTypes)pkUnitInfo->GetUnitClassType());
+
+										if(eUnit == eLoopUnit)
 										{
-											// Is this the right unit of this class for this civ?
-											const UnitTypes eUnit = GetSpecificUnitType((UnitClassTypes)pkUnitInfo->GetUnitClassType());
-
-											if(eUnit == eLoopUnit)
+											if (pFromUnit && MOD_GLOBAL_LOCAL_GENERALS && !MOD_LOCAL_GENERALS_NEAREST_CITY)
 											{
-												if (pFromUnit && !MOD_LOCAL_GENERALS_NEAREST_CITY)
-												{
 
-													CUSTOMLOG("Create Great Admiral at (%d, %d) from unit %s", pFromUnit->plot()->getX(), pFromUnit->plot()->getY(), pFromUnit->getName().GetCString());
-													createGreatAdmiral(eUnit, pFromUnit->plot()->getX(), pFromUnit->plot()->getY(), false);
-													if (MOD_PROMOTIONS_FLAGSHIP)
-													{
-														pFromUnit->setHasPromotion((PromotionTypes)GD_INT_GET(PROMOTION_FLAGSHIP), true);
-													}
-												}
-												else if (pFromUnit && MOD_LOCAL_GENERALS_NEAREST_CITY)
-												{
-													CvCity* pNearestCity = OperationalAIHelpers::GetClosestFriendlyCoastalCity(pFromUnit->getOwner(), pFromUnit->plot());
-
-													CUSTOMLOG("Create Great General at (%d, %d) from unit %s", pNearestCity->plot()->getX(), pNearestCity->plot()->getY(), pFromUnit->getName().GetCString());
-													createGreatAdmiral(eUnit, pNearestCity->plot()->getX(), pNearestCity->plot()->getY(), false);
+												CUSTOMLOG("Create Great Admiral at (%d, %d) from unit %s", pFromUnit->plot()->getX(), pFromUnit->plot()->getY(), pFromUnit->getName().GetCString());
+												createGreatAdmiral(eUnit, pFromUnit->plot()->getX(), pFromUnit->plot()->getY(), false);
 												
-													if (MOD_PROMOTIONS_FLAGSHIP)
-													{
-														pFromUnit->setHasPromotion((PromotionTypes)GD_INT_GET(PROMOTION_FLAGSHIP), true);
-													}
-												}
-												else
+												if (MOD_PROMOTIONS_FLAGSHIP)
 												{
-													pBestCity->createGreatAdmiral(eUnit, false);
+													pFromUnit->setHasPromotion((PromotionTypes)GD_INT_GET(PROMOTION_FLAGSHIP), true);
 												}
-												setNavalCombatExperienceTimes100(getNavalCombatExperienceTimes100() - iExperienceThresholdTimes100);
-												break;
 											}
+											else if (pFromUnit && MOD_LOCAL_GENERALS_NEAREST_CITY)
+											{
+												CvCity* pNearestCity = OperationalAIHelpers::GetClosestFriendlyCoastalCity(pFromUnit->getOwner(), pFromUnit->plot());
+
+												CUSTOMLOG("Create Great General at (%d, %d) from unit %s", pNearestCity->plot()->getX(), pNearestCity->plot()->getY(), pFromUnit->getName().GetCString());
+												createGreatAdmiral(eUnit, pNearestCity->plot()->getX(), pNearestCity->plot()->getY(), false);
+											}
+											else
+											{
+												pBestCity->createGreatAdmiral(eUnit, false);
+											}
+											
+											setNavalCombatExperienceTimes100(getNavalCombatExperienceTimes100() - iExperienceThresholdTimes100);
+											break;
 										}
 									}
 								}
@@ -46377,6 +46321,17 @@ void CvPlayer::createGreatAdmiral(UnitTypes eGreatPersonUnit, int iX, int iY, bo
 		CvAssert(false);
 		return;
 	}
+
+	// Move the Admiral to the city that has access to the most ocean
+	if (!MOD_GLOBAL_LOCAL_GENERALS)
+	{
+		CvPlot *pSpawnPlot = GetBestCoastalSpawnPlot(pGreatPeopleUnit);
+		if (pGreatPeopleUnit->plot() != pSpawnPlot)
+		{
+			pGreatPeopleUnit->setXY(pSpawnPlot->getX(), pSpawnPlot->getY());
+		}
+	}
+
 #if defined(MOD_BALANCE_CORE)
 	if(GetPlayerTraits()->IsGPWLTKD() && pGreatPeopleUnit != NULL)
 	{

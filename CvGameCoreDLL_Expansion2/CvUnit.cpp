@@ -15423,7 +15423,7 @@ bool CvUnit::CanFoundColony() const
 	VALIDATE_OBJECT
 	if (m_pUnitInfo->GetNumColonyFound() <= 0)
 		return false;
-
+	/* // Human players have been able to settle as many Colonia as they want for a very long time
 	int iNumFoundedPuppets = 0;
 
 	CvPlayerAI& kPlayer = GET_PLAYER(getOwner());
@@ -15438,7 +15438,7 @@ bool CvUnit::CanFoundColony() const
 
 	if (iNumFoundedPuppets >= m_pUnitInfo->GetNumColonyFound())
 		return false;
-
+	*/
 	return true;
 }
 #endif
