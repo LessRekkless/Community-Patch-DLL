@@ -2784,6 +2784,26 @@
 			<Text>Total: {1_Num} [ICON_CULTURE] Culture (due to trading within your Empire)</Text>
 		</Row>
 
+		<Row Tag="TXT_KEY_CHOOSE_INTERNATIONAL_TRADE_ROUTE_ITEM_TT_YOUR_GOLD_EXPLAINED">
+			<Text>+{2_Num} [ICON_GOLD] Gold due to your Cultural Influence over {1_CivName}</Text>
+		</Row>
+		
+		<Row Tag="TXT_KEY_CHOOSE_INTERNATIONAL_TRADE_ROUTE_ITEM_TT_THEIR_GOLD_EXPLAINED">
+			<Text>+{2_Num} [ICON_GOLD] Gold due to the Cultural Influence of {1_CivName} over you</Text>
+		</Row>
+
+		<Row Tag="TXT_KEY_CHOOSE_INTERNATIONAL_TRADE_ROUTE_ITEM_TT_YIELD_MODIFIER">
+			<Text>+{1_Num}% from Policies</Text>
+		</Row>
+
+		<Row Tag="TXT_KEY_CHOOSE_INTERNAL_TRADE_ROUTE_ITEM_TT_YIELD_MODIFIER_PROD">
+			<Text>+{1_Num}% [ICON_PRODUCTION] Production from Policies</Text>
+		</Row>
+
+		<Row Tag="TXT_KEY_CHOOSE_INTERNAL_TRADE_ROUTE_ITEM_TT_YIELD_MODIFIER_FOOD">
+			<Text>+{1_Num}% [ICON_FOOD] Food from Policies</Text>
+		</Row>
+
 		<!-- Diplomacy Screen Buttons -->
 		<Row Tag="TXT_KEY_DIPLO_NEGOTIATE_PEACE_BLOCKED_THEM_TT">
 			<Text>They cannot negotiate peace with you for another {1_Num} turn(s) because of a deal they made with another player.</Text>
@@ -5482,7 +5502,7 @@
 
 		<!-- Trade Route for Land Modifiers -->
 		<Row Tag="TXT_KEY_CHOOSE_INTERNATIONAL_TRADE_ROUTE_ITEM_DOMAIN_LAND_MODIFIER">
-			<Text>Land route: {1_Num}x</Text>
+			<Text>Land route: +{1_Num}%</Text>
 		</Row>
 		<!-- Global Domination Resistance -->
 		<Row Tag="TXT_KEY_EUPANEL_RESISTANCE_POWER">

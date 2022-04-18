@@ -114,10 +114,10 @@ function BuildTradeRouteGoldToolTipString (pOriginCity, pTargetCity, eDomain)
 	local iDomainModifier = pPlayer:GetInternationalTradeRouteDomainModifier(eDomain);
 	if (iDomainModifier ~= 0) then
 		if (eDomain == DomainTypes.DOMAIN_SEA) then
-			strDomainModifier = Locale.ConvertTextKey("TXT_KEY_CHOOSE_INTERNATIONAL_TRADE_ROUTE_ITEM_DOMAIN_SEA_MODIFIER", (iDomainModifier + 100) / 100);
+			strDomainModifier = Locale.ConvertTextKey("TXT_KEY_CHOOSE_INTERNATIONAL_TRADE_ROUTE_ITEM_DOMAIN_SEA_MODIFIER", iDomainModifier);
 -- CBP change
 		else
-			strDomainModifier = Locale.ConvertTextKey("TXT_KEY_CHOOSE_INTERNATIONAL_TRADE_ROUTE_ITEM_DOMAIN_LAND_MODIFIER", (iDomainModifier + 100) / 100);
+			strDomainModifier = Locale.ConvertTextKey("TXT_KEY_CHOOSE_INTERNATIONAL_TRADE_ROUTE_ITEM_DOMAIN_LAND_MODIFIER", iDomainModifier);
 -- end
 		end
 	end

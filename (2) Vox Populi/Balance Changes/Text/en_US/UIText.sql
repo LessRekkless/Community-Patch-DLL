@@ -234,25 +234,6 @@ UPDATE Language_en_US
 SET Text = '[NEWLINE][NEWLINE][COLOR_CYAN]Influence Benefits:[ENDCOLOR][NEWLINE][NEWLINE][COLOR_POSITIVE_TEXT]Trade Routes to this Civ Generate:[ENDCOLOR][NEWLINE][ICON_BULLET]  [COLOR_POSITIVE_TEXT]+25%[ENDCOLOR] [ICON_FOOD] Growth in Origin City[NEWLINE][ICON_BULLET]  [COLOR_POSITIVE_TEXT]+10[ENDCOLOR] [ICON_GOLD] Gold[NEWLINE][ICON_BULLET]  [COLOR_POSITIVE_TEXT]+10[ENDCOLOR] [ICON_RESEARCH] Science[NEWLINE][COLOR_POSITIVE_TEXT]Espionage Bonuses versus this Civ:[ENDCOLOR][NEWLINE][ICON_BULLET]   [ICON_SPY] Spies Establish Surveillance in [COLOR_POSITIVE_TEXT]1[ENDCOLOR] turn[NEWLINE][COLOR_POSITIVE_TEXT]City Conquest Bonuses versus this Civ:[ENDCOLOR][NEWLINE][ICON_BULLET]   [COLOR_POSITIVE_TEXT]-100%[ENDCOLOR] [ICON_RESISTANCE] Unrest Time[NEWLINE][ICON_BULLET]   [COLOR_POSITIVE_TEXT]-100%[ENDCOLOR] [ICON_CITIZEN] Citizen loss from City conquest'
 WHERE Tag = 'TXT_KEY_CO_INFLUENCE_BONUSES_DOMINANT';
 
--- Text for trade view tooltip.
-INSERT INTO Language_en_US (Text, Tag)
-VALUES ('+{2_Num} [ICON_GOLD] Gold due to your Cultural Influence over {1_CivName}', 'TXT_KEY_CHOOSE_INTERNATIONAL_TRADE_ROUTE_ITEM_TT_YOUR_GOLD_EXPLAINED');
-
-INSERT INTO Language_en_US (Text, Tag)
-VALUES ('+{1_Num}% from Policies', 'TXT_KEY_CHOOSE_INTERNATIONAL_TRADE_ROUTE_ITEM_TT_YIELD_MODIFIER');
-
-INSERT INTO Language_en_US (Text, Tag)
-VALUES ('+{1_Num}% [ICON_PRODUCTION] Production from Policies', 'TXT_KEY_CHOOSE_INTERNAL_TRADE_ROUTE_ITEM_TT_YIELD_MODIFIER_PROD');
-
-INSERT INTO Language_en_US (Text, Tag)
-VALUES ('+{1_Num}% [ICON_FOOD] Food from Policies', 'TXT_KEY_CHOOSE_INTERNAL_TRADE_ROUTE_ITEM_TT_YIELD_MODIFIER_FOOD');
-
-
-
--- Text for trade view tooltip.
-INSERT INTO Language_en_US (Text, Tag)
-VALUES ('+{2_Num} [ICON_GOLD] Gold due to the Cultural Influence of {1_CivName} over you', 'TXT_KEY_CHOOSE_INTERNATIONAL_TRADE_ROUTE_ITEM_TT_THEIR_GOLD_EXPLAINED');
-
 -- Text changes for Vote Purchase
 UPDATE Language_en_US
 SET Text = 'In the next World Congress session, [COLOR_POSITIVE_TEXT]{1_NumVotes}[ENDCOLOR] {1_NumVotes: plural 1?Delegate; other?Delegates;} currently controlled by this player will support {2_ChoiceText} on the proposal to [COLOR_POSITIVE_TEXT]enact[ENDCOLOR] these changes:[NEWLINE][NEWLINE]{3_ProposalText}[NEWLINE][NEWLINE]The number of delegates above is based on the number of delegates this player controls, and the Rank of your [ICON_DIPLOMAT] Diplomat. Higher ranks allow you to trade for more delegates.'
@@ -618,9 +599,12 @@ SET Text = 'Max Distance: {1_Num}'
 WHERE Tag = 'TXT_KEY_CHOOSE_INTERNATIONAL_TRADE_ROUTE_RANGE';
 
 UPDATE Language_en_US
-SET Text = 'Resource Diversity Modifier: {1_Num}%[NEWLINE][ICON_BULLET]   Our Local Resources: {2_Num}[NEWLINE][ICON_BULLET]   Their Local Resources: {3_Num}[NEWLINE]Routes to Cities with unique Resources earn more [ICON_GOLD] Gold, and Monopoly Resources count double.'
+SET Text = 'Resource Diversity Modifier: +{1_Num}%[NEWLINE][ICON_BULLET]   Our Local Resources: {2_Num}[NEWLINE][ICON_BULLET]   Their Local Resources: {3_Num}[NEWLINE]Routes to Cities with unique Resources earn more [ICON_GOLD] Gold, and Monopoly Resources count double.'
 WHERE Tag = 'TXT_KEY_CHOOSE_INTERNATIONAL_TRADE_ROUTE_ITEM_TT_RESOURCE_DIFFERENT';
 
+UPDATE Language_en_US
+SET Text = 'Sea Route Bonus: +{1_Num}%'
+WHERE Tag = 'TXT_KEY_CHOOSE_INTERNATIONAL_TRADE_ROUTE_ITEM_DOMAIN_SEA_MODIFIER';
 
 UPDATE Language_en_US
 SET Text = 'Artifact will be placed in nearest Great Work of Art slot. Artifact provides +3 [ICON_CULTURE] Culture and +4 [ICON_TOURISM] Tourism. Archaeologist will be consumed.'

@@ -331,21 +331,11 @@
 			<Text>{1_SpyRank} {2_SpyName} may not attempt a coup in {3_CityName} yet because their current Ally has a Sphere of Influence here.</Text>
 		</Row>
 
-		<!-- Feitoria Production Tooltip-->
-		<Row Tag="TXT_KEY_CHOOSE_INTERNATIONAL_TRADE_ROUTE_ITEM_TT_YOUR_PRODUCTION">
-			<Text>Total: {1_Num} [ICON_PRODUCTION] Production (from Feitoria).</Text>
-		</Row>
-		<Row Tag="TXT_KEY_CHOOSE_INTERNATIONAL_TRADE_ROUTE_ITEM_TT_YOUR_FOOD">
-			<Text>Total: {1_Num} [ICON_FOOD] Food (from Feitoria).[NEWLINE][NEWLINE]These values are modified by your relationship status (Neutral/Friend/Ally) with the City-State.</Text>
-		</Row>
-		<Row Tag="TXT_KEY_CHOOSE_INTERNATIONAL_TRADE_ROUTE_MINOR_CS_TT_BONUS">
-			<Text>Gold bonus from [ICON_INFLUENCE] Influence with {1_CityName}: {2_Num}</Text>
-		</Row>
+		<!-- Trade Route Tooltips -->
 
 		<Row Tag="TXT_KEY_TRO_DISTANCE_VALUE">
 			<Text>- Distance: {1_Num} </Text>
 		</Row>
-
 
 		<Row Tag="TXT_KEY_CHOOSE_INTERNATIONAL_TRADE_ROUTE_SORT_MAX_CULTURE">
 			<Text>Highest Culture</Text>
@@ -379,6 +369,16 @@
 		</Row>
 		<Row Tag="TXT_KEY_CHOOSE_INTERNATIONAL_TRADE_ROUTE_ITEM_TT_THEIR_CULTURE_TOTAL">
 			<Text>{1_CivName} Total: {2_Num} [ICON_CULTURE] Culture</Text>
+		</Row>
+
+		<Row Tag="TXT_KEY_CHOOSE_INTERNATIONAL_TRADE_ROUTE_ITEM_TT_YOUR_PRODUCTION">
+			<Text>Total: {1_Num} [ICON_PRODUCTION] Production (from Feitoria).</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CHOOSE_INTERNATIONAL_TRADE_ROUTE_ITEM_TT_YOUR_FOOD">
+			<Text>Total: {1_Num} [ICON_FOOD] Food (from Feitoria).[NEWLINE][NEWLINE]These values are modified by your relationship status (Neutral/Friend/Ally) with the City-State.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CHOOSE_INTERNATIONAL_TRADE_ROUTE_MINOR_CS_TT_BONUS">
+			<Text>Gold bonus from [ICON_INFLUENCE] Influence with {1_CityName}: {2_Num}</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_TRO_COL_FROM_CULTURE">
