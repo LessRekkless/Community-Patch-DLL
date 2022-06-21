@@ -7180,6 +7180,10 @@ int CvLuaPlayer::lGetGoldenAgeLength(lua_State* L)
 	const int iResult = pkPlayer->getGoldenAgeLength(iManualTurns);
 	lua_pushinteger(L, iResult);
 	return 1;
+
+	// I don't see why I couldn't have just kept it as a basic method, check if 
+	// other lua method wrappers with optional inputs are no longer Basic.
+	/// return BasicLuaMethod(L, &CvPlayerAI::getGoldenAgeLength)
 }
 //------------------------------------------------------------------------------
 //bool isGoldenAge();
@@ -7195,7 +7199,11 @@ int CvLuaPlayer::lChangeGoldenAgeTurns(lua_State* L)
 	const int iTurns = lua_tointeger(L, 2);
 	const bool bFree = luaL_optbool(L, 3, false);
 
-	pkPlayer->changeGoldenAgeTurns(pkPlayer->getGoldenAgeLength(iTurns), bFree);
+	if (iTurns >= 0)
+		pkPlayer->changeGoldenAgeTurns(pkPlayer->getGoldenAgeLength(iTurns), bFree);
+	else
+		pkPlayer->changeGoldenAgeTurns(iTurns);
+
 	return 0;
 }
 //------------------------------------------------------------------------------
