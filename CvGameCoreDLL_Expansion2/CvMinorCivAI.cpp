@@ -4577,7 +4577,7 @@ void CvMinorCivAI::DoPickUniqueUnit()
 						}
 					}
 					//If at least a quarter of all major civ players start on the coast, we should give out boats too.
-					if (iCoastal >= (iPlayers+3) / 4)
+					if (iCoastal * 4 >= iPlayers)
 					{
 						bCoastal = true;
 					}
