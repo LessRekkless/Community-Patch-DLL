@@ -1,5 +1,5 @@
 /*	-------------------------------------------------------------------------------------------------------
-	© 1991-2012 Take-Two Interactive Software and its subsidiaries.  Developed by Firaxis Games.  
+	Â© 1991-2012 Take-Two Interactive Software and its subsidiaries.  Developed by Firaxis Games.  
 	Sid Meier's Civilization V, Civ, Civilization, 2K Games, Firaxis Games, Take-Two Interactive Software 
 	and their respective logos are all trademarks of Take-Two interactive Software, Inc.  
 	All other marks and trademarks are the property of their respective owners.  
@@ -614,70 +614,25 @@ int CvGrandStrategyAI::GetConquestPriority()
 			{
 				for (int iFlavorLoop = 0; iFlavorLoop < GC.getNumFlavorTypes(); iFlavorLoop++)
 				{
-					if (GC.getFlavorTypes((FlavorTypes)iFlavorLoop) == "FLAVOR_OFFENSE")
+					CvString& strFlavor = GC.getFlavorTypes((FlavorTypes)iFlavorLoop);
+					if (strFlavor == "FLAVOR_OFFENSE" ||
+						strFlavor == "FLAVOR_MOBILE" ||
+						strFlavor == "FLAVOR_MILITARY_TRAINING" ||
+						strFlavor == "FLAVOR_NAVAL" ||
+						strFlavor == "FLAVOR_NAVAL_RECON" ||
+						strFlavor == "FLAVOR_RANGED" ||
+						strFlavor == "FLAVOR_AIR" ||
+						//AI_UNIT_PRODUCTION
+						strFlavor == "FLAVOR_ARCHER" ||
+						strFlavor == "FLAVOR_SIEGE" ||
+						strFlavor == "FLAVOR_SKIRMISHER" ||
+						strFlavor == "FLAVOR_NAVAL_MELEE" ||
+						strFlavor == "FLAVOR_NAVAL_RANGED" ||
+						strFlavor == "FLAVOR_SUBMARINE" ||
+						strFlavor == "FLAVOR_FIGHTER" ||
+						strFlavor == "FLAVOR_BOMBER")
 					{
 						iPriorityBonus += pkPolicyInfo->GetFlavorValue(iFlavorLoop);
-					}
-					if (GC.getFlavorTypes((FlavorTypes)iFlavorLoop) == "FLAVOR_MOBILE")
-					{
-						iPriorityBonus += pkPolicyInfo->GetFlavorValue(iFlavorLoop);
-					}
-					else if (GC.getFlavorTypes((FlavorTypes)iFlavorLoop) == "FLAVOR_MILITARY_TRAINING")
-					{
-						iPriorityBonus += pkPolicyInfo->GetFlavorValue(iFlavorLoop);
-					}
-					else if (GC.getFlavorTypes((FlavorTypes)iFlavorLoop) == "FLAVOR_NAVAL")
-					{
-						iPriorityBonus += pkPolicyInfo->GetFlavorValue(iFlavorLoop);
-					}
-					else if (GC.getFlavorTypes((FlavorTypes)iFlavorLoop) == "FLAVOR_NAVAL_RECON")
-					{
-						iPriorityBonus += pkPolicyInfo->GetFlavorValue(iFlavorLoop);
-					}
-					else if (GC.getFlavorTypes((FlavorTypes)iFlavorLoop) == "FLAVOR_RANGED")
-					{
-						iPriorityBonus += pkPolicyInfo->GetFlavorValue(iFlavorLoop);
-					}
-					else if (GC.getFlavorTypes((FlavorTypes)iFlavorLoop) == "FLAVOR_AIR")
-					{
-						iPriorityBonus += pkPolicyInfo->GetFlavorValue(iFlavorLoop);
-					}
-
-					//AI_UNIT_PRODUCTION
-					else if (MOD_AI_UNIT_PRODUCTION)
-					{
-						if (GC.getFlavorTypes((FlavorTypes)iFlavorLoop) == "FLAVOR_ARCHER")
-						{
-							iPriorityBonus += pkPolicyInfo->GetFlavorValue(iFlavorLoop);
-						}
-						else if (GC.getFlavorTypes((FlavorTypes)iFlavorLoop) == "FLAVOR_SIEGE")
-						{
-							iPriorityBonus += pkPolicyInfo->GetFlavorValue(iFlavorLoop);
-						}
-						else if (GC.getFlavorTypes((FlavorTypes)iFlavorLoop) == "FLAVOR_SKIRMISHER")
-						{
-							iPriorityBonus += pkPolicyInfo->GetFlavorValue(iFlavorLoop);
-						}
-						else if (GC.getFlavorTypes((FlavorTypes)iFlavorLoop) == "FLAVOR_NAVAL_MELEE")
-						{
-							iPriorityBonus += pkPolicyInfo->GetFlavorValue(iFlavorLoop);
-						}
-						else if (GC.getFlavorTypes((FlavorTypes)iFlavorLoop) == "FLAVOR_NAVAL_RANGED")
-						{
-							iPriorityBonus += pkPolicyInfo->GetFlavorValue(iFlavorLoop);
-						}
-						else if (GC.getFlavorTypes((FlavorTypes)iFlavorLoop) == "FLAVOR_SUBMARINE")
-						{
-							iPriorityBonus += pkPolicyInfo->GetFlavorValue(iFlavorLoop);
-						}
-						else if (GC.getFlavorTypes((FlavorTypes)iFlavorLoop) == "FLAVOR_FIGHTER")
-						{
-							iPriorityBonus += pkPolicyInfo->GetFlavorValue(iFlavorLoop);
-						}
-						else if (GC.getFlavorTypes((FlavorTypes)iFlavorLoop) == "FLAVOR_BOMBER")
-						{
-							iPriorityBonus += pkPolicyInfo->GetFlavorValue(iFlavorLoop);
-						}
 					}
 				}
 			}
@@ -705,15 +660,13 @@ int CvGrandStrategyAI::GetConquestPriority()
 					{
 						for (int iFlavorLoop = 0; iFlavorLoop < GC.getNumFlavorTypes(); iFlavorLoop++)
 						{
-							if (GC.getFlavorTypes((FlavorTypes)iFlavorLoop) == "FLAVOR_OFFENSE")
+							CvString& strFlavor = GC.getFlavorTypes((FlavorTypes)iFlavorLoop);
+							if (strFlavor == "FLAVOR_OFFENSE")
 							{
 								iPriorityBonus += pkLoopBuilding->GetFlavorValue(iFlavorLoop) * 2;
 							}
-							else if (GC.getFlavorTypes((FlavorTypes)iFlavorLoop) == "FLAVOR_MILITARY_TRAINING")
-							{
-								iPriorityBonus += pkLoopBuilding->GetFlavorValue(iFlavorLoop);
-							}
-							else if (GC.getFlavorTypes((FlavorTypes)iFlavorLoop) == "FLAVOR_NAVAL")
+							else if (strFlavor == "FLAVOR_MILITARY_TRAINING" ||
+									 strFlavor == "FLAVOR_NAVAL")
 							{
 								iPriorityBonus += pkLoopBuilding->GetFlavorValue(iFlavorLoop);
 							}
