@@ -3349,7 +3349,7 @@ ArchaeologyChoiceType CvPlayerCulture::GetArchaeologyChoice(CvPlot *pPlot)
 }
 
 /// Make things happen at an archaeology dig
-void CvPlayerCulture::DoArchaeologyChoice (ArchaeologyChoiceType eChoice)
+void CvPlayerCulture::DoArchaeologyChoice(ArchaeologyChoiceType eChoice)
 {
 	CvGameCulture *pCulture = GC.getGame().GetGameCulture();
 	BuildingClassTypes eBuildingToHouse;
@@ -3357,11 +3357,20 @@ void CvPlayerCulture::DoArchaeologyChoice (ArchaeologyChoiceType eChoice)
 	CvCity *pHousingCity;
 	CvPlot *pPlot;
 	CvUnit *pUnit = GetNextDigCompleteArchaeologist(&pPlot);
+
+	CvPlayer* pOwner = &GET_PLAYER(pPlot->getOwner());
 	
 	GreatWorkSlotType eArtArtifactSlot = CvTypes::getGREAT_WORK_SLOT_ART_ARTIFACT();
 	GreatWorkSlotType eWritingSlot = CvTypes::getGREAT_WORK_SLOT_LITERATURE();
 	GreatWorkType eGreatArtifact = CultureHelpers::GetArtifact(pPlot);
 	GreatWorkClass eClass = (GreatWorkClass)GC.getInfoTypeForString("GREAT_WORK_ARTIFACT");
+
+	ResourceTypes eResource = pPlot->getResourceType();
+	ResourceTypes eArtifactResourceType = static_cast<ResourceTypes>(GD_INT_GET(ARTIFACT_RESOURCE));
+	ResourceTypes eHiddenArtifactResourceType = static_cast<ResourceTypes>(GD_INT_GET(HIDDEN_ARTIFACT_RESOURCE));
+	
+	bool bOwnerUI = (eResource == eArtifactResourceType && m_pPlayer->GetResourceImprovement(eResource, true)) || (eResource == eHiddenArtifactResourceType && m_pPlayer->GetResourceImprovement(eResource, true));
+	bool bUnhappyOwner = bOwnerUI || IsOwnerUnhappyWithDig(pPlot);
 
 	switch (eChoice)
 	{
@@ -3388,10 +3397,8 @@ void CvPlayerCulture::DoArchaeologyChoice (ArchaeologyChoiceType eChoice)
 
 			if (pPlot->getOwner() != NO_PLAYER)
 			{
-				CvPlayer &kOwner = GET_PLAYER(pPlot->getOwner());
-
 				// City-state owned territory?
-				if (kOwner.isMinorCiv())
+				if (pOwner->isMinorCiv())
 				{
 					int iFriendship = /*50*/ GD_INT_GET(LANDMARK_MINOR_FRIENDSHIP_CHANGE);
 					if (MOD_BALANCE_CORE_MINORS)
@@ -3403,14 +3410,21 @@ void CvPlayerCulture::DoArchaeologyChoice (ArchaeologyChoiceType eChoice)
 						iFriendship *= iEra;
 					}
 
-					kOwner.GetMinorCivAI()->ChangeFriendshipWithMajor(m_pPlayer->GetID(), iFriendship);
+					pOwner->GetMinorCivAI()->ChangeFriendshipWithMajor(m_pPlayer->GetID(), iFriendship);
 				}
 
 				// Major civ owned territory?
-				else if (kOwner.isMajorCiv())
+				else if (pOwner->isMajorCiv())
 				{
-					kOwner.GetDiplomacyAI()->ChangeNumLandmarksBuiltForMe(m_pPlayer->GetID(), 1);
-					kOwner.GetDiplomacyAI()->SetWaitingForDigChoice(false);
+					// Owner with a UI will always be upset with losing the resource
+					if (bOwnerUI)
+					{
+						pOwner->GetDiplomacyAI()->ChangeNegativeArchaeologyPoints(pUnit->getOwner(), 1);
+					}
+					else
+					{
+						pOwner->GetDiplomacyAI()->ChangeNumLandmarksBuiltForMe(m_pPlayer->GetID(), 1);
+					}
 				}
 			}
 		}
@@ -3418,16 +3432,9 @@ void CvPlayerCulture::DoArchaeologyChoice (ArchaeologyChoiceType eChoice)
 	break;
 	case ARCHAEOLOGY_ARTIFACT_PLAYER1:
 	{
-		if (GET_PLAYER(pPlot->getOwner()).isMajorCiv())
+		if (bUnhappyOwner)
 		{
-			if (pUnit && pPlot->getOwner() != pUnit->getOwner() && GET_PLAYER(pPlot->getOwner()).GetDiplomacyAI()->IsWaitingForDigChoice())
-			{
-				GET_PLAYER(pPlot->getOwner()).GetDiplomacyAI()->ChangeNegativeArchaeologyPoints(pUnit->getOwner(), 1);
-			}
-			else
-			{
-				GET_PLAYER(pPlot->getOwner()).GetDiplomacyAI()->SetWaitingForDigChoice(false);
-			}
+			pOwner->GetDiplomacyAI()->ChangeNegativeArchaeologyPoints(pUnit->getOwner(), 1);
 		}
 
 		pHousingCity = m_pPlayer->GetCulture()->GetClosestAvailableGreatWorkSlot(pPlot->getX(), pPlot->getY(), eArtArtifactSlot, &eBuildingToHouse, &iSlot);
@@ -3464,34 +3471,29 @@ void CvPlayerCulture::DoArchaeologyChoice (ArchaeologyChoiceType eChoice)
 		}
 #endif
 		pHousingCity->GetCityBuildings()->SetBuildingGreatWork(eBuildingToHouse, iSlot, iGWindex);
-		if (pUnit)
-			pPlot->setImprovementType(NO_IMPROVEMENT);
+		
+		pPlot->setImprovementType(NO_IMPROVEMENT);
 
 		pPlot->SetPlayerThatClearedDigHere(m_pPlayer->GetID());
 
 		pHousingCity->UpdateAllNonPlotYields(true);
+
 		if (pUnit)
 			pUnit->kill(true);
 	}
 	break;
 	case ARCHAEOLOGY_ARTIFACT_PLAYER2:
 	{
-		if (GET_PLAYER(pPlot->getOwner()).isMajorCiv())
+		if (bUnhappyOwner)
 		{
-			if (pUnit && pPlot->getOwner() != pUnit->getOwner() && GET_PLAYER(pPlot->getOwner()).GetDiplomacyAI()->IsWaitingForDigChoice())
-			{
-				GET_PLAYER(pPlot->getOwner()).GetDiplomacyAI()->ChangeNegativeArchaeologyPoints(pUnit->getOwner(), 1);
-			}
-			else
-			{
-				GET_PLAYER(pPlot->getOwner()).GetDiplomacyAI()->SetWaitingForDigChoice(false);
-			}
+			pOwner->GetDiplomacyAI()->ChangeNegativeArchaeologyPoints(pUnit->getOwner(), 1);
 		}
+
 		pHousingCity = m_pPlayer->GetCulture()->GetClosestAvailableGreatWorkSlot(pPlot->getX(), pPlot->getY(), eArtArtifactSlot, &eBuildingToHouse, &iSlot);
 		int iGWindex = pCulture->CreateGreatWork(eGreatArtifact, eClass, pPlot->GetArchaeologicalRecord().m_ePlayer2, pPlot->GetArchaeologicalRecord().m_eEra, "");
 		pHousingCity->GetCityBuildings()->SetBuildingGreatWork(eBuildingToHouse, iSlot, iGWindex);
-		if (pUnit)
-			pPlot->setImprovementType(NO_IMPROVEMENT);
+
+		pPlot->setImprovementType(NO_IMPROVEMENT);
 
 		pPlot->SetPlayerThatClearedDigHere(m_pPlayer->GetID());
 
@@ -3535,22 +3537,16 @@ void CvPlayerCulture::DoArchaeologyChoice (ArchaeologyChoiceType eChoice)
 
 	case ARCHAEOLOGY_ARTIFACT_WRITING:
 	{
-		if (GET_PLAYER(pPlot->getOwner()).isMajorCiv())
+		if (bUnhappyOwner)
 		{
-			if (pUnit && pPlot->getOwner() != pUnit->getOwner() && GET_PLAYER(pPlot->getOwner()).GetDiplomacyAI()->IsWaitingForDigChoice())
-			{
-				GET_PLAYER(pPlot->getOwner()).GetDiplomacyAI()->ChangeNegativeArchaeologyPoints(pUnit->getOwner(), 1);
-			}
-			else
-			{
-				GET_PLAYER(pPlot->getOwner()).GetDiplomacyAI()->SetWaitingForDigChoice(false);
-			}
+			pOwner->GetDiplomacyAI()->ChangeNegativeArchaeologyPoints(pUnit->getOwner(), 1);
 		}
+
 		pHousingCity = m_pPlayer->GetCulture()->GetClosestAvailableGreatWorkSlot(pPlot->getX(), pPlot->getY(), eWritingSlot, &eBuildingToHouse, &iSlot);
 		int iGWindex = pCulture->CreateGreatWork(eGreatArtifact, (GreatWorkClass)GC.getInfoTypeForString("GREAT_WORK_LITERATURE"), pPlot->GetArchaeologicalRecord().m_ePlayer1, pPlot->GetArchaeologicalRecord().m_eEra, "");
 		pHousingCity->GetCityBuildings()->SetBuildingGreatWork(eBuildingToHouse, iSlot, iGWindex);
-		if (pUnit)
-			pPlot->setImprovementType(NO_IMPROVEMENT);
+		
+		pPlot->setImprovementType(NO_IMPROVEMENT);
 
 		pPlot->SetPlayerThatClearedDigHere(m_pPlayer->GetID());
 
@@ -3596,16 +3592,9 @@ void CvPlayerCulture::DoArchaeologyChoice (ArchaeologyChoiceType eChoice)
 
 	case ARCHAEOLOGY_CULTURE_BOOST:
 	{
-		if (GET_PLAYER(pPlot->getOwner()).isMajorCiv())
+		if (bUnhappyOwner)
 		{
-			if (pUnit && pPlot->getOwner() != pUnit->getOwner() && GET_PLAYER(pPlot->getOwner()).GetDiplomacyAI()->IsWaitingForDigChoice())
-			{
-				GET_PLAYER(pPlot->getOwner()).GetDiplomacyAI()->ChangeNegativeArchaeologyPoints(pUnit->getOwner(), 1);
-			}
-			else
-			{
-				GET_PLAYER(pPlot->getOwner()).GetDiplomacyAI()->SetWaitingForDigChoice(false);
-			}
+			pOwner->GetDiplomacyAI()->ChangeNegativeArchaeologyPoints(pUnit->getOwner(), 1);
 		}
 
 		// Culture boost based on 8 previous turns; same as GREAT_WRITER; move to XML?
@@ -3621,8 +3610,7 @@ void CvPlayerCulture::DoArchaeologyChoice (ArchaeologyChoiceType eChoice)
 			pPlot->getEffectiveOwningCity()->ChangeJONSCultureStored(iValue);
 		}
 
-		if (pUnit)
-			pPlot->setImprovementType(NO_IMPROVEMENT);
+		pPlot->setImprovementType(NO_IMPROVEMENT);
 
 		pPlot->SetPlayerThatClearedDigHere(m_pPlayer->GetID());
 
@@ -3666,6 +3654,113 @@ void CvPlayerCulture::DoArchaeologyChoice (ArchaeologyChoiceType eChoice)
 	}
 	pPlot->setResourceType(NO_RESOURCE, 0);
 #endif
+}
+
+/// Does the plot's owner care if we dig up this antiquity site?
+bool CvPlayerCulture::IsOwnerUnhappyWithDig(CvPlot *pPlot) const
+{
+	// The owner will always care about artifacts, because they are meant to be revealed to everyone eventually; the main check will be for hidden artifacts.
+	PlayerTypes eOwner = pPlot->getOwner();
+	CvPlayer* pOwner = &GET_PLAYER(eOwner);
+
+	if (eOwner != NO_PLAYER && eOwner != m_pPlayer->GetID() && pOwner->isMajorCiv())
+	{
+		// Humans should always be allowed to care about foreign archaeologists
+		if (m_pPlayer->isHuman())
+		{
+			return true;
+		}
+
+		ResourceTypes ePlotResource = pPlot->getResourceType();
+		ResourceTypes eArtifactResource = static_cast<ResourceTypes>(GD_INT_GET(ARTIFACT_RESOURCE));
+		ResourceTypes eHiddenArtifactResource = static_cast<ResourceTypes>(GD_INT_GET(HIDDEN_ARTIFACT_RESOURCE));
+
+		if (!pOwner->IsResourceRevealed(eArtifactResource))
+		{
+			// If the owner can't even see artifacts, then assume all archaeologists are coming to steal artifacts
+			return true;
+		}
+		else if (!pOwner->IsResourceRevealed(eHiddenArtifactResource) && ePlotResource == eHiddenArtifactResource)
+		{
+			// If the owner can see artifacts, and the archaeologist is digging up something the owner can't see, it must be a hidden artifact
+			// Check to see if the owner will see hidden artifacts in the future
+
+			CvPlayerPolicies* pkPolicies = pOwner->GetPlayerPolicies();
+
+			// shortcut for VP (Artistry Finisher) / CP (Exploration Finisher). This is somewhat faster than going through the policy branch for-loop below.
+			CvResourceInfo* pHiddenArtifactResource = GC.getResourceInfo(eHiddenArtifactResource);
+			PolicyTypes eHiddenArtifactPolicy = (PolicyTypes)pHiddenArtifactResource->getPolicyReveal();
+			if (eHiddenArtifactPolicy == (PolicyTypes)GC.getInfoTypeForString("POLICY_AESTHETICS_FINISHER", true))
+			{
+				if (pkPolicies->IsPolicyBranchUnlocked((PolicyBranchTypes)GC.getInfoTypeForString("POLICY_BRANCH_AESTHETICS", true)))
+				{
+					return true;
+				}
+			}
+			else if (eHiddenArtifactPolicy == (PolicyTypes)GC.getInfoTypeForString("POLICY_EXPLORATION_FINISHER", true))
+			{
+				if (pkPolicies->IsPolicyBranchUnlocked((PolicyBranchTypes)GC.getInfoTypeForString("POLICY_BRANCH_EXPLORATION", true)))
+				{
+					return true;
+				}
+			}
+			else
+			// will hidden artifacts be revealed via a different policy (ie. it's been changed from VP/CP)?
+			{
+				CvPolicyEntry* pkHiddenArtifactPolicyInfo = GC.getPolicyInfo(eHiddenArtifactPolicy);
+				if (pkHiddenArtifactPolicyInfo)
+				{
+					PolicyBranchTypes eThisBranch = (PolicyBranchTypes) pkHiddenArtifactPolicyInfo->GetPolicyBranchType();
+					
+					if (eThisBranch != NO_POLICY_BRANCH_TYPE && eThisBranch == pkPolicies->IsPolicyBranchUnlocked(eThisBranch))
+					{
+						return true;
+					}
+					else if (eThisBranch == NO_POLICY_BRANCH_TYPE)
+					// is it a starter or finisher policy for a branch?
+					{
+						for(int iBranchLoop = 0; iBranchLoop < pkPolicies->GetPolicies()->GetNumPolicyBranches(); iBranchLoop++)
+						{
+							const PolicyBranchTypes eLoopBranch = static_cast<PolicyBranchTypes>(iBranchLoop);
+							CvPolicyBranchEntry* pkLoopPolicyBranch = GC.getPolicyBranchInfo(eLoopBranch);
+							if(pkLoopPolicyBranch)
+							{
+								if (pkPolicies->IsPolicyBranchUnlocked(eLoopBranch) && (pkLoopPolicyBranch->GetFreePolicy() == eHiddenArtifactPolicy || pkLoopPolicyBranch->GetFreeFinishingPolicy() == eHiddenArtifactPolicy))
+								{
+									return true;
+								}
+							}
+						}
+					}
+				}
+			}
+			// ... via alternate tech?
+			if (pOwner->GetPlayerTraits()->IsAlternateResourceTechs())
+			{
+				TechTypes eAltTech = pOwner->GetPlayerTraits()->GetAlternateResourceTechs(eHiddenArtifactResource).m_eTechReveal;
+				if (eAltTech != NO_TECH)
+				{
+					return true;
+				}
+			}
+			else
+			// ... via normal tech?
+			{
+				TechTypes eDefaultTech = (TechTypes)pHiddenArtifactResource->getTechReveal();
+				if (eDefaultTech != NO_TECH)
+				{
+					return true;
+				}
+			}
+		}
+		else
+		// archaeologist is coming for a revealed artifact or a revealed hidden artifact
+		{
+			return true;
+		}
+	}
+
+	return false;
 }
 
 // CULTURAL INFLUENCE

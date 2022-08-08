@@ -7233,14 +7233,19 @@ bool CvMinorCivAI::IsValidQuestForPlayer(PlayerTypes ePlayer, MinorCivQuestTypes
 
 		// Any nearby dig sites?
 		CvPlot* pDigPlot = GetBestNearbyDig();
-		if(pDigPlot == NULL)
+		if (pDigPlot == NULL)
 			return false;
+
+		// Don't ask for the dig site if it's in the player's own lands
+		if (pDigPlot->getOwner() == ePlayer)
+			return false;
+
 		// Can the player send an archaeologist?
 		for (int i = 0; i < GC.getNumBuildInfos(); i++)
 		{
 			BuildTypes eBuild = (BuildTypes)i;
 			CvBuildInfo* pBuildInfo = GC.getBuildInfo(eBuild);
-			if (pBuildInfo == NULL || eBuild == NO_BUILD)
+			if (eBuild == NO_BUILD || pBuildInfo == NULL)
 				continue;
 			// Does the build action create an archaeology prompt?
 			ImprovementTypes eImprovement = (ImprovementTypes)pBuildInfo->getImprovement();

@@ -6926,20 +6926,6 @@ void CvPlot::setResourceType(ResourceTypes eNewValue, int iResourceNum, bool bFo
 			}
 		}
 
-		// Dig cleared? To circumvent Firaxis hardcoding we need to mark whether a diplo penalty might apply now.
-		if (eNewValue == NO_RESOURCE && getOwner() != NO_PLAYER && GET_PLAYER(getOwner()).isMajorCiv() && GET_PLAYER(getOwner()).isAlive())
-		{
-			if (m_eResourceType == GD_INT_GET(ARTIFACT_RESOURCE))
-			{
-				GET_PLAYER(getOwner()).GetDiplomacyAI()->SetWaitingForDigChoice(true);
-			}
-			// Hidden sites are ignored unless owner has unlocked Artistry or is human
-			else if (m_eResourceType == GD_INT_GET(HIDDEN_ARTIFACT_RESOURCE) && (GET_PLAYER(getOwner()).isHuman() || GET_PLAYER(getOwner()).GetPlayerPolicies()->IsPolicyBranchUnlocked((PolicyBranchTypes)GC.getInfoTypeForString("POLICY_BRANCH_AESTHETICS", true))))
-			{
-				GET_PLAYER(getOwner()).GetDiplomacyAI()->SetWaitingForDigChoice(true);
-			}
-		}
-
 		m_eResourceType = eNewValue; // !!! Here is where we actually change the value
 
 		setNumResource(iResourceNum);
@@ -11706,7 +11692,8 @@ bool CvPlot::changeBuildProgress(BuildTypes eBuild, int iChange, PlayerTypes ePl
 				setImprovementType(eImprovement, ePlayer);
 
 				// Building a GP improvement on a resource needs to clear any previous pillaged state
-				if (GC.getImprovementInfo(eImprovement)->IsCreatedByGreatPerson()) {
+				if (GC.getImprovementInfo(eImprovement)->IsCreatedByGreatPerson())
+				{
 #if defined(MOD_EVENTS_TILE_IMPROVEMENTS)
 					SetImprovementPillaged(false, false);
 #else
@@ -11721,7 +11708,11 @@ bool CvPlot::changeBuildProgress(BuildTypes eBuild, int iChange, PlayerTypes ePl
 				{
 					if (getResourceType() != NO_RESOURCE)
 					{
-						setResourceType(NO_RESOURCE, 0);
+						// archaeological digs will remove resource later
+						if (!(newImprovementEntry.IsPromptWhenComplete() && GetArchaeologicalRecord().m_eArtifactType != NO_GREAT_WORK_ARTIFACT_CLASS))
+						{
+							setResourceType(NO_RESOURCE, 0);
+						}
 					}
 				}
 

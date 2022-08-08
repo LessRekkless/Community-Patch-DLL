@@ -237,6 +237,7 @@ public:
 	int GetWrittenArtifactCulture() const;
 
 	void DoArchaeologyChoice (ArchaeologyChoiceType eChoice);
+	bool IsOwnerUnhappyWithDig(CvPlot* plot) const;
 	//    AI support routine - move elsewhere later?
 	ArchaeologyChoiceType GetArchaeologyChoice(CvPlot *pPlot);
  
