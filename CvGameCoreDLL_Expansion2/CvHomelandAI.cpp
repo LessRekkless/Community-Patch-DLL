@@ -312,9 +312,11 @@ void CvHomelandAI::FindHomelandTargets()
 	m_TargetedAntiquitySites.clear();
 	m_TargetedNavalSentryPoints.clear();
 
+
+	PlayerTypes ePlotOwner = pLoopPlot->getOwner();
 	TeamTypes eTeam = m_pPlayer->getTeam();
 
-	// Does the civ have access to a civilization specific build for artifacts (if so, don't target antiquity sites for archaeologists)?
+	// Do we have access to a civilization-specific build for artifacts (if so, don't target antiquity sites for archaeologists)?
 	ResourceTypes eArtifactResourceType = static_cast<ResourceTypes>(GD_INT_GET(ARTIFACT_RESOURCE));
 	ResourceTypes eHiddenArtifactResourceType = static_cast<ResourceTypes>(GD_INT_GET(HIDDEN_ARTIFACT_RESOURCE));
 	CvImprovementEntry* pCivImproveArtifact = m_pPlayer->GetResourceImprovement(eArtifactResourceType, true);
@@ -347,7 +349,7 @@ void CvHomelandAI::FindHomelandTargets()
 				ResourceTypes eNonObsoleteResource = pLoopPlot->getResourceType(eTeam);
 				if(eNonObsoleteResource != NO_RESOURCE)
 				{
-					if(pLoopPlot->getOwner() == m_pPlayer->GetID())
+					if(ePlotOwner == m_pPlayer->GetID())
 					{
 						// Find proper improvement
 						for (int iJ = 0; iJ < GC.getNumBuildInfos(); iJ++)
@@ -385,18 +387,35 @@ void CvHomelandAI::FindHomelandTargets()
 			// ... antiquity site?
 			bool bArtifact = pLoopPlot->getResourceType(eTeam) == eArtifactResourceType;
 			bool bHiddenArtifact = pLoopPlot->getResourceType(eTeam) == eHiddenArtifactResourceType;
-			if ((bArtifact || bHiddenArtifact) &&
-				!(pLoopPlot->getOwner() == m_pPlayer->GetID() && ((bArtifact && pCivImproveArtifact) || (bHiddenArtifact && pCivImproveHiddenArtifact))) &&
-				!m_pPlayer->GetDiplomacyAI()->IsPlayerBadTheftTarget(pLoopPlot->getOwner(), THEFT_TYPE_ARTIFACT, pLoopPlot))
+			if (bArtifact || bHiddenArtifact)
 			{
-				newTarget.SetTargetType(AI_HOMELAND_TARGET_ANTIQUITY_SITE);
-				newTarget.SetTargetX(pLoopPlot->getX());
-				newTarget.SetTargetY(pLoopPlot->getY());
-				m_TargetedAntiquitySites.push_back(newTarget);
+				bool bAddSite = true;
+				// does the plot have a site that we can improve and is within workable range of one of our cities? If so, pass
+				bool bCanImprove = ((bArtifact && pCivImproveArtifact) || (bHiddenArtifact && pCivImproveHiddenArtifact)) && (ePlotOwner == m_pPlayer->GetID() || ePlotOwner == NO_PLAYER);
+				if (bCanImprove)
+				{
+					CvCity* pCity = m_pPlayer->GetClosestCityByPlots(pLoopPlot)->IsWithinWorkRange(pLoopPlot);
+					if (pCity && pCity->IsWithinWorkRange(pLoopPlot))
+					{
+						bAddSite = false;
+					}
+				}
+				// should we steal from the plot's owner?
+				if (bAddSite && !m_pPlayer->GetDiplomacyAI()->IsPlayerBadTheftTarget(ePlotOwner, THEFT_TYPE_ARTIFACT, pLoopPlot))
+				{
+					bAddSite = false;
+				}
+				if (bAddSite)
+				{
+					newTarget.SetTargetType(AI_HOMELAND_TARGET_ANTIQUITY_SITE);
+					newTarget.SetTargetX(pLoopPlot->getX());
+					newTarget.SetTargetY(pLoopPlot->getY());
+					m_TargetedAntiquitySites.push_back(newTarget);
+				}
 			}
 			// ... border fortification?
 			if (!pLoopPlot->isWater() &&
-				pLoopPlot->getOwner() == m_pPlayer->GetID() &&
+				ePlotOwner == m_pPlayer->GetID() &&
 				pLoopPlot->isValidMovePlot(m_pPlayer->GetID()) &&
 				pLoopPlot->isFortification(eTeam))
 			{
@@ -416,8 +435,8 @@ void CvHomelandAI::FindHomelandTargets()
 			if (!pLoopPlot->isWater() &&
 				pLoopPlot->isValidMovePlot(m_pPlayer->GetID()))
 			{
-				if ((pLoopPlot->getOwner() == NO_PLAYER && pLoopPlot->isAdjacentTeam(eTeam, true)) ||
-					(pLoopPlot->getOwner() == m_pPlayer->GetID() && pLoopPlot->IsAdjacentOwnedByTeamOtherThan(eTeam, true, true)))
+				if ((ePlotOwner == NO_PLAYER && pLoopPlot->isAdjacentTeam(eTeam, true)) ||
+					(ePlotOwner == m_pPlayer->GetID() && pLoopPlot->IsAdjacentOwnedByTeamOtherThan(eTeam, true, true)))
 				{
 					int iScore = TacticalAIHelpers::SentryScore(pLoopPlot, m_pPlayer->GetID());
 					if (iScore > 30)
