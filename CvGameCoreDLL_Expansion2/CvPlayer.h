@@ -2865,6 +2865,7 @@ public:
 	CvCity* GetClosestCityByPlots(const CvPlot* pPlot) const;
 	CvCity* GetClosestCityToUsByPlots(PlayerTypes eOtherPlayer) const;
 	CvCity* GetClosestCityToCity(const CvCity* pRefCity);
+	bool IsPlotWorkable(CvPlot* pPlot, bool bAllowNeutralPlot = false) const;
 
 	void setUnlockedGrowthAnywhereThisTurn(bool bValue);
 	bool unlockedGrowthAnywhereThisTurn() const;

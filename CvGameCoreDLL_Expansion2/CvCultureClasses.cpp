@@ -3300,7 +3300,7 @@ ArchaeologyChoiceType CvPlayerCulture::GetArchaeologyChoice(CvPlot *pPlot)
 	}
 
 	// Not a tile a city can work?  Go for artifact
-	else if (pPlot->getOwningCity() == NULL)
+	else if (!m_pPlayer->IsPlotWorkable(pPlot))
 	{
 		eRtnValue = ARCHAEOLOGY_ARTIFACT_PLAYER1;
 	}

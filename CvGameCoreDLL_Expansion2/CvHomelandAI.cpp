@@ -312,8 +312,6 @@ void CvHomelandAI::FindHomelandTargets()
 	m_TargetedAntiquitySites.clear();
 	m_TargetedNavalSentryPoints.clear();
 
-
-	PlayerTypes ePlotOwner = pLoopPlot->getOwner();
 	TeamTypes eTeam = m_pPlayer->getTeam();
 
 	// Do we have access to a civilization-specific build for artifacts (if so, don't target antiquity sites for archaeologists)?
@@ -329,6 +327,7 @@ void CvHomelandAI::FindHomelandTargets()
 	for(int iI = 0; iI < iNumPlots; iI++)
 	{
 		CvPlot* pLoopPlot = theMap.plotByIndexUnchecked(iI);
+		PlayerTypes ePlotOwner = pLoopPlot->getOwner();
 
 		if(pLoopPlot->isVisible(eTeam))
 		{
@@ -389,23 +388,11 @@ void CvHomelandAI::FindHomelandTargets()
 			bool bHiddenArtifact = pLoopPlot->getResourceType(eTeam) == eHiddenArtifactResourceType;
 			if (bArtifact || bHiddenArtifact)
 			{
-				bool bAddSite = true;
-				// does the plot have a site that we can improve and is within workable range of one of our cities? If so, pass
-				bool bCanImprove = ((bArtifact && pCivImproveArtifact) || (bHiddenArtifact && pCivImproveHiddenArtifact)) && (ePlotOwner == m_pPlayer->GetID() || ePlotOwner == NO_PLAYER);
-				if (bCanImprove)
-				{
-					CvCity* pCity = m_pPlayer->GetClosestCityByPlots(pLoopPlot)->IsWithinWorkRange(pLoopPlot);
-					if (pCity && pCity->IsWithinWorkRange(pLoopPlot))
-					{
-						bAddSite = false;
-					}
-				}
+				// does the plot have a site that we can improve and is within workable range of one of our cities?
 				// should we steal from the plot's owner?
-				if (bAddSite && !m_pPlayer->GetDiplomacyAI()->IsPlayerBadTheftTarget(ePlotOwner, THEFT_TYPE_ARTIFACT, pLoopPlot))
-				{
-					bAddSite = false;
-				}
-				if (bAddSite)
+				bool bCanImprove = ((bArtifact && pCivImproveArtifact) || (bHiddenArtifact && pCivImproveHiddenArtifact));
+				if (!(bCanImprove && m_pPlayer->IsPlotWorkable(pLoopPlot, true)) && 
+					!m_pPlayer->GetDiplomacyAI()->IsPlayerBadTheftTarget(ePlotOwner, THEFT_TYPE_ARTIFACT, pLoopPlot)) // this means the landmark decision rarely fires on the other side
 				{
 					newTarget.SetTargetType(AI_HOMELAND_TARGET_ANTIQUITY_SITE);
 					newTarget.SetTargetX(pLoopPlot->getX());

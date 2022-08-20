@@ -41037,6 +41037,21 @@ CvCity* CvPlayer::GetClosestCityToCity(const CvCity * pRefCity)
 	return pNeighborCity;
 }
 
+bool CvPlayer::IsPlotWorkable(CvPlot* pPlot, bool bAllowNeutralPlot) const
+{
+	if (!pPlot)
+		return false;
+	PlayerTypes ePlotOwner = pPlot->getOwner();
+	if (ePlotOwner != GetID() && (!bAllowNeutralPlot && ePlotOwner == NO_PLAYER))
+		return false;
+
+	CvCity* pCity = GetClosestCityByPlots(pPlot);
+	if (!pCity)
+		return false;
+
+	return pCity->IsWithinWorkRange(pPlot);
+}
+
 void CvPlayer::setUnlockedGrowthAnywhereThisTurn(bool bValue)
 {
 	m_bUnlockedGrowthAnywhereThisTurn = bValue;
