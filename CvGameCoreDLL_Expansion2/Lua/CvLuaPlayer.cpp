@@ -10403,6 +10403,16 @@ int CvLuaPlayer::lIsAskedToStopDigging(lua_State* L)
 	return 1;
 }
 
+int CvLuaPlayer::lIsStopDiggingMessageTooSoon(lua_State* L)
+{
+	CvPlayerAI* pkPlayer = GetInstance(L);
+	PlayerTypes eWithPlayer = (PlayerTypes) lua_tointeger(L, 2);
+	
+	const bool bTooSoon = pkPlayer->GetDiplomacyAI()->IsStopDiggingMessageTooSoon(eWithPlayer);
+	
+	lua_pushboolean(L, bTooSoon);
+}
+
 //------------------------------------------------------------------------------
 //void IsDoFMessageTooSoon(PlayerTypes eWithPlayer);
 int CvLuaPlayer::lIsDoFMessageTooSoon(lua_State* L)

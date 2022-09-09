@@ -340,7 +340,7 @@ function LeaderMessageHandler( iPlayer, iDiploUIState, szLeaderMessage, iAnimati
 				end
 
 				-- Ask the AI player not to dig up my artifacts
-				if (activePlayer:GetNegativeArchaeologyPoints(g_iAIPlayer) > 0 and not pAIPlayer:IsAskedToStopDigging(iActivePlayer)) then
+				if (not pAIPlayer:IsStopDiggingMessageTooSoon(iActivePlayer)) then
 					strButton5Text = Locale.ConvertTextKey("TXT_KEY_DIPLO_DISCUSS_MESSAGE_STOP_DIGGING");
 				end
 

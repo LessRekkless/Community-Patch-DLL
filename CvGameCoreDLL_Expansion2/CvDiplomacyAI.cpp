@@ -262,6 +262,7 @@ void CvDiplomacyAI::Init(CvPlayer* pPlayer)
 		m_abEverConvertedCity[iI] = false;
 
 		// No Digging Promise
+		m_aiNumCurrentDigs[iI] = 0;
 		m_aeNoDiggingPromiseState[iI] = NO_PROMISE_STATE;
 		m_aiNoDiggingPromiseTurn[iI] = -1;
 		m_abAskedNotToDig[iI] = false;
@@ -580,6 +581,7 @@ void CvDiplomacyAI::Serialize(DiplomacyAI& diplomacyAI, Visitor& visitor)
 	visitor(diplomacyAI.m_abEverConvertedCity);
 
 	// No Digging Promise
+	visitor(diplomacyAI.m_aiNumCurrentDigs);
 	visitor(diplomacyAI.m_aeNoDiggingPromiseState);
 	visitor(diplomacyAI.m_aiNoDiggingPromiseTurn);
 	visitor(diplomacyAI.m_abAskedNotToDig);
@@ -6236,6 +6238,30 @@ void CvDiplomacyAI::SetEverConvertedCity(PlayerTypes ePlayer, bool bValue)
 // Digging Promise
 // ////////////////////////////////////
 
+// does ePlayer currently have archaeologists digging in our land?
+bool CvDiplomacyAI::IsPlayerCurrentlyDigging(PlayerTypes ePlayer) const
+{
+	if (ePlayer < 0 || ePlayer >= MAX_MAJOR_CIVS) return false;
+	return m_aiNumCurrentDigs[ePlayer] > 0;
+}
+
+int CvDiplomacyAI::GetPlayerNumCurrentDigs(PlayerTypes ePlayer) const
+{
+	if (ePlayer < 0 || ePlayer >= MAX_MAJOR_CIVS) return -1;
+	return m_aiNumCurrentDigs[ePlayer];
+}
+
+void CvDiplomacyAI::SetPlayerNumCurrentDigs(PlayerTypes ePlayer, int iValue)
+{
+	if (ePlayer < 0 || ePlayer >= MAX_MAJOR_CIVS) return;
+	m_aiNumCurrentDigs[ePlayer] = max(iValue, 0);
+}
+
+void CvDiplomacyAI::ChangePlayerNumCurrentDigs(PlayerTypes ePlayer, int iChange)
+{
+	SetPlayerNumCurrentDigs(ePlayer, GetPlayerNumCurrentDigs(ePlayer) + iChange);
+}
+
 /// What is the state of ePlayer's no digging promise to us
 PromiseStates CvDiplomacyAI::GetPlayerNoDiggingPromiseState(PlayerTypes ePlayer) const
 {
@@ -6335,6 +6361,21 @@ void CvDiplomacyAI::SetPlayerAskedNotToDig(PlayerTypes ePlayer, bool bValue)
 {
 	if (ePlayer < 0 || ePlayer >= MAX_MAJOR_CIVS) return;
 	m_abAskedNotToDig[ePlayer] = bValue;
+}
+
+/// Too soon for another Ask Not to Dig Request from ePlayer?
+bool CvDiplomacyAI::IsStopDiggingMessageTooSoon(PlayerTypes ePlayer) const
+{
+	if (IsPlayerAskedNotToDig(ePlayer))
+		return true;
+
+	if (GET_PLAYER(ePlayer).GetDiplomacyAI()->GetPlayerNumCurrentDigs(GetID()) > 0)
+		return false;
+
+	if (GET_PLAYER(ePlayer).GetDiplomacyAI()->GetNegativeArchaeologyPoints(GetID()) > 0)
+		return false;
+
+	return true;
 }
 
 // ////////////////////////////////////
@@ -33290,7 +33331,7 @@ void CvDiplomacyAI::DoConvertedMyCityStatement(PlayerTypes ePlayer, DiploStateme
 	}
 }
 
-/// Possible Contact Statement - They dug up one of our artifacts, and we want them to stop that
+/// Possible Contact Statement - They are digging / dug up one of our artifacts, and we want them to stop that
 void CvDiplomacyAI::DoDugUpMyYardStatement(PlayerTypes ePlayer, DiploStatementTypes& eStatement)
 {
 	CvAssertMsg(ePlayer >= 0, "DIPLOMACY_AI: Invalid Player Index.  Please send slewis your save file and version.");
@@ -33298,7 +33339,8 @@ void CvDiplomacyAI::DoDugUpMyYardStatement(PlayerTypes ePlayer, DiploStatementTy
 
 	if (eStatement == NO_DIPLO_STATEMENT_TYPE)
 	{
-		if (GetNumArtifactsEverDugUp(ePlayer) > 0) // TODO: arch
+		if ((IsPlayerCurrentlyDigging(ePlayer) && GetSurfaceApproach(ePlayer) <= CIV_APPROACH_NEUTRAL && GetCivOpinion(ePlayer) <= CIV_OPINION_COMPETITOR) ||
+			(GetNumArtifactsEverDugUp(ePlayer) > 0))
 		{
 			// Have we asked you to make a promise before?
 			if (GetPlayerNoDiggingPromiseState(ePlayer) == NO_PROMISE_STATE && !GET_PLAYER(ePlayer).GetDiplomacyAI()->IsPlayerAskedNotToDig(GetID()))

@@ -603,7 +603,7 @@ g_diploProcesses = {
 		Controls.Button4:SetHide( g_diploPlayer:IsDontSettleMessageTooSoon(g_activePlayerID) )
 
 		-- Ask the AI player not to dig up my artifacts
-		Controls.Button5:SetHide( not bnw_mode or g_activePlayer:GetNegativeArchaeologyPoints(g_diploPlayerID) <= 0 or g_diploPlayer:IsAskedToStopDigging(g_activePlayerID) )
+		Controls.Button5:SetHide( not bnw_mode or g_diploPlayer:IsStopDiggingMessageTooSoon(g_activePlayerID) )
 
 		-- If we're teammates, there's no need to work together or against anyone
 		if g_diploTeamID == g_activeTeamID then
@@ -655,7 +655,7 @@ g_diploProcesses = {
 				Game.DoFromUIDiploEvent( FromUIDiploEventTypes.FROM_UI_DIPLO_EVENT_HUMAN_DISCUSSION_DONT_SETTLE, g_diploPlayerID, 0, 0 )
 			end
 		elseif buttonID == 5 then
-			if bnw_mode and g_activePlayer:GetNegativeArchaeologyPoints(g_diploPlayerID) > 0 and not g_diploPlayer:IsAskedToStopDigging(g_activePlayerID) then
+			if bnw_mode and not g_diploPlayer:IsStopDiggingMessageTooSoon(g_activePlayerID) then
 				Game.DoFromUIDiploEvent( FromUIDiploEventTypes.FROM_UI_DIPLO_EVENT_HUMAN_DISCUSSION_STOP_DIGGING, g_diploPlayerID, 0, 0 )
 			end
 		elseif buttonID == 6 then

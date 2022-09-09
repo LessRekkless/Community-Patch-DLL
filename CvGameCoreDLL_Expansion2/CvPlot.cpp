@@ -11692,17 +11692,38 @@ bool CvPlot::changeBuildProgress(BuildTypes eBuild, int iChange, PlayerTypes ePl
 
 	if(iChange != 0)
 	{
+		ImprovementTypes eImprovement = (ImprovementTypes)pkBuildInfo->getImprovement();
+		
 		// wipe out related build progress when starting a new build
 		if (getBuildProgress(eBuild) == 0)
 		{
 			SilentlyResetAllBuildProgress(eBuild);
 		}
-		ImprovementTypes eImprovement = (ImprovementTypes)pkBuildInfo->getImprovement();
+
+		// Update Diplomacy AI regarding current builder
+		PlayerTypes eOldBuilder = GetPlayerThatBuiltImprovement();
+		if (getOwner()!= NO_PLAYER && ePlayer != NO_PLAYER && ePlayer != eOldBuilder && eImprovement != NO_IMPROVEMENT)
+		{
+			CvImprovementEntry& newImprovementEntry = *GC.getImprovementInfo(eImprovement);
+			// Archaeological Dig
+			if (newImprovementEntry.IsPromptWhenComplete() && GetArchaeologicalRecord().m_eArtifactType != NO_GREAT_WORK_ARTIFACT_CLASS)
+				{
+					GET_PLAYER(getOwner()).GetDiplomacyAI()->ChangePlayerNumCurrentDigs(ePlayer, 1);
+					if (getBuildProgress(eBuild) > 0)
+					{
+						GET_PLAYER(getOwner()).GetDiplomacyAI()->ChangePlayerNumCurrentDigs(ePlayer, -1);
+					}
+				}
+			}
+		}
 
 		m_iLastTurnBuildChanged = GC.getGame().getGameTurn();
 
 		m_buildProgress[eBuild] += iChange;
 		CvAssert(getBuildProgress(eBuild) >= 0);
+
+		// Track player that most recently worked on improvement here
+		SetPlayerThatBuiltImprovement(ePlayer);
 
 		if(getBuildProgress(eBuild) >= getBuildTime(eBuild, ePlayer))
 		{

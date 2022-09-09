@@ -1,5 +1,5 @@
 /*	-------------------------------------------------------------------------------------------------------
-	© 1991-2012 Take-Two Interactive Software and its subsidiaries.  Developed by Firaxis Games.  
+	Â© 1991-2012 Take-Two Interactive Software and its subsidiaries.  Developed by Firaxis Games.  
 	Sid Meier's Civilization V, Civ, Civilization, 2K Games, Firaxis Games, Take-Two Interactive Software 
 	and their respective logos are all trademarks of Take-Two interactive Software, Inc.  
 	All other marks and trademarks are the property of their respective owners.  
@@ -689,6 +689,10 @@ public:
 	void SetEverConvertedCity(PlayerTypes ePlayer, bool bValue);
 
 	// Digging Promise
+	bool IsPlayerCurrentlyDigging(PlayerTypes ePlayer) const;
+	int GetPlayerNumCurrentDigs(PlayerTypes ePlayer) const;
+	void SetPlayerNumCurrentDigs(PlayerTypes ePlayer, int iValue);
+	void ChangePlayerNumCurrentDigs(PlayerTypes ePlayer, int iChange);
 	PromiseStates GetPlayerNoDiggingPromiseState(PlayerTypes ePlayer) const;
 	void SetPlayerNoDiggingPromiseState(PlayerTypes ePlayer, PromiseStates ePromiseState);
 	int GetPlayerNoDiggingPromiseTurn(PlayerTypes ePlayer) const;
@@ -698,6 +702,7 @@ public:
 	bool IsPlayerIgnoredNoDiggingPromise(PlayerTypes ePlayer) const;
 	bool IsPlayerAskedNotToDig(PlayerTypes ePlayer) const;
 	void SetPlayerAskedNotToDig(PlayerTypes ePlayer, bool bValue);
+	bool IsStopDiggingMessageTooSoon(PlayerTypes ePlayer) const;
 
 	// Coop War Promise
 	bool IsPlayerBrokenCoopWarPromise(PlayerTypes ePlayer) const;
@@ -2024,6 +2029,7 @@ private:
 	bool m_abEverConvertedCity[MAX_MAJOR_CIVS];
 
 	// No Digging Promise
+	int m_aiNumCurrentDigs[MAX_MAJOR_CIVS];
 	char m_aeNoDiggingPromiseState[MAX_MAJOR_CIVS];
 	int m_aiNoDiggingPromiseTurn[MAX_MAJOR_CIVS];
 	bool m_abAskedNotToDig[MAX_MAJOR_CIVS];
