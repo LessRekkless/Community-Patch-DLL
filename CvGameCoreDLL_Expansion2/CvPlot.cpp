@@ -203,7 +203,6 @@ void CvPlot::reset()
 	m_eFeatureType = NO_FEATURE;
 	m_eResourceType = NO_RESOURCE;
 	m_eImprovementType = NO_IMPROVEMENT;
-	m_eImprovementTypeUnderConstruction = NO_IMPROVEMENT;
 	m_ePlayerBuiltImprovement = NO_PLAYER;
 	m_ePlayerResponsibleForImprovement = NO_PLAYER;
 	m_ePlayerResponsibleForRoute = NO_PLAYER;
@@ -7277,12 +7276,6 @@ void CvPlot::setImprovementType(ImprovementTypes eNewValue, PlayerTypes eBuilder
 		PlayerTypes owningPlayerID = getOwner();
 		if(eOldImprovement != NO_IMPROVEMENT)
 		{
-#if defined(MOD_BALANCE_CORE)
-			if(IsImprovementPillaged())
-			{
-				SetImprovementPillaged(false, false);
-			}
-#endif
 			CvImprovementEntry& oldImprovementEntry = *GC.getImprovementInfo(eOldImprovement);
 
 			DomainTypes eTradeRouteDomain = NO_DOMAIN;
@@ -11621,9 +11614,41 @@ bool CvPlot::setRevealedRouteType(TeamTypes eTeam, RouteTypes eNewValue)
 }
 
 //	--------------------------------------------------------------------------------
-void CvPlot::SilentlyResetAllBuildProgress()
+//	Reset all current builds related to route or improvement, based on eBuild.
+void CvPlot::SilentlyResetAllBuildProgress(BuildTypes eBuild)
 {
-	m_buildProgress.clear();
+	if (eBuild == NO_BUILD)
+	{
+		m_buildProgress.clear();
+		return;
+	}
+
+	CvBuildInfo* pkBuildInfo = GC.getBuildInfo(eBuild);
+	if(pkBuildInfo == NULL)
+		return;
+	
+	bool bBuildImprovement = pkBuildInfo->getImprovement() != NO_IMPROVEMENT;
+	bool bBuildRoute = pkBuildInfo->getRoute() != NO_ROUTE;
+
+	for (map<BuildTypes, int>::iterator it = m_buildProgress.begin(), next_it = it; it != m_buildProgress.end(); it = next_it)
+	{
+		++next_it;
+
+		CvBuildInfo* pkIterInfo = GC.getBuildInfo(it->first);
+		if(pkIterInfo == NULL)
+			continue;
+
+		bool bIterImprovement = pkIterInfo->getImprovement() != NO_IMPROVEMENT;
+		bool bIterRoute = pkIterInfo->getRoute() != NO_ROUTE;
+
+		// Two groupings: Improvement (build or repair), Route(build, repair or remove)
+		if ((bBuildImprovement && (bIterImprovement || (pkIterInfo->isRepair() && !IsRoutePillaged()))) ||
+			(bBuildRoute && (bIterRoute || (pkIterInfo->isRepair() && !IsImprovementPillaged()) || pkIterInfo->IsRemoveRoute())) ||
+			(pkBuildInfo->IsRemoveRoute() && (bIterRoute || (pkIterInfo->isRepair() && !IsImprovementPillaged()))))
+		{
+			m_buildProgress.erase(it);
+		}
+	}
 }
 
 
@@ -11667,15 +11692,12 @@ bool CvPlot::changeBuildProgress(BuildTypes eBuild, int iChange, PlayerTypes ePl
 
 	if(iChange != 0)
 	{
-		ImprovementTypes eImprovement = (ImprovementTypes)pkBuildInfo->getImprovement();
-		if (eImprovement != NO_IMPROVEMENT)
+		// wipe out related build progress when starting a new build
+		if (getBuildProgress(eBuild) == 0)
 		{
-			if (eImprovement != m_eImprovementTypeUnderConstruction)
-			{
-				SilentlyResetAllBuildProgress();
-				m_eImprovementTypeUnderConstruction = eImprovement;
-			}
+			SilentlyResetAllBuildProgress(eBuild);
 		}
+		ImprovementTypes eImprovement = (ImprovementTypes)pkBuildInfo->getImprovement();
 
 		m_iLastTurnBuildChanged = GC.getGame().getGameTurn();
 
@@ -11690,16 +11712,6 @@ bool CvPlot::changeBuildProgress(BuildTypes eBuild, int iChange, PlayerTypes ePl
 			if (eImprovement != NO_IMPROVEMENT)
 			{
 				setImprovementType(eImprovement, ePlayer);
-
-				// Building a GP improvement on a resource needs to clear any previous pillaged state
-				if (GC.getImprovementInfo(eImprovement)->IsCreatedByGreatPerson())
-				{
-#if defined(MOD_EVENTS_TILE_IMPROVEMENTS)
-					SetImprovementPillaged(false, false);
-#else
-					SetImprovementPillaged(false);
-#endif
-				}
 
 				CvImprovementEntry& newImprovementEntry = *GC.getImprovementInfo(eImprovement);
 
@@ -12612,7 +12624,6 @@ void CvPlot::Serialize(Plot& plot, Visitor& visitor)
 	visitor.template as<FeatureTypes>(plot.m_eFeatureType);
 	visitor.template as<ResourceTypes>(plot.m_eResourceType);
 	visitor.template as<ImprovementTypes>(plot.m_eImprovementType);
-	visitor.template as<ImprovementTypes>(plot.m_eImprovementTypeUnderConstruction);
 
 	visitor(plot.m_ePlayerBuiltImprovement);
 	visitor(plot.m_ePlayerResponsibleForImprovement);
