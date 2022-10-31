@@ -112,12 +112,12 @@ WHERE Tag = 'TXT_KEY_PROMOTION_SPAWN_GENERALS_II_HELP';
 
 -- Naval Melee Units
 UPDATE Language_en_US
-SET Text = 'The Trireme is the first naval unit available to civilizations in the game. It is a melee attack unit, engaging units at sea or Cities (but it has no ranged attack). The Trireme is useful for clearing barbarian ships out of home waters and for limited exploration (it cannot end its turn on Deep Ocean Tiles outside of the City borders unless it is from Polynesia).'
+SET Text = 'The Trireme is the first naval unit available to Civilizations in the game. It is a melee attack unit, engaging units at sea or Cities (but it has no ranged attack). The Trireme is useful for clearing barbarian ships out of home waters and for limited exploration (it cannot end its turn on Deep Ocean Tiles outside of the City borders unless it is from Polynesia).'
 WHERE Tag = 'TXT_KEY_UNIT_TRIREME_STRATEGY';
 
 -- Naval Ranged Units
 UPDATE Language_en_US
-SET Text = 'The Galleass is the first naval unit with a ranged attack generally available to the civilizations in the game. It is much stronger than earlier naval units but a bit slower. It cannot initiate melee combat. The Galleass is useful for clearing enemy ships out of shallow waters. It cannot end its turn on Deep Ocean Tiles unless it is from Polynesia.'
+SET Text = 'The Galleass is the first naval unit with a ranged attack generally available to the Civilizations in the game. It is much stronger than earlier naval units but a bit slower. It cannot initiate melee combat. The Galleass is useful for clearing enemy ships out of shallow waters. It cannot end its turn on Deep Ocean Tiles unless it is from Polynesia.'
 WHERE Tag = 'TXT_KEY_UNIT_GALLEASS_STRATEGY';
 
 -- Ocean travel change
@@ -187,7 +187,7 @@ SET Text = 'Powerful Renaissance Era Siege Unit. Moves at half-speed in enemy te
 WHERE Tag = 'TXT_KEY_UNIT_HELP_CANNON';
 
 UPDATE Language_en_US
-SET Text = 'The Cannon is an important mid-game siege unit, devastating against civilizations which have not yet acquired them. Like other siege units, the Cannon moves at half-speed in enemy territory. The Cannon remains potent into the Industrial Era. It cannot see as far as other units, and should be protected with melee units.'
+SET Text = 'The Cannon is an important mid-game siege unit, devastating against Civilizations which have not yet acquired them. Like other siege units, the Cannon moves at half-speed in enemy territory. The Cannon remains potent into the Industrial Era. It cannot see as far as other units, and should be protected with melee units.'
 WHERE Tag = 'TXT_KEY_UNIT_CANNON_STRATEGY';
 
 UPDATE Language_en_US
@@ -225,7 +225,7 @@ SET Text = 'Provides additional spies based on a fraction of the number of City-
 WHERE Tag = 'TXT_KEY_BUILDING_INTELLIGENCE_AGENCY_HELP';
 
 UPDATE Language_en_US
-SET Text = 'An important defensive National Wonder for a technology-driven civilization. The National Intelligence Agency provides additional spies, levels up all your existing spies, and provides a 15% reduction in enemy spy effectiveness. A civilization must have a Police Station in all Cities before it can construct the National Intelligence Agency.'
+SET Text = 'An important defensive National Wonder for a technology-driven Civilization. The National Intelligence Agency provides additional spies, levels up all your existing spies, and provides a 15% reduction in enemy spy effectiveness. A Civilization must have a Police Station in all Cities before it can construct the National Intelligence Agency.'
 WHERE Tag = 'TXT_KEY_BUILDING_INTELLIGENCE_AGENCY_STRATEGY';
 
 
@@ -275,7 +275,7 @@ WHERE Tag = 'TXT_KEY_CIVILOPEDIA_SPECIALABILITIES_MOVEMENT';
 -- Improvements
 
 UPDATE Language_en_US
-SET Text = 'A Citadel is a mighty fortification that can only be constructed by a [ICON_GREAT_GENERAL] Great General. You can construct a Citadel anywhere within your territory.[NEWLINE][NEWLINE]Upon constructing the Citadel, your Culture borders will also expand to surround the Citadel on all sides by one hex. If the new Culture border claims hexes already owned by another civilization, you will incur a diplomatic penalty as a result. Any unit stationed within a Citadel receives a 100% defensive strength bonus. Additionally, any enemy unit which ends its turn next to a Citadel takes 30 damage (damage does not stack with other Citadels).[NEWLINE][NEWLINE] The Acropolis in Athens, Greece, is an example of an early powerful Citadel. Such structures were almost impossible to take by direct attack, and they were capable of withstanding protracted sieges before they fell.'
+SET Text = 'A Citadel is a mighty fortification that can only be constructed by a [ICON_GREAT_GENERAL] Great General. You can construct a Citadel anywhere within your territory.[NEWLINE][NEWLINE]Upon constructing the Citadel, your Culture borders will also expand to surround the Citadel on all sides by one hex. If the new Culture border claims hexes already owned by another Civilization, you will incur a diplomatic penalty as a result. Any unit stationed within a Citadel receives a 100% defensive strength bonus. Additionally, any enemy unit which ends its turn next to a Citadel takes 30 damage (damage does not stack with other Citadels).[NEWLINE][NEWLINE] The Acropolis in Athens, Greece, is an example of an early powerful Citadel. Such structures were almost impossible to take by direct attack, and they were capable of withstanding protracted sieges before they fell.'
 WHERE Tag = 'TXT_KEY_CIV5_IMPROVEMENTS_CITADEL_TEXT';
 
 UPDATE Language_en_US
@@ -530,7 +530,7 @@ SET Text = 'Allows the other player''s military or civilian Units to pass throug
 WHERE Tag = 'TXT_KEY_DIPLO_OPEN_BORDERS_TT';
 
 UPDATE Language_en_US
-SET Text = 'If either player is attacked by another major civilization, the other player will immediately and automatically go to war with the aggressor. This agreement lasts {1_Num} turns.[NEWLINE][NEWLINE]You can make Defensive Pacts with a maximum of [COLOR_CYAN]{2_Num}[ENDCOLOR] civs. This is based on the number of living, non-vassal civs in the world.'
+SET Text = 'If either player is attacked by another Major Civilization, the other player will immediately and automatically go to war with the aggressor. This agreement lasts {1_Num} turns.[NEWLINE][NEWLINE]You can make Defensive Pacts with a maximum of [COLOR_CYAN]{2_Num}[ENDCOLOR] Civilizations. This is based on the number of living, non-Vassal Civilizations in the world.'
 WHERE Tag = 'TXT_KEY_DIPLO_DEF_PACT_TT';
 
 UPDATE Language_en_US
@@ -667,7 +667,7 @@ SET Text = '[COLOR_YELLOW]Forts[ENDCOLOR]'
 WHERE Tag = 'TXT_KEY_COMBAT_FORT_HEADING3_TITLE';
 
 UPDATE Language_en_US
-SET Text = 'Once a civ has acquired the Engineering technology, workers can construct "forts" in friendly or neutral territory. Forts provide a hefty defensive bonus to units occupying them. Forts cannot be constructed in enemy territory. They can be constructed atop resources. [COLOR_YELLOW]Melee Units attacking from a Fort don''t leave the Fort even if they destroy the attacked enemy unit.[ENDCOLOR]'
+SET Text = 'Once a Civilization has acquired the Engineering technology, workers can construct "forts" in friendly or neutral territory. Forts provide a hefty defensive bonus to units occupying them. Forts cannot be constructed in enemy territory. They can be constructed atop resources. [COLOR_YELLOW]Melee Units attacking from a Fort don''t leave the Fort even if they destroy the attacked enemy unit.[ENDCOLOR]'
 WHERE Tag = 'TXT_KEY_COMBAT_FORT_HEADING3_BODY';
 
 UPDATE Language_en_US
@@ -715,11 +715,11 @@ SET Text = '[COLOR_YELLOW]Experience Points Limitations[ENDCOLOR]'
 WHERE Tag = 'TXT_KEY_BARBARIAN_POINTLIMITS_HEADING3_TITLE';
 
 UPDATE Language_en_US
-SET Text = 'Each civilization in Civilization V has one or more special "national units." These units are unique to that civilization, and they are in some way superior to the standard version of that unit. The American civilization, for example, has a Minuteman unit, which is superior to the standard Musketman available to other civs. The Greek civ has the Hoplite unit, which replaces the Spearman.[NEWLINE][NEWLINE]See each civilization''s Civilopedia entry to discover its special unit.'
+SET Text = 'Each civilization in Civilization V has one or more special "national units." These units are unique to that Civilization, and they are in some way superior to the standard version of that unit. The American civilization, for example, has a Minuteman unit, which is superior to the standard Musketman available to other Civilizations. The Greek Civilization has the Hoplite unit, which replaces the Spearman.[NEWLINE][NEWLINE]See each civilization''s Civilopedia entry to discover its special unit.'
 WHERE Tag = 'TXT_KEY_UNITS_NATIONAL_HEADING2_BODY';
 
 UPDATE Language_en_US
-SET Text = 'If another civ has captured a City-State and you capture it from them, you have the option to "liberate" that City-State. If you do so, you will receive a large amount of [ICON_INFLUENCE] Influence from the City-State, usually enough to make you [COLOR_POSITIVE_TEXT]Allies[ENDCOLOR] with it.'
+SET Text = 'If another Civilization has captured a City-State and you capture it from them, you have the option to "liberate" that City-State. If you do so, you will receive a large amount of [ICON_INFLUENCE] Influence from the City-State, usually enough to make you [COLOR_POSITIVE_TEXT]Allies[ENDCOLOR] with it.'
 WHERE Tag = 'TXT_KEY_CITYSTATE_LIBERATING_HEADING2_BODY';
 
 
@@ -735,7 +735,7 @@ WHERE Tag = 'TXT_KEY_CULTURE_FROM_GREAT_WORKS';
 
 -- Economic Advisor
 UPDATE Language_en_US
-SET Text = 'Our economy is being hamstrung by the number of units that we have. We should disband any unneeded units so that our civilization can operate at full capacity.'
+SET Text = 'Our economy is being hamstrung by the number of units that we have. We should disband any unneeded units so that our Civilization can operate at full capacity.'
 WHERE Tag = 'TXT_KEY_ECONOMICAISTRATEGY_TOO_MANY_UNITS';
 
 -- Reversed Tourism for Open Borders
@@ -774,7 +774,7 @@ WHERE Tag = 'TXT_KEY_LEAGUE_OVERVIEW_PROPOSAL_OPINIONS_NEGATIVE';
 
 -- Shorten the overview text to make room
 UPDATE Language_en_US
-SET Text = '[NEWLINE][NEWLINE]Our knowledge of other Civs'' desires:'
+SET Text = '[NEWLINE][NEWLINE]Our knowledge of other Civilizations'' desires:'
 WHERE Tag = 'TXT_KEY_LEAGUE_OVERVIEW_VOTE_OPINIONS';
 
 

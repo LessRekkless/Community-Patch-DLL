@@ -3033,7 +3033,7 @@
 			<Text>Warscore must be at least {1_Num}. Current Warscore: {2_Num}.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_DIPLO_WAR_SCORE_TEAM">
-			<Text>Warscore against all civs on this team must be at least {1_Num}. Lowest Warscore: {2_Num}.</Text>
+			<Text>Warscore against all Civilizations on this team must be at least {1_Num}. Lowest Warscore: {2_Num}.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_DIPLO_NO_WAR_VASSAL">
 			<Text>Vassals cannot declare war.</Text>
@@ -3391,10 +3391,10 @@
 			<Text>We previously defeated their proposal in the World Congress.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_DIPLO_GOOD_VOTING_HISTORY">
-			<Text>Your votes supported their civ's interests in the World Congress.</Text>
+			<Text>Your votes supported their Civilization's interests in the World Congress.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_DIPLO_BAD_VOTING_HISTORY">
-			<Text>Your votes opposed their civ's interests in the World Congress.</Text>
+			<Text>Your votes opposed their Civilization's interests in the World Congress.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_DIPLO_SANCTIONED_THEM_SUCCESSFUL">
 			<Text>We placed sanctions on them in the World Congress.</Text>
@@ -3435,10 +3435,10 @@
 			<Text>We previously defeated their proposal in the United Nations.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_DIPLO_GOOD_VOTING_HISTORY_UN">
-			<Text>Your votes supported their civ's interests in the United Nations.</Text>
+			<Text>Your votes supported their interests in the United Nations.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_DIPLO_BAD_VOTING_HISTORY_UN">
-			<Text>Your votes opposed their civ's interests in the United Nations.</Text>
+			<Text>Your votes opposed their interests in the United Nations.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_DIPLO_SANCTIONED_THEM_SUCCESSFUL_UN">
 			<Text>We placed sanctions on them in the United Nations.</Text>
@@ -3463,7 +3463,7 @@
 
 		<!-- Shorten this to make room for opinion display -->
 		<Row Tag="TXT_KEY_LEAGUE_OVERVIEW_VOTE_OPINIONS_UNKNOWN">
-			<Text>[NEWLINE][ICON_BULLET]Unknown: {1_NumDelegates} {1_NumDelegates: plural 1?Delegate; other?Delegates;} ({2_NumCivs} {2_NumCivs: plural 1?Civ; other?Civs;})</Text>
+			<Text>[NEWLINE][ICON_BULLET]Unknown: {1_NumDelegates} {1_NumDelegates: plural 1?Delegate; other?Delegates;} ({2_NumCivs} {2_NumCivs: plural 1?Civilization; other?Civilizations;})</Text>
 		</Row>
 
 		<!-- New Warmonger Hate Descriptors -->
@@ -6309,25 +6309,25 @@
 			<Text>Historic Event</Text>
 		</Row>
 		<Row Tag="TXT_KEY_TOURISM_EVENT_ERA">
-			<Text>Because your Civilization entered a new [ICON_RESEARCH] Era, your [ICON_TOURISM] Tourism with all known Civs has increased by {1_Num} (before Tourism modifiers)!</Text>
+			<Text>Because your Civilization entered a new [ICON_RESEARCH] Era, your [ICON_TOURISM] Tourism with all known Civilizations has increased by {1_Num} (before Tourism modifiers)!</Text>
 		</Row>
 		<Row Tag="TXT_KEY_TOURISM_EVENT_WAR">
-			<Text>Because your Civilization won a [ICON_VICTORY_DOMINATION] War (Warscore of 25 or more), your [ICON_TOURISM] Tourism with all known Civs has increased by {1_Num} (before Tourism modifiers)!</Text>
+			<Text>Because your Civilization won a [ICON_VICTORY_DOMINATION] War (Warscore of 25 or more), your [ICON_TOURISM] Tourism with all known Civilizations has increased by {1_Num} (before Tourism modifiers)!</Text>
 		</Row>
 		<Row Tag="TXT_KEY_TOURISM_EVENT_GP">
-			<Text>Because a [ICON_GREAT_PEOPLE] Great Person was born in your Civilization, your [ICON_TOURISM] Tourism with all known Civs has increased by {1_Num} (before Tourism modifiers)!</Text>
+			<Text>Because a [ICON_GREAT_PEOPLE] Great Person was born in your Civilization, your [ICON_TOURISM] Tourism with all known Civilizations has increased by {1_Num} (before Tourism modifiers)!</Text>
 		</Row>
 		<Row Tag="TXT_KEY_TOURISM_EVENT_WW">
-			<Text>Because your Civilization constructed a [ICON_GOLDEN_AGE] World Wonder, your [ICON_TOURISM] Tourism with all known Civs has increased by {1_Num} (before Tourism modifiers)!</Text>
+			<Text>Because your Civilization constructed a [ICON_GOLDEN_AGE] World Wonder, your [ICON_TOURISM] Tourism with all known Civilizations has increased by {1_Num} (before Tourism modifiers)!</Text>
 		</Row>
 		<Row Tag="TXT_KEY_TOURISM_EVENT_CS">
-			<Text>Because your Civilization completed a Global [ICON_CITY_STATE] City-State Quest, your [ICON_TOURISM] Tourism with all known Civs has increased by {1_Num} (before Tourism modifiers)!</Text>
+			<Text>Because your Civilization completed a Global [ICON_CITY_STATE] City-State Quest, your [ICON_TOURISM] Tourism with all known Civilizations has increased by {1_Num} (before Tourism modifiers)!</Text>
 		</Row>
 		<Row Tag="TXT_KEY_TOURISM_EVENT_ARCHAEOLOGY">
-			<Text>Because your Civilization completed an [ICON_RES_ARTIFACTS] Archaeological Dig, your [ICON_TOURISM] Tourism with all known Civs has increased by {1_Num} (before Tourism modifiers)!</Text>
+			<Text>Because your Civilization completed an [ICON_RES_ARTIFACTS] Archaeological Dig, your [ICON_TOURISM] Tourism with all known Civilizations has increased by {1_Num} (before Tourism modifiers)!</Text>
 		</Row>
 		<Row Tag="TXT_KEY_TOURISM_EVENT_GOLDEN_AGE">
-			<Text>Because your Civilization entered a [ICON_GOLDEN_AGE] Golden Age, your [ICON_TOURISM] Tourism with all known Civs has increased by {1_Num} (before Tourism modifiers)!</Text>
+			<Text>Because your Civilization entered a [ICON_GOLDEN_AGE] Golden Age, your [ICON_TOURISM] Tourism with all known Civilizations has increased by {1_Num} (before Tourism modifiers)!</Text>
 		</Row>
 
 		<!-- Arabia -->
@@ -6374,7 +6374,7 @@
 			<Text>City-State Tourism</Text>
 		</Row>
 		<Row Tag="TXT_KEY_TOURISM_EVENT_TRADE_CS_BONUS">
-			<Text>Because your Civilization completed a [ICON_INTERNATIONAL_TRADE] Trade Route with {2_Name}, your [ICON_TOURISM] Tourism with all known Civs has increased by {1_Num} (before Tourism modifiers)!</Text>
+			<Text>Because your Civilization completed a [ICON_INTERNATIONAL_TRADE] Trade Route with {2_Name}, your [ICON_TOURISM] Tourism with all known Civilizations has increased by {1_Num} (before Tourism modifiers)!</Text>
 		</Row>
 
 		<!-- Religion Majority Est. -->

@@ -166,7 +166,7 @@
 			<Text>[COLOR_GREEN]Historic Events[ENDCOLOR]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_HISTORIC_EVENT_BODY">
-			<Text>Historic Events represent monumental achievements that may occur during a game. These events require planning or user interaction, and are thus a dynamic part of acquiring cultural influence over other civilizations. When one of the following Historic Events is completed, receive a [ICON_TOURISM] Tourism boost with all known Civs based on your recent [ICON_CULTURE] Culture and [ICON_TOURISM] Tourism output:[NEWLINE][NEWLINE][ICON_BULLET] Earn a [ICON_GREAT_PEOPLE] Great Person[NEWLINE][ICON_BULLET] Build a [ICON_GOLDEN_AGE] World Wonder[NEWLINE][ICON_BULLET] Win a [ICON_WAR] War (Warscore 25+)[NEWLINE][ICON_BULLET] Enter a new [ICON_RESEARCH] Era[NEWLINE][NEWLINE]The amount of [ICON_TOURISM] Tourism received by these events is based on your [ICON_CULTURE] Culture and [ICON_TOURISM] Tourism per turn over the past few turns. The value of this is also adjusted based on the number of Cities in your empire and your [ICON_TOURISM] Tourism modifier with the target civ. Finally, the amount of [ICON_TOURISM] Tourism you receive is also modified by a few Social Policies and Ideological Tenets, as well as Leader Traits, buildings, and the number of Cities in your empire.</Text>
+			<Text>Historic Events represent monumental achievements that may occur during a game. These events require planning or user interaction, and are thus a dynamic part of acquiring cultural influence over other Civilizations. When one of the following Historic Events is completed, receive a [ICON_TOURISM] Tourism boost with all known Civilizations based on your recent [ICON_CULTURE] Culture and [ICON_TOURISM] Tourism output:[NEWLINE][NEWLINE][ICON_BULLET] Earn a [ICON_GREAT_PEOPLE] Great Person[NEWLINE][ICON_BULLET] Build a [ICON_GOLDEN_AGE] World Wonder[NEWLINE][ICON_BULLET] Win a [ICON_WAR] War (Warscore 25+)[NEWLINE][ICON_BULLET] Enter a new [ICON_RESEARCH] Era[NEWLINE][NEWLINE]The amount of [ICON_TOURISM] Tourism received by these events is based on your [ICON_CULTURE] Culture and [ICON_TOURISM] Tourism per turn over the past few turns. The value of this is also adjusted based on the number of Cities in your empire and your [ICON_TOURISM] Tourism modifier with the target Civilization. Finally, the amount of [ICON_TOURISM] Tourism you receive is also modified by a few Social Policies and Ideological Tenets, as well as Leader Traits, buildings, and the number of Cities in your empire.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_HISTORIC_EVENT_QUEST">
 			<Text>What is a Historic Event?</Text>
@@ -582,7 +582,7 @@
 			<Text>Click to sort by the amount of [ICON_CULTURE] Culture that the destination City would receive from this trade route.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_TRO_COL_FROM_CULTURE_TT">
-			<Text>Click to sort by the amount of [ICON_CULTURE] Culture that the civilization that established the trade route generates from this trade route.</Text>
+			<Text>Click to sort by the amount of [ICON_CULTURE] Culture that the Civilization that established the trade route generates from this trade route.</Text>
 		</Row>
 
 		<!-- Tootips for Monopoly Bonuses -->
@@ -964,7 +964,7 @@
 
 		<!-- Tourism Bonus Turns Change for GM -->
 		<Row Tag="TXT_KEY_NOTIFICATION_GREAT_MUSICIAN_TOUR_TURNS">
-			<Text>Your musicians were happily received by the {1_PlayerAdj} people. You gain +[COLOR_POSITIVE_TEXT]50%[ENDCOLOR] [ICON_TOURISM] Tourism with all Civs for {2_Num} Turns, and +[COLOR_POSITIVE_TEXT]100%[ENDCOLOR] [ICON_TOURISM] Tourism with the target Civ for {2_Num} Turns.</Text>
+			<Text>Your musicians were happily received by the {1_PlayerAdj} people. You gain +[COLOR_POSITIVE_TEXT]50%[ENDCOLOR] [ICON_TOURISM] Tourism with all Civilizations for {2_Num} Turns, and +[COLOR_POSITIVE_TEXT]100%[ENDCOLOR] [ICON_TOURISM] Tourism with the target Civilization for {2_Num} Turns.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_NOTIFICATION_GREAT_MUSICIAN_TOUR_TURNS_S">
 			<Text>Tour of {1_PlayerAdj} lands completed!</Text>
@@ -1489,7 +1489,7 @@
 			<Text>Number of Policies Remaining until Ideologies are unlocked: [COLOR_POSITIVE_TEXT]{1_Num}[ENDCOLOR]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_IDEOLOGY_INFLUENCE_CIVS_WITH_OTHER_IDEOLOGY">
-			<Text>Influenced by the number of civilizations not following our Ideology:</Text>
+			<Text>Influenced by the number of Civilizations not following our Ideology:</Text>
 		</Row>
 		<Row Tag="TXT_KEY_IDEOLOGY_INFLUENCE_RECENTLY_ADOPTED">
 			<Text>Influence due to only recently adopting/switching Ideologies:</Text>

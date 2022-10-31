@@ -99,7 +99,7 @@
 			<Text>{@1_CivName}</Text>
 		</Row>
 		<Row Tag="TXT_KEY_RESOLUTION_OPEN_DOOR_HELP">
-			<Text>Enact an Open Door policy for a City-State. If successful, all civilizations will immediately have their [ICON_INFLUENCE] Influence set at 40 with the City-State, and no one can become the City-State's Ally until this Proposal is repealed.</Text>
+			<Text>Enact an Open Door policy for a City-State. If successful, all Civilizations will immediately have their [ICON_INFLUENCE] Influence set at 40 with the City-State, and no one can become the City-State's Ally until this Proposal is repealed.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_RESOLUTION_CHOICE_CITY_CSD">
 			<Text>{@1_CityName}</Text>
@@ -138,7 +138,7 @@
 			<Text>Cold War</Text>
 		</Row>
 		<Row Tag="TXT_KEY_RESOLUTION_COLD_WAR_HELP">
-			<Text>Ideological differences have pushed the world into a cold war, and economic and political factions are forming based on ideology alone. [NEWLINE][NEWLINE]While this resolution is active, players may only make [ICON_INTERNATIONAL_TRADE] Trade Routes with civilizations that follow the same ideology, or with allied City-States. Furthermore, [ICON_INFLUENCE] Influence levels with allied City-States do not decline. [NEWLINE][NEWLINE]Available once any Civilization discovers Atomic Theory.</Text>
+			<Text>Ideological differences have pushed the world into a cold war, and economic and political factions are forming based on ideology alone. [NEWLINE][NEWLINE]While this resolution is active, players may only make [ICON_INTERNATIONAL_TRADE] Trade Routes with Civilizations that follow the same ideology, or with allied City-States. Furthermore, [ICON_INFLUENCE] Influence levels with allied City-States do not decline. [NEWLINE][NEWLINE]Available once any Civilization discovers Atomic Theory.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEAGUE_OVERVIEW_EFFECT_SUMMARY_EMBARGO_IDEOLOGY">
 			<Text>No [ICON_INTERNATIONAL_TRADE] Trade Routes with Ideological opponents or non-allied City-States. Allied City-State [ICON_INFLUENCE] Influence does not decay.</Text>

@@ -18,7 +18,7 @@
 			<Text>[COLOR_GREEN]Great Diplomat[ENDCOLOR]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CONCEPT_GREAT_DIPLOMAT_SUMMARY">
-			<Text>[COLOR_CYAN]Special Ability: Establish Embassy[ENDCOLOR][NEWLINE]You can move a [ICON_DIPLOMAT]Great Diplomat to a City-State and construct an Embassy on a land tile. This is only possible if no other Embassy has already been established in the City-State. Each Embassy gives 1 additional vote in the World Congress. Establishing an Embassy consumes the Unit.[NEWLINE][NEWLINE][COLOR_CYAN]Special Ability: Conduct Diplomatic Mission[ENDCOLOR][NEWLINE]You can use a [ICON_DIPLOMAT] Great Diplomat in the territory of a City-State to conduct a Diplomatic Mission. You will get a large amount of influence with the City-State, and the influence of all other civilizations will decrease by the same amount. In addition, you will permanently get 1 Paper. This action consumes the Unit.</Text>
+			<Text>[COLOR_CYAN]Special Ability: Establish Embassy[ENDCOLOR][NEWLINE]You can move a [ICON_DIPLOMAT]Great Diplomat to a City-State and construct an Embassy on a land tile. This is only possible if no other Embassy has already been established in the City-State. Each Embassy gives 1 additional vote in the World Congress. Establishing an Embassy consumes the Unit.[NEWLINE][NEWLINE][COLOR_CYAN]Special Ability: Conduct Diplomatic Mission[ENDCOLOR][NEWLINE]You can use a [ICON_DIPLOMAT] Great Diplomat in the territory of a City-State to conduct a Diplomatic Mission. You will get a large amount of influence with the City-State, and the influence of all other Civilizations will decrease by the same amount. In addition, you will permanently get 1 Paper. This action consumes the Unit.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CONCEPT_GREAT_DIPLOMAT_DESCRIPTION">
 			<Text>{TXT_KEY_CONCEPT_GREAT_DIPLOMAT_TOPIC}</Text>
@@ -613,7 +613,7 @@
 			<Text>Spotters</Text>
 		</Row>
 		<Row Tag="TXT_KEY_PROMOTION_SCOUT_XP_SPOTTING_HELP">
-			<Text>+2 XP for every turn spent unembarked in the [COLOR_POSITIVE_TEXT]Enemy Territory[ENDCOLOR] of a Major Civ.</Text>
+			<Text>+2 XP for every turn spent unembarked in the [COLOR_POSITIVE_TEXT]Enemy Territory[ENDCOLOR] of a Major Civilization.</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_PROMOTION_BARBARIAN_PENALTY_I">
@@ -1098,7 +1098,7 @@
 			<Text>Voyage of Discovery</Text>
 		</Row>
 		<Row Tag="TXT_KEY_MISSION_FREE_LUXURY_HELP">
-			<Text>If the Unit is in owned territory, this order will expend the Unit, granting you two free copies of a Luxury Resource not available on this map. These Resources will not appear on the map, but can be traded to other civilizations. Also increases your Military Supply by 2.</Text>
+			<Text>If the Unit is in owned territory, this order will expend the Unit, granting you two free copies of a Luxury Resource not available on this map. These Resources will not appear on the map, but can be traded to other Civilizations. Also increases your Military Supply by 2.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_MISSION_FREE_LUXURY_HELP_DISABLED">
 			<Text>Unit must be in owned territory to use this ability.</Text>

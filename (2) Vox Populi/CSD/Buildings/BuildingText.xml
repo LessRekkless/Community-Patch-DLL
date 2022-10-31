@@ -123,10 +123,10 @@
 		</Row>-->
 		<!--Diplo National Wonder Strategy-->
 		<Row Tag="TXT_KEY_BUILDING_PRINTING_PRESS_STRATEGY">
-			<Text>This National Wonder cannot be built unless the civilization has a Chancery built in all of its Cities. Build it to receive a production speed increase for Diplomatic Units in the City where it is built, increased movement and influence for all your Diplomatic Units and the ability to allow your Diplomatic Units to ignore terrain penalties.</Text>
+			<Text>This National Wonder cannot be built unless the Civilization has a Chancery built in all of its Cities. Build it to receive a production speed increase for Diplomatic Units in the City where it is built, increased movement and influence for all your Diplomatic Units and the ability to allow your Diplomatic Units to ignore terrain penalties.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_FOREIGN_OFFICE_STRATEGY">
-			<Text>This National Wonder cannot be built unless the civilization has a Wire Service built in all of its Cities. Build it to receive a production speed increase for Diplomatic Units in the City where it is built, increased movement and influence for all your Diplomatic Units and the ability to send your Diplomatic Units through rival territory without an [COLOR_POSITIVE_TEXT]Open Borders[ENDCOLOR] agreement.</Text>
+			<Text>This National Wonder cannot be built unless the Civilization has a Wire Service built in all of its Cities. Build it to receive a production speed increase for Diplomatic Units in the City where it is built, increased movement and influence for all your Diplomatic Units and the ability to send your Diplomatic Units through rival territory without an [COLOR_POSITIVE_TEXT]Open Borders[ENDCOLOR] agreement.</Text>
 		</Row>
 		<!--
 		<Row Tag="TXT_KEY_BUILDING_COURT_SCRIBE_STRATEGY">
@@ -140,13 +140,13 @@
 			<Text>Build this wonder for your Diplomatic Units to be able to enter a rival's territory without an Open Borders agreement centuries before anyone else. Boosts the potency of all Chancercies in your empire.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_PALACE_SCIENCE_CULTURE_STRATEGY">
-			<Text>This National Wonder cannot be built unless the civilization has a Public School built in all of its Cities. Build this national wonder to receive additional votes in the World Congress based on the number of Research Agreements you currently have with other players. You will also receive a large boost to the [ICON_CULTURE] Culture and [ICON_RESEARCH] Science output of the City where it is built.</Text>
+			<Text>This National Wonder cannot be built unless the Civilization has a Public School built in all of its Cities. Build this national wonder to receive additional votes in the World Congress based on the number of Research Agreements you currently have with other players. You will also receive a large boost to the [ICON_CULTURE] Culture and [ICON_RESEARCH] Science output of the City where it is built.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_EHRENHALLE_STRATEGY">
-			<Text>This National Wonder cannot be built unless the civilization has a Military Academy built in all of its Cities. Build this national wonder to receive additional votes in the World Congress based on the number of enemy Capitals you have conquered. You will also receive a large boost to the [ICON_TOURISM] Tourism and [ICON_PEACE] Faith output of the City where it is built.</Text>
+			<Text>This National Wonder cannot be built unless the Civilization has a Military Academy built in all of its Cities. Build this national wonder to receive additional votes in the World Congress based on the number of enemy Capitals you have conquered. You will also receive a large boost to the [ICON_TOURISM] Tourism and [ICON_PEACE] Faith output of the City where it is built.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_FINANCE_CENTER_STRATEGY">
-			<Text>This National Wonder cannot be built unless the civilization has a Stock Exchange built in all of its Cities. Build this national wonder to receive additional votes in the World Congress based on the number of Declaration of Friendships you currently have with other players. You will also receive a large boost to the [ICON_FOOD] Food and [ICON_GOLD] Gold output of the City where it is built.</Text>
+			<Text>This National Wonder cannot be built unless the Civilization has a Stock Exchange built in all of its Cities. Build this national wonder to receive additional votes in the World Congress based on the number of Declaration of Friendships you currently have with other players. You will also receive a large boost to the [ICON_FOOD] Food and [ICON_GOLD] Gold output of the City where it is built.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_GRAND_CANAL_STRATEGY">
 			<Text>Build this wonder to boost the strength and durability of your navy via the [COLOR_POSITIVE_TEXT]Treasure Fleet[ENDCOLOR] promotion, and to receive an additional trade route. May only be built collaboratively through the World Congress.</Text>

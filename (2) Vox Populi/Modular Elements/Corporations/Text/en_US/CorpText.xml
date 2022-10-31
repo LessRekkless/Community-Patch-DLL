@@ -53,7 +53,7 @@
 			<Text>[NEWLINE]"If you don't drive your business, you will be driven out of business."[NEWLINE]  - B.C. Forbes[NEWLINE]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_PEDIA_CORPORATIONS_HOMEPAGE_TEXT1">
-			<Text>Trade and commerce has been a focal point of civilization since ancient times. Corporations are modern entities that authorizes a company or single group to act as a single entity. Corporations have become the largest facilitators of trade and influence in today's society. In Civilization V, Corporations allow you cement your civilization's wealth and deliver powerful trade benefits to your civilization.[NEWLINE][NEWLINE]To establish a Corporation, you must secure a Global Monopoly on any of its required resources, and found its Corporation Headquarters. After your Corporation is established, you may construct Offices in your Cities and use them to build Franchises in foreign Cities via [ICON_INTERNATIONAL_TRADE] Trade Routes.</Text>
+			<Text>Trade and commerce has been a focal point of civilization since ancient times. Corporations are modern entities that authorizes a company or single group to act as a single entity. Corporations have become the largest facilitators of trade and influence in today's society. In Civilization V, Corporations allow you cement your Civilization's wealth and deliver powerful trade benefits to your Civilization.[NEWLINE][NEWLINE]To establish a Corporation, you must secure a Global Monopoly on any of its required resources, and found its Corporation Headquarters. After your Corporation is established, you may construct Offices in your Cities and use them to build Franchises in foreign Cities via [ICON_INTERNATIONAL_TRADE] Trade Routes.</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_TOPIC_MONOPOLY">
@@ -173,7 +173,7 @@
 			<Text>[COLOR_GREEN]{TXT_KEY_TOPIC_CORPORATION_FOUNDING}[ENDCOLOR]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CORPORATION_FOUNDING_BODY">
-			<Text>In order to establish a Corporation, you need to construct its associated Headquarters in one of your Cities, and the Corporation must not be actively founded by another civilization. Headquarters may only be established after you have a Global Monopoly on one of its required Monopoly Resources. Once you've constructed the Headquarters, you will automatically found the Corporation and immediately receive its Corporation benefits. You also receive a free Office in the City that constructed it. You can only establish one Corporation at a time, so choose carefully!</Text>
+			<Text>In order to establish a Corporation, you need to construct its associated Headquarters in one of your Cities, and the Corporation must not be actively founded by another Civilization. Headquarters may only be established after you have a Global Monopoly on one of its required Monopoly Resources. Once you've constructed the Headquarters, you will automatically found the Corporation and immediately receive its Corporation benefits. You also receive a free Office in the City that constructed it. You can only establish one Corporation at a time, so choose carefully!</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CORPORATION_FOUNDING_QUESTION">
 			<Text>How do I found a Corporation?</Text>
@@ -186,7 +186,7 @@
 			<Text>[COLOR_GREEN]{TXT_KEY_TOPIC_CORPORATION_DESTROYING}[ENDCOLOR]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CORPORATION_DESTROYING_BODY">
-			<Text>When a City that has constructed a Corporation Headquarters is acquired or destroyed through any means by another civilization, that Corporation is immediately destroyed. All Offices and Franchises around the world are immediately closed, and the founding Civilization immediately loses all benefits from that Corporation. It is extremely important to protect your Corporation, as you will lose all of your progress in spreading that Corporation![NEWLINE][NEWLINE]A destroyed Corporation immediately becomes available to be founded again by any civilization in the world. There is no restriction in the number of times a Corporation may be established in a game.</Text>
+			<Text>When a City that has constructed a Corporation Headquarters is acquired or destroyed through any means by another Civilization, that Corporation is immediately destroyed. All Offices and Franchises around the world are immediately closed, and the founding Civilization immediately loses all benefits from that Corporation. It is extremely important to protect your Corporation, as you will lose all of your progress in spreading that Corporation![NEWLINE][NEWLINE]A destroyed Corporation immediately becomes available to be founded again by any Civilization in the world. There is no restriction in the number of times a Corporation may be established in a game.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CORPORATION_DESTROYING_QUESTION">
 			<Text>How do I destroy a Corporation?</Text>
