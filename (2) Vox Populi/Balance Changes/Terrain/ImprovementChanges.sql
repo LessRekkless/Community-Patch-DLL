@@ -1,11 +1,18 @@
 -- Yield Data
-
+/*
 INSERT INTO Improvement_YieldAdjacentTwoSameType
 	(ImprovementType, YieldType, Yield)
 VALUES
 	('IMPROVEMENT_FARM', 'YIELD_FOOD', 1),
 	('IMPROVEMENT_LUMBERMILL', 'YIELD_GOLD', 1),
 	('IMPROVEMENT_LUMBERMILL', 'YIELD_PRODUCTION', 1);
+*/
+INSERT INTO Improvement_YieldPerXAdjacentImprovement
+	(ImprovementType, OtherImprovementType, YieldType, Yield, NumRequired)
+VALUES
+	('IMPROVEMENT_FARM', 'IMPROVEMENT_FARM', 'YIELD_FOOD', 1, 2),
+	('IMPROVEMENT_LUMBERMILL', 'IMPROVEMENT_LUMBERMILL', 'YIELD_GOLD', 1, 2),
+	('IMPROVEMENT_LUMBERMILL', 'IMPROVEMENT_LUMBERMILL', 'YIELD_PRODUCTION', 1, 2);
 
 -- Delete things we replace below.
 DELETE FROM Improvement_ResourceType_Yields; 
@@ -88,12 +95,10 @@ INSERT INTO Improvement_Yields
 VALUES
 	('IMPROVEMENT_HOLY_SITE', 'YIELD_CULTURE', 5),
 	('IMPROVEMENT_HOLY_SITE', 'YIELD_TOURISM', 3),
-	('IMPROVEMENT_TRADING_POST', 'YIELD_CULTURE', 1),
-	('IMPROVEMENT_CHATEAU', 'YIELD_FOOD', 3),
-	('IMPROVEMENT_FEITORIA', 'YIELD_PRODUCTION', 3),
-	('IMPROVEMENT_FEITORIA', 'YIELD_GOLD', 3),
+	('IMPROVEMENT_CUSTOMS_HOUSE', 'YIELD_FOOD', 2),
 	('IMPROVEMENT_CITADEL', 'YIELD_PRODUCTION', 1),
 	('IMPROVEMENT_CITADEL', 'YIELD_SCIENCE', 1),
+	('IMPROVEMENT_TRADING_POST', 'YIELD_CULTURE', 1),
 	('IMPROVEMENT_WELL', 'YIELD_GOLD', 7),
 	('IMPROVEMENT_LANDMARK', 'YIELD_CULTURE', 3),
 	('IMPROVEMENT_LANDMARK', 'YIELD_GOLD', 3),
@@ -104,7 +109,6 @@ INSERT INTO Improvement_YieldPerEra
 	(ImprovementType, YieldType, Yield)
 VALUES
 	('IMPROVEMENT_LANDMARK', 'YIELD_GOLD', 1);
-
 
 INSERT INTO Improvement_FreshWaterYields
 	(ImprovementType, YieldType, Yield)
@@ -228,18 +232,6 @@ VALUES
 	('IMPROVEMENT_TRADING_POST', 'TECH_GUILDS', 'YIELD_GOLD', 1),
 	('IMPROVEMENT_TRADING_POST', 'TECH_RAILROAD', 'YIELD_CULTURE', 1);
 
-INSERT INTO Improvement_AdjacentImprovementYieldChanges
-	(ImprovementType, OtherImprovementType, YieldType, Yield)
-VALUES
-	('IMPROVEMENT_FEITORIA', 'IMPROVEMENT_FISHING_BOATS', 'YIELD_PRODUCTION', 1),
-	('IMPROVEMENT_KASBAH', 'IMPROVEMENT_FISHING_BOATS', 'YIELD_GOLD', 2);
-
-INSERT INTO Improvement_AdjacentTerrainYieldChanges
-	(ImprovementType, TerrainType, YieldType, Yield)
-VALUES
-	('IMPROVEMENT_FEITORIA', 'TERRAIN_COAST', 'YIELD_GOLD', 1),
-	('IMPROVEMENT_KASBAH', 'TERRAIN_COAST', 'YIELD_CULTURE', 1);
-
 INSERT INTO Route_TechMovementChanges
 	(RouteType, TechType, MovementChange)
 VALUES
@@ -274,7 +266,6 @@ UPDATE Improvement_Yields SET Yield = '6' WHERE YieldType = 'YIELD_SCIENCE' AND 
 UPDATE Improvement_Yields SET Yield = '6' WHERE YieldType = 'YIELD_GOLD' AND ImprovementType = 'IMPROVEMENT_CUSTOMS_HOUSE';
 UPDATE Improvement_Yields SET Yield = '6' WHERE YieldType = 'YIELD_PRODUCTION' AND ImprovementType = 'IMPROVEMENT_MANUFACTORY';
 UPDATE Improvement_Yields SET Yield = '4' WHERE YieldType = 'YIELD_FAITH' AND ImprovementType = 'IMPROVEMENT_HOLY_SITE';
-UPDATE Improvement_Yields SET Yield = '3' WHERE YieldType = 'YIELD_GOLD' AND ImprovementType = 'IMPROVEMENT_CHATEAU';
 
 -- Proposal 2-15: Merge lumber mill and logging camp, but jungle lumber mill still gives 1 gold instead of 1 production
 INSERT INTO Improvement_FeatureYieldChanges

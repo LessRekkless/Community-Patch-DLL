@@ -6333,6 +6333,7 @@ CivilopediaCategory[CategoryImprovements].SelectArticle = function( improvementI
 			improvementString = "";
 			fullstring = "";
 			baseImprovement = "";
+			-- TO BE REMOVED IN FAVOR OF Improvement_YieldPerXAdjacentImprovement
 			for row in GameInfo.Improvement_AdjacentImprovementYieldChanges( condition ) do
 				numYields = numYields + 1;
 				local OtherImprovement = GameInfo.Improvements[row.OtherImprovementType];
@@ -6362,6 +6363,7 @@ CivilopediaCategory[CategoryImprovements].SelectArticle = function( improvementI
 			improvementString = "";
 			fullstring = "";
 			baseImprovement = "";
+			-- TO BE REMOVED IN FAVOR OF Improvement_YieldPerXAdjacentImprovement
 			for row in GameInfo.Improvement_YieldAdjacentTwoSameType( condition ) do
 				numYields = numYields + 1;
 				local OtherImprovement = GameInfo.Improvements[row.ImprovementType];
@@ -6391,6 +6393,7 @@ CivilopediaCategory[CategoryImprovements].SelectArticle = function( improvementI
 			improvementString = "";
 			fullstring = "";
 			baseImprovement = "";
+			-- TO BE REMOVED IN FAVOR OF Improvement_YieldPerXAdjacentImprovement
 			for row in GameInfo.Improvement_YieldAdjacentSameType( condition ) do
 				numYields = numYields + 1;
 				local OtherImprovement = GameInfo.Improvements[row.ImprovementType];
@@ -6405,6 +6408,27 @@ CivilopediaCategory[CategoryImprovements].SelectArticle = function( improvementI
 						end
 					end
 					yieldString = "+" .. tostring(row.Yield)..GameInfo.Yields[row.YieldType].IconString.." ";
+					fullstring = fullstring .. Locale.ConvertTextKey( yieldString );
+				end
+			end
+			for row in GameInfo.Improvement_YieldPerXAdjacentImprovement ( condition ) do
+				numYields = numYields + 1;
+				local OtherImprovement = GameInfo.Improvements[row.ImprovementType];
+				if OtherImprovement then
+					improvementString = Local.ConverTextKey(OtherImprovement.Description)..": ";
+					if (OtherImprovement ~= baseImprovement) then
+						baseImprovement = OtherImprovement;
+						if(fullstring == "") then
+							fullstring = fullstring .. improvementString;
+						else
+							fullstring = fullstring .. "[NEWLINE]" .. improvementString;
+						end
+					end
+					yieldString = tostring(row.Yield);
+					if row.NumRequired > 1 then
+						yieldString = yieldString .. "/" .. tostring(numRequiredValue);
+					end
+					yieldString = "+" .. yieldString .. GameInfo.Yields[row.YieldType].IconString .. " ";
 					fullstring = fullstring .. Locale.ConvertTextKey( yieldString );
 				end
 			end

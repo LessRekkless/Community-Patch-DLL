@@ -371,16 +371,30 @@ VALUES
 INSERT INTO Improvement_Yields
 	(ImprovementType, YieldType, Yield)
 VALUES
+	('IMPROVEMENT_FEITORIA', 'YIELD_PRODUCTION', 3),
+	('IMPROVEMENT_FEITORIA', 'YIELD_GOLD', 3),
 	('IMPROVEMENT_KASBAH', 'YIELD_CULTURE', 2),
 	('IMPROVEMENT_ENCAMPMENT_SHOSHONE', 'YIELD_FOOD', 2),
 	('IMPROVEMENT_ENCAMPMENT_SHOSHONE', 'YIELD_PRODUCTION', 1),
 	('IMPROVEMENT_ENCAMPMENT_SHOSHONE', 'YIELD_CULTURE', 1);
-
-INSERT INTO Building_WLTKDYieldMod
-	(BuildingType, YieldType, Yield)
+/*
+INSERT INTO Improvement_AdjacentImprovementYieldChanges
+	(ImprovementType, OtherImprovementType, YieldType, Yield)
 VALUES
-	('BUILDING_CANDI', 'YIELD_FAITH', 15),
-	('BUILDING_CANDI', 'YIELD_CULTURE', 15);
+	('IMPROVEMENT_FEITORIA', 'IMPROVEMENT_FISHING_BOATS', 'YIELD_PRODUCTION', 1),
+	('IMPROVEMENT_KASBAH', 'IMPROVEMENT_FISHING_BOATS', 'YIELD_GOLD', 2);
+*/
+INSERT INTO Improvement_YieldPerXAdjacentImprovement
+	(ImprovementType, OtherImprovementType, YieldType, Yield, NumRequired)
+VALUES
+	('IMPROVEMENT_FISHING_BOATS', 'IMPROVEMENT_FEITORIA', 'YIELD_PRODUCTION', 1, 1),
+	('IMPROVEMENT_FISHING_BOATS', 'IMPROVEMENT_KASBAH', 'YIELD_GOLD', 2, 1);
+
+INSERT INTO Improvement_AdjacentTerrainYieldChanges
+	(ImprovementType, TerrainType, YieldType, Yield)
+VALUES
+	('IMPROVEMENT_FEITORIA', 'TERRAIN_COAST', 'YIELD_GOLD', 1),
+	('IMPROVEMENT_KASBAH', 'TERRAIN_COAST', 'YIELD_CULTURE', 1);
 
 INSERT INTO Improvement_ValidTerrains
 	(ImprovementType, TerrainType)
@@ -433,6 +447,12 @@ INSERT INTO Building_BuildingClassYieldChanges
 	(BuildingType, BuildingClassType, YieldType, YieldChange)
 VALUES
 	('BUILDING_ROYAL_LIBRARY', 'BUILDINGCLASS_LIBRARY', 'YIELD_SCIENCE', 3);
+
+INSERT INTO Building_WLTKDYieldMod
+	(BuildingType, YieldType, Yield)
+VALUES
+	('BUILDING_CANDI', 'YIELD_FAITH', 15),
+	('BUILDING_CANDI', 'YIELD_CULTURE', 15);
 
 INSERT INTO Building_ResourceYieldChanges
 	(BuildingType, ResourceType, YieldType, Yield)
