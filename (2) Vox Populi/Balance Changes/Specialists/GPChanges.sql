@@ -1,10 +1,4 @@
 -- NEW
-
-INSERT INTO Improvement_Yields
-	(ImprovementType, YieldType, Yield)
-VALUES
-	('IMPROVEMENT_CUSTOMS_HOUSE', 'YIELD_FOOD', 2);
-
 INSERT INTO Tech_SpecialistYieldChanges
 	(TechType, SpecialistType, YieldType, Yield)
 VALUES

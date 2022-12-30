@@ -1090,32 +1090,39 @@ INSERT INTO Improvements
 			(Type, 						Description, 					Civilopedia, 							ArtDefineTag, 					Help, 									PillageGold,	PortraitIndex, 	IconAtlas)
 VALUES		('IMPROVEMENT_SIHEYUAN',	'TXT_KEY_IMPROVEMENT_SIHEYUAN',	'TXT_KEY_IMPROVEMENT_SIHEYUAN_TEXT',	'ART_DEF_IMPROVEMENT_SIHEYUAN',	'TXT_KEY_IMPROVEMENT_SIHEYUAN_HELP', 	10,				0,				'IMPROVEMENT_SIHEYUAN_ATLAS');
 
-UPDATE Improvements SET 
+UPDATE Improvements SET
 	RequiresFlatlands = 1,
 	XSameAdjacentMakesValid = 2,
 	Cityside = 1,
 	SpecificCivRequired = 1,
 	CivilizationType = 'CIVILIZATION_CHINA'
 WHERE Type = 'IMPROVEMENT_SIHEYUAN';
-------------------------------	
+------------------------------
 -- Improvement_Yields
-------------------------------		
-INSERT INTO Improvement_Yields 	
-			(ImprovementType, YieldType, Yield)
-VALUES		('IMPROVEMENT_SIHEYUAN', 'YIELD_GOLD', 1),
-			('IMPROVEMENT_SIHEYUAN', 'YIELD_SCIENCE', 1),
-			('IMPROVEMENT_SIHEYUAN', 'YIELD_PRODUCTION', 1),
-			('IMPROVEMENT_SIHEYUAN', 'YIELD_CULTURE', 1);
+------------------------------
+INSERT INTO Improvement_Yields
+	(ImprovementType, YieldType, Yield)
+VALUES
+	('IMPROVEMENT_SIHEYUAN', 'YIELD_GOLD', 1),
+	('IMPROVEMENT_SIHEYUAN', 'YIELD_SCIENCE', 1),
+	('IMPROVEMENT_SIHEYUAN', 'YIELD_PRODUCTION', 1),
+	('IMPROVEMENT_SIHEYUAN', 'YIELD_CULTURE', 1),
+	('IMPROVEMENT_CHATEAU', 'YIELD_FOOD', 3);
+			
+UPDATE Improvement_Yields SET
+	Yield = '3'
+WHERE ImprovementType = 'IMPROVEMENT_CHATEAU' AND YieldType = 'YIELD_GOLD';
 
-INSERT INTO Improvement_WLTKDYields 	
-			(ImprovementType, YieldType, Yield)
-VALUES		('IMPROVEMENT_SIHEYUAN', 'YIELD_GOLD', 1),
-			('IMPROVEMENT_SIHEYUAN', 'YIELD_SCIENCE', 1),
-			('IMPROVEMENT_SIHEYUAN', 'YIELD_PRODUCTION', 1),
-			('IMPROVEMENT_SIHEYUAN', 'YIELD_CULTURE', 1);
+INSERT INTO Improvement_WLTKDYields
+	(ImprovementType, YieldType, Yield)
+VALUES
+	('IMPROVEMENT_SIHEYUAN', 'YIELD_GOLD', 1),
+	('IMPROVEMENT_SIHEYUAN', 'YIELD_SCIENCE', 1),
+	('IMPROVEMENT_SIHEYUAN', 'YIELD_PRODUCTION', 1),
+	('IMPROVEMENT_SIHEYUAN', 'YIELD_CULTURE', 1);
 --==========================================================================================================================
 -- BUILDS
---==========================================================================================================================				
+--==========================================================================================================================
 ------------------------------
 -- Builds
 ------------------------------		
