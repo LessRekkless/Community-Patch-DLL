@@ -1915,6 +1915,7 @@ int CvBuilderTaskingAI::ScorePlotBuild(CvPlot* pPlot, ImprovementTypes eImprovem
 	//Some base value.
 	int iScore = 0;
 	int iYieldScore = 0;
+	pair<int, int> fFractionalYieldScore = make_pair(0,1);
 	int iSecondaryScore = 0;
 
 	int iBigBuff = 1000;
@@ -2070,7 +2071,12 @@ int CvBuilderTaskingAI::ScorePlotBuild(CvPlot* pPlot, ImprovementTypes eImprovem
 					bool bAdjacentDesire = false;
 					for(uint ui = 0; ui < NUM_YIELD_TYPES; ui++)
 					{
-						if(pkImprovementInfo->GetYieldAdjacentSameType((YieldTypes)ui) > 0)
+						if(pkImprovementInfo->GetYieldPerXAdjacentImprovement((YieldTypes)ui, eImprovement).first > 0)
+						{
+							bAdjacentDesire = true;
+							break;
+						}
+						else if(pkImprovementInfo->GetYieldAdjacentSameType((YieldTypes)ui) > 0)
 						{
 							bAdjacentDesire = true;
 							break;
@@ -2251,6 +2257,7 @@ int CvBuilderTaskingAI::ScorePlotBuild(CvPlot* pPlot, ImprovementTypes eImprovem
 			}
 		}
 
+		pair<int, int> fAdjacentValue = pImprovement->GetYieldPerXAdjacentImprovement(eYield, eImprovement);
 		int iAdjacentValue = pImprovement->GetYieldAdjacentSameType(eYield);
 		int iAdjacentTwoValue = pImprovement->GetYieldAdjacentTwoSameType(eYield);
 		int iAdjacentOtherValue = 0;
@@ -2290,6 +2297,12 @@ int CvBuilderTaskingAI::ScorePlotBuild(CvPlot* pPlot, ImprovementTypes eImprovem
 			}
 		}
 
+		if(fAdjacentValue.first > 0)
+		{
+			pair<int, int> fComputedAdjacentYield = pPlot->ComputeFractionalYieldFromAdjacentImprovement(*pImprovement, eYield);
+			fComputedAdjacentYield.first *= 100;
+			AddFractionToReference(fFractionalYieldScore, fComputedAdjacentYield);
+		}
 		if(iAdjacentValue > 0)
 		{
 			iYieldScore += (100 * pPlot->ComputeYieldFromAdjacentImprovement(*pImprovement, eImprovement, eYield));
@@ -2314,7 +2327,6 @@ int CvBuilderTaskingAI::ScorePlotBuild(CvPlot* pPlot, ImprovementTypes eImprovem
 		{
 			iYieldScore += (100 * pPlot->ComputeYieldFromAdjacentFeature(*pImprovement, eYield));
 		}
-
 	}
 	if(pImprovement->GetCultureBombRadius() > 0)
 	{
@@ -2514,6 +2526,9 @@ int CvBuilderTaskingAI::ScorePlotBuild(CvPlot* pPlot, ImprovementTypes eImprovem
 		if (iFortScore * 4 > iSecondaryScore * 3)
 			return -1;
 	}
+
+	// add fractional score
+	iYieldScore += fFractionalYieldScore.first / fFractionalYieldScore.second;
 
 	return iYieldScore + iSecondaryScore;
 }

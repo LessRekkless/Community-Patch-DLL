@@ -1550,6 +1550,12 @@ int MapToPercent(int iValue, int iZeroAt, int iHundredAt)
 // add a fraction to a referenced fraction without losing information; the referenced fraction is assumed to have the larger dividend & divisor
 void AddFractionToReference(pair<int,int>& A, const pair<int,int>& B)
 {
+	// A + 0
+	if (B.first == 0)
+	{
+		return;
+	}
+
 	// protect from integer overflow (safe, simple max that will probably never be hit)
 	if (A.first >= (INT_MAX / B.first / B.second) - A.second)
 	{
