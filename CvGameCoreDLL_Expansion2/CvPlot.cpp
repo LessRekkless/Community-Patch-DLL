@@ -7580,36 +7580,24 @@ void CvPlot::setImprovementType(ImprovementTypes eNewValue, PlayerTypes eBuilder
 				{
 					ImprovementTypes eAdjacentImprovement = pAdjacentPlot->getImprovementType();
 					CvImprovementEntry& adjacentImprovementEntry = *GC.getImprovementInfo(eAdjacentImprovement);
-					bool bUp = false;
 					bool bCheckAdjacentSame = eAdjacentImprovement == eOldImprovement;
 					bool bCheckAdjacentAny = adjacentImprovementEntry.IsYieldPerXAdjacentImprovement();
-					bool bCheckAdjacentOther = eBuilder != NO_PLAYER && getOwner() == eBuilder;
+					bool bCheckAdjacentOther = pAdjacentPlot->getOwner() == getOwner();
 					for (int iK = 0; iK < NUM_YIELD_TYPES; ++iK)
 					{
 						YieldTypes eYield = (YieldTypes)iK;
 						//Simplification - errata yields not worth considering.
-						if (eYield > YIELD_GOLDEN_AGE_POINTS && !MOD_BALANCE_CORE_JFD)
+						if (eYield > YIELD_CULTURE_LOCAL && !MOD_BALANCE_CORE_JFD)
 							break;
 
-						if (bCheckAdjacentSame && (adjacentImprovementEntry.GetYieldAdjacentSameType(eYield) > 0 || adjacentImprovementEntry.GetYieldAdjacentTwoSameType(eYield) > 0))
+						if	(	( bCheckAdjacentSame && ( adjacentImprovementEntry.GetYieldAdjacentSameType(eYield) > 0 || adjacentImprovementEntry.GetYieldAdjacentTwoSameType(eYield) > 0 ) )
+							||	( bCheckAdjacentAny && adjacentImprovementEntry.GetYieldPerXAdjacentImprovement(eYield, eOldImprovement).first > 0)
+							||	( bCheckAdjacentOther && oldImprovementEntry.GetAdjacentImprovementYieldChanges(eAdjacentImprovement, eYield) > 0 )
+							)
 						{
-							bUp = true;
+							pAdjacentPlot->updateYield();
 							break;
 						}
-						if(bCheckAdjacentAny && adjacentImprovementEntry.GetYieldPerXAdjacentImprovement(eYield, eOldImprovement).first > 0)
-						{
-							bUp = true;
-							break;
-						}
-						if (bCheckAdjacentOther && oldImprovementEntry.GetAdjacentImprovementYieldChanges(eAdjacentImprovement, eYield) > 0)
-						{
-							bUp = true;
-							break;
-						}
-					}
-					if (bUp)
-					{
-						pAdjacentPlot->updateYield();
 					}
 				}
 			}
@@ -7762,36 +7750,24 @@ void CvPlot::setImprovementType(ImprovementTypes eNewValue, PlayerTypes eBuilder
 				{
 					ImprovementTypes eAdjacentImprovement = pAdjacentPlot->getImprovementType();
 					CvImprovementEntry& adjacentImprovementEntry = *GC.getImprovementInfo(eAdjacentImprovement);
-					bool bUp = false;
 					bool bCheckAdjacentSame = eAdjacentImprovement == eNewValue;
 					bool bCheckAdjacentAny = adjacentImprovementEntry.IsYieldPerXAdjacentImprovement();
-					bool bCheckAdjacentOther = eBuilder != NO_PLAYER && getOwner() == eBuilder;
+					bool bCheckAdjacentOther = pAdjacentPlot->getOwner() == getOwner();
 					for (int iK = 0; iK < NUM_YIELD_TYPES; ++iK)
 					{
 						YieldTypes eYield = (YieldTypes)iK;
 						//Simplification - errata yields not worth considering.
-						if (eYield > YIELD_GOLDEN_AGE_POINTS && !MOD_BALANCE_CORE_JFD)
+						if (eYield > YIELD_CULTURE_LOCAL && !MOD_BALANCE_CORE_JFD)
 							break;
 
-						if (bCheckAdjacentSame && (adjacentImprovementEntry.GetYieldAdjacentSameType(eYield) > 0 || adjacentImprovementEntry.GetYieldAdjacentTwoSameType(eYield) > 0))
+						if	(	( bCheckAdjacentSame && ( adjacentImprovementEntry.GetYieldAdjacentSameType(eYield) > 0 || adjacentImprovementEntry.GetYieldAdjacentTwoSameType(eYield) > 0 ) )
+							||	( bCheckAdjacentAny && adjacentImprovementEntry.GetYieldPerXAdjacentImprovement(eYield, eNewValue).first > 0)
+							||	( bCheckAdjacentOther && newImprovementEntry.GetAdjacentImprovementYieldChanges(eAdjacentImprovement, eYield) > 0 )
+							)
 						{
-							bUp = true;
+							pAdjacentPlot->updateYield();
 							break;
 						}
-						if(bCheckAdjacentAny && adjacentImprovementEntry.GetYieldPerXAdjacentImprovement(eYield, eNewValue).first > 0)
-						{
-							bUp = true;
-							break;
-						}
-						if (bCheckAdjacentOther && newImprovementEntry.GetAdjacentImprovementYieldChanges(eAdjacentImprovement, eYield) > 0)
-						{
-							bUp = true;
-							break;
-						}
-					}
-					if (bUp)
-					{
-						pAdjacentPlot->updateYield();
 					}
 				}
 			}
@@ -8133,137 +8109,30 @@ void CvPlot::setImprovementType(ImprovementTypes eNewValue, PlayerTypes eBuilder
 
 		updateYield();
 #if defined(MOD_BALANCE_CORE)
-		if(eBuilder != NO_PLAYER && eOldImprovement != NO_IMPROVEMENT && getOwner() == eBuilder)
+		if(eBuilder != NO_PLAYER && getOwner() == eBuilder)
 		{
-			CvImprovementEntry* pImprovement2 = GC.getImprovementInfo(eOldImprovement);
-			if(pImprovement2)
+			CvImprovementEntry* pOldImprovement = GC.getImprovementInfo(eOldImprovement);
+			CvImprovementEntry* pNewImprovement = GC.getImprovementInfo(eNewValue);
+			if(pOldImprovement || pNewImprovement)
 			{
 				for(int iJ = 0; iJ < NUM_DIRECTION_TYPES; ++iJ)
 				{
 					CvPlot* pAdjacentPlot = plotDirection(getX(), getY(), ((DirectionTypes)iJ));
-
-					if(pAdjacentPlot != NULL && pAdjacentPlot->getResourceType() != NO_RESOURCE)
-					{	
-						bool bUp = false;
+					if (pAdjacentPlot && pAdjacentPlot->getTerrainType() != NO_TERRAIN && pAdjacentPlot->getOwner() == eBuilder)
+					{
 						for(int iK = 0; iK < NUM_YIELD_TYPES; ++iK)
 						{
 							//Simplification - errata yields not worth considering.
-							if ((YieldTypes)iK > YIELD_GOLDEN_AGE_POINTS && !MOD_BALANCE_CORE_JFD)
+							if ((YieldTypes)iK > YIELD_CULTURE_LOCAL && !MOD_BALANCE_CORE_JFD)
 								break;
 
-							if(pImprovement2->GetAdjacentResourceYieldChanges(pAdjacentPlot->getResourceType(), (YieldTypes)iK) > 0)
+							if	(	( pOldImprovement && pOldImprovement->GetAdjacentTerrainYieldChanges(pAdjacentPlot->getTerrainType(), iK) > 0 )
+								||	( pNewImprovement && pNewImprovement->GetAdjacentTerrainYieldChanges(pAdjacentPlot->getTerrainType(), iK) > 0 )
+								)
 							{
-								bUp = true;
+								pAdjacentPlot->updateYield();
 								break;
 							}
-						}
-						if(bUp)
-						{
-							pAdjacentPlot->updateYield();
-						}
-					}
-				}
-			}
-		}
-		if(eBuilder != NO_PLAYER && eNewValue != NO_IMPROVEMENT && getOwner() == eBuilder)
-		{
-			CvImprovementEntry* pImprovement2 = GC.getImprovementInfo(eNewValue);
-			if(pImprovement2)
-			{
-				for(int iJ = 0; iJ < NUM_DIRECTION_TYPES; ++iJ)
-				{
-					CvPlot* pAdjacentPlot = plotDirection(getX(), getY(), ((DirectionTypes)iJ));
-
-					if(pAdjacentPlot != NULL && pAdjacentPlot->getTerrainType() != NO_TERRAIN && pAdjacentPlot->getOwner() == eBuilder)
-					{	
-						bool bUp = false;
-						for(int iK = 0; iK < NUM_YIELD_TYPES; ++iK)
-						{
-							//Simplification - errata yields not worth considering.
-							if ((YieldTypes)iK > YIELD_GOLDEN_AGE_POINTS && !MOD_BALANCE_CORE_JFD)
-								break;
-
-							if(pImprovement2->GetAdjacentTerrainYieldChanges(pAdjacentPlot->getTerrainType(), (YieldTypes)iK) > 0)
-							{
-								bUp = true;
-								break;
-							}
-						}
-						if(bUp)
-						{
-							pAdjacentPlot->updateYield();
-						}
-					}
-					if(pAdjacentPlot != NULL && pAdjacentPlot->getFeatureType() != NO_FEATURE && pAdjacentPlot->getOwner() == eBuilder)
-					{	
-						bool bUp2 = false;
-						for(int iK = 0; iK < NUM_YIELD_TYPES; ++iK)
-						{
-							//Simplification - errata yields not worth considering.
-							if ((YieldTypes)iK > YIELD_GOLDEN_AGE_POINTS && !MOD_BALANCE_CORE_JFD)
-								break;
-
-							if (pImprovement2->GetAdjacentFeatureYieldChanges(pAdjacentPlot->getFeatureType(), (YieldTypes)iK) > 0)
-							{
-								bUp2 = true;
-								break;
-							}
-						}
-						if(bUp2)
-						{
-							pAdjacentPlot->updateYield();
-						}
-					}
-				}
-			}
-		}
-		if(eBuilder != NO_PLAYER && eOldImprovement != NO_IMPROVEMENT && getOwner() == eBuilder)
-		{
-			CvImprovementEntry* pImprovement2 = GC.getImprovementInfo(eOldImprovement);
-			if(pImprovement2)
-			{
-				for(int iJ = 0; iJ < NUM_DIRECTION_TYPES; ++iJ)
-				{
-					CvPlot* pAdjacentPlot = plotDirection(getX(), getY(), ((DirectionTypes)iJ));
-
-					if(pAdjacentPlot != NULL && pAdjacentPlot->getTerrainType() != NO_TERRAIN && pAdjacentPlot->getOwner() == eBuilder)
-					{	
-						bool bUp = false;
-						for(int iK = 0; iK < NUM_YIELD_TYPES; ++iK)
-						{
-							//Simplification - errata yields not worth considering.
-							if ((YieldTypes)iK > YIELD_GOLDEN_AGE_POINTS && !MOD_BALANCE_CORE_JFD)
-								break;
-
-							if(pImprovement2->GetAdjacentTerrainYieldChanges(pAdjacentPlot->getTerrainType(), (YieldTypes)iK) > 0)
-							{
-								bUp = true;
-								break;
-							}
-						}
-						if(bUp)
-						{
-							pAdjacentPlot->updateYield();
-						}
-					}
-					if(pAdjacentPlot != NULL && pAdjacentPlot->getFeatureType() != NO_FEATURE && pAdjacentPlot->getOwner() == eBuilder)
-					{	
-						bool bUp2 = false;
-						for(int iK = 0; iK < NUM_YIELD_TYPES; ++iK)
-						{
-							//Simplification - errata yields not worth considering.
-							if ((YieldTypes)iK > YIELD_GOLDEN_AGE_POINTS && !MOD_BALANCE_CORE_JFD)
-								break;
-
-							if (pImprovement2->GetAdjacentFeatureYieldChanges(pAdjacentPlot->getFeatureType(), (YieldTypes)iK) > 0)
-							{
-								bUp2 = true;
-								break;
-							}
-						}
-						if(bUp2)
-						{
-							pAdjacentPlot->updateYield();
 						}
 					}
 				}
@@ -8421,22 +8290,36 @@ void CvPlot::SetImprovementPillaged(bool bPillaged)
 				ChangePlotMovesChange(iMoves);
 			}
 
-			CvImprovementEntry& oldImprovementEntry = *GC.getImprovementInfo(getImprovementType());
-
-			for (int iI = 0; iI < NUM_YIELD_TYPES; iI++)
+			CvImprovementEntry& improvementEntry = *GC.getImprovementInfo(getImprovementType());
+			ImprovementTypes eImprovement = getImprovementType();
+			// update yields to adjacent plots
+			for (int iJ = 0; iJ < NUM_DIRECTION_TYPES; ++iJ)
 			{
-				//Simplification - errata yields not worth considering.
-				if ((YieldTypes)iI > YIELD_GOLDEN_AGE_POINTS && !MOD_BALANCE_CORE_JFD)
-					break;
-
-				if (oldImprovementEntry.GetYieldAdjacentSameType((YieldTypes)iI) > 0 || oldImprovementEntry.GetYieldAdjacentTwoSameType((YieldTypes)iI) > 0)
+				CvPlot* pAdjacentPlot = plotDirection(getX(), getY(), ((DirectionTypes)iJ));
+				bool bAdjacentImprovement = pAdjacentPlot && pAdjacentPlot->getImprovementType() != NO_IMPROVEMENT;
+				bool bCheckAdjacentTerrain = pAdjacentPlot && pAdjacentPlot->getTerrainType() != NO_TERRAIN && pAdjacentPlot->getOwner() == getOwner();;
+				if (bAdjacentImprovement || bCheckAdjacentTerrain)
 				{
-					for (int iJ = 0; iJ < NUM_DIRECTION_TYPES; iJ++)
+					ImprovementTypes eAdjacentImprovement = pAdjacentPlot->getImprovementType();
+					CvImprovementEntry& adjacentImprovementEntry = *GC.getImprovementInfo(eAdjacentImprovement);
+					bool bCheckAdjacentSame = bAdjacentImprovement && eAdjacentImprovement == eImprovement;
+					bool bCheckAdjacentAny = bAdjacentImprovement && adjacentImprovementEntry.IsYieldPerXAdjacentImprovement();
+					bool bCheckAdjacentOther = bAdjacentImprovement && pAdjacentPlot->getOwner() == getOwner();
+					for (int iK = 0; iK < NUM_YIELD_TYPES; ++iK)
 					{
-						CvPlot* pAdjacentPlot = plotDirection(getX(), getY(), ((DirectionTypes)iJ));
-						if (pAdjacentPlot && pAdjacentPlot->getImprovementType() == getImprovementType())
+						YieldTypes eYield = (YieldTypes)iK;
+						//Simplification - errata yields not worth considering.
+						if (eYield > YIELD_CULTURE_LOCAL && !MOD_BALANCE_CORE_JFD)
+							break;
+
+						if	(	( bCheckAdjacentSame && ( adjacentImprovementEntry.GetYieldAdjacentSameType(eYield) > 0 || adjacentImprovementEntry.GetYieldAdjacentTwoSameType(eYield) > 0 ) )
+							||	( bCheckAdjacentAny && adjacentImprovementEntry.GetYieldPerXAdjacentImprovement(eYield, eImprovement).first > 0)
+							||	( bCheckAdjacentOther && improvementEntry.GetAdjacentImprovementYieldChanges(eAdjacentImprovement, eYield) > 0 )
+							||	( bCheckAdjacentTerrain && improvementEntry.GetAdjacentTerrainYieldChanges(pAdjacentPlot->getTerrainType(), eYield) > 0 )
+							)
 						{
 							pAdjacentPlot->updateYield();
+							break;
 						}
 					}
 				}
@@ -9878,8 +9761,9 @@ int CvPlot::calculateImprovementYield(YieldTypes eYield, PlayerTypes ePlayer, Im
 	}
 
 	// Check to see if there's a bonus to apply before doing any looping
-	if(pImprovement->GetAdjacentCityYieldChange(eYield) > 0 ||
-	        pImprovement->GetAdjacentMountainYieldChange(eYield) > 0)
+	if	(	pImprovement->GetAdjacentCityYieldChange(eYield) > 0
+		||	pImprovement->GetAdjacentMountainYieldChange(eYield) > 0
+		)
 	{
 		for(iI = 0; iI < NUM_DIRECTION_TYPES; ++iI)
 		{
@@ -11750,9 +11634,10 @@ void CvPlot::SilentlyResetAllBuildProgress(BuildTypes eBuild)
 		bool bIterRoute = pkIterInfo->getRoute() != NO_ROUTE;
 
 		// Two groupings: Improvement (build or repair), Route(build, repair or remove)
-		if ((bBuildImprovement && (bIterImprovement || (pkIterInfo->isRepair() && !IsRoutePillaged()))) ||
-			(bBuildRoute && (bIterRoute || (pkIterInfo->isRepair() && !IsImprovementPillaged()) || pkIterInfo->IsRemoveRoute())) ||
-			(pkBuildInfo->IsRemoveRoute() && (bIterRoute || (pkIterInfo->isRepair() && !IsImprovementPillaged()))))
+		if	(	( bBuildImprovement && ( bIterImprovement || ( pkIterInfo->isRepair() && !IsRoutePillaged() ) ) )
+			||	( bBuildRoute && ( bIterRoute || ( pkIterInfo->isRepair() && !IsImprovementPillaged() ) || pkIterInfo->IsRemoveRoute() ) )
+			||	( pkBuildInfo->IsRemoveRoute() && ( bIterRoute || ( pkIterInfo->isRepair() && !IsImprovementPillaged() ) ) )
+			)
 		{
 			m_buildProgress.erase(it);
 		}
