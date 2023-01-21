@@ -384,6 +384,8 @@ CvBuildingEntry::CvBuildingEntry(void):
 	m_ppaiFeatureYieldChange(NULL),
 #if defined(MOD_BALANCE_CORE)
 	m_ppiResourceYieldChangeGlobal(),
+	m_ppiYieldFromImprovementLocal(),
+	m_ppiYieldFromImprovementGlobal(),
 	m_ppaiImprovementYieldChange(NULL),
 	m_ppaiImprovementYieldChangeGlobal(NULL),
 	m_ppaiSpecialistYieldChangeLocal(NULL),
@@ -522,6 +524,8 @@ CvBuildingEntry::~CvBuildingEntry(void)
 	CvDatabaseUtility::SafeDelete2DArray(m_ppaiFeatureYieldChange);
 #if defined(MOD_BALANCE_CORE)
 	m_ppiResourceYieldChangeGlobal.clear();
+	m_ppiYieldFromImprovementLocal.clear();
+	m_ppiYieldFromImprovementGlobal.clear();
 	CvDatabaseUtility::SafeDelete2DArray(m_ppaiImprovementYieldChange);
 	CvDatabaseUtility::SafeDelete2DArray(m_ppaiImprovementYieldChangeGlobal);
 	CvDatabaseUtility::SafeDelete2DArray(m_ppaiSpecialistYieldChangeLocal);
@@ -1077,6 +1081,29 @@ bool CvBuildingEntry::CacheResults(Database::Results& kResults, CvDatabaseUtilit
 		pResourceTypes->Reset();
 	}
 
+	//FeatureYieldChanges
+	{
+		kUtility.Initialize2DArray(m_ppaiFeatureYieldChange, "Features", "Yields");
+
+		std::string strKey("Building_FeatureYieldChanges");
+		Database::Results* pResults = kUtility.GetResults(strKey);
+		if(pResults == NULL)
+		{
+			pResults = kUtility.PrepareResults(strKey, "select Features.ID as FeatureID, Yields.ID as YieldID, Yield from Building_FeatureYieldChanges inner join Features on Features.Type = FeatureType inner join Yields on Yields.Type = YieldType where BuildingType = ?");
+		}
+
+		pResults->Bind(1, szBuildingType);
+
+		while(pResults->Step())
+		{
+			const int FeatureID = pResults->GetInt(0);
+			const int YieldID = pResults->GetInt(1);
+			const int yield = pResults->GetInt(2);
+
+			m_ppaiFeatureYieldChange[FeatureID][YieldID] = yield;
+		}
+	}
+
 	//ResourceYieldChanges
 	{
 		kUtility.Initialize2DArray(m_ppaiResourceYieldChange, "Resources", "Yields");
@@ -1101,7 +1128,7 @@ bool CvBuildingEntry::CacheResults(Database::Results& kResults, CvDatabaseUtilit
 	}
 
 #if defined(MOD_BALANCE_CORE)
-	//Building_ResourceYieldChangesGlobal
+	//ResourceYieldChangesGlobal
 	{
 		std::string strKey("Building_ResourceYieldChangesGlobal");
 		Database::Results* pResults = kUtility.GetResults(strKey);
@@ -1127,55 +1154,80 @@ bool CvBuildingEntry::CacheResults(Database::Results& kResults, CvDatabaseUtilit
 		std::map<int, std::map<int, int>>(m_ppiResourceYieldChangeGlobal).swap(m_ppiResourceYieldChangeGlobal);
 	}
 
-	//Building_YieldChangesPerPopInEmpire
-		{
-			std::string strKey("Building_YieldChangesPerPopInEmpire");
-			Database::Results* pResults = kUtility.GetResults(strKey);
-			if (pResults == NULL)
-			{
-				pResults = kUtility.PrepareResults(strKey, "select Yields.ID as YieldID, Yield from Building_YieldChangesPerPopInEmpire inner join Yields on Yields.Type = YieldType where BuildingType = ?");
-			}
-
-			pResults->Bind(1, szBuildingType);
-
-			while (pResults->Step())
-			{
-				const int iYieldType = pResults->GetInt(0);
-				const int iYield = pResults->GetInt(1);
-
-				m_piYieldChangePerPopInEmpire[iYieldType] += iYield;
-			}
-
-			pResults->Reset();
-
-			//Trim extra memory off container since this is mostly read-only.
-			std::map<int, int>(m_piYieldChangePerPopInEmpire).swap(m_piYieldChangePerPopInEmpire);
-		}
-#endif
-
-	//FeatureYieldChanges
+	//YieldChangesPerPopInEmpire
 	{
-		kUtility.Initialize2DArray(m_ppaiFeatureYieldChange, "Features", "Yields");
-
-		std::string strKey("Building_FeatureYieldChanges");
+		std::string strKey("Building_YieldChangesPerPopInEmpire");
 		Database::Results* pResults = kUtility.GetResults(strKey);
-		if(pResults == NULL)
+		if (pResults == NULL)
 		{
-			pResults = kUtility.PrepareResults(strKey, "select Features.ID as FeatureID, Yields.ID as YieldID, Yield from Building_FeatureYieldChanges inner join Features on Features.Type = FeatureType inner join Yields on Yields.Type = YieldType where BuildingType = ?");
+			pResults = kUtility.PrepareResults(strKey, "select Yields.ID as YieldID, Yield from Building_YieldChangesPerPopInEmpire inner join Yields on Yields.Type = YieldType where BuildingType = ?");
 		}
 
 		pResults->Bind(1, szBuildingType);
 
-		while(pResults->Step())
+		while (pResults->Step())
 		{
-			const int FeatureID = pResults->GetInt(0);
-			const int YieldID = pResults->GetInt(1);
-			const int yield = pResults->GetInt(2);
+			const int iYieldType = pResults->GetInt(0);
+			const int iYield = pResults->GetInt(1);
 
-			m_ppaiFeatureYieldChange[FeatureID][YieldID] = yield;
+			m_piYieldChangePerPopInEmpire[iYieldType] += iYield;
 		}
+
+		pResults->Reset();
+
+		//Trim extra memory off container since this is mostly read-only.
+		std::map<int, int>(m_piYieldChangePerPopInEmpire).swap(m_piYieldChangePerPopInEmpire);
 	}
-#if defined(MOD_BALANCE_CORE)
+	//YieldFromImprovementLocal
+	{
+		std::string strKey("Building_YieldFromImprovementLocal");
+		Database::Results* pResults = kUtility.GetResults(strKey);
+		if (pResults == NULL)
+		{
+			pResults = kUtility.PrepareResults(strKey, "select Improvements.ID as ImprovementID, Yields.ID as YieldID, Yield from Building_YieldFromImprovementLocal inner join Improvements on Improvements.Type = ImprovementType inner join Yields on Yields.Type = YieldType where BuildingType = ?");
+		}
+
+		pResults->Bind(1, szBuildingType);
+
+		while (pResults->Step())
+		{
+			const ImprovementTypes eImprovementType = ImprovementTypes(pResults->GetInt(0));
+			const YieldTypes eYieldType = YieldTypes(pResults->GetInt(1));
+			const int iYield = pResults->GetInt(2);
+
+			m_ppiYieldFromImprovementLocal[eImprovementType][eYieldType] += iYield;
+		}
+
+		pResults->Reset();
+
+		//Trim extra memory off container since this is mostly read-only.
+		std::map<ImprovementTypes, std::map<YieldTypes, int>>(m_ppiYieldFromImprovementLocal).swap(m_ppiYieldFromImprovementLocal);
+	}
+	//YieldFromImprovementGlobal
+	{
+		std::string strKey("Building_YieldFromImprovementGlobal");
+		Database::Results* pResults = kUtility.GetResults(strKey);
+		if (pResults == NULL)
+		{
+			pResults = kUtility.PrepareResults(strKey, "select Improvements.ID as ImprovementID, Yields.ID as YieldID, Yield from Building_YieldFromImprovementGlobal inner join Improvements on Improvements.Type = ImprovementType inner join Yields on Yields.Type = YieldType where BuildingType = ?");
+		}
+
+		pResults->Bind(1, szBuildingType);
+
+		while (pResults->Step())
+		{
+			const ImprovementTypes eImprovementType = ImprovementTypes(pResults->GetInt(0));
+			const YieldTypes eYieldType = YieldTypes(pResults->GetInt(1));
+			const int iYield = pResults->GetInt(2);
+
+			m_ppiYieldFromImprovementGlobal[eImprovementType][eYieldType] += iYield;
+		}
+
+		pResults->Reset();
+
+		//Trim extra memory off container since this is mostly read-only.
+		std::map<ImprovementTypes, std::map<YieldTypes, int>>(m_ppiYieldFromImprovementGlobal).swap(m_ppiYieldFromImprovementGlobal);
+	}
 	//ImprovementYieldChanges
 	{
 		kUtility.Initialize2DArray(m_ppaiImprovementYieldChange, "Improvements", "Yields");
@@ -1264,7 +1316,7 @@ bool CvBuildingEntry::CacheResults(Database::Results& kResults, CvDatabaseUtilit
 			m_ppaiYieldPerXFeature[FeatureID][YieldID] = yield;
 		}
 	}
-	//Building_DomainFreeExperiencesGlobal
+	//DomainFreeExperiencesGlobal
 	{
 		std::string strKey("Building_DomainFreeExperiencesGlobal");
 		Database::Results* pResults = kUtility.GetResults(strKey);
@@ -3923,6 +3975,44 @@ int* CvBuildingEntry::GetFeatureYieldChangeArray(int i) const
 }
 
 #if defined(MOD_BALANCE_CORE)
+/// Change to Building Yield by Improvement Type
+int CvBuildingEntry::GetYieldFromImprovementLocal(ImprovementTypes eImprovementType, YieldTypes eYieldType) const
+{
+	CvAssertMsg(eImprovementType < GC.getNumImprovementInfos(), "Index out of bounds");
+	CvAssertMsg(eImprovementType > -1, "Index out of bounds");
+	CvAssertMsg(eYieldType < NUM_YIELD_TYPES, "Index out of bounds");
+	CvAssertMsg(eYieldType > -1, "Index out of bounds");
+	std::map<ImprovementTypes, std::map<YieldTypes, int>>::const_iterator itImprovement = m_ppiYieldFromImprovementLocal.find(eImprovementType);
+	if (itImprovement != m_ppiYieldFromImprovementLocal.end()) // find returns the iterator to map::end if the key eImprovementType is not present in the map
+	{
+		std::map<YieldTypes, int>::const_iterator itYield = itImprovement->second.find(eYieldType);
+		if (itYield != itImprovement->second.end()) // find returns the iterator to map::end if the key eYieldType is not present in the map
+		{
+			return itYield->second;
+		}
+	}
+
+	return 0;
+}
+/// Change to Building Yield by Improvement Type (Global)
+int CvBuildingEntry::GetYieldFromImprovementGlobal(ImprovementTypes eImprovementType, YieldTypes eYieldType) const
+{
+	CvAssertMsg(eImprovementType < GC.getNumImprovementInfos(), "Index out of bounds");
+	CvAssertMsg(eImprovementType > -1, "Index out of bounds");
+	CvAssertMsg(eYieldType < NUM_YIELD_TYPES, "Index out of bounds");
+	CvAssertMsg(eYieldType > -1, "Index out of bounds");
+	std::map<ImprovementTypes, std::map<YieldTypes, int>>::const_iterator itImprovement = m_ppiYieldFromImprovementGlobal.find(eImprovementType);
+	if (itImprovement != m_ppiYieldFromImprovementGlobal.end()) // find returns the iterator to map::end if the key eImprovementType is not present in the map
+	{
+		std::map<YieldTypes, int>::const_iterator itYield = itImprovement->second.find(eYieldType);
+		if (itYield != itImprovement->second.end()) // find returns the iterator to map::end if the key eYieldType is not present in the map
+		{
+			return itYield->second;
+		}
+	}
+
+	return 0;
+}
 /// Change to Improvement yield by type
 int CvBuildingEntry::GetImprovementYieldChange(int i, int j) const
 {
