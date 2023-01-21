@@ -1,5 +1,5 @@
 /*	-------------------------------------------------------------------------------------------------------
-	© 1991-2012 Take-Two Interactive Software and its subsidiaries.  Developed by Firaxis Games.  
+	Â© 1991-2012 Take-Two Interactive Software and its subsidiaries.  Developed by Firaxis Games.  
 	Sid Meier's Civilization V, Civ, Civilization, 2K Games, Firaxis Games, Take-Two Interactive Software 
 	and their respective logos are all trademarks of Take-Two interactive Software, Inc.  
 	All other marks and trademarks are the property of their respective owners.  
@@ -597,6 +597,9 @@ public:
 	int GetTerrainYieldChange(int i, int j) const;
 	int* GetTerrainYieldChangeArray(int i) const;
 
+	fraction GetYieldPerXImprovementLocal(ImprovementTypes eImprovementType, YieldTypes eYieldType) const;
+	fraction GetYieldPerXImprovementGlobal(ImprovementTypes eImprovementType, YieldTypes eYieldType) const;
+
 	int GetYieldPerXTerrain(int i, int j) const;
 	int* GetYieldPerXTerrainArray(int i) const;
 
@@ -1010,8 +1013,8 @@ private:
 #endif
 	int* m_piNumFreeUnits;
 
-	int** m_ppaiResourceYieldChange;
 	int** m_ppaiFeatureYieldChange;
+	int** m_ppaiResourceYieldChange;
 #if defined(MOD_BALANCE_CORE)
 	std::map<int, std::map<int, int>> m_ppiResourceYieldChangeGlobal;
 	CvDoubleYieldInfo* m_paYieldFromYield;
@@ -1024,6 +1027,8 @@ private:
 	int** m_ppaiResourceYieldModifier;
 	int** m_ppaiTerrainYieldChange;
 	int** m_ppaiYieldPerXTerrain;
+	std::map<ImprovementTypes, std::map<YieldTypes, fraction>> m_ppYieldPerXImprovementLocal;
+	std::map<ImprovementTypes, std::map<YieldTypes, fraction>> m_ppYieldPerXImprovementGlobal;
 	int** m_ppaiYieldPerXFeature;
 	int** m_ppaiPlotYieldChange;
 	int** m_ppiBuildingClassYieldChanges;
