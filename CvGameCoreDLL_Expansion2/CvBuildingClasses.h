@@ -582,8 +582,6 @@ public:
 	int* GetFeatureYieldChangeArray(int i) const;
 #if defined(MOD_BALANCE_CORE)
 	int GetResourceYieldChangeGlobal(int iResource, int iYieldType) const;
-	int GetYieldFromImprovementLocal(ImprovementTypes eImprovementType, YieldTypes eYieldType) const;
-	int GetYieldFromImprovementGlobal(ImprovementTypes eImprovementType, YieldTypes eYieldType) const;
 	int GetImprovementYieldChange(int i, int j) const;
 	int* GetImprovementYieldChangeArray(int i) const;
 
@@ -598,6 +596,9 @@ public:
 	int* GetResourceYieldModifierArray(int i) const;
 	int GetTerrainYieldChange(int i, int j) const;
 	int* GetTerrainYieldChangeArray(int i) const;
+
+	fraction GetYieldPerXImprovementLocal(ImprovementTypes eImprovementType, YieldTypes eYieldType) const;
+	fraction GetYieldPerXImprovementGlobal(ImprovementTypes eImprovementType, YieldTypes eYieldType) const;
 
 	int GetYieldPerXTerrain(int i, int j) const;
 	int* GetYieldPerXTerrainArray(int i) const;
@@ -1018,8 +1019,6 @@ private:
 	std::map<int, std::map<int, int>> m_ppiResourceYieldChangeGlobal;
 	CvDoubleYieldInfo* m_paYieldFromYield;
 	CvDoubleYieldInfo* m_paYieldFromYieldGlobal;
-	std::map<ImprovementTypes, std::map<YieldTypes, int>> m_ppiYieldFromImprovementLocal;
-	std::map<ImprovementTypes, std::map<YieldTypes, int>> m_ppiYieldFromImprovementGlobal;
 	int** m_ppaiImprovementYieldChange;
 	int** m_ppaiImprovementYieldChangeGlobal;
 	int** m_ppaiSpecialistYieldChangeLocal;
@@ -1028,6 +1027,8 @@ private:
 	int** m_ppaiResourceYieldModifier;
 	int** m_ppaiTerrainYieldChange;
 	int** m_ppaiYieldPerXTerrain;
+	std::map<ImprovementTypes, std::map<YieldTypes, fraction>> m_ppYieldPerXImprovementLocal;
+	std::map<ImprovementTypes, std::map<YieldTypes, fraction>> m_ppYieldPerXImprovementGlobal;
 	int** m_ppaiYieldPerXFeature;
 	int** m_ppaiPlotYieldChange;
 	int** m_ppiBuildingClassYieldChanges;
