@@ -120,7 +120,7 @@ SET Text = 'Goddess of Nature'
 WHERE Tag = 'TXT_KEY_BELIEF_ONE_WITH_NATURE_SHORT';
 
 UPDATE Language_en_US
-SET Text = '+1 [ICON_PEACE] Faith, [ICON_GOLD] Gold, and [ICON_FOOD] Food for every 2 Mountains within 3 tiles of a City (capping at the City''s population). Natural Wonders gain +3 [ICON_PEACE] Faith and +2 [ICON_CULTURE] Culture'
+SET Text = '+1 [ICON_PEACE] Faith, [ICON_GOLD] Gold, and [ICON_FOOD] Food for every 2 Mountains within 3 tiles of a City (capping at the City''s [ICON_CITIZEN] Population). Natural Wonders gain +3 [ICON_PEACE] Faith and +2 [ICON_CULTURE] Culture'
 WHERE Tag = 'TXT_KEY_BELIEF_ONE_WITH_NATURE';
 
 
@@ -252,7 +252,7 @@ SET Text = 'Hero Worship'
 WHERE Tag = 'TXT_KEY_BELIEF_INTERFAITH_DIALOGUE_SHORT';
 
 UPDATE Language_en_US
-SET Text = 'Receive 100 [ICON_PEACE] Faith and [ICON_GOLDEN_AGE] Golden Age Points when you conquer a City, as well as 25 [ICON_GREAT_GENERAL] Great General Points (if City is landlocked) or [ICON_GREAT_ADMIRAL] Great Admiral Points (if Coastal). Bonus scales with City [ICON_CITIZEN] Population and Era.[NEWLINE]Unlocks [COLOR_POSITIVE_TEXT]Great Altar National Wonder[ENDCOLOR] (+5 [ICON_PEACE] Faith, +15% Military Unit [ICON_PRODUCTION] Production; +5 [ICON_PRODUCTION] Production from [ICON_RELIGION] Holy Sites; unlocks [COLOR_POSITIVE_TEXT]Reformation Belief[ENDCOLOR]).'
+SET Text = 'Receive 100 [ICON_PEACE] Faith and [ICON_GOLDEN_AGE] Golden Age Points when you conquer a City, as well as 25 [ICON_GREAT_GENERAL] Great General Points (if City is landlocked) or [ICON_GREAT_ADMIRAL] Great Admiral Points (if Coastal). Bonus scales with Era and the City''s [ICON_CITIZEN] Population.[NEWLINE]Unlocks [COLOR_POSITIVE_TEXT]Great Altar National Wonder[ENDCOLOR] (+5 [ICON_PEACE] Faith, +15% Military Unit [ICON_PRODUCTION] Production; +5 [ICON_PRODUCTION] Production from [ICON_RELIGION] Holy Sites; unlocks [COLOR_POSITIVE_TEXT]Reformation Belief[ENDCOLOR]).'
 WHERE Tag = 'TXT_KEY_BELIEF_INTERFAITH_DIALOGUE';
 
 
@@ -589,7 +589,7 @@ SET Text = 'Crusader Spirit'
 WHERE Tag = 'TXT_KEY_BELIEF_EVANGELISM_SHORT';
 
 UPDATE Language_en_US
-SET Text = 'Land Units gain +10% [ICON_STRENGTH] Combat Strength versus Land Units in enemy territory, and an additional +10% versus Land Units of players that do not follow your Religion. Receive 50 [ICON_CULTURE] Culture and [ICON_GOLD] Gold when you conquer Cities, scaling with Era and City [ICON_CITIZEN] Population.'
+SET Text = 'Land Units gain +10% [ICON_STRENGTH] Combat Strength versus Land Units in enemy territory, and an additional +10% versus Land Units of players that do not follow your Religion. Receive 50 [ICON_CULTURE] Culture and [ICON_GOLD] Gold when you conquer Cities, scaling with Era and the City''s [ICON_CITIZEN] Population.'
 WHERE Tag = 'TXT_KEY_BELIEF_EVANGELISM';
 
 

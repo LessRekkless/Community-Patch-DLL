@@ -43,7 +43,7 @@ WHERE Tag = 'TXT_KEY_POLICY_FORTIFIED_BORDERS_HELP';
 
 -- Futurism
 UPDATE Language_en_US
-SET Text = '[COLOR_POSITIVE_TEXT]Futurism[ENDCOLOR]: [ICON_TOURISM] Tourism bonus from Historic Events increased by 20%. +2 [ICON_CULTURE] Culture from Great Works. Earn 50 [ICON_TOURISM] Tourism when you conquer a city for the first time, scaling with Era and city size.'
+SET Text = '[COLOR_POSITIVE_TEXT]Futurism[ENDCOLOR]: [ICON_TOURISM] Tourism bonus from Historic Events increased by 20%. +2 [ICON_CULTURE] Culture from Great Works. Earn 50 [ICON_TOURISM] Tourism when you conquer a city for the first time, scaling with Era and the City''s [ICON_CITIZEN] Population.'
 WHERE Tag = 'TXT_KEY_POLICY_FUTURISM_HELP';
 
 -- Industrial Espionage (now Lebensraum)
@@ -205,7 +205,7 @@ SET Text = 'Self-Determination'
 WHERE Tag = 'TXT_KEY_POLICY_URBANIZATION';
 
 UPDATE Language_en_US
-SET Text = '[COLOR_POSITIVE_TEXT]Self-Determination[ENDCOLOR]: Liberating a city gives 15 XP to all units, 50 [ICON_INFLUENCE] Influence with all City-States, and 40 [ICON_RESEARCH] Science, scaling with Era and City [ICON_CITIZEN] Population. The liberated city gains an Arsenal and 6 units.'
+SET Text = '[COLOR_POSITIVE_TEXT]Self-Determination[ENDCOLOR]: Liberating a city gives 15 XP to all units, 50 [ICON_INFLUENCE] Influence with all City-States, and 40 [ICON_RESEARCH] Science, scaling with Era and the City''s [ICON_CITIZEN] Population. The liberated City gains an Arsenal and 6 units.'
 WHERE Tag = 'TXT_KEY_POLICY_URBANIZATION_HELP';
 
 UPDATE Language_en_US
@@ -569,7 +569,7 @@ SET Text = 'Civilizing Mission'
 WHERE Tag = 'TXT_KEY_POLICY_TREASURE_FLEETS';
 
 UPDATE Language_en_US
-SET Text = '[COLOR_POSITIVE_TEXT]Civilizing Mission[ENDCOLOR][NEWLINE]Receive 75 [ICON_GOLD] Gold when you conquer a city, scaling with Era and City [ICON_CITIZEN] Population. Conquered cities retain all buildings. [ICON_PUPPET] Puppeted cities and cities with a Courthouse gain +10% [ICON_PRODUCTION] Production towards buildings, with an additional +10% [ICON_PRODUCTION] Production per Era difference between your current Era and the building''s Era.'
+SET Text = '[COLOR_POSITIVE_TEXT]Civilizing Mission[ENDCOLOR][NEWLINE]Receive 75 [ICON_GOLD] Gold when you conquer a City, scaling with Era and the City''s [ICON_CITIZEN] Population. Conquered cities retain all buildings. [ICON_PUPPET] Puppeted cities and cities with a Courthouse gain +10% [ICON_PRODUCTION] Production towards buildings, with an additional +10% [ICON_PRODUCTION] Production per Era difference between your current Era and the building''s Era.'
 WHERE Tag = 'TXT_KEY_POLICY_TREASURE_FLEETS_HELP';
 
 UPDATE Language_en_US
@@ -607,7 +607,7 @@ SET Text = 'Imperium'
 WHERE Tag = 'TXT_KEY_POLICY_WARRIOR_CODE';
 
 UPDATE Language_en_US
-SET Text = '[COLOR_POSITIVE_TEXT]Imperium[ENDCOLOR][NEWLINE]A free Settler appears near the [ICON_CAPITAL] Capital. Receive 40 [ICON_RESEARCH] Science and [ICON_CULTURE] Culture when you found or conquer Cities, scaling with era. Conquest bonus also scales based on City [ICON_CITIZEN] population.'
+SET Text = '[COLOR_POSITIVE_TEXT]Imperium[ENDCOLOR][NEWLINE]A free Settler appears near the [ICON_CAPITAL] Capital. Receive 40 [ICON_RESEARCH] Science and [ICON_CULTURE] Culture when you found or conquer Cities, scaling with Era. The conquest bonus also scales based on the City''s [ICON_CITIZEN] Population.'
 WHERE Tag = 'TXT_KEY_POLICY_WARRIOR_CODE_HELP';
 
 UPDATE Language_en_US
