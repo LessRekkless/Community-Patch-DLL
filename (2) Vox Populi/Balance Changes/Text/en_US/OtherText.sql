@@ -46,7 +46,7 @@ SET Text = '[COLOR_POSITIVE_TEXT]Annexing[ENDCOLOR] causes the following:[NEWLIN
 WHERE Tag = 'TXT_KEY_POPUP_CITY_CAPTURE_INFO_ANNEX';
 
 UPDATE Language_en_US	
-SET Text = '[COLOR_POSITIVE_TEXT]Razing[ENDCOLOR] causes the following:[NEWLINE][ICON_BULLET] City loses [ICON_CITIZEN] Population each turn until it reaches 0 population and is removed from the game.[NEWLINE][ICON_BULLET] Produces [ICON_HAPPINESS_4] Unhappiness equal to the City''s [ICON_CITIZEN] Population.[NEWLINE][ICON_BULLET] Increases your [COLOR_POSITIVE_TEXT]War Score[ENDCOLOR] every time Population is reduced.[NEWLINE][ICON_BULLET] Friendly units within city borders heal as if inside the city (looting).[NEWLINE][ICON_BULLET] May generate [COLOR_NEGATIVE_TEXT]Partisans[ENDCOLOR] loyal to the former owner (if you are still at war with this player) or barbarians each turn while razing.'
+SET Text = '[COLOR_POSITIVE_TEXT]Razing[ENDCOLOR] causes the following:[NEWLINE][ICON_BULLET] City loses [ICON_CITIZEN] Population each turn until it reaches 0 and is removed from the game.[NEWLINE][ICON_BULLET] Produces [ICON_HAPPINESS_4] Unhappiness equal to the City''s [ICON_CITIZEN] Population.[NEWLINE][ICON_BULLET] Increases your [COLOR_POSITIVE_TEXT]War Score[ENDCOLOR] every time Population is reduced.[NEWLINE][ICON_BULLET] Friendly units within city borders heal as if inside the city (looting).[NEWLINE][ICON_BULLET] May generate [COLOR_NEGATIVE_TEXT]Partisans[ENDCOLOR] loyal to the former owner (if you are still at war with this player) or barbarians each turn while razing.'
 WHERE Tag = 'TXT_KEY_POPUP_CITY_CAPTURE_INFO_RAZE';
 
 -- Citizen Food Consumption
@@ -344,7 +344,7 @@ SET Text = 'Allows you to build the [COLOR_POSITIVE_TEXT]Temple[ENDCOLOR], which
 WHERE Tag = 'TXT_KEY_TECH_PHILOSOPHY_HELP';
 
 UPDATE Language_en_US
-SET Text = 'Receive an additional [ICON_INTERNATIONAL_TRADE] Trade Route. Allows Workers to build [COLOR_POSITIVE_TEXT]Railroads[ENDCOLOR] on map tiles.'
+SET Text = 'Receive an additional [ICON_INTERNATIONAL_TRADE] Trade Route. Allows you to build the [COLOR_POSITIVE_TEXT]Train Station[ENDCOLOR] and [COLOR_POSITIVE_TEXT]Hotel[ENDCOLOR], significantly improving [ICON_PRODUCTION] Production and [ICON_TOURISM] Tourism in your cities, respectively, if their requirements are met. Allows Workers to build [COLOR_POSITIVE_TEXT]Railroads[ENDCOLOR] on map tiles.'
 WHERE Tag = 'TXT_KEY_TECH_RAILROAD_HELP';
 
 UPDATE Language_en_US
