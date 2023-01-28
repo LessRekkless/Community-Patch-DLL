@@ -411,9 +411,14 @@ UPDATE Language_en_US
 SET Text = 'During a game, you will create "workers" - non-military units who will "improve" the land around your cities, increasing productivity or providing access to a nearby "resource." Improvements include farms, villages, lumber mills, quarries, mines, and more. During wartime your enemy may "pillage" (destroy) your improvements. Pillaged improvements are ineffective until a worker has "repaired" them.'
 WHERE Tag = 'TXT_KEY_PEDIA_IMPROVEMENT_HELP_TEXT';
 
+-- Railroad
 UPDATE Language_en_US
-SET Text = '[COLOR_NEGATIVE_TEXT]Costs[ENDCOLOR] 2 [ICON_GOLD] Gold per turn to maintain.[NEWLINE][NEWLINE]An unbroken chain of Railroads allows Units to move extremely quickly through Tiles.'
+SET Text = '[COLOR_NEGATIVE_TEXT]Costs[ENDCOLOR] 3 [ICON_GOLD] Gold per turn to maintain.[NEWLINE][NEWLINE]An unbroken chain of Railroads allows Units to move extremely quickly through Tiles.'
 WHERE Tag = 'TXT_KEY_BUILD_RAILROAD_HELP';
+
+UPDATE Language_en_US
+SET Text = '[COLOR_NEGATIVE_TEXT]Costs[ENDCOLOR] 3 [ICON_GOLD] Gold per turn to maintain. An unbroken chain of Railroads allows units to move extremely quickly through tiles.[NEWLINE][NEWLINE]A railroad is a set of rails - usually metal - upon which a vehicle runs. The earliest railed vehicles were carts pulled by animal power; the first steam-powered locomotive appeared in England at the end of the 18th century.'
+WHERE Tag = 'TXT_KEY_CIV5_IMPROVEMENTS_RAILROAD_TEXT';
 
 -- Fort
 UPDATE Language_en_US
