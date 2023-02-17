@@ -95,6 +95,29 @@ VALUES
 	('PROMOTION_ANTI_AIR_II', 'UNITCOMBAT_FIGHTER', 100),
 	('PROMOTION_ASSIZE_OF_ARMS', 'UNITCOMBAT_MOUNTED', 20),
 	('PROMOTION_ASSIZE_OF_ARMS', 'UNITCOMBAT_ARMOR', 20);
+-- Gun Units are a subset of Melee Units, and Armor Units are a subset of Mounted Units
+CREATE TEMPORARY TABLE temp_unitcombatmods AS SELECT * FROM UnitPromotions_UnitCombatMods
+WHERE UnitCombatType = 'UNITCOMBAT_MELEE' OR UnitCombatType = 'UNITCOMBAT_MOUNTED';
+
+INSERT INTO UnitPromotions_UnitCombatMods
+	(PromotionType, UnitCombatType, Modifier)
+SELECT
+	PromotionType, 'UNITCOMBAT_GUN', Modifier
+FROM temp_unitcombatmods u2
+WHERE u2.UnitCombatType = 'UNITCOMBAT_MELEE'
+AND NOT EXISTS (SELECT * FROM UnitPromotions_UnitCombatMods u1
+	WHERE u1.PromotionType = u2.PromotionType AND u1.UnitCombatType = 'UNITCOMBAT_GUN' AND u1.Modifier = u2.Modifier);
+
+INSERT INTO UnitPromotions_UnitCombatMods
+	(PromotionType, UnitCombatType, Modifier)
+SELECT
+	PromotionType, 'UNITCOMBAT_ARMOR', Modifier
+FROM temp_unitcombatmods u2
+WHERE u2.UnitCombatType = 'UNITCOMBAT_MOUNTED'
+AND NOT EXISTS (SELECT * FROM UnitPromotions_UnitCombatMods u1
+	WHERE u1.PromotionType = u2.PromotionType AND u1.UnitCombatType = 'UNITCOMBAT_ARMOR' AND u1.Modifier = u2.Modifier);
+
+DROP TABLE temp_unitcombatmods;
 
 INSERT INTO UnitPromotions_CombatModPerAdjacentUnitCombat
 	(PromotionType, UnitCombatType, Modifier, Attack, Defense)

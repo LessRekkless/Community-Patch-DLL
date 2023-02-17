@@ -135,6 +135,10 @@
 
 	-- added Bonus vs Mounted
 	UPDATE Language_en_US
+	SET Text = 'Reach'
+	WHERE Tag = 'TXT_KEY_PROMOTION_ANTI_MOUNTED_I';
+
+	UPDATE Language_en_US
 	SET Text = '+50% [ICON_STRENGTH] Combat Strength VS [COLOR_POSITIVE_TEXT]Mounted Units[ENDCOLOR].'
 	WHERE Tag = 'TXT_KEY_PROMOTION_ANTI_MOUNTED_I_HELP';
 

@@ -149,7 +149,7 @@
 			<Text>Respect</Text>
 		</Row>
 		<Row Tag="TXT_KEY_PROMOTION_RESPECT_HELP">
-			<Text>[ICON_STRENGTH] Combat Strength [COLOR_POSITIVE_TEXT]increases[ENDCOLOR] with damage taken.[NEWLINE]+15% [ICON_STRENGTH] Combat Strength VS [COLOR_POSITIVE_TEXT]Melee[ENDCOLOR] and [COLOR_POSITIVE_TEXT]Gunpowder Units[ENDCOLOR].[NEWLINE]Heal 10 HP after defeating an Enemy Unit.</Text>
+			<Text>[ICON_STRENGTH] Combat Strength [COLOR_POSITIVE_TEXT]increases[ENDCOLOR] with damage taken.[NEWLINE]+15% [ICON_STRENGTH] Combat Strength VS [COLOR_POSITIVE_TEXT]Melee[ENDCOLOR].[NEWLINE]Heal 10 HP after defeating an Enemy Unit.</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_PROMOTION_SINCERITY">
@@ -357,7 +357,7 @@
 			<Text>Assize of Arms</Text>
 		</Row>
 		<Row Tag="TXT_KEY_PROMOTION_ASSIZE_OF_ARMS_HELP">
-			<Text>+20% [ICON_STRENGTH] Combat Strength vs [COLOR_POSITIVE_TEXT]Armor[ENDCOLOR] and [COLOR_POSITIVE_TEXT]Mounted Units[ENDCOLOR].</Text>
+			<Text>+20% [ICON_STRENGTH] Combat Strength vs [COLOR_POSITIVE_TEXT]Mounted Units[ENDCOLOR].</Text>
 		</Row>
 	<!-- Mandekalu Cavalry -->
 		<Row Tag="TXT_KEY_PROMOTION_RAIDER">
