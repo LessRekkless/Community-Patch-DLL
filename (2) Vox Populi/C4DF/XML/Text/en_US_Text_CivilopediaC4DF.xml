@@ -24,7 +24,7 @@
 			<Text>[COLOR_GREEN]Map Trading[ENDCOLOR]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CONCEPT_DIPLOMACY_MAP_TRADING_SUMMARY">
-			<Text>A civilization's World Map details every island, ocean, Natural Wonder and civilization that a civilization's explorers have discovered and charted. The trade of a civilization's World Map is available upon the discovery of Military Science, and it will reveal every tile that civilization has explored. World Maps do not provide contact with foreign civilizations, but it will chart their location and allow you to meet them! The value of a World Map goes up depending on how much undiscovered land that civilization can reveal to you: Natural Wonders and Resources are worth far more than vast, featureless oceans. World Maps can become expensive, so be sure to explore the world and cash in on the discovery income!</Text>
+			<Text>A civilization's World Map details every island, ocean, Natural Wonder, and civilization that a civilization's explorers have discovered and charted. The trade of a civilization's World Map is available upon the discovery of Military Science, and it will reveal every tile that civilization has explored. World Maps do not provide contact with foreign civilizations, but it will chart their location and allow you to meet them! The value of a World Map goes up depending on how much undiscovered land that civilization can reveal to you: Natural Wonders and Resources are worth far more than vast, featureless oceans. World Maps can become expensive, so be sure to explore the world and cash in on the discovery income!</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CONCEPT_DIPLOMACY_MAP_TRADING_DESCRIPTION">
 			<Text>{TXT_KEY_CONCEPT_DIPLOMACY_MAP_TRADING_TOPIC}</Text>

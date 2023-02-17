@@ -12,7 +12,7 @@
 			<Text>{1_Num} [ICON_TOURISM] Tourism</Text>
 		</Row>
 		<Row Tag="TXT_KEY_TOURISM_FROM_TRADE_ROUTES">
-			<Text>{1_perTurn:number "#.##"} [ICON_TOURISM] from Trade Routes established with this city</Text>
+			<Text>{1_perTurn:number "#.##"} [ICON_TOURISM] from Trade Routes established with this City</Text>
 		</Row>
 		<Row Tag="TXT_KEY_YIELD_GOLDEN_AGE_POINTS">
 			<Text>Golden Age Points</Text>
@@ -21,7 +21,7 @@
 			<Text>{1_Num} [ICON_GOLDEN_AGE] Golden Age Points</Text>
 		</Row>
 		<Row Tag="TXT_KEY_GOLDEN_AGE_POINTS_FROM_TRADE_ROUTES">
-			<Text>{1_perTurn:number "#.##"} [ICON_GOLDEN_AGE] from Trade Routes established with this city</Text>
+			<Text>{1_perTurn:number "#.##"} [ICON_GOLDEN_AGE] from Trade Routes established with this City</Text>
 		</Row>
 		<Row Tag="TXT_KEY_YIELD_GREAT_GENERAL_POINTS">
 			<Text>Great General Points</Text>
@@ -71,14 +71,14 @@
 			<Text>Destroy the City!</Text>
 		</Row>
 		<Row Tag="TXT_KEY_POPUP_CITY_CAPTURE_INFO_DESTROY">
-			<Text>The City is instantly destroyed. In a One City Challenge, HUMAN players cannot keep captured cities.</Text>
+			<Text>The City is instantly destroyed. In a One City Challenge, HUMAN players cannot keep captured Cities.</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_POPUP_REMOVE_SPHERE_CAPTURED_CITY">
 			<Text>Remove Sphere of Influence</Text>
 		</Row>
 		<Row Tag="TXT_KEY_POPUP_CITY_CAPTURE_INFO_REMOVE_SPHERE">
-			<Text>Removes the Sphere of Influence placed on {1_CivName}. The city will be returned to the City-State, but they will still be angry with you.</Text>
+			<Text>Removes the Sphere of Influence placed on {1_CivName}. The City will be returned to the City-State, but they will still be angry with you.</Text>
 		</Row>
 
 		<!-- Tourism Bonus Turns for Tooltip -->
@@ -2431,25 +2431,25 @@
 		</Row>
 
 		<Row Tag="TXT_KEY_NOTIFICATION_QUEST_GET_CITY_COMPLETE">
-			<Text>The tactical experts from {@1_CivName} commend you for your efforts, and hope that the city is as militarily useful as they foresaw.</Text>
+			<Text>The tactical experts from {@1_CivName} commend you for your efforts, and hope that the City is as militarily useful as they foresaw.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_NOTIFICATION_SUMMARY_GET_CITY_COMPLETE">
-			<Text>Successful city capture for {@1_CivName}!</Text>
+			<Text>Successful City capture for {@1_CivName}!</Text>
 		</Row>
 
 		<!-- Capture City (OCC) -->
 		<Row Tag="TXT_KEY_NOTIFICATION_QUEST_UNIT_GET_CITY_OCC">
-			<Text>Tactical experts from {@2_CivName} believe that the city of {@1_CityName} is a significant threat to their safety. Conquer it by any means, and you will be greatly rewarded!</Text>
+			<Text>Tactical experts from {@2_CivName} believe that the City of {@1_CityName} is a significant threat to their safety. Conquer it by any means, and you will be greatly rewarded!</Text>
 		</Row>
 		<Row Tag="TXT_KEY_NOTIFICATION_SUMMARY_UNIT_GET_CITY_OCC">
 			<Text>{@2_CivName} wants you to conquer {@1_CityName}</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_NOTIFICATION_QUEST_GET_CITY_OCC_COMPLETE">
-			<Text>The tactical experts from {@1_CivName} thank you for conquering the city they targeted.</Text>
+			<Text>The tactical experts from {@1_CivName} thank you for conquering the City they targeted.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_NOTIFICATION_SUMMARY_GET_CITY_OCC_COMPLETE">
-			<Text>Successfully conquered city for {@1_CivName}!</Text>
+			<Text>Successfully conquered City for {@1_CivName}!</Text>
 		</Row>
     
 		<!-- Coup -->
@@ -2478,7 +2478,7 @@
 			<Text>Coup failed!</Text>
 		</Row>
 		<Row Tag="TXT_KEY_NOTIFICATION_COUP_FAILED_B_S">
-			<Text>Your coup has failed, either because your spy has died or the city is no longer a valid target. As such, the quest from {@1_Civname} was withdrawn.</Text>
+			<Text>Your coup has failed, either because your spy has died or the City is no longer a valid target. As such, the quest from {@1_Civname} was withdrawn.</Text>
 		</Row>
 
 
@@ -2569,15 +2569,15 @@
 			<Text>Stage a coup in {1_Civ}.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CITY_STATE_QUEST_DISCOVER_GET_CITY_FORMAL">
-			<Text>Acquire the city of {1_City}.</Text>
+			<Text>Acquire the City of {1_City}.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CITY_STATE_QUEST_GET_CITY_OCC_FORMAL">
-			<Text>They want you to conquer the city of {1_City}.</Text>
+			<Text>They want you to conquer the City of {1_City}.</Text>
 		</Row>
 		<!-- Plot Helpers -->
 
 		<Row Tag="TXT_KEY_CITY_STATE_GET_CITY_QUEST_LONG">
-			<Text>{1_Civ} wants you to acquire this city.</Text>
+			<Text>{1_Civ} wants you to acquire this City.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CITY_STATE_FIND_PLOT_QUEST_LONG">
 			<Text>{1_Civ} wants you to explore around this tile.</Text>
@@ -2714,7 +2714,7 @@
 			<Text>[COLOR_YELLOW]Themes and Theming Bonuses[ENDCOLOR]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CONCEPT_THEMING_BONUSES_BODY">
-			<Text>If a Building has more than one slot for Great Works, there's a good chance that a certain combination of Great Works may 'Theme' this building, resulting in powerful yield bonuses. Theming requires the Great Works in the building to meet a set of specific criteria, be it different Eras, Civilizations, or even Great Work Types. This information is revealed when you hover over the Building's Theming Bonus yield value in the City Screen.[NEWLINE][NEWLINE]Themes provide additional [ICON_TOURISM] Tourism and [ICON_CULTURE] Culture for your Civilization, based on the indicated value in your City Screen. [COLOR_YELLOW]In some cases, buildings may provide an additional Theming Bonus yield - this bonus is indicated in the Building's Help tooltip.[ENDCOLOR]</Text>
+			<Text>If a Building has more than one slot for [ICON_GREAT_WORK] Great Works, there's a good chance that a certain combination of [ICON_GREAT_WORK] Great Works may 'Theme' this building, resulting in powerful yield bonuses. Theming requires the [ICON_GREAT_WORK] Great Works in the building to meet a set of specific criteria, be it different Eras, Civilizations, or even [ICON_GREAT_WORK] Great Work Types. This information is revealed when you hover over the Building's Theming Bonus yield value in the City Screen.[NEWLINE][NEWLINE]Themes provide additional [ICON_TOURISM] Tourism and [ICON_CULTURE] Culture for your Civilization, based on the indicated value in your City Screen. [COLOR_YELLOW]In some cases, buildings may provide an additional Theming Bonus yield - this bonus is indicated in the Building's Help tooltip.[ENDCOLOR]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CONCEPT_THEMING_BONUSES_QUEST">
 			<Text>What are themes?</Text>
@@ -2988,10 +2988,10 @@
 			<Text>They cannot become your vassal for {1_Num} turn(s) because it has been too soon since their vassalage ended.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_DIPLO_VASSAL_YOU_NO_POPULATION">
-			<Text>You cannot become their vassal because you have no cities or population!</Text>
+			<Text>You cannot become their vassal because you have no Cities or Population!</Text>
 		</Row>
 		<Row Tag="TXT_KEY_DIPLO_VASSAL_THEM_NO_POPULATION">
-			<Text>They cannot become your vassal because they have no cities or population!</Text>
+			<Text>They cannot become your vassal because they have no Cities or Population!</Text>
 		</Row>
 		<Row Tag="TXT_KEY_DIPLO_VASSALAGE_AND_INVALID_ITEM">
 			<Text>Not allowed if deal contains a Defensive Pact or Liberation.</Text>
@@ -3360,7 +3360,7 @@
 
 		<!-- Religion Diplo Mods -->
 		<Row Tag="TXT_KEY_DIPLO_SAME_STATE_RELIGIONS">
-			<Text>We have adopted the same religion in the majority of our cities.</Text>
+			<Text>We have adopted the same Religion in the majority of our Cities.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_DIPLO_RELIGIOUS_DIFFERENCES">
 			<Text>Religious differences strain your relationship.</Text>
@@ -3557,10 +3557,10 @@
 
 		<!-- Embark String for Less/No City Cost-->
 		<Row Tag="TXT_KEY_ABLTY_CITY_LESS_EMBARK_COST_STRING">
-			<Text>Embarking/disembarking in owned cities expends just 1 Movement</Text>
+			<Text>Embarking/disembarking in owned Cities expends just 1 Movement</Text>
 		</Row>
 		<Row Tag="TXT_KEY_ABLTY_CITY_NO_EMBARK_COST_STRING">
-			<Text>Embarking/disembarking in owned cities expends 0 Movement</Text>
+			<Text>Embarking/disembarking in owned Cities expends 0 Movement</Text>
 		</Row>
 		<Row Tag="TXT_KEY_ABLTY_CITY_RANGE_INCREASE">
 			<Text>City Attack Range: +1</Text>
@@ -5614,11 +5614,11 @@
 
 
 		<Row Tag="TXT_KEY_NO_ACTION_BUILDING_NEED_NATIONAL_POP">
-			<Text>[NEWLINE]{2_BuildingName:textkey} requires {1_Num} more national citizens to be constructed.</Text>
+			<Text>[NEWLINE]{2_BuildingName:textkey} requires {1_Num} more National [ICON_CITIZEN] Citizens to be constructed.</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_NO_ACTION_BUILDING_NEED_LOCAL_POP">
-			<Text>[NEWLINE]{2_BuildingName:textkey} requires {1_Num} more local citizens to be constructed.</Text>
+			<Text>[NEWLINE]{2_BuildingName:textkey} requires {1_Num} more Local [ICON_CITIZEN] Citizens to be constructed.</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_NO_ACTION_BUILDING_NEED_FOLLOWER_POP">
@@ -5647,7 +5647,7 @@
 
 		<!-- City Rank Increasing -->
 		<Row Tag="TXT_KEY_NOTIFICATION_CITY_RANK_INCREASING">
-			<Text>{1_CityName} is [COLOR_NEGATIVE_TEXT]increasingly vulnerable[ENDCOLOR] to foreign [ICON_SPY] Spies.[NEWLINE]The City currently has a Security Level of [COLOR_NEGATIVE_TEXT]{2_Num}[ENDCOLOR] (out of 10), with lower ranks making it easier for foreign Spies to operate in the city.[NEWLINE]Move a Spy to this city, build Espionage buildings here, and resolve [ICON_HAPPINESS_3] Unhappiness issues to [COLOR_POSITIVE_TEXT]improve[ENDCOLOR] the City's Security Level.</Text>
+			<Text>{1_CityName} is [COLOR_NEGATIVE_TEXT]increasingly vulnerable[ENDCOLOR] to foreign [ICON_SPY] Spies.[NEWLINE]The City currently has a Security Level of [COLOR_NEGATIVE_TEXT]{2_Num}[ENDCOLOR] (out of 10), with lower ranks making it easier for foreign Spies to operate in the City.[NEWLINE]Move a Spy to this City, build Espionage buildings here, and resolve [ICON_HAPPINESS_3] Unhappiness issues to [COLOR_POSITIVE_TEXT]improve[ENDCOLOR] the City's Security Level.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_NOTIFICATION_CITY_RANK_INCREASING_SUMMARY">
 			<Text>Security Level update for {1_CityName}.</Text>
@@ -5685,13 +5685,13 @@
 
 		<!-- tooltip for purchase cooldown -->
 		<Row Tag="TXT_KEY_COOLDOWN_X_TURNS_REMAINING">
-			<Text>[NEWLINE]You recently made a [ICON_GOLD] Gold purchase in this city, and must wait for {1_Num} more turn(s) to do so again.</Text>
+			<Text>[NEWLINE]You recently made a [ICON_GOLD] Gold purchase in this City, and must wait for {1_Num} more turn(s) to do so again.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_COOLDOWN_X_TURNS_REMAINING_FAITH">
 			<Text>[NEWLINE]You recently purchased a [ICON_GREAT_PEOPLE] Great Person with [ICON_PEACE] Faith, and must wait for {1_Num} more turn(s) to do so again.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_COOLDOWN_X_TURNS_REMAINING_FAITH_LOCAL">
-			<Text>[NEWLINE]You recently made a [ICON_PEACE] Faith purchase in this city, and must wait for {1_Num} more turn(s) to do so again.</Text>
+			<Text>[NEWLINE]You recently made a [ICON_PEACE] Faith purchase in this City, and must wait for {1_Num} more turn(s) to do so again.</Text>
 		</Row>
 
 		<!-- Tooltips for CBP Austria Ability -->
@@ -5795,7 +5795,7 @@
 			<Text>Because the Empire has at least 34% [ICON_HAPPINESS_4] Unhappiness, a City will revolt in [COLOR_NEGATIVE_TEXT]{1_Turns}[ENDCOLOR] turns. Based on current Unhappiness levels, the City most likely to revolt is {2_CityName}. If this City revolts, it will become an independent City-State. Try to get your Empire's Happiness level out of this range as soon as possible!</Text>
 		</Row>
 		<Row Tag="TXT_KEY_NOTIFICATION_OTHER_PLAYER_CITY_REVOLT_FREE_CITY">
-			<Text>The {1_CivAdjective} city of {2_CityName} has revolted and declared itself the free City-State of {3_CivName}!</Text>
+			<Text>The {1_CivAdjective} City of {2_CityName} has revolted and declared itself the free City-State of {3_CivName}!</Text>
 		</Row>
 
 		<!-- Denounce Statements -->
@@ -6197,7 +6197,7 @@
 		
 		<!-- Unit Thing for Limits -->
 		<Row Tag="TXT_KEY_NO_ACTION_PLAYER_CITY_COUNT_MAX">
-			<Text>[NEWLINE]Only {1_Num} allowed per player city.</Text>
+			<Text>[NEWLINE]Only {1_Num} allowed per Player City.</Text>
 		</Row>
 
 		<!-- Ocean Embarkation Stuff -->
@@ -6205,14 +6205,14 @@
 			<Text>Ocean Embarkation</Text>
 		</Row>
 		<Row Tag="TXT_KEY_PROMOTION_DEEPWATER_EMBARKATION_HELP">
-			<Text>Permits hovering units to embark at the coastal/ocean boundary.</Text>
+			<Text>Permits hovering units to embark at the Coast/Ocean boundary.</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_PROMOTION_DEFENSIVE_DEEPWATER_EMBARKATION">
 			<Text>Ocean Embarkation with Defense</Text>
 		</Row>
 		<Row Tag="TXT_KEY_PROMOTION_DEFENSIVE_DEEPWATER_EMBARKATION_HELP">
-			<Text>Permits hovering units to embark at the coastal/ocean boundary. Embarked units receive +100% [ICON_STRENGTH] defensive bonus.</Text>
+			<Text>Permits hovering units to embark at the Coast/Ocean boundary. Embarked units receive +100% [ICON_STRENGTH] Combat Strength when defending.</Text>
 		</Row>
 
 		<!-- MP Denounce -->
@@ -6233,7 +6233,7 @@
 
 		<!-- Warmonger Strings-->
 		<Row Tag="TXT_KEY_WARMONGER_PREVIEW_HEADER">
-			<Text>Repercussions from [COLOR_NEGATIVE_TEXT]conquering[ENDCOLOR] this city:</Text>
+			<Text>Repercussions from [COLOR_NEGATIVE_TEXT]conquering[ENDCOLOR] this City:</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LIBERATOR_PREVIEW_HEADER">
 			<Text>Bonuses from [COLOR_POSITIVE_TEXT]liberating[ENDCOLOR] this city:</Text>
@@ -6379,10 +6379,10 @@
 
 		<!-- Religion Majority Est. -->
 		<Row Tag="TXT_KEY_NOTIFICATION_RELIGION_NEW_PLAYER_MAJORITY_S">
-			<Text>{1_ReligionName} is now your majority [ICON_RELIGION] Religion!</Text>
+			<Text>{1_ReligionName} is now your Majority [ICON_RELIGION] Religion!</Text>
 		</Row>
 		<Row Tag="TXT_KEY_NOTIFICATION_RELIGION_NEW_PLAYER_MAJORITY">
-			<Text>{1_ReligionName} has become your new majority [ICON_RELIGION] Religion. This shift in religious status may affect your relationship with other Civilizations, as well as your own population.</Text>
+			<Text>{1_ReligionName} has become your new Majority [ICON_RELIGION] Religion. This shift in religious status may affect your relationship with other Civilizations, as well as your own population.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_NOTIFICATION_RELIGION_NEW_PLAYER_STATE_RELIGION_S">
 			<Text>{1_ReligionName} now your primary [ICON_RELIGION] Religion!</Text>
@@ -6400,7 +6400,7 @@
 		</Row>
 
 		<Row Tag="TXT_KEY_NOTIFICATION_CITY_GAINED_HOLY">
-			<Text>You captured the Holy City of {1_CityName:textkey}! If eligible, {2_Religion} may become your primary religion, thus giving you access to the Founder and Enhancer Belief bonuses associated with it (so long as you retain control of the City).</Text>
+			<Text>You captured the Holy City of {1_CityName:textkey}! If eligible, {2_Religion} may become your primary Religion, thus giving you access to the Founder and Enhancer Belief bonuses associated with it (so long as you retain control of the City).</Text>
 		</Row>
 		<Row Tag="TXT_KEY_NOTIFICATION_SUMMARY_CITY_GAINED_HOLY">
 			<Text>Holy City of {1_CityName:textkey} taken!</Text>
@@ -6772,7 +6772,7 @@
 		</Row>
 
 		<Row Tag="TXT_KEY_NOTIFICATION_CITY_STATE_PTP_WARNING_TIMER_OPTIONAL">
-			<Text>If you do not ally {1_CSName} or make sure your cities are within Trade Route range before {2_Num} turns pass, the [COLOR_POSITIVE_TEXT]Pledge of Protection[ENDCOLOR] you made to {1_CSName} will be annulled!</Text>
+			<Text>If you do not ally {1_CSName} or make sure your Cities are within Trade Route range before {2_Num} turns pass, the [COLOR_POSITIVE_TEXT]Pledge of Protection[ENDCOLOR] you made to {1_CSName} will be annulled!</Text>
 		</Row>
 		<Row Tag="TXT_KEY_NOTIFICATION_CITY_STATE_PTP_WARNING_TIMER_SHORT_OPTIONAL">
 			<Text>Pledge of Protection in jeopardy!</Text>
@@ -7121,7 +7121,7 @@
 			<Text>[ICON_CITY_STATE] City-State Quest ({1_Data}):[NEWLINE]{2_YieldString}</Text>
 		</Row>
 		<Row Tag="TXT_KEY_INSTANT_YIELD_CULTURE_BOMB">
-			<Text>Expanding [ICON_CULTURE] Borders by Great Person:[NEWLINE]{1_YieldString}</Text>
+			<Text>Expanding [ICON_CULTURE] Borders by [ICON_GREAT_PEOPLE] Great Person:[NEWLINE]{1_YieldString}</Text>
 		</Row>
 		<Row Tag="TXT_KEY_INSTANT_YIELD_REMOVE_HERESY">
 			<Text>Removing [ICON_INQUISITOR] Religious Heresy:[NEWLINE]{1_YieldString}</Text>
@@ -7301,7 +7301,7 @@
 		</Row>
 
 		<Row Tag="TXT_KEY_YIELD_GREAT_WORK_MODIFIER">
-			<Text>[NEWLINE][ICON_BULLET]Great Works Modifier: {1_Num}%</Text>
+			<Text>[NEWLINE][ICON_BULLET][ICON_GREAT_WORK] Great Works Modifier: {1_Num}%</Text>
 		</Row>
 		<Row Tag="TXT_KEY_YIELD_SPY_MODIFIER">
 			<Text>[NEWLINE][ICON_BULLET]Active Spies Modifier: {1_Num}%</Text>
@@ -7321,7 +7321,7 @@
 			<Text>[NEWLINE]You have already invested [ICON_GOLD] Gold in this unit. This unit's [ICON_PRODUCTION] Production cost is reduced by {1_Num}%.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_NO_ACTION_UNIT_REQUIRES_BUILDING_PURCHASE">
-			<Text>[NEWLINE]You cannot [ICON_GOLD] Purchase this Unit without {TXT_KEY_GRAMMAR_A_AN &lt;&lt; {1_BuildingType}} constructed in the city.</Text>
+			<Text>[NEWLINE]You cannot [ICON_GOLD] Purchase this Unit without {TXT_KEY_GRAMMAR_A_AN &lt;&lt; {1_BuildingType}} constructed in the City.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_PRODUCTION_INVESTMENT_BUILDING">
 			<Text>[COLOR_POSITIVE_TEXT]Investing [ICON_GOLD] Gold in a Building reduces its [ICON_PRODUCTION] Production cost by {1_Num}%, or {2_Num}% if a Wonder.[ENDCOLOR]</Text>
@@ -7478,13 +7478,13 @@
 			<Text>[NEWLINE] [ICON_BULLET] No Technologies to Steal.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_EVENT_NO_GW_FORGE">
-			<Text>[NEWLINE] [ICON_BULLET] No Great Works in City to copy.</Text>
+			<Text>[NEWLINE] [ICON_BULLET] No [ICON_GREAT_WORK] Great Works in City to copy.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_EVENT_MIN_SIPHON_NOT_MET">
 			<Text>[NEWLINE] [ICON_BULLET] City not producing enough of this yield to Siphon.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_EVENT_NO_COUNTERSPY">
-			<Text>[NEWLINE] [ICON_BULLET] Requires a Counterspy in the city.</Text>
+			<Text>[NEWLINE] [ICON_BULLET] Requires a Counterspy in the City.</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_EVENT_SPY_DURATION_SCALED">
@@ -7682,7 +7682,7 @@
 			<Text>[NEWLINE][ICON_BULLET]Modifier for Number of Specialists: {1_Num}%</Text>
 		</Row>
 		<Row Tag="TXT_KEY_NOTIFICATION_CITY_WLTKD_UNIT">
-			<Text>The birth of a {1_Resource:textkey} causes the city of {2_CityName:textkey} to enter "We Love the King Day"!</Text>
+			<Text>The birth of a {1_Resource:textkey} causes the City of {2_CityName:textkey} to enter "We Love the King Day"!</Text>
 		</Row>
 		<Row Tag="TXT_KEY_NOTIFICATION_SUMMARY_CITY_WLTKD_UNIT">
 			<Text>{1_CityName:textkey} loves the King!</Text>
@@ -7772,7 +7772,7 @@
 		</Row>
 
 		<Row Tag="TXT_KEY_TRADE_WLTKD_RESOURCE_CITIES">
-			<Text>The following cities currently demand this Resource:</Text>
+			<Text>The following Cities currently demand this Resource:</Text>
 		</Row>
 
 		<!-- Tooltip helpers for unhappiness -->

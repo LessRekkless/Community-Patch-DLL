@@ -12,14 +12,14 @@
 			<Text>Public works are a broad category of infrastructure projects, financed and constructed by the government, for recreational, employment, and health and safety uses in the greater community. They include public buildings (municipal buildings, schools, hospitals), transport infrastructure (roads, railroads, bridges, pipelines, canals, ports, airports), public spaces (public squares, parks, beaches), public services (water supply and treatment, sewage treatment, electrical grid, dams), and other, usually long-term, physical assets and facilities. Though often interchangeable with public infrastructure and public capital, public works does not necessarily carry an economic component, thereby being a broader term.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_PROJECT_PUBLIC_WORKS_STRATEGY">
-			<Text>Construct this Project in cities that are suffering from chronic [ICON_HAPPINESS_3] Unhappiness caused by Needs, and you have run out options to deal with it. Watch out, however, as this project becomes more expensive to build every time you construct it in this City, and it costs Gold to upkeep. Use this as a last resort, not as a first solution, when dealing with Unhappiness from Needs.</Text>
+			<Text>Construct this Project in cities that are suffering from chronic [ICON_HAPPINESS_3] Unhappiness caused by Needs, and you have run out options to deal with it. Watch out, however, as this project becomes more expensive to build every time you construct it in this City, and it costs [ICON_GOLD] Gold to upkeep. Use this as a last resort, not as a first solution, when dealing with Unhappiness from Needs.</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_THEMING_BONUS_ROYAL_LIBRARY">
 			<Text>Knowledge from Around the World</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_ROYAL_LIBRARY_THEMING_BONUS_HELP">
-			<Text>To maximize your bonus, make sure all three Great Works are from foreign Civilizations</Text>
+			<Text>To maximize your bonus, make sure all three [ICON_GREAT_WORK] Great Works are from foreign Civilizations</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CO_CITY_TOURISM_GA_BONUS">
 			<Text>{1_Num} [ICON_TOURISM] Tourism from {2_Num}% of the [ICON_CULTURE] Culture of your [ICON_CAPITAL] Capital</Text>
@@ -32,7 +32,7 @@
 			<Text> The Rialto is and has been for many centuries the financial and commercial centre of Venice. It is an area of the San Polo sestiere of Venice, Italy, also known for its markets and for the Rialto Bridge across the Grand Canal. The area was settled by the ninth century, when a small area in the middle of the Realtine Islands on either side of the Rio Businiacus was known as the Rivoaltus, or "high bank". Eventually the Businiacus became known as the Grand Canal, and the district the Rialto, referring only to the area on the left bank.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_RIALTO_DISTRICT_STRATEGY">
-			<Text>Unique Venetian building, only buildable in Venice's Capital. This building boosts the value of Trade Routes to and from the City, and generates 1 World Congress Delegate for every 100 Gold Per Turn that Venice produces, up to 25% of all City-States ever alive in the game (minimum of 1 Delegate). In addition, this building reduces the Gold cost of purchasing Units and Buildings in the City by 10%. Cannot be constructed if the Arsenale di Venezia or Murano Glassworks are present in the City.</Text>
+			<Text>Unique Venetian building, only buildable in Venice's Capital. This building boosts the value of Trade Routes to and from the City, and generates 1 World Congress Delegate for every 100 [ICON_GOLD] Gold per Turn that Venice produces, up to 25% of all City-States ever alive in the game (minimum of 1 Delegate). In addition, this building reduces the [ICON_GOLD] Gold cost of purchasing Units and Buildings in the City by 10%. Cannot be constructed if the Arsenale di Venezia or Murano Glassworks are present in the City.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_RIALTO_DISTRICT_HELP">
 			<Text>Unique Building for Venice. Cost of [ICON_GOLD] Gold purchases in all Cities reduced by 10% (15% in [ICON_CAPITAL] Capital). Provides 1 [COLOR_POSITIVE_TEXT]Additional[ENDCOLOR] [ICON_DIPLOMAT] Delegate in the World Congress for every 100 [ICON_GOLD] Gold Per Turn produced (caps at 25% of all [ICON_CITY_STATE] City-States ever alive).[NEWLINE][NEWLINE]Incoming [ICON_INTERNATIONAL_TRADE] Trade Routes generate +3 [ICON_GOLD] Gold for the City, and +3 [ICON_GOLD] Gold for [ICON_INTERNATIONAL_TRADE] Trade Route owner.[NEWLINE][NEWLINE]Requires Piazza San Marco in City. The [ICON_PRODUCTION] Production Cost and [ICON_CITIZEN] Population Requirements increase based on the number of Cities you own. Cannot be constructed if the [COLOR_NEGATIVE_TEXT]Arsenale di Venezia[ENDCOLOR] or [COLOR_NEGATIVE_TEXT]Murano Glassworks[ENDCOLOR] are present in the City.</Text>
@@ -45,7 +45,7 @@
 			<Text>The Venetian Arsenal is a complex of former shipyards and armories clustered together in the city of Venice in northern Italy. Owned by the state, the Arsenal was responsible for the bulk of the Venetian republic's naval power during the middle part of the second millennium AD. It was one of the earliest large-scale industrial enterprises in history.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_VENETIAN_ARSENALE_STRATEGY">
-			<Text>Unique Venetian building, only buildable in Venice's Capital. This building boosts Production, increases City Defense, increases Military Supply, and provides all Naval Units with the 'Venetian Craftsmanship' promotion, which increases Combat Strength and Movement. Cannot be constructed if the Rialto District or Murano Glassworks are present in the City.</Text>
+			<Text>Unique Venetian building, only buildable in Venice's Capital. This building boosts [ICON_PRODUCTION] Production, increases City [ICON_STRENGTH] Defense, increases [ICON_SILVER_FIST] Military Supply, and provides all Naval Units with the 'Venetian Craftsmanship' promotion, which increases Combat Strength and Movement. Cannot be constructed if the Rialto District or Murano Glassworks are present in the City.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_VENETIAN_ARSENALE_HELP">
 			<Text>Unique Building for Venice. +15% [ICON_PRODUCTION] Production in City. Increases [ICON_SILVER_FIST] Military Unit Supply Cap by 5, and Military Units Supplied by this City''s population increased by 25%.[NEWLINE][NEWLINE]All Naval Units gain the [COLOR_POSITIVE_TEXT]Venetian Craftsmanship[ENDCOLOR] Promotion, which gives +10% [ICON_STRENGTH] Combat Strength and +1 [ICON_MOVES] Movement.[NEWLINE][NEWLINE]Requires Piazza San Marco in City. The [ICON_PRODUCTION] Production Cost and [ICON_CITIZEN] Population Requirements increase based on the number of Cities you own. Cannot be constructed if the [COLOR_NEGATIVE_TEXT]Rialto District[ENDCOLOR] or [COLOR_NEGATIVE_TEXT]Murano Glassworks[ENDCOLOR] are present in the City.</Text>
@@ -58,7 +58,7 @@
 			<Text>Piazza San Marco (often known in English as St Mark's Square), is the principal public square of Venice, Italy, where it is generally known just as "the Piazza" (la Piazza). All other urban spaces in the city (except the Piazzetta and the Piazzale Roma) are called "campi" (fields). The Piazzetta (the 'little Piazza') is an extension of the Piazza towards the lagoon in its south east corner (see plan). The two spaces together form the social, religious and political centre of Venice and are commonly considered together.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_PIAZZA_SAN_MARCO_STRATEGY">
-			<Text>Unique Venetian building, replacing the National Monument. Eschews most National Monument abilities in favor of providing a small boost to City yields and a boost to the City's Great People rate. This means that your Capital is well-defended against the theft of Gold, Science, and other important resources. Unlocks access to Murano Glassworks, Arsenale di Venezia, and Rialto District once Guilds is researched. Only one of these buildings may be constructed per game.</Text>
+			<Text>Unique Venetian building, replacing the National Monument. Eschews most National Monument abilities in favor of providing a small boost to City yields and a boost to the City's [ICON_GREAT_PEOPLE] Great People rate. This means that your Capital is well-defended against the theft of [ICON_GOLD] Gold, [ICON_RESEARCH] Science, and other important resources. Unlocks access to Murano Glassworks, Arsenale di Venezia, and Rialto District once Guilds is researched. Only one of these buildings may be constructed per game.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_PIAZZA_SAN_MARCO_HELP">
 			<Text>Unique National Monument for Venice. +33% [ICON_GREAT_PEOPLE] Great People rate in City. Increases [ICON_SILVER_FIST] Military Unit Supply Cap by 5.[NEWLINE][NEWLINE]Unlocks access to the [COLOR_POSITIVE_TEXT]Murano Glassworks[ENDCOLOR], [COLOR_POSITIVE_TEXT]Arsenale di Venezia[ENDCOLOR], and [COLOR_POSITIVE_TEXT]Rialto District[ENDCOLOR] once [COLOR_CYAN]Guilds[ENDCOLOR] is researched.[NEWLINE][NEWLINE]May only be built in the [ICON_CAPITAL] Capital.</Text>
@@ -68,16 +68,16 @@
 			<Text>Murano Glassworks</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CIV5_BUILDING_MURANO_GLASSWORKS_TEXT">
-			<Text>Murano's reputation as a center for glassmaking was born when the Venetian Republic, fearing fire and the destruction of the city’s mostly wooden buildings, ordered glassmakers to move their foundries to Murano in 1291. Murano glass is still associated with Venetian glass. Murano's glassmakers were soon numbered among the island’s most prominent citizens. By the fourteenth century, glassmakers were allowed to wear swords, enjoyed immunity from prosecution by the Venetian state and found their daughters married into Venice’s most affluent families. While benefiting from certain statutory privileges, glassmakers were forbidden to leave the Republic. However, many of them took the risks associated with migration and established glass furnaces in surrounding cities and farther afield, even in England and the Netherlands.</Text>
+			<Text>Murano's reputation as a center for glassmaking was born when the Venetian Republic, fearing fire and the destruction of the city's mostly wooden buildings, ordered glassmakers to move their foundries to Murano in 1291. Murano glass is still associated with Venetian glass. Murano's glassmakers were soon numbered among the island's most prominent citizens. By the fourteenth century, glassmakers were allowed to wear swords, enjoyed immunity from prosecution by the Venetian state and found their daughters married into Venice's most affluent families. While benefiting from certain statutory privileges, glassmakers were forbidden to leave the Republic. However, many of them took the risks associated with migration and established glass furnaces in surrounding cities and farther afield, even in England and the Netherlands.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_MURANO_GLASSWORKS_STRATEGY">
-			<Text>Unique Venetian building, only buildable in Venice's Capital. Boosts the value of Great Person Improvements and Villages for all Cities, and provides two Art/Artifact slots. Construct this building if you are pursuing a Cultural Victory. Cannot be constructed if the Arsenale di Venezia or Rialto District are present in the City.</Text>
+			<Text>Unique Venetian building, only buildable in Venice's Capital. Boosts the value of Great Person Tile Improvements and Villages for all Cities, and provides two [ICON_GREAT_WORK] Art/Artifact slots. Construct this building if you are pursuing a Cultural Victory. Cannot be constructed if the Arsenale di Venezia or Rialto District are present in the City.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_MURANO_GLASSWORKS_HELP">
 			<Text>Unique Building for Venice. [ICON_GREAT_PEOPLE] Great Person Improvements and Villages worked by all Cities gain +2 [ICON_FOOD] Food and +2 [ICON_TOURISM] Tourism. Provides 2 [ICON_GREAT_WORK] Great Work Slots for Art or Artifacts.[NEWLINE][NEWLINE]Requires Piazza San Marco in City. The [ICON_PRODUCTION] Production Cost and [ICON_CITIZEN] Population Requirements increase based on the number of Cities you own. Cannot be constructed if the [COLOR_NEGATIVE_TEXT]Arsenale di Venezia[ENDCOLOR] or [COLOR_NEGATIVE_TEXT]Rialto District[ENDCOLOR] are present in the City.[NEWLINE][NEWLINE]+5 [ICON_RESEARCH] Science if [COLOR_POSITIVE_TEXT]Themed[ENDCOLOR].</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_MURANO_GLASSWORKS_THEMING_BONUS_HELP">
-			<Text>To maximize your bonus, make sure both Great Works were created by the Building Owner.</Text>
+			<Text>To maximize your bonus, make sure both [ICON_GREAT_WORK] Great Works were created by the Building Owner.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_THEMING_BONUS_MURANO_GLASSWORKS">
 			<Text>Murano Masterpiece Collection</Text>
@@ -90,7 +90,7 @@
 			<Text>A train station, railway station, railroad station, or depot (see below) is a railway facility where trains regularly stop to load or unload passengers or freight. It generally consists of at least one track-side platform and a station building (depot) providing such ancillary services as ticket sales and waiting rooms. If a station is on a single-track line, it often has a passing loop to facilitate traffic movements. The smallest stations are most often referred to as "stops" or, in some parts of the world, as "halts" (flag stops). Stations may be at ground level, underground, or elevated. Connections may be available to intersecting rail lines or other transport modes such as buses, trams or other rapid transit systems.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_TRAINSTATION_STRATEGY">
-			<Text>Provides a massive boost to City Production and Gold during the Industrial Era. Requires a direct Railroad connection, with railroad tiles, to the Capital (Harbor connections do not count!) before it can be constructed, so you need to invest in your Railroad infrastructure before you can reap the benefits of this building! Cannot be built in the same City as a Seaport.</Text>
+			<Text>Provides a massive boost to City [ICON_PRODUCTION] Production and [ICON_GOLD] Gold during the Industrial Era. Requires a direct Railroad connection, with railroad tiles, to the Capital (Harbor connections do not count!) before it can be constructed, so you need to invest in your Railroad infrastructure before you can reap the benefits of this building! Cannot be built in the same City as a Seaport.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_TRAINSTATION_HELP">
 			<Text>Internal [ICON_INTERNATIONAL_TRADE] Trade Routes from this City generate +6 [ICON_FOOD] Food. Requires a [ICON_CONNECTED] Connection via Railroad tiles or by sea to the [ICON_CAPITAL] Capital, or to a City connected to the [ICON_CAPITAL] Capital, before it can be constructed.[NEWLINE][NEWLINE]Requires 1 [ICON_RES_COAL] Coal. City cannot have a [COLOR_NEGATIVE_TEXT]Seaport[ENDCOLOR] in the City.</Text>
@@ -106,7 +106,7 @@
 			<Text>KGAZ 89.5FM - Eclectic Radio Mix</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BROADCAST_TOWER_THEMING_BONUS_HELP">
-			<Text>To maximize your bonus, make sure both Great Works meet one of the following criteria: [NEWLINE]1.) Both from the same Era [NEWLINE]2.) Both from different Eras.[NEWLINE]3.) Both from consecutive Eras.</Text>
+			<Text>To maximize your bonus, make sure both [ICON_GREAT_WORK] Great Works meet one of the following criteria: [NEWLINE]1.) Both from the same Era [NEWLINE]2.) Both from different Eras.[NEWLINE]3.) Both from consecutive Eras.</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_BUILDING_SKOLA">
@@ -140,7 +140,7 @@
 			<Text>A cothon is an artificial, protected inner harbor such as that in Carthage during the Punic Wars around 200 BC. The cothon at Carthage was divided into a rectangular merchant harbor followed by an inner protected harbor reserved for military use only. This inner harbor was circular and surrounded by an outer ring of structures divided into a series of docking bays for ship maintenance, along with an island structure at its centre that also housed navy ships. Each individual docking bay featured a raised slipway. Above the raised docking bays was a second level consisting of warehouses where oars and rigging were kept along with supplies such as wood and canvas. On the island structure there existed a raised 'cabin' where the admiral in command could observe the whole harbor along with the surrounding sea. Altogether the inner docking complex could house up to 220 ships. The entire harbor was protected by an outer wall and the main entrance could be closed off with iron chains.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_GREAT_COTHON_STRATEGY">
-			<Text>Unique Carthaginian replacement for the East India Company. Must have built a Market in the City. In addition to the normal bonuses provided by the East India Company, the Great Cothon provides additional gold for both recipient and target of trade routes from the City where it is built, and two additional trade routes. All Harbors in your empire also gain +3 Production, and all Lighthouses gain +2 Culture. Unlike the East India Company, the Great Cothon is made available in the Classical Era with the discovery of Currency.</Text>
+			<Text>Unique Carthaginian replacement for the East India Company. Must have built a Market in the City. In addition to the normal bonuses provided by the East India Company, the Great Cothon provides additional [ICON_GOLD] Gold for both recipient and target of trade routes from the City where it is built, and two additional trade routes. All Harbors in your empire also gain +3 [ICON_PRODUCTION] Production, and all Lighthouses gain +2 [ICON_CULTURE] Culture. Unlike the East India Company, the Great Cothon is made available in the Classical Era with the discovery of Currency.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_GREAT_COTHON_HELP">
 			<Text>Receive a free copy of all Luxury Resources around the City. Incoming [ICON_INTERNATIONAL_TRADE] Trade Routes generate +5 [ICON_GOLD] Gold for the City, and +3 [ICON_GOLD] Gold for the [ICON_INTERNATIONAL_TRADE] Trade Route owner. Resource Diversity Modifier for Trade Routes from this City increases by 25%. Grants 2 [COLOR_POSITIVE_TEXT]Additional[ENDCOLOR] [ICON_INTERNATIONAL_TRADE] Trade Routes, all Harbors gain +3 [ICON_PRODUCTION] Production, and all Lighthouses gain +2 [ICON_CULTURE] Culture. -2 [ICON_HAPPINESS_3] Unhappiness from [ICON_GOLD] Poverty in this City, and -1 in all other Cities.[NEWLINE][NEWLINE]The [ICON_PRODUCTION] Production Cost and [ICON_CITIZEN] Population Requirements increase based on the number of Cities you own.</Text>
@@ -186,19 +186,19 @@
 		</Row>
 
 		<Row Tag="TXT_KEY_BUILDING_RELIQUARY_HELP">
-			<Text>+5 [ICON_TOURISM] Tourism from all Holy Sites.[NEWLINE][NEWLINE]May only be constructed in a Holy City, and only if at least 15% of the global population follows your Religion (scaling with map size). Reduces [ICON_HAPPINESS_3] Religious Unrest, and allows you to select a Reformation Belief.[NEWLINE][NEWLINE]Boosts Pressure of [ICON_RELIGION] Religious Majority emanating from this City by 25%, and increases the City's resistance to conversion by 10%.[NEWLINE][NEWLINE]Contains 4 slots for Great Works of Art or Artifacts. +10 [ICON_PEACE] Faith if Themed.</Text>
+			<Text>+5 [ICON_TOURISM] Tourism from all Holy Sites.[NEWLINE][NEWLINE]May only be constructed in a Holy City, and only if at least 15% of the global population follows your Religion (scaling with map size). Reduces [ICON_HAPPINESS_3] Religious Unrest, and allows you to select a Reformation Belief.[NEWLINE][NEWLINE]Boosts Pressure of [ICON_RELIGION] Religious Majority emanating from this City by 25%, and increases the City's resistance to conversion by 10%.[NEWLINE][NEWLINE]Contains 4 slots for [ICON_GREAT_WORK] Great Works of Art or Artifacts. +10 [ICON_PEACE] Faith if Themed.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_RELIQUARY">
 			<Text>Reliquary</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_RELIQUARY_STRATEGY">
-			<Text>Build the Reliquary for a powerful Tourism-centric bonus and bonuses for all Holy Sites. The building's Tourism bonus is only possible if all four Works of Art/Artifacts come from differing players. Constructing this National Wonder will also allow you to choose a Reformation Belief. May only be constructed in a Holy City, and only if at least 15% of the global population follows your Religion (scaling with map size). Reduces [ICON_HAPPINESS_3] Religious Unrest, and allows you to select a Reformation Belief.</Text>
+			<Text>Build the Reliquary for a powerful Tourism-centric bonus and bonuses for all Holy Sites. The building's [ICON_TOURISM] Tourism bonus is only possible if all four Works of Art/Artifacts come from differing players. Constructing this National Wonder will also allow you to choose a Reformation Belief. May only be constructed in a Holy City, and only if at least 15% of the global population follows your Religion (scaling with map size). Reduces [ICON_HAPPINESS_3] Religious Unrest, and allows you to select a Reformation Belief.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_RELIQUARY_TEXT">
 			<Text>A reliquary is a container for relics. These may be the purported physical remains of saints, such as bones, pieces of clothing, or some object associated with saints or other religious figures. The authenticity of any given relic is often a matter of debate; for that reason, some churches require documentation of the relic's provenance. Relics have long been important to Buddhists, Christians, Hindus and many other religions. In these cultures, reliquaries are often presented in shrines, churches, or temples to which the faithful make pilgrimages in order to gain blessings. In Central West Africa, reliquaries used in the Bwete rituals contain objects considered magical, or the bones of ancestors, and are commonly constructed with a guardian figure attached to the reliquary.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_THEMING_BONUS_RELIQUARY_HELP">
-			<Text>To maximize your bonus, make sure the Great Work Slots are all filled with Works of Art/Artifacts from differing players.</Text>
+			<Text>To maximize your bonus, make sure the [ICON_GREAT_WORK] Great Work Slots are all filled with Works of Art/Artifacts from differing players.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_THEMING_BONUS_RELIQUARY">
 			<Text>Holy Reliquary of {2_CivAdjective}</Text>
@@ -211,7 +211,7 @@
 			<Text>Divine Court</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_DIVINE_COURT_STRATEGY">
-			<Text>Build the Divine Court for a boost to Gold output and to improve all Holy Sites. Constructing this National Wonder will also allow you to choose a Reformation Belief. May only be constructed in a Holy City, and only if at least 15% of the global population follows your Religion (scaling with map size). Reduces [ICON_HAPPINESS_3] Religious Unrest, and allows you to select a Reformation Belief.</Text>
+			<Text>Build the Divine Court for a boost to [ICON_GOLD] Gold output and to improve all Holy Sites. Constructing this National Wonder will also allow you to choose a Reformation Belief. May only be constructed in a Holy City, and only if at least 15% of the global population follows your Religion (scaling with map size). Reduces [ICON_HAPPINESS_3] Religious Unrest, and allows you to select a Reformation Belief.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_DIVINE_COURT_TEXT">
 			<Text>A beth din ("house of judgment," or divine court) is a rabbinical court of Judaism. In ancient times, it was the building block of the legal system in the Biblical Land of Israel. Today, it is invested with legal powers in a number of religious matters (din Torah, "matter of litigation," plural dinei Torah) both in Israel and in Jewish communities in the Diaspora, where its judgments hold varying degrees of authority (depending upon the jurisdiction and subject matter) in matters specifically related to Jewish religious life.</Text>
@@ -224,10 +224,10 @@
 			<Text>Sacred Garden</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_SACRED_GARDEN_STRATEGY">
-			<Text>Build the Sacred Garden for a boost to Culture output and to improve all Holy Sites. Constructing this National Wonder will also allow you to choose a Reformation Belief. May only be constructed in a Holy City, and only if at least 15% of the global population follows your Religion (scaling with map size). Reduces [ICON_HAPPINESS_3] Religious Unrest, and allows you to select a Reformation Belief.</Text>
+			<Text>Build the Sacred Garden for a boost to [ICON_CULTURE] Culture output and to improve all Holy Sites. Constructing this National Wonder will also allow you to choose a Reformation Belief. May only be constructed in a Holy City, and only if at least 15% of the global population follows your Religion (scaling with map size). Reduces [ICON_HAPPINESS_3] Religious Unrest, and allows you to select a Reformation Belief.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_SACRED_GARDEN_TEXT">
-			<Text>Religion has been an important influence on garden design. Temple gardens were made in Mesopotamia and Ancient Egypt. Sacred groves were made in ancient India, Greece, Rome, China and Japan. Sacred trees were important in Celtic and Germanic Europe and still are important in India. Many groves or forests were sacred in ancient India and continue to be so in modern Hindu worship. Buddhism had a significant influence on garden design, with the Zen gardens of China and Japan as famous examples. In Christianity, particularly Catholicism and Anglicanism, Mary gardens are common among churches and institutions. The practise of creating sacred gardens is re-invigorated and adapted for modern times in the Ringing Cedars Series of books by Russian author Vladimir Megre.</Text>
+			<Text>Religion has been an important influence on garden design. Temple gardens were made in Mesopotamia and Ancient Egypt. Sacred groves were made in ancient India, Greece, Rome, China, and Japan. Sacred trees were important in Celtic and Germanic Europe and still are important in India. Many groves or forests were sacred in ancient India and continue to be so in modern Hindu worship. Buddhism had a significant influence on garden design, with the Zen gardens of China and Japan as famous examples. In Christianity, particularly Catholicism and Anglicanism, Mary gardens are common among churches and institutions. The practise of creating sacred gardens is re-invigorated and adapted for modern times in the Ringing Cedars Series of books by Russian author Vladimir Megre.</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_BUILDING_HOLY_COUNCIL_HELP">
@@ -237,7 +237,7 @@
 			<Text>Holy Council</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_HOLY_COUNCIL_STRATEGY">
-			<Text>Build the Holy Council for a boost to Food output and to improve all Holy Sites. Constructing this National Wonder will also allow you to choose a Reformation Belief. May only be constructed in a Holy City, and only if at least 15% of the global population follows your Religion (scaling with map size). Reduces [ICON_HAPPINESS_3] Religious Unrest, and allows you to select a Reformation Belief.</Text>
+			<Text>Build the Holy Council for a boost to [ICON_FOOD] Food output and to improve all Holy Sites. Constructing this National Wonder will also allow you to choose a Reformation Belief. May only be constructed in a Holy City, and only if at least 15% of the global population follows your Religion (scaling with map size). Reduces [ICON_HAPPINESS_3] Religious Unrest, and allows you to select a Reformation Belief.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_HOLY_COUNCIL_TEXT">
 			<Text>An ecumenical council (or holy council) is a conference of ecclesiastical dignitaries and theological experts convened to discuss and settle matters of Church doctrine and practice in which those entitled to vote are convoked from the whole world (oikoumene) and which secures the approbation of the whole Church.</Text>
@@ -250,7 +250,7 @@
 			<Text>Apostolic Palace</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_APOSTOLIC_PALACE_STRATEGY">
-			<Text>Build the Apostolic Palace for more rapid Golden Ages and to improve all Holy Sites. Constructing this National Wonder will also allow you to choose a Reformation Belief. May only be constructed in a Holy City, and only if at least 15% of the global population follows your Religion (scaling with map size). Reduces [ICON_HAPPINESS_3] Religious Unrest, and allows you to select a Reformation Belief.</Text>
+			<Text>Build the Apostolic Palace for more rapid [ICON_GOLDEN_AGE] Golden Ages and to improve all Holy Sites. Constructing this National Wonder will also allow you to choose a Reformation Belief. May only be constructed in a Holy City, and only if at least 15% of the global population follows your Religion (scaling with map size). Reduces [ICON_HAPPINESS_3] Religious Unrest, and allows you to select a Reformation Belief.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_APOSTOLIC_PALACE_TEXT">
 			<Text>The Latin word basilica has three distinct applications in modern English. The word was originally used to describe an open, Roman, public court building, usually located adjacent to the forum of a Roman town. By extension it was applied to Christian buildings of the same form and continues to be used in an architectural sense to describe those buildings with a central nave and aisles. Later, the term came to refer specifically to a large and important church, the Apostolic Palace, that has been given special ceremonial rights by the Pope.</Text>
@@ -263,7 +263,7 @@
 			<Text>Grand Ossuary</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_GRAND_OSSUARY_STRATEGY">
-			<Text>Build the Ossuary for lots of Faith and to improve all Holy Sites. Constructing this National Wonder will also allow you to choose a Reformation Belief. May only be constructed in a Holy City, and only if at least 15% of the global population follows your Religion (scaling with map size). Reduces [ICON_HAPPINESS_3] Religious Unrest, and allows you to select a Reformation Belief.</Text>
+			<Text>Build the Ossuary for lots of [ICON_PEACE] Faith and to improve all Holy Sites. Constructing this National Wonder will also allow you to choose a Reformation Belief. May only be constructed in a Holy City, and only if at least 15% of the global population follows your Religion (scaling with map size). Reduces [ICON_HAPPINESS_3] Religious Unrest, and allows you to select a Reformation Belief.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_GRAND_OSSUARY_TEXT">
 			<Text>An ossuary is a chest, box, building, well, or site made to serve as the final resting place of human skeletal remains. They are frequently used where burial space is scarce. A body is first buried in a temporary grave, then after some years the skeletal remains are removed and placed in an ossuary. The greatly reduced space taken up by an ossuary means that it is possible to store the remains of many more people in a single tomb than if the original coffins were left as is. In Persia, the Zoroastrians used a deep well for this function from the earliest times (circa 3,000 years ago) and called it astudan (literally, "the place for the bones"). There are many rituals and regulations in the Zoroastrian faith concerning the astudans. Among the pre-7th-century Sogdians in the region of central Asia, the name for an ossuary was tanbar.</Text>
@@ -306,43 +306,43 @@
 			<Text>Interpretive Center</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_GROVE_STRATEGY">
-			<Text>The Council generates Science every time a City grows, and is available very early. Build this building if you wish to have a technological advantage over your rivals, though the value of this advantage diminishes as the City becomes larger.</Text>
+			<Text>The Council generates [ICON_RESARCH] Science every time a City grows, and is available very early. Build this building if you wish to have a technological advantage over your rivals, though the value of this advantage diminishes as the City becomes larger.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_LODGE_STRATEGY">
 			<Text>The Lodge boosts production from Camps and camp resources, and provides food to your City whenever it claims new tiles. Build Lodges throughout your empire to boost local yields from camps.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_BATH_STRATEGY">
-			<Text>The Bath generates Culture, and boosts the Gold and Culture yield of Temples, Gardens, and Amphitheaters in the City. Also generates additional Culture during Golden Ages. Baths can be constructed only in cities next to fresh water.</Text>
+			<Text>The Bath generates [ICON_CULTURE] Culture, and boosts the [ICON_GOLD] Gold and [ICON_CULTURE] Culture yield of Temples, Gardens, and Amphitheaters in the City. Also generates additional [ICON_CULTURE] Culture during [ICON_GOLDEN_AGE] Golden Ages. Baths can be constructed only in cities next to fresh water.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_HERBALIST_STRATEGY">
 			<Text>The Herbalist increases City growth, and improves the yields on nearby Jungle, Forest, and Marsh tiles as well as Plantations. Build them early to maximize the bonus, and to take advantage of regions with a large number of features.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_WELL_STRATEGY">
-			<Text>The Well can only be constructed in a City not on a river. The Well increases the City's Production based on the City's population, but less efficiently than the Water Mill.</Text>
+			<Text>The Well can only be constructed in a City not on a river. The Well increases the City's [ICON_PRODUCTION] Production based on the City's [ICON_CITIZEN] Population, but less efficiently than the Water Mill.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_WIND_PLANT_STRATEGY">
-			<Text>The Wind Farm increases the Production and Culture output of all workable tiles near the City and increases the efficiency of working processes.</Text>
+			<Text>The Wind Farm increases the [ICON_PRODUCTION] Production and [ICON_CULTURE] Culture output of all workable tiles near the City and increases the efficiency of working processes.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_TIDAL_PLANT_STRATEGY">
 			<Text>The Tidal Power is an Atomic-era building which can only be constructed in a coastal City. The Tidal Plant increases the [ICON_PRODUCTION] Production, [ICON_RESEARCH] Science, [ICON_FOOD] Food, and [ICON_GOLD] Gold output of every Ocean tile the City works and increases the efficiency of working processes.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_GROCER_STRATEGY">
-			<Text>The Grocer is a Renaissance-era building which can only be constructed if you have already built an Aqueduct in the City. The Grocer helps your City grow more quickly, combats Poverty, and improves the tile yield of Bananas.</Text>
+			<Text>The Grocer is a Renaissance-era building which can only be constructed if you have already built an Aqueduct in the City. The Grocer helps your City grow more quickly, combats [ICON_GOLD] Poverty, and improves the tile yield of Bananas.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_STOCKYARD_STRATEGY">
-			<Text>The Agribusiness is an Industrial-era building which can only be constructed if you have already built a Grocer in the City. An Agribusiness greatly improves the yields on your City's Farm and Pasture tiles, and boosts GPT significantly if your City has high Food yields. However, the use of Horses is a risky tradeoff during an era in which Cavalry is still quite powerful.</Text>
+			<Text>The Agribusiness is an Industrial-era building which can only be constructed if you have already built a Grocer in the City. An Agribusiness greatly improves the yields on your City's Farm and Pasture tiles, and boosts GPT significantly if your City has high [ICON_FOOD] Food yields. However, the use of Horses is a risky tradeoff during an era in which Cavalry is still quite powerful.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_COAL_PLANT_STRATEGY">
-			<Text>The Refinery is a Modern-era building which can only be constructed in 5 Cities total. The Refinery helps your Production and produces 1 Iron, Coal and Oil resource each, however it has a high maintenance cost. Only construct if you find yourself without these vital late-game strategic resources.</Text>
+			<Text>The Refinery is a Modern-era building which can only be constructed in 5 Cities total. The Refinery helps your [ICON_PRODUCTION] Production and produces 1 Iron, Coal, and Oil resource each, however it has a high maintenance cost. Only construct if you find yourself without these vital late-game strategic resources.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_MINEFIELD_STRATEGY">
 			<Text>The Minefield is a Modern-era building which can only be constructed if you have enough Iron and you have already built a Harbor in the City. With the Minefield in place, enemy ships are stopped immediately after entering the City's territory and are no longer safe to sit back on local ocean tiles outside of range from retaliation from land. Due to their resource requirement, Minefields are best limited to locations particularly vulnerable to naval sieges. Use Minefields to blunt a naval invasion, and then outmaneuver it with your own navy.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_FORTRESS_STRATEGY">
-			<Text>The Bastion Fort is a Renaissance-era military building that increases Defense Strength and Hit Points, making the City more difficult to capture. It allows the City to Ranged Strike indirectly, ignoring Line of Sight. Garrisoned units receive an additional 5 Health when healing in this City. Increases Military Units supplied by this City's population by 10%. Also helps with managing the Empire Size Modifier in this City. The City must possess a Castle before a Bastion Fort can be constructed.</Text>
+			<Text>The Bastion Fort is a Renaissance-era military building that increases [ICON_STRENGTH] Defense Strength and Hit Points, making the City more difficult to capture. It allows the City to Ranged Strike indirectly, ignoring Line of Sight. Garrisoned units receive an additional 5 Health when healing in this City. Increases Military Units supplied by this City's population by 10%. Also helps with managing the [ICON_CITY_STATE] Empire Size Modifier in this City. The City must possess a Castle before a Bastion Fort can be constructed.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_INTERPRETIVE_CENTER_STRATEGY">
-			<Text>The Interpretive Center greatly increases the power of Landmark improvements, and converts Culture from tiles into Tourism, greatly aiding a Cultural Victory.</Text>
+			<Text>The Interpretive Center greatly increases the power of Landmark improvements, and converts [ICON_CULTURE] Culture from tiles into [ICON_TOURISM] Tourism, greatly aiding a Cultural Victory.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_GROVE_HELP">
 			<Text>Gain 5 [ICON_RESEARCH] Science when a new [ICON_CITIZEN] Citizen is born in the City, scaling with Era.</Text>
@@ -363,7 +363,7 @@
 			<Text>+1 [ICON_FOOD] Food for every 5 [ICON_CITIZEN] Citizens in the City. Carries over 15% of [ICON_FOOD] Food after City growth (effect stacks with Aqueduct).[NEWLINE][NEWLINE]-1 [ICON_HAPPINESS_3] Unhappiness from [ICON_GOLD] Poverty.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_WIND_PLANT_HELP">
-			<Text>All City Processes are 10% more efficient at converting [ICON_PRODUCTION] Production into Yields.[NEWLINE][NEWLINE]+1 [ICON_PRODUCTION] Production, [ICON_CULTURE] Culture, and [ICON_GOLD] Gold on every workable Tile (flat, hills and water).[NEWLINE][NEWLINE]Requires 1 [ICON_RES_ALUMINUM] Aluminum to be constructed. City must not contain another energy-producing Plant.</Text>
+			<Text>All City Processes are 10% more efficient at converting [ICON_PRODUCTION] Production into Yields.[NEWLINE][NEWLINE]+1 [ICON_PRODUCTION] Production, [ICON_CULTURE] Culture, and [ICON_GOLD] Gold on every workable Tile (flat, hills, and water).[NEWLINE][NEWLINE]Requires 1 [ICON_RES_ALUMINUM] Aluminum to be constructed. City must not contain another energy-producing Plant.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_TIDAL_PLANT_HELP">
 			<Text>All City Processes are 10% more efficient at converting [ICON_PRODUCTION] Production into Yields.[NEWLINE][NEWLINE]+2 [ICON_PRODUCTION] Production, [ICON_RESEARCH] Science, [ICON_FOOD] Food, and [ICON_GOLD] Gold on every Sea Tile.[NEWLINE][NEWLINE]Requires 1 [ICON_RES_ALUMINUM] Aluminum to be constructed. City must be built on the coast. City must not contain another energy-producing Plant.</Text>
@@ -500,7 +500,7 @@
 			<Text>Stupa</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_STUPA_STRATEGY">
-			<Text>Can only be built in cities following a religion with the Stupas belief. Construct this building by purchasing it with [ICON_PEACE] Faith. Build the Stupa to gain Faith, Golden Age Points and Tourism in the City.</Text>
+			<Text>Can only be built in Cities following a Religion with the Stupas belief. Construct this building by purchasing it with [ICON_PEACE] Faith. Build the Stupa to gain [ICON_PEACE] Faith, [ICON_GOLDEN_AGE] Golden Age Points, and [ICON_TOURISM] Tourism in the City.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_STUPA_TEXT">
 			<Text>A stupa is a mound-like or hemispherical structure containing Buddhist relics, typically the ashes of Buddhist monks, used by Buddhists as a place of meditation.</Text>
@@ -513,7 +513,7 @@
 			<Text>Church</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_CHURCH_STRATEGY">
-			<Text>Can only be built in cities following a religion with the Churches belief. Construct this building by purchasing it with [ICON_PEACE] Faith. Build the Church to gain Faith and a Great Work of Music slot in the City. Also makes missionaries more effective and begins "We Love the King Day" in the City.</Text>
+			<Text>Can only be built in Cities following a Religion with the Churches belief. Construct this building by purchasing it with [ICON_PEACE] Faith. Build the Church to gain [ICON_PEACE] Faith and a [ICON_GREAT_WORK] Great Work of Music slot in the City. Also makes missionaries more effective and begins "We Love the King Day" in the City.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_CHURCH_TEXT">
 			<Text>A church building, often simply called a church, is a building used for religious activities, particularly worship services. The term in its architectural sense is most often used by Christians to refer to their religious buildings but can be used by other religions. In traditional Christian architecture, the church is often arranged in the shape of a Christian cross. When viewed from plan view the longest part of a cross is represented by the aisle and the junction of the cross is located at the altar area.</Text>
@@ -528,7 +528,7 @@
 			<Text>Mandir</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_MANDIR_STRATEGY">
-			<Text>Can only be built in cities following a religion with the Mandirs belief. Construct this building by purchasing it with [ICON_PEACE] Faith. Build the Mandir to gain Faith, Food, and a Great Work of Music slot in the City. Protects your City from certain Advanced Spy Actions.</Text>
+			<Text>Can only be built in Cities following a Religion with the Mandirs belief. Construct this building by purchasing it with [ICON_PEACE] Faith. Build the Mandir to gain [ICON_PEACE] Faith, [ICON_FOOD] Food, and a [ICON_GREAT_WORK] Great Work of Music slot in the City. Protects your City from certain Advanced Spy Actions.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_MANDIR_TEXT">
 			<Text>A Hindu temple is a house of god(s). It is a space and structure designed to bring human beings and gods together, infused with symbolism to express the ideas and beliefs of Hinduism.</Text>
@@ -543,7 +543,7 @@
 			<Text>Synagogue</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_SYNAGOGUE_STRATEGY">
-			<Text>Can only be built in cities following a religion with the Synagogues belief. Construct this building by purchasing it with [ICON_PEACE] Faith. Build the Synagogue to gain Faith, Production, and a Great Work of Writing slot in the City. The City generates more Science during "We Love the King Day."</Text>
+			<Text>Can only be built in Cities following a Religion with the Synagogues belief. Construct this building by purchasing it with [ICON_PEACE] Faith. Build the Synagogue to gain [ICON_PEACE] Faith, [ICON_PRODUCTION] Production, and a [ICON_GREAT_WORK] Great Work of Writing slot in the City. The City generates more [ICON_RESEARCH] Science during "We Love the King Day."</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_SYNAGOGUE_TEXT">
 			<Text>A synagogue, also spelled synagog, is a Jewish house of prayer. Synagogues have a large hall for prayer (the main sanctuary), and may also have smaller rooms for study and sometimes a social hall and offices. Some have a separate room for Torah study, called the beth midrash.</Text>
@@ -558,7 +558,7 @@
 			<Text>Order</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_ORDER_STRATEGY">
-			<Text>Can only be built in cities following a religion with the Orders belief. Construct this building by purchasing it with [ICON_PEACE] Faith. Build the Order to gain Faith, additional City Hit Points and [ICON_STRENGTH] Strength, +15 XP for all Military units, and the Morale promotion for your land Military units. Also grants +3 [ICON_PEACE] Faith when you kill an enemy Unit, scaling with Era.</Text>
+			<Text>Can only be built in Cities following a Religion with the Orders belief. Construct this building by purchasing it with [ICON_PEACE] Faith. Build the Order to gain [ICON_PEACE] Faith, additional City Hit Points and [ICON_STRENGTH] Strength, +15 XP for all Military units, and the Morale promotion for your land Military units. Also grants +3 [ICON_PEACE] Faith when you kill an enemy Unit, scaling with Era.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_ORDER_HELP">
 			<Text>+3 [ICON_PEACE] Faith when a Unit defeats an Enemy Unit in battle, scaling with Era. +15 XP for all Military Units produced in the City, and the [COLOR_POSITIVE_TEXT]Morale[ENDCOLOR] Promotion for Land Military Units produced in this City. Grants additional City Hit Points and [ICON_STRENGTH] Combat Strength. Boosts Pressure of [ICON_RELIGION] Religious Majority emanating from this City by 25%, and increases the City's resistance to conversion by 10%.[NEWLINE][NEWLINE]-1 [ICON_HAPPINESS_3] Unhappiness from [ICON_FOOD] and [ICON_PRODUCTION] Distress.</Text>
@@ -667,7 +667,7 @@
 			<Text>+3 [ICON_TOURISM] Tourism. +33% [ICON_GREAT_WRITER] Great Writer Rate in the City, and all Writers' Guilds produce +1 [ICON_GOLD] Gold.[NEWLINE][NEWLINE]When a unit defeats an enemy unit in battle, receive +5 [ICON_CULTURE_LOCAL] Border Growth in this City, scaling with Era; if the Unit was [COLOR_POSITIVE_TEXT]created by this City[ENDCOLOR], also receive 25 [ICON_CULTURE] Culture, scaling with Era.[NEWLINE][NEWLINE]Nearby [ICON_RES_DYE] Dyes: +1 [ICON_CULTURE] Culture, +1 [ICON_GOLD] Gold.[NEWLINE]Nearby [ICON_RES_SILK] Silk: +1 [ICON_CULTURE] Culture, +1 [ICON_GOLD] Gold.[NEWLINE]Nearby [ICON_RES_LAPIS] Lapis Lazuli: +2 [ICON_CULTURE] Culture.[NEWLINE]Nearby [ICON_RES_BRAZILWOOD] Brazilwood: +1 [ICON_CULTURE] Culture, +1 [ICON_GOLD] Gold.[NEWLINE][NEWLINE]+2 [ICON_CULTURE] Culture if Themed.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_ODEON_STRATEGY">
-			<Text>Unique Greek replacement for the Amphitheater. Build Acropoli to boost your City's Defense, Culture, and Tourism, especially while at war for the latter two. Also boosts the City's Great Writer rate and the value of Writers' Guilds. Produces +3 [ICON_TOURISM] Tourism.</Text>
+			<Text>Unique Greek replacement for the Amphitheater. Build Acropoli to boost your City's [ICON_STRENGTH] Defense, [ICON_CULTURE] Culture, and [ICON_TOURISM] Tourism, especially while at war for the latter two. Also boosts the City's [ICON_GREAT_WRITER] Great Writer rate and the value of Writers' Guilds. Produces +3 [ICON_TOURISM] Tourism.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_FLAVIAN_COLOSSEUM">
 			<Text>Colosseum</Text>
@@ -679,7 +679,7 @@
 			<Text>When a Unit defeats an Enemy Unit in battle, receive +5 [ICON_GOLDEN_AGE] Golden Age Points in this City, scaling with Era; if the Unit was [COLOR_POSITIVE_TEXT]created by this City[ENDCOLOR], also receive +10 [ICON_GREAT_GENERAL] Great General points (if Land) or +10 [ICON_GREAT_ADMIRAL] Great Admiral points (if Sea), scaling with Era. [ICON_CITY_CONNECTED] City Connections produce +2% more [ICON_GOLD] Gold.[NEWLINE][NEWLINE]+1 [ICON_TOURISM] Tourism for every 3 [ICON_CITIZEN] Citizens in the City. Barracks, Forge, and Armory in City: +2 [ICON_PRODUCTION] Production.[NEWLINE][NEWLINE]-1 [ICON_HAPPINESS_3] Unhappiness from [ICON_CULTURE] Boredom.[NEWLINE][NEWLINE]Nearby [ICON_RES_PERFUME] Perfume: +1 [ICON_CULTURE] Culture, +1 [ICON_GOLD] Gold.[NEWLINE]Nearby [ICON_RES_OLIVE] Olives: +1 [ICON_FOOD] Food, +1 [ICON_GOLD] Gold.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_FLAVIAN_COLOSSEUM_STRATEGY">
-			<Text>Unique Roman replacement for the Arena. Build the Colosseum to boost your City's Culture, Tourism, and Production output, also improves nearby [ICON_RES_PERFUME] Perfume and [ICON_RES_OLIVE] Olive resources. It also can maximize your Empire's gain from the victories of your conquering armies. Every Colosseum slightly increases the Gold value of City Connections, thus allowing Rome to benefit from large, sprawling empires.</Text>
+			<Text>Unique Roman replacement for the Arena. Build the Colosseum to boost your City's [ICON_CULTURE] Culture, [ICON_TOURISM] Tourism, and [ICON_PRODUCTION] Production output, also improves nearby [ICON_RES_PERFUME] Perfume and [ICON_RES_OLIVE] Olive resources. It also can maximize your Empire's gain from the victories of your conquering armies. Every Colosseum slightly increases the [ICON_GOLD] Gold value of City Connections, thus allowing Rome to benefit from large, sprawling empires.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_WHITE_TOWER">
 			<Text>White Tower</Text>
@@ -691,7 +691,7 @@
 			<Text>Provides 2 [COLOR_POSITIVE_TEXT]Free[ENDCOLOR] [ICON_RES_IRON] Iron and contains a pre-built [ICON_GREAT_WORK] Great Work of Art.[NEWLINE][NEWLINE]+25 [ICON_RESEARCH] Science and [ICON_GOLD] Gold when you Steal a [ICON_GREAT_WORK] Great Work or [ICON_RESEARCH] Technology, complete a [ICON_CITY_STATE] City-State Coup or Election Rigging, kill a foreign [ICON_SPY] Spy in this City, or construct a building in this City (+5 [ICON_GOLD]/[ICON_RESEARCH] for Advanced Actions), all scaling with Era.[NEWLINE][NEWLINE]All Constabularies, Castles, and Armories gain +1 [ICON_CULTURE] Culture.[NEWLINE][NEWLINE]The [ICON_PRODUCTION] Production Cost and [ICON_CITIZEN] Population Requirements increase based on the number of Cities you own.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_WHITE_TOWER_STRATEGY">
-			<Text>Unique English replacement for the Ironworks. In addition to the bonuses from the Ironworks, the White Tower improves Constabularies, Castles and Armories, and contains a Great Work of Art. The White Tower provides yields for both offensive and defensive Spy actions, like an early Intelligence Agency.</Text>
+			<Text>Unique English replacement for the Ironworks. In addition to the bonuses from the Ironworks, the White Tower improves Constabularies, Castles and Armories, and contains a [ICON_GREAT_WORK] Great Work of Art. The White Tower provides yields for both offensive and defensive Spy actions, like an early Intelligence Agency.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_GREAT_WORK_THE_CROWN_JEWELS_QUOTE">
 			<Text>"On the contrary. Every Bison dollar will be worth[NEWLINE] five British pounds. For that is the exchange rate[NEWLINE] that the bank of England will implement after[NEWLINE] I kidnap their queen."[NEWLINE]-M. Bison</Text>
@@ -709,7 +709,7 @@
 			<Text>Mines worked by this City and Engineer Specialists gain +2 [ICON_PRODUCTION] Production. +50% [ICON_PRODUCTION] Production towards Siege units, and all Siege units trained in this City receive the [COLOR_POSITIVE_TEXT]Volley[ENDCOLOR] Promotion for free.[NEWLINE][NEWLINE]When you construct a Unit in this City, gain [ICON_RESEARCH] Science equal to 20% of the Unit's [ICON_PRODUCTION] Production cost.[NEWLINE][NEWLINE]Nearby [ICON_RES_IRON] Iron: +1 [ICON_PRODUCTION] Production, +1 [ICON_GOLD] Gold.[NEWLINE]Nearby [ICON_RES_COPPER] Copper: +2 [ICON_GOLD] Gold.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_SIEGE_WORKSHOP_STRATEGY">
-			<Text>Unique Ottoman replacement for the Forge. Generates extra Science from producing military units, produces Siege units much more quickly than normal, and grants them the [COLOR_POSITIVE_TEXT]Volley[ENDCOLOR] Promotion for free. Use these attributes to build a massive force of artillery to take down an enemy's walls and conquer their lands!</Text>
+			<Text>Unique Ottoman replacement for the Forge. Generates extra [ICON_RESEARCH] Science from producing military units, produces Siege units much more quickly than normal, and grants them the [COLOR_POSITIVE_TEXT]Volley[ENDCOLOR] Promotion for free. Use these attributes to build a massive force of artillery to take down an enemy's walls and conquer their lands!</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_THEMING_BONUS_AMPHITHEATER_NATIONAL">
@@ -719,20 +719,20 @@
 			<Text>Global Epics</Text>
 		</Row>
 		<Row Tag="TXT_KEY_AMPHITHEATER_THEMING_BONUS_HELP">
-			<Text>To maximize your bonus, make sure the Great Work Slots are all filled with Writings either from your own Civilization, or from Civilizations other than your own.</Text>
+			<Text>To maximize your bonus, make sure the [ICON_GREAT_WORK] Great Work Slots are all filled with Writings either from your own Civilization, or from Civilizations other than your own.</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_BUILDING_MISSION">
 			<Text>Mission</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CIV5_BUILDINGS_MISSION_TEXT">
-			<Text>According to the Catholic Church, Missions are religious communities devoted to teaching, tending, and helping the local populace, thus supporting Christ’s ideals. In practice, however, the missions were devoted to converting the locals and then “civilizing” them through cultural assimilation. The Spanish missions serve as the traditional template, self-supporting enclaves with churches, dormitories, workrooms, and schools. In places these were even fortified, ready to defend themselves from opposition. Most of the missions in the Americas, Asia, and Africa were administered by religious orders such as the Franciscans, Jesuits, Dominicans, and Augustinians rather than the Church itself, but the effects were the same. Missions often served as a nucleus around which Spanish, French, and Portuguese colonizing efforts could coalesce.</Text>
+			<Text>According to the Catholic Church, Missions are religious communities devoted to teaching, tending, and helping the local populace, thus supporting Christ's ideals. In practice, however, the missions were devoted to converting the locals and then “civilizing” them through cultural assimilation. The Spanish missions serve as the traditional template, self-supporting enclaves with churches, dormitories, workrooms, and schools. In places these were even fortified, ready to defend themselves from opposition. Most of the missions in the Americas, Asia, and Africa were administered by religious orders such as the Franciscans, Jesuits, Dominicans, and Augustinians rather than the Church itself, but the effects were the same. Missions often served as a nucleus around which Spanish, French, and Portuguese colonizing efforts could coalesce.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_MISSION_HELP">
-			<Text>Defensive Religious Building. Can only be Faith purchased in cities settled by a Spanish Conquistador.[NEWLINE][NEWLINE]+1 [ICON_PEACE] Faith to nearby Haciendas. When built, Instantly converts this City to the Majority Religion in your [ICON_CAPITAL] Capital.</Text>
+			<Text>Defensive Religious Building. Can only be [ICON_PEACE] Faith purchased in Cities settled by a Spanish Conquistador.[NEWLINE][NEWLINE]+1 [ICON_PEACE] Faith to nearby Haciendas. When built, Instantly converts this City to the Majority Religion in your [ICON_CAPITAL] Capital.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_MISSION_STRATEGY">
-			<Text>A Mission is only available for purchase in cities settled by a Spanish Conquistador. They give a small amount of Faith and Defense and boost the yields of nearby Haciendas. The Mission performs a missionary spread action when it is built, converting it to the Majority Religion in your Capital.</Text>
+			<Text>A Mission is only available for purchase in Cities settled by a Spanish Conquistador. They give a small amount of [ICON_PEACE] Faith and [ICON_STRENGTH] Defense and boost the yields of nearby Haciendas. The Mission performs a missionary spread action when it is built, converting it to the Majority Religion in your Capital.</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_BUILDING_JELLING_STONES">
@@ -745,7 +745,7 @@
 			<Text>When a Unit [COLOR_POSITIVE_TEXT]created by this City[ENDCOLOR] pillages a Tile, gain 30 [ICON_GOLD] Gold and [ICON_CULTURE] Culture in this City, scaling with Era.[NEWLINE][NEWLINE]+25% [ICON_PRODUCTION] Production towards Melee and Naval Melee Units.[NEWLINE][NEWLINE]+2 [ICON_FOOD] Food and +1 [ICON_GOLD] Gold from Coast and Ocean tiles. Internal [ICON_INTERNATIONAL_TRADE] Trade Routes from this City generate +6 [ICON_FOOD] Food.[NEWLINE][NEWLINE]Forms a [ICON_CONNECTED] City Connection with other Cities via water if they also have Runestones.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_JELLING_STONES_STRATEGY">
-			<Text>Unique Danish replacement for the Lighthouse. In addition to the Lighthouse's bonuses, Runestones produce [ICON_CULTURE] Culture and [ICON_GOLD] Gold when units from this City pillage tiles (Roads and Railroads do not count), generates more Food from ocean tiles, and increases production of melee land and naval units. Unlike the Lighthouse, the City does not have to be built on the coast.</Text>
+			<Text>Unique Danish replacement for the Lighthouse. In addition to the Lighthouse's bonuses, Runestones produce [ICON_CULTURE] Culture and [ICON_GOLD] Gold when units from this City pillage tiles (Roads and Railroads do not count), generates more [ICON_FOOD] Food from Ocean Tiles, and increases production of melee land and naval units. Unlike the Lighthouse, the City does not have to be built on the coast.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_SEOWON">
 			<Text>Seowon</Text>
@@ -757,7 +757,7 @@
 			<Text>+1 [ICON_RESEARCH] Science from Jungle and Snow tiles worked by the City. +1 [ICON_RESEARCH] Science and [ICON_PRODUCTION] Production from [ICON_GREAT_WORK] Great Works in the City. +15% [ICON_RESEARCH] Science in the City during [ICON_GOLDEN_AGE] Golden Ages. Gain 50% of the [ICON_RESEARCH] Science output of the City as an instant boost to your current Research when a [ICON_CITIZEN] Citizen is born in this City.[NEWLINE][NEWLINE]-1 [ICON_HAPPINESS_3] Unhappiness from [ICON_RESEARCH] Illiteracy.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_SEOWON_STRATEGY">
-			<Text>Unique Korean replacement for the University. Generates more Science and Production than the University, generates Faith, and is available earlier. The increased Great Person rate will help you produce Great People more quickly, thus helping you to maximize Korea's Unique Ability.</Text>
+			<Text>Unique Korean replacement for the University. Generates more [ICON_RESEARCH] Science and [ICON_PRODUCTION] Production than the University, generates [ICON_PEACE] Faith, and is available earlier. The increased [ICON_GREAT_PEOPLE] Great Person rate will help you to maximize Korea's Unique Ability.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_YURT">
 			<Text>Ger</Text>
@@ -769,7 +769,7 @@
 			<Text>+1 [ICON_PRODUCTION] Production from Camps. [ICON_GOLD] Gold and [ICON_CULTURE] Culture Cost of acquiring new tiles reduced by 25% in this City and gain 5 [ICON_FOOD] Food in the City when its borders expand, scaling with Era.[NEWLINE][NEWLINE]Nearby [ICON_RES_COW] Cows: +1 [ICON_FOOD] Food.[NEWLINE]Nearby [ICON_RES_SHEEP] Sheep: +1 [ICON_FOOD] Food.[NEWLINE]Nearby [ICON_RES_HORSE] Horses: +1 [ICON_FOOD] Food.[NEWLINE]Nearby [ICON_RES_DEER] Deer: +1 [ICON_FOOD] Food.[NEWLINE]Nearby [ICON_RES_BISON] Bison: +1 [ICON_FOOD] Food.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_YURT_STRATEGY">
-			<Text>Unique Mongolian replacement for the Lodge. In addition to the Lodge's bonuses, the Ger provides Food from livestock. It also provides a small amount of Faith, and has no maintenance. Build Gers in your cities to maximize their growth, and to get an early Pantheon.</Text>
+			<Text>Unique Mongolian replacement for the Lodge. In addition to the Lodge's bonuses, the Ger provides [ICON_FOOD] Food from livestock. It also provides a small amount of [ICON_PEACE] Faith, and has no maintenance. Build Gers in your Cities to maximize their growth, and to get an early Pantheon.</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_THEMING_BONUS_BUILDING_PARTHENON">
@@ -779,10 +779,10 @@
 			<Text>Holy Sanctuary</Text>
 		</Row>
 		<Row Tag="TXT_KEY_PARTHENON_THEMING_BONUS_HELP">
-			<Text>To maximize your bonus, make sure both Great Works were created by you.</Text>
+			<Text>To maximize your bonus, make sure both [ICON_GREAT_WORK] Great Works were created by you.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_NOTRE_DAME_THEMING_BONUS_HELP">
-			<Text>To maximize your bonus, make sure both Great Works were created by Players other than the owner.</Text>
+			<Text>To maximize your bonus, make sure both [ICON_GREAT_WORK] Great Works were created by Players other than the owner.</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_NOTIFICATION_PROJECT_STARTED">
@@ -814,7 +814,7 @@
 			<Text>1 of 3 [COLOR_NEGATIVE_TEXT]Mutually Exclusive[ENDCOLOR] Unique American Wonders. Requires Construction of Independence Hall in any owned City.[NEWLINE][NEWLINE][ICON_GOLD] Gold costs of acquiring new tiles reduced by 25% in every City. +5 [ICON_CULTURE] Culture and [ICON_RESEARCH] Science to all Museums and Research Labs, and +2 [ICON_CULTURE] Culture and [ICON_RESEARCH] Science to all World Wonders. Receive a [COLOR_POSITIVE_TEXT]Free[ENDCOLOR] Museum in all Cities on Empire. 10% of [ICON_GOLD] Gold created by all Cities on Empire counts as [ICON_CULTURE] Culture Per Turn.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_AMERICA_SMITHSONIAN_STRATEGY">
-			<Text>The Smithsonian Institute is one of three mutually exclusive wonders that America can build after it has completed Independence Hall. It gives major bonuses towards culture and science generation on empire, giving powerful theming for Great Artifacts, and boosting the power of Museums.</Text>
+			<Text>The Smithsonian Institute is one of three mutually exclusive wonders that America can build after it has completed Independence Hall. It gives major bonuses towards [ICON_CULTURE] Culture and [ICON_RESEARCH] Science generation on empire, giving powerful theming for [ICON_GREAT_WORK] Great Artifacts, and boosting the power of Museums.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_AMERICA_WESTPOINT">
 			<Text>West Point</Text>
@@ -838,13 +838,13 @@
 			<Text>One of the most ambitious and largest public works projects in American history, the Hoover Dam is a marvel of Modern innovation. At the time of its construction, the Hoover Dam was the largest concrete structure in the world, using ambitious and experimental techniques to pour and cure over 3 million cubic meters of concrete, one inch at a time. the dam impounds Lake Mead, the largest man-made reservoir in the United States, regulates flooding of the Colorado river. Its generators provide power for Nevada, Arizona, and California, and its crest was incorporated into US Route 93, making it a major thoroughfare and tourist attraction.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BUILDING_AMERICA_HOOVERDAM_STRATEGY">
-			<Text>The Hoover Dam is one of three mutually exclusive wonders that America can build after it has completed Independence Hall. It gives major bonuses towards a production and Cultural Victory, increasing the tourism of Wonders and Culture from tiles. The Hoover Dam also halves the time for Trade Routes to complete, greatly increasing your tourism and franchise production towards civilizations you trade with.</Text>
+			<Text>The Hoover Dam is one of three mutually exclusive wonders that America can build after it has completed Independence Hall. It gives major bonuses towards a production and Cultural Victory, increasing the [ICON_TOURISM] Tourism of Wonders and [ICON_CULTURE] Culture from tiles. The Hoover Dam also halves the time for Trade Routes to complete, greatly increasing your tourism and franchise production towards civilizations you trade with.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_THEMING_BONUS_INDEPENDENCEHALL">
 			<Text>National Treasures</Text>
 		</Row>
 		<Row Tag="TXT_KEY_THEMING_BONUS_INDEPENDENCEHALL_HELP">
-			<Text>To maximize your bonus, make sure the Great Work Slots are all filled with Art from your Civilization.</Text>
+			<Text>To maximize your bonus, make sure the [ICON_GREAT_WORK] Great Work Slots are all filled with [ICON_GREAT_WORK] Art from your Civilization.</Text>
 		</Row>
 	</Language_en_US>
 </GameData>

@@ -153,7 +153,7 @@
 			<Text>[COLOR_GREEN]City State Embassies[ENDCOLOR]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CONCEPT_CITY_STATE_EMBASSIES_SUMMARY">
-			<Text>City State Embassies are an additional method in Vox Populi to gain Delegates in the World Congress. To establish an Embassy in a City State, move a Great Diplomat to a land tile of the City State and select "Establish an Embassy". An Embassy grants 1 additional Delegate in the World Congress. In each City State, only one Embassy can be established by a Civilization, so be quick. When a Civilization is conquered, all of its City State Embassies are transferred to the conquering Civilization.</Text>
+			<Text>City State Embassies are an additional method in Vox Populi to gain Delegates in the World Congress. To establish an Embassy in a City-State, move a [ICON_DIPLOMAT] Great Diplomat to a land tile of the City State and select "Establish an Embassy". An Embassy grants 1 additional Delegate in the World Congress. In each City State, only one Embassy can be established by a Civilization, so be quick. When a Civilization is conquered, all of its City State Embassies are transferred to the conquering Civilization.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CONCEPT_CITY_STATE_EMBASSIES_DESCRIPTION">
 			<Text>{TXT_KEY_CONCEPT_CITY_STATE_EMBASSIES_TOPIC}</Text>
@@ -166,7 +166,7 @@
 			<Text>[COLOR_GREEN]Historic Events[ENDCOLOR]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_HISTORIC_EVENT_BODY">
-			<Text>Historic Events represent monumental achievements that may occur during a game. These events require planning or user interaction, and are thus a dynamic part of acquiring cultural influence over other civilizations. When one of the following Historic Events is completed, receive a [ICON_TOURISM] Tourism boost with all known Civs based on your recent [ICON_CULTURE] Culture and [ICON_TOURISM] Tourism output:[NEWLINE][NEWLINE][ICON_BULLET] Earn a [ICON_GREAT_PEOPLE] Great Person[NEWLINE][ICON_BULLET] Build a [ICON_GOLDEN_AGE] World Wonder[NEWLINE][ICON_BULLET] Win a [ICON_WAR] War (Warscore 25+)[NEWLINE][ICON_BULLET] Enter a new [ICON_RESEARCH] Era[NEWLINE][NEWLINE]The amount of Tourism received by these events is based on your culture and tourism per turn over the past few turns. The value of this is also adjusted based on the number of cities in your empire and your tourism modifier with the target civ. Finally, the amount of tourism you receive is also modified by a few social policies and ideological tenets, as well as leader traits, buildings, and the number of cities in your empire.</Text>
+			<Text>Historic Events represent monumental achievements that may occur during a game. These events require planning or user interaction, and are thus a dynamic part of acquiring cultural influence over other civilizations. When one of the following Historic Events is completed, receive a [ICON_TOURISM] Tourism boost with all known Civs based on your recent [ICON_CULTURE] Culture and [ICON_TOURISM] Tourism output:[NEWLINE][NEWLINE][ICON_BULLET] Earn a [ICON_GREAT_PEOPLE] Great Person[NEWLINE][ICON_BULLET] Build a [ICON_GOLDEN_AGE] World Wonder[NEWLINE][ICON_BULLET] Win a [ICON_WAR] War (Warscore 25+)[NEWLINE][ICON_BULLET] Enter a new [ICON_RESEARCH] Era[NEWLINE][NEWLINE]The amount of [ICON_TOURISM] Tourism received by these events is based on your [ICON_CULTURE] Culture and [ICON_TOURISM] Tourism per turn over the past few turns. The value of this is also adjusted based on the number of Cities in your empire and your [ICON_TOURISM] Tourism modifier with the target civ. Finally, the amount of [ICON_TOURISM] Tourism you receive is also modified by a few Social Policies and Ideological Tenets, as well as Leader Traits, buildings, and the number of Cities in your empire.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_HISTORIC_EVENT_QUEST">
 			<Text>What is a Historic Event?</Text>
@@ -195,7 +195,7 @@
 			<Text>[COLOR_GREEN]War Weariness[ENDCOLOR]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_COMBAT_WAR_WEARINESS_HEADING3_BODY">
-			<Text>War, war never changes. Well, actually, it does. As the game progresses, the citizens of your empire will become more and more aware of the dangers of prolonged conflict, and will begin to develop [COLOR_NEGATIVE_TEXT]War Weariness[ENDCOLOR]. War Weariness is calculated based on two factors: the length of your longest current war (however long that may be), and the largest amount of damage your cities and armies have sustained in a single combat against an opponent you are currently fighting. Every City lost or unit destroyed will increase your War Weariness, leading to three major effects:[NEWLINE][ICON_BULLET] Unhappiness from War Weariness[NEWLINE][ICON_BULLET] Increased Production and Gold costs for Military Units[NEWLINE][ICON_BULLET] Reduced maximum Military Unit Supply Cap.[NEWLINE]The latter two cap at 75%. Be careful of overextending during a single conflict!</Text>
+			<Text>War, war never changes. Well, actually, it does. As the game progresses, the citizens of your empire will become more and more aware of the dangers of prolonged conflict, and will begin to develop [COLOR_NEGATIVE_TEXT]War Weariness[ENDCOLOR]. War Weariness is calculated based on two factors: the length of your longest current war (however long that may be), and the largest amount of damage your Cities and armies have sustained in a single combat against an opponent you are currently fighting. Every City lost or unit destroyed will increase your War Weariness, leading to three major effects:[NEWLINE][ICON_BULLET] Unhappiness from War Weariness[NEWLINE][ICON_BULLET] Increased [ICON_PRODUCTION] Production and [ICON_GOLD] Gold costs for Military Units[NEWLINE][ICON_BULLET] Reduced maximum Military Unit Supply Cap.[NEWLINE]The latter two cap at 75%. Be careful of overextending during a single conflict!</Text>
 		</Row>
 		<Row Tag="TXT_KEY_COMBAT_WAR_WEARINESS_ADV_QUEST">
 			<Text>What is War Weariness?</Text>
@@ -205,7 +205,7 @@
 			<Text>[COLOR_GREEN]Military Supply[ENDCOLOR]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_MILITARY_SUPPLY_HEADING3_BODY">
-			<Text>The maximum number of Military Units you can field at any one time is called your Military Unit Supply Cap. This number, indicated on the Top Panel next to the [ICON_WAR] Symbol, increases based on two factors: the total population of all of your cities, and the number of buildings or policies you have that increase your Military Unit Supply Cap. Some buildings, such as the Barracks, increase your Supply Cap by a fixed amount. Others, like Walls, increase your Supply cap by a percentage of the city's population.[NEWLINE][NEWLINE]Military Unit Supply Cap increases from static elements, like Barracks, and percentage bonuses from population decline over time based on your empire's technological level. You will need more and more percentage bonuses to overcome this and field large armies![NEWLINE][NEWLINE]If, for any reason, you exceed your Military Unit Supply Cap, you will be penalized 5% Production and Food in all Cities (per unit over the cap).</Text>
+			<Text>The maximum number of Military Units you can field at any one time is called your Military Unit Supply Cap. This number, indicated on the Top Panel next to the [ICON_WAR] Symbol, increases based on two factors: the total [ICON_CITIZEN] Population of all of your Cities, and the number of buildings or policies you have that increase your Military Unit Supply Cap. Some buildings, such as the Barracks, increase your Supply Cap by a fixed amount. Others, like Walls, increase your Supply cap by a percentage of the City's [ICON_CITIZEN] Population.[NEWLINE][NEWLINE]Military Unit Supply Cap increases from static elements, like Barracks, and percentage bonuses from population decline over time based on your empire's technological level. You will need more and more percentage bonuses to overcome this and field large armies![NEWLINE][NEWLINE]If, for any reason, you exceed your Military Unit Supply Cap, you will be penalized 5% [ICON_PRODUCTION] Production and [ICON_FOOD] Food in all Cities (per unit over the cap).</Text>
 		</Row>
 		<Row Tag="TXT_KEY_MILITARY_SUPPLY_ADV_QUEST">
 			<Text>What is Military Supply?</Text>
@@ -215,7 +215,7 @@
 			<Text>[COLOR_GREEN]Canals[ENDCOLOR]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CONCEPT_CANALS_BODY">
-			<Text>Owned Forts and Citadels that are built next to a water tile count as Canals and can be accessed by your military ships. You can build Canals to connect Lakes (and Cities next to them) to the Ocean. It is not possible to have two adjacent Forts or two adjacent Citadels, but one Fort and one Citadel can be built next to each other. A City next to a Lake that is connected to the Ocean by a Canal can construct military ships (but not coastal buildings), and Canals can also be used by owned and foreign cargo ships.</Text>
+			<Text>Owned Forts and Citadels that are built next to a water tile count as Canals and can be accessed by your military ships. You can build Canals to connect Lakes (and Cities next to them) to the Ocean. It is not possible to have two adjacent Forts or two adjacent Citadels, but one Fort and one Citadel can be built next to each other. A City next to a Lake that is connected to the Ocean by a Canal can construct military ships (but not Coastal buildings), and Canals can also be used by owned and foreign cargo ships.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CONCEPT_CANALS_ADV_QUEST">
 			<Text>What are canals?</Text>
@@ -225,7 +225,7 @@
 			<Text>[COLOR_GREEN]Local Happiness in Cities[ENDCOLOR]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_HAPPINESS_LOCAL_HAPPINESS_HEADING3_BODY">
-			<Text>The Local Happiness of a city is determined as follows: [NEWLINE][NEWLINE]Some Happiness is generated locally by the City. This can be through Buildings, Policies, World Wonders or Worked Landmarks. [NEWLINE][NEWLINE]The total amount of Happiness coming from empire-wide sources (like Luxury Resources or allied City States) is distributed deck-of-cards style among all Cities. This is done automatically, prioritizing Cities that have less Local Happiness than Population. After all cities have Local Happiness equal to their Population, any remainder is distributed deck-of-cards style in order of highest to lowest Population.</Text>
+			<Text>The Local Happiness of a City is determined as follows: [NEWLINE][NEWLINE]Some Happiness is generated locally by the City. This can be through Buildings, Policies, World Wonders or Worked Landmarks. [NEWLINE][NEWLINE]The total amount of Happiness coming from empire-wide sources (like Luxury Resources or allied City States) is distributed deck-of-cards style among all Cities. This is done automatically, prioritizing Cities that have less [ICON_HAPPINESS_1] Local Happiness than [ICON_CITIZEN] Population. After all Cities have [ICON_HAPPINESS_1] Local Happiness equal to their [ICON_CITIZEN] Population, any remainder is distributed deck-of-cards style in order of highest to lowest Population.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_HAPPINESS_LOCAL_HAPPINESS_ADV_QUEST">
 			<Text>How is Local City Happiness determined?</Text>
@@ -236,7 +236,7 @@
 		</Row>
 		<Row Tag="TXT_KEY_HAPPINESS_NEED_THRESHOLDS_BODY">
 			<Text>
-				The calculation of Unhappiness from Needs is done by comparing a City's yield outputs per population to certain reference values, the Needs Thresholds. These values are based on the global median of yield outputs per population (i.e. the value of yield output per population that is exceeded by exactly 50% of cities worldwide). Only Cities with a population of at least 3 are considered when calculating the median, softening Unhappiness in the very early game. The Needs Thresholds are modified by a number of Needs Modifiers in each City. A positive Need Modifier makes it harder to reach the threshold and might therefore increase local Unhappiness, while a negative one might reduce it. The following modifiers are always applied:[NEWLINE] [COLOR_NEGATIVE_TEXT]Capital Status[ENDCOLOR]: The Needs Thresholds of the Capital are increased by 25%.[NEWLINE] [COLOR_NEGATIVE_TEXT]Empire Size[ENDCOLOR]: Each City in your Empire (excluding the Capital and Puppet Cities) increases the Needs Thresholds in every City by 5%. Additionally, every four Citizens in your Empire (excluding Citizens in Puppet Cities) increase them by 1%.[NEWLINE] [COLOR_POSITIVE_TEXT]Difficulty Level[ENDCOLOR]: On the Difficulty Levels "Settler" and "Chieftain", Needs Thresholds are reduced for human players and increased for the AI. On Difficulty Levels above Chieftain, no modifiers are applied.[NEWLINE][NEWLINE]Certain Policies and Spy Events can also modify Needs Thresholds in a City. In addition, the Processes that convert Production into some other yield provide a reduction of the respective Need Threshold equal to the conversion rate (which can be increased using Power Plants), e.g. Farming converts 25% of Production into Food and decreases the Distress Need Threshold by 25%.
+				The calculation of Unhappiness from Needs is done by comparing a City's yield outputs per population to certain reference values, the Needs Thresholds. These values are based on the global median of yield outputs per population (i.e. the value of yield output per population that is exceeded by exactly 50% of Cities worldwide). Only Cities with a population of at least 3 are considered when calculating the median, softening Unhappiness in the very early game. The Needs Thresholds are modified by a number of Needs Modifiers in each City. A positive Need Modifier makes it harder to reach the threshold and might therefore increase local Unhappiness, while a negative one might reduce it. The following modifiers are always applied:[NEWLINE] [COLOR_NEGATIVE_TEXT]Capital Status[ENDCOLOR]: The Needs Thresholds of the Capital are increased by 25%.[NEWLINE] [COLOR_NEGATIVE_TEXT]Empire Size[ENDCOLOR]: Each City in your Empire (excluding the Capital and Puppet Cities) increases the Needs Thresholds in every City by 5%. Additionally, every four Citizens in your Empire (excluding Citizens in Puppet Cities) increase them by 1%.[NEWLINE] [COLOR_POSITIVE_TEXT]Difficulty Level[ENDCOLOR]: On the Difficulty Levels "Settler" and "Chieftain", Needs Thresholds are reduced for human players and increased for the AI. On Difficulty Levels above Chieftain, no modifiers are applied.[NEWLINE][NEWLINE]Certain Policies and Spy Events can also modify Needs Thresholds in a City. In addition, the Processes that convert [ICON_PRODUCTION] Production into some other yield provide a reduction of the respective Need Threshold equal to the conversion rate (which can be increased using Power Plants), e.g. Farming converts 25% of [ICON_PRODUCTION] Production into [ICON_FOOD] Food and decreases the [ICON_FOOD] Distress Need Threshold by 25%.
 			</Text>
 		</Row>
 		<Row Tag="TXT_KEY_HAPPINESS_NEED_THRESHOLDS_ADV_QUEST">
@@ -247,7 +247,7 @@
 			<Text>[COLOR_GREEN]Unhappiness in Puppet Cities[ENDCOLOR]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_HAPPINESS_PUPPET_CITIES_BODY">
-			<Text>In Puppet Cities, special rules for Happiness and Unhappiness apply. Every 4 citizens in a Puppet City generate 1 Unhappiness. The only other possible source of Unhappiness in a Puppet City is Urbanization, which is calculated the same way as in other cities. In a Puppet City, you cannot control the assigment of specialists and therefore cannot counteract Urbanization unless you annex the city. Puppet Cities don't produce any local Happiness, and they follow their own rules for growth, independent of the Happiness system. The Unhappiness generated by Puppet Cities therefore only makes a difference at the empire level.</Text>
+			<Text>In Puppet Cities, special rules for Happiness and Unhappiness apply. Every 4 [ICON_CITIZEN] Citizens in a Puppet City generate 1 Unhappiness. The only other possible source of Unhappiness in a Puppet City is Urbanization, which is calculated the same way as in other Cities. In a Puppet City, you cannot control the assigment of specialists and therefore cannot counteract Urbanization unless you annex the City. Puppet Cities don't produce any local Happiness, and they follow their own rules for growth, independent of the Happiness system. The Unhappiness generated by Puppet Cities therefore only makes a difference at the empire level.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_HAPPINESS_PUPPET_CITIES_ADV_QUEST">
 			<Text>What causes Unhappiness in Puppet Cities?</Text>
@@ -257,7 +257,7 @@
 			<Text>[COLOR_GREEN]Occupied and Resisting Cities[ENDCOLOR]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_HAPPINESS_OCCUPIED_CITIES_BODY">
-			<Text>Cities that are in Resistance or being Razed don't generate any Local Happiness. Instead, they generate Unhappiness equal to the city's population. This can massively decrease the Approval Rating of your empire.[NEWLINE][NEWLINE]Occupied Cities also don't produce any Happiness. They generate Unhappiness equal to the city's population, to which the regular Unhappiness from Urbanization is added.</Text>
+			<Text>Cities that are in Resistance or being Razed don't generate any [ICON_HAPPINESS_1] Local Happiness. Instead, they generate [ICON_HAPPINESS_3] Unhappiness equal to the City's [ICON_CITIZEN] population. This can massively decrease the Approval Rating of your empire.[NEWLINE][NEWLINE]Occupied Cities also don't produce any Happiness. They generate Unhappiness equal to the City's population, to which the regular Unhappiness from Urbanization is added.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_HAPPINESS_OCCUPIEDCITIES_ADV_QUEST">
 			<Text>What causes Unhappiness in Occupied and Resisting Cities?</Text>
@@ -427,7 +427,7 @@
 
 		<!-- Resource Wonder Improvement -->
 		<Row Tag="TXT_KEY_NOTIFICATION_CITY_RESOURCE_WONDER_MOD_LATE">
-			<Text>{2_ResourceName:textkey} is now available in {1_CityName:textkey}! This increases [ICON_PRODUCTION] Production when building pre-Industrial Era Wonders in this city by {3_Num}%!</Text>
+			<Text>{2_ResourceName:textkey} is now available in {1_CityName:textkey}! This increases [ICON_PRODUCTION] Production when building pre-Industrial Era Wonders in this City by {3_Num}%!</Text>
 		</Row>
 		<!-- GAP -->
 		<Row Tag="TXT_KEY_TP_GOLDEN_AGE_ADDITION_RELIGION">
@@ -441,7 +441,7 @@
 		</Row>
 
 		<Row Tag="TXT_KEY_TOP_PANEL_TOURISM_TOOLTIP_CONQUEST_WARNING">
-			<Text>Every [ICON_PUPPET] non-Puppet owned city (excluding [ICON_CAPITAL] Capital) decreases the [ICON_TOURISM] Tourism you produce from Cities and Historic Events by {1_Num}% (up to 75%).</Text>
+			<Text>Every [ICON_PUPPET] non-Puppet owned City (excluding [ICON_CAPITAL] Capital) decreases the [ICON_TOURISM] Tourism you produce from Cities and Historic Events by {1_Num}% (up to 75%).</Text>
 		</Row>
 
 		<!-- City-State Protection Prompt -->
@@ -579,7 +579,7 @@
 		</Row>
 
 		<Row Tag="TXT_KEY_TRO_COL_TO_CULTURE_TT">
-			<Text>Click to sort by the amount of [ICON_CULTURE] Culture that the destination city would receive from this trade route.</Text>
+			<Text>Click to sort by the amount of [ICON_CULTURE] Culture that the destination City would receive from this trade route.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_TRO_COL_FROM_CULTURE_TT">
 			<Text>Click to sort by the amount of [ICON_CULTURE] Culture that the civilization that established the trade route generates from this trade route.</Text>
@@ -703,7 +703,7 @@
 
 		<!--Old China UA Text-->
 		<Row Tag="TXT_KEY_NOTIFICATION_CITY_WLTKD_UA">
-			<Text>The birth of a {1_Resource:textkey} causes the city of {2_CityName:textkey} to enter "We Love the Empress Day.' All Cities gain +1 [ICON_FOOD] Food and +1 [ICON_GOLD] Gold.</Text>
+			<Text>The birth of a {1_Resource:textkey} causes the City of {2_CityName:textkey} to enter "We Love the Empress Day.' All Cities gain +1 [ICON_FOOD] Food and +1 [ICON_GOLD] Gold.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_NOTIFICATION_SUMMARY_CITY_WLTKD_UA">
 			<Text>{1_CityName:textkey} loves the Empress!</Text>
@@ -726,7 +726,7 @@
 		</Row>
 
 		<Row Tag="TXT_KEY_NOTIFICATION_CITY_WLTKD_UA_RESOURCE">
-			<Text>The acquisition of {1_Resource:textkey} causes the city of {2_CityName:textkey} to enter "We Love the Empress Day" for {3_Num} Turns, increasing their [ICON_FOOD] Growth by +{4_Num}%!</Text>
+			<Text>The acquisition of {1_Resource:textkey} causes the City of {2_CityName:textkey} to enter "We Love the Empress Day" for {3_Num} Turns, increasing their [ICON_FOOD] Growth by +{4_Num}%!</Text>
 		</Row>
 		<Row Tag="TXT_KEY_NOTIFICATION_SUMMARY_CITY_WLTKD_UA_RESOURCE">
 			<Text>Mandate of Heaven</Text>
@@ -750,7 +750,7 @@
 			<Text>[NEWLINE][ICON_BULLET]"We Love the Empress Day" Modifier: +{1_Num}% [ICON_FOOD] Growth</Text>
 		</Row>
 		<Row Tag="TXT_KEY_NOTIFICATION_CITY_RESOURCE_DEMAND_UA">
-			<Text>The City of {1_CityName:textkey} wants {2_ResourceName:textkey}! Connecting that resource to your trade network will cause the city to enter "We Love the Empress Day."</Text>
+			<Text>The City of {1_CityName:textkey} wants {2_ResourceName:textkey}! Connecting that resource to your trade network will cause the City to enter "We Love the Empress Day."</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CITYVIEW_RESOURCE_FULFILLED_TT_UA">
 			<Text>This City is in "We Love the Empress Day", which increases the City's [ICON_FOOD] Growth modifier!</Text>
@@ -845,14 +845,14 @@
 
 		<!-- Partisans -->
 		<Row Tag="TXT_KEY_NOTIFICATION_PARTISANS_NEAR_RAZING_CITY">
-			<Text>Because you are burning their city to the ground, partisans have spawned near {1_Name}!</Text>
+			<Text>Because you are burning their City to the ground, partisans have spawned near {1_Name}!</Text>
 		</Row>
 		<Row Tag="TXT_KEY_NOTIFICATION_PARTISANS_NEAR_RAZING_CITY_S">
 			<Text>Partisans near {1_Name}!</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_NOTIFICATION_FRIENDLY_PARTISANS_NEAR_RAZING_CITY">
-			<Text>Because your captured city is being burned to the ground, friendly partisans have spawned near {1_Name}!</Text>
+			<Text>Because your captured City is being burned to the ground, friendly partisans have spawned near {1_Name}!</Text>
 		</Row>
 		<Row Tag="TXT_KEY_NOTIFICATION_FRIENDLY_PARTISANS_NEAR_RAZING_CITY_S">
 			<Text>Friendly partisans near {1_Name}!</Text>
@@ -977,7 +977,7 @@
 		</Row>
 
 		<Row Tag="TXT_KEY_UPANEL_TOURISM_TURNS_TT">
-			<Text>This indicates the length of a Concert Tour. The length is based on number of owned Great Works of Music controlled by the owning Civilization.</Text>
+			<Text>This indicates the length of a Concert Tour. The length is based on number of owned [ICON_GREAT_WORK] Great Works of Music controlled by the owning Civilization.</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_YIELD_FROM_CITY_YIELDS">
@@ -1016,7 +1016,7 @@
 			<Text>Barbarians stealing from {1_City}!</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BARBARIAN_PRODUCTION_THEFT_CITY_DETAILED">
-			<Text>Barbarians kidnapped citizens from {2_City}, costing the city {1_Production} [ICON_PRODUCTION] Production![NEWLINE]Destroy these Barbarians before they cause more panic!</Text>
+			<Text>Barbarians kidnapped citizens from {2_City}, costing the City {1_Production} [ICON_PRODUCTION] Production![NEWLINE]Destroy these Barbarians before they cause more panic!</Text>
 		</Row>
 		<Row Tag="TXT_KEY_BARBARIAN_PRODUCTION_THEFT_CITY">
 			<Text>Barbarians terrorizing {1_City}!</Text>
@@ -1349,13 +1349,13 @@
 			<Text>[COLOR_NEGATIVE_TEXT]({1_Num})[ENDCOLOR] [ICON_CITIZEN_RED]: "We are [ICON_RESEARCH] illiterate!"</Text>
 		</Row>
 		<Row Tag="TXT_KEY_EO_CITY_UNDEFENDED">
-			<Text>[COLOR_NEGATIVE_TEXT]({1_Num})[ENDCOLOR] [ICON_CITIZEN_RED]: "Our city is [ICON_FOOD] and [ICON_PRODUCTION] distressed!"</Text>
+			<Text>[COLOR_NEGATIVE_TEXT]({1_Num})[ENDCOLOR] [ICON_CITIZEN_RED]: "Our City is [ICON_FOOD] and [ICON_PRODUCTION] distressed!"</Text>
 		</Row>
 		<Row Tag="TXT_KEY_EO_CITY_POOR">
-			<Text>[COLOR_NEGATIVE_TEXT]({1_Num})[ENDCOLOR] [ICON_CITIZEN_RED]: "The city is [ICON_GOLD] impoverished!"</Text>
+			<Text>[COLOR_NEGATIVE_TEXT]({1_Num})[ENDCOLOR] [ICON_CITIZEN_RED]: "The City is [ICON_GOLD] impoverished!"</Text>
 		</Row>
 		<Row Tag="TXT_KEY_EO_CITY_UNCULTURED">
-			<Text>[COLOR_NEGATIVE_TEXT]({1_Num})[ENDCOLOR] [ICON_CITIZEN_RED]: "Our city is [ICON_CULTURE] boring!"</Text>
+			<Text>[COLOR_NEGATIVE_TEXT]({1_Num})[ENDCOLOR] [ICON_CITIZEN_RED]: "Our City is [ICON_CULTURE] boring!"</Text>
 		</Row>
 		<Row Tag="TXT_KEY_EO_CITY_UNCONNECTED">
 			<Text>[COLOR_NEGATIVE_TEXT]({1_Num})[ENDCOLOR] [ICON_CITIZEN_RED]: "We are [ICON_BLOCKADED] disconnected!"</Text>
@@ -1457,7 +1457,7 @@
 			<Text>Cities CAN produce more [ICON_HAPPINESS_1] Happiness than their [ICON_CITIZEN] Population.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_EO_CITY_LOCAL_UNHAPPINESS_EXPLANATION">
-			<Text>[NEWLINE](These 'Needs' are averages of yields based on the number of [ICON_CITIZEN] Citizens in the City, as well as temporary situations, such as starvation or blockades. Averages increase as the game progresses, and yields per citizen decrease as a city grows. The bigger the divide between your city's yields and your empire-wide average, the higher your city's unhappiness!)</Text>
+			<Text>[NEWLINE](These 'Needs' are averages of yields based on the number of [ICON_CITIZEN] Citizens in the City, as well as temporary situations, such as starvation or blockades. Averages increase as the game progresses, and yields per [ICON_CITIZEN] Citizen decrease as a City grows. The bigger the divide between your City's yields and your empire-wide average, the higher your City's unhappiness!)</Text>
 		</Row>
 		<Row Tag="TXT_KEY_EO_CITY_LOCAL_HAPPINESS">
 			<Text>Local [ICON_HAPPINESS_1] Happiness: [COLOR_POSITIVE_TEXT]{1_NUM}[ENDCOLOR]</Text>
@@ -1650,10 +1650,10 @@
 		</Row>
 
 		<Row Tag="TXT_KEY_TOTAL_EMPIRE_UNHAPPINESS_TT">
-			<Text>Total [ICON_HAPPINESS_3] Unhappiness Value from Empire Sources is split across all cities evenly, with any remainder divided up amongst your cities, starting with the Capital and progressing from oldest to newest (in terms of founding).</Text>
+			<Text>Total [ICON_HAPPINESS_3] Unhappiness Value from Empire Sources is split across all Cities evenly, with any remainder divided up amongst your Cities, starting with the Capital and progressing from oldest to newest (in terms of founding).</Text>
 		</Row>
 		<Row Tag="TXT_KEY_TOTAL_EMPIRE_AVERAGE_TT">
-			<Text>Total [ICON_HAPPINESS_1] Happiness Value from Empire Sources is split across all cities evenly, with any remainder divided up amongst your cities, starting with the Capital and progressing from oldest to newest (in terms of founding).</Text>
+			<Text>Total [ICON_HAPPINESS_1] Happiness Value from Empire Sources is split across all Cities evenly, with any remainder divided up amongst your Cities, starting with the Capital and progressing from oldest to newest (in terms of founding).</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_CITY_UNHAPPY">
@@ -1714,7 +1714,7 @@
 			<Text>Has Airport</Text>
 		</Row>
 		<Row Tag="TXT_KEY_AUTOMATE_PRODUCTION_TT">
-			<Text>Automate production for this city.</Text>
+			<Text>Automate production for this City.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_CITY_PRODUCTION_AUTOMATED">
 			<Text>[ICON_AUTOMATED] Production automated</Text>

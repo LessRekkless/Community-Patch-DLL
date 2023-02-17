@@ -222,14 +222,14 @@
 			<Text>Treasure Fleet</Text>
 		</Row>
 		<Row Tag="TXT_KEY_PROCESS_TREASURE_FLEET_HELP">
-			<Text>Contribute this city's [ICON_PRODUCTION] Production towards the Treasure Fleet project. Cost goes up based on the number of players in the game, and the current Era.</Text>
+			<Text>Contribute this City's [ICON_PRODUCTION] Production towards the Treasure Fleet project. Cost goes up based on the number of players in the game, and the current Era.</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_RESOLUTION_TREASURE_FLEET">
 			<Text>Treasure Fleet</Text>
 		</Row>
 		<Row Tag="TXT_KEY_RESOLUTION_TREASURE_FLEET_HELP">
-			<Text>Begins the Treasure Fleet project. Once underway, Civilizations can contribute [ICON_PRODUCTION] Production towards its completion by selecting it in the city production list.  When complete, Civilizations receive bonuses based on how much they contributed.[NEWLINE][NEWLINE][ICON_TROPHY_GOLD]: {TXT_KEY_LEAGUE_PROJECT_REWARD_TREASURE_FLEET_3_HELP}[NEWLINE][ICON_TROPHY_SILVER]: {TXT_KEY_LEAGUE_PROJECT_REWARD_TREASURE_FLEET_2_HELP}[NEWLINE][ICON_TROPHY_BRONZE]: {TXT_KEY_LEAGUE_PROJECT_REWARD_TREASURE_FLEET_1_HELP}</Text>
+			<Text>Begins the Treasure Fleet project. Once underway, Civilizations can contribute [ICON_PRODUCTION] Production towards its completion by selecting it in the City production list.  When complete, Civilizations receive bonuses based on how much they contributed.[NEWLINE][NEWLINE][ICON_TROPHY_GOLD]: {TXT_KEY_LEAGUE_PROJECT_REWARD_TREASURE_FLEET_3_HELP}[NEWLINE][ICON_TROPHY_SILVER]: {TXT_KEY_LEAGUE_PROJECT_REWARD_TREASURE_FLEET_2_HELP}[NEWLINE][ICON_TROPHY_BRONZE]: {TXT_KEY_LEAGUE_PROJECT_REWARD_TREASURE_FLEET_1_HELP}</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_LEAGUE_PROJECT_TREASURE_FLEET">
@@ -250,7 +250,7 @@
 			<Text>Skilled Navigator</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEAGUE_PROJECT_REWARD_TREASURE_FLEET_2_HELP">
-			<Text>Receive a free Great Admiral and 3 of your military units will be maintenance-free.</Text>
+			<Text>Receive a free [ICON_GREAT_ADMIRAL] Great Admiral and 3 of your military units will be maintenance-free.</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_LEAGUE_PROJECT_REWARD_TREASURE_FLEET_3">
@@ -264,14 +264,14 @@
 			<Text>Global Wargames</Text>
 		</Row>
 		<Row Tag="TXT_KEY_PROCESS_WARGAMES_HELP">
-			<Text>Contribute this city's [ICON_PRODUCTION] Production towards the Global Wargames project. Cost goes up based on the number of players in the game, and the current Era.</Text>
+			<Text>Contribute this City's [ICON_PRODUCTION] Production towards the Global Wargames project. Cost goes up based on the number of players in the game, and the current Era.</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_RESOLUTION_WARGAMES">
 			<Text>Global Wargames</Text>
 		</Row>
 		<Row Tag="TXT_KEY_RESOLUTION_WARGAMES_HELP">
-			<Text>Begins the Global Wargames project. Once underway, Civilizations can contribute [ICON_PRODUCTION] Production towards its completion by selecting it in the city production list.  When complete, Civilizations receive bonuses based on how much they contributed.[NEWLINE][NEWLINE][ICON_TROPHY_GOLD]: {TXT_KEY_LEAGUE_PROJECT_REWARD_WARGAMES_3_HELP}[NEWLINE][ICON_TROPHY_SILVER]: {TXT_KEY_LEAGUE_PROJECT_REWARD_WARGAMES_2_HELP}[NEWLINE][ICON_TROPHY_BRONZE]: {TXT_KEY_LEAGUE_PROJECT_REWARD_WARGAMES_1_HELP} [NEWLINE][NEWLINE]Available once any Civilization discovers Replaceable Parts.</Text>
+			<Text>Begins the Global Wargames project. Once underway, Civilizations can contribute [ICON_PRODUCTION] Production towards its completion by selecting it in the City production list.  When complete, Civilizations receive bonuses based on how much they contributed.[NEWLINE][NEWLINE][ICON_TROPHY_GOLD]: {TXT_KEY_LEAGUE_PROJECT_REWARD_WARGAMES_3_HELP}[NEWLINE][ICON_TROPHY_SILVER]: {TXT_KEY_LEAGUE_PROJECT_REWARD_WARGAMES_2_HELP}[NEWLINE][ICON_TROPHY_BRONZE]: {TXT_KEY_LEAGUE_PROJECT_REWARD_WARGAMES_1_HELP} [NEWLINE][NEWLINE]Available once any Civilization discovers Replaceable Parts.</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_LEAGUE_PROJECT_WARGAMES">
@@ -299,7 +299,7 @@
 			<Text>Field Marshal</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEAGUE_PROJECT_REWARD_WARGAMES_3_HELP">
-			<Text>Menin Gate wonder appears in [ICON_CAPITAL] Capital. (Receive +2 [ICON_HAPPINESS_1] Happiness in the City in which it is built. Receive 2 [ICON_CULTURE] Culture and [ICON_GOLDEN_AGE] Golden Age Points whenever an owned unit is killed, scaling with Era. Forts, Citadels and Landmarks provide +2 [ICON_CULTURE] Culture and [ICON_GOLDEN_AGE] Golden Age Points when worked.)</Text>
+			<Text>Menin Gate wonder appears in [ICON_CAPITAL] Capital. (Receive +2 [ICON_HAPPINESS_1] Happiness in the City in which it is built. Receive 2 [ICON_CULTURE] Culture and [ICON_GOLDEN_AGE] Golden Age Points whenever an owned unit is killed, scaling with Era. Forts, Citadels, and Landmarks provide +2 [ICON_CULTURE] Culture and [ICON_GOLDEN_AGE] Golden Age Points when worked.)</Text>
 		</Row>
 		<!-- UNITED_NATIONS -->
 		
@@ -307,28 +307,28 @@
 			<Text>United Nations</Text>
 		</Row>
 		<Row Tag="TXT_KEY_PROCESS_UNITED_NATIONS_HELP">
-			<Text>Contribute this city's [ICON_PRODUCTION] Production towards the United Nations project. Cost goes up based on the number of players in the game, and the current Era.</Text>
+			<Text>Contribute this City's [ICON_PRODUCTION] Production towards the United Nations project. Cost goes up based on the number of players in the game, and the current Era.</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_RESOLUTION_UNITED_NATIONS">
 			<Text>United Nations</Text>
 		</Row>
 		<Row Tag="TXT_KEY_RESOLUTION_UNITED_NATIONS_HELP">
-			<Text>Begins the United Nations project. Once underway, Civilizations can contribute [ICON_PRODUCTION] Production towards its completion by selecting it in the city production list.  When complete, Civilizations receive bonuses based on how much they contributed.[NEWLINE][NEWLINE][ICON_TROPHY_GOLD]: {TXT_KEY_LEAGUE_PROJECT_REWARD_UNITED_NATIONS_3_HELP}[NEWLINE][ICON_TROPHY_SILVER]: {TXT_KEY_LEAGUE_PROJECT_REWARD_UNITED_NATIONS_2_HELP}[NEWLINE][ICON_TROPHY_BRONZE]: {TXT_KEY_LEAGUE_PROJECT_REWARD_UNITED_NATIONS_1_HELP} [NEWLINE][NEWLINE]Available once any Civilization discovers Atomic Theory.</Text>
+			<Text>Begins the United Nations project. Once underway, Civilizations can contribute [ICON_PRODUCTION] Production towards its completion by selecting it in the City production list.  When complete, Civilizations receive bonuses based on how much they contributed.[NEWLINE][NEWLINE][ICON_TROPHY_GOLD]: {TXT_KEY_LEAGUE_PROJECT_REWARD_UNITED_NATIONS_3_HELP}[NEWLINE][ICON_TROPHY_SILVER]: {TXT_KEY_LEAGUE_PROJECT_REWARD_UNITED_NATIONS_2_HELP}[NEWLINE][ICON_TROPHY_BRONZE]: {TXT_KEY_LEAGUE_PROJECT_REWARD_UNITED_NATIONS_1_HELP} [NEWLINE][NEWLINE]Available once any Civilization discovers Atomic Theory.</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_LEAGUE_PROJECT_UNITED_NATIONS">
 			<Text>United Nations</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEAGUE_PROJECT_UNITED_NATIONS_SPLASH">
-			<Text>A new era in global diplomacy and international relations has dawned. Delegates, officials and dignitaries from around the world have gathered to celebrate the construction of the United Nations, and with it the future of the human race.</Text>
+			<Text>A new era in global diplomacy and international relations has dawned. Delegates, officials, and dignitaries from around the world have gathered to celebrate the construction of the United Nations, and with it the future of the human race.</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_LEAGUE_PROJECT_REWARD_UNITED_NATIONS_1">
 			<Text>High Commissioner</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEAGUE_PROJECT_REWARD_UNITED_NATIONS_1_HELP">
-			<Text>Receive a free Great Diplomat.</Text>
+			<Text>Receive a free [ICON_DIPLOMAT] Great Diplomat.</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_LEAGUE_PROJECT_REWARD_UNITED_NATIONS_2">

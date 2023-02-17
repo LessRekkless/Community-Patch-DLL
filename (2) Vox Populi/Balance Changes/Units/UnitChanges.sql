@@ -80,7 +80,7 @@ UPDATE Eras SET UnitSupplyBase = '10' WHERE Type = 'ERA_MODERN';
 UPDATE Eras SET UnitSupplyBase = '12' WHERE Type = 'ERA_POSTMODERN';
 UPDATE Eras SET UnitSupplyBase = '14' WHERE Type = 'ERA_FUTURE';
 
---Assigns UnitCombatInfos to civilian units -- Can now grant production bonuses and free promotions via buildings, traits and policies
+--Assigns UnitCombatInfos to civilian units -- Can now grant production bonuses and free promotions via buildings, traits, and policies
 INSERT INTO UnitCombatInfos
 			(Type,					Description)
 VALUES

@@ -312,7 +312,7 @@ SET Text = 'Use [ICON_PEACE] Faith to purchase Cathedrals.'
 WHERE Tag = 'TXT_KEY_BELIEF_CATHEDRALS';
 
 UPDATE Language_en_US
-SET Text = 'Can only be built in cities following a religion with the Cathedrals belief. Construct this building by purchasing it with [ICON_PEACE] Faith. Reduces [ICON_HAPPINESS_3] Poverty and boosts the [ICON_GOLD] Gold yield of nearby farms and pastures. Gain [ICON_GOLD] Gold in the City when its borders expand.'
+SET Text = 'Can only be built in Cities following a Religion with the Cathedrals belief. Construct this building by purchasing it with [ICON_PEACE] Faith. Reduces [ICON_HAPPINESS_3] Poverty and boosts the [ICON_GOLD] Gold yield of nearby farms and pastures. Gain [ICON_GOLD] Gold in the City when its borders expand.'
 WHERE Tag = 'TXT_KEY_BUILDING_CATHEDRAL_STRATEGY';
 
 INSERT INTO Language_en_US (Tag, Text)
@@ -391,7 +391,7 @@ SET Text = 'Use [ICON_PEACE] Faith to purchase Mosques.'
 WHERE Tag = 'TXT_KEY_BELIEF_MOSQUES';
 
 UPDATE Language_en_US
-SET Text = 'Can only be built in cities following a religion with the Mosques belief. Construct this building by purchasing it with [ICON_PEACE] Faith. Reduces [ICON_HAPPINESS_3] Illiteracy and generates [ICON_CULTURE] Culture during [ICON_GOLDEN_AGE] Golden Ages.'
+SET Text = 'Can only be built in Cities following a Religion with the Mosques belief. Construct this building by purchasing it with [ICON_PEACE] Faith. Reduces [ICON_HAPPINESS_3] Illiteracy and generates [ICON_CULTURE] Culture during [ICON_GOLDEN_AGE] Golden Ages.'
 WHERE Tag = 'TXT_KEY_BUILDING_MOSQUE_STRATEGY';
 
 INSERT INTO Language_en_US (Tag, Text)
@@ -417,7 +417,7 @@ SET Text = 'Use [ICON_PEACE] Faith to purchase Pagodas'
 WHERE Tag = 'TXT_KEY_BELIEF_PAGODAS';
 
 UPDATE Language_en_US
-SET Text = 'Can only be built in cities following a religion with the Pagodas belief. Construct this building by purchasing it with [ICON_PEACE] Faith. Reduces [ICON_HAPPINESS_3] Boredom and [ICON_HAPPINESS_3] Religious Unrest, and generates yields based on the number of Religions present in the City.'
+SET Text = 'Can only be built in Cities following a Religion with the Pagodas belief. Construct this building by purchasing it with [ICON_PEACE] Faith. Reduces [ICON_HAPPINESS_3] Boredom and [ICON_HAPPINESS_3] Religious Unrest, and generates yields based on the number of Religions present in the City.'
 WHERE Tag = 'TXT_KEY_BUILDING_PAGODA_STRATEGY';
 
 INSERT INTO Language_en_US (Tag, Text)
@@ -570,7 +570,7 @@ SET Text = 'Zealotry'
 WHERE Tag = 'TXT_KEY_BELIEF_HEATHEN_CONVERSION_SHORT';
 
 UPDATE Language_en_US
-SET Text = 'May spend [ICON_PEACE] Faith to purchase Land Units in Cities. Strategic Resource quantities increase by 1% per following City (up to 25%). [ICON_MISSIONARY] Missionaries of this Religion erode existing pressure from other religions by 15% when Spreading Religion.'
+SET Text = 'May spend [ICON_PEACE] Faith to purchase Land Units in Cities. Strategic Resource quantities increase by 1% per following City (up to 25%). [ICON_MISSIONARY] Missionaries of this Religion erode existing pressure from other Religions by 15% when Spreading Religion.'
 WHERE Tag = 'TXT_KEY_BELIEF_HEATHEN_CONVERSION';
 
 
@@ -579,7 +579,7 @@ WHERE Tag = 'TXT_KEY_BELIEF_HEATHEN_CONVERSION';
 --	//////////////////////////////////////
 
 UPDATE Language_en_US
-SET Text = 'You may now add a Reformation belief to your religion.'
+SET Text = 'You may now add a Reformation Belief to your Religion.'
 WHERE Tag = 'TXT_KEY_NOTIFICATION_ADD_REFORMATION_BELIEF';
 
 
@@ -645,13 +645,13 @@ SET Text = 'Inspired Works'
 WHERE Tag = 'TXT_KEY_BELIEF_UNITY_OF_PROPHETS_SHORT';
 
 UPDATE Language_en_US
-SET Text = 'Landmarks and Great Person Improvements produce +4 [ICON_PEACE] Faith and [ICON_RESEARCH] Science. [ICON_GREAT_WORK] Great Works produce +2 [ICON_CULTURE] Culture, and you can purchase Archaeologists with [ICON_PEACE] Faith.'
+SET Text = 'Landmarks and Great Person Tile Improvements produce +4 [ICON_PEACE] Faith and [ICON_RESEARCH] Science. [ICON_GREAT_WORK] Great Works produce +2 [ICON_CULTURE] Culture, and you can purchase Archaeologists with [ICON_PEACE] Faith.'
 WHERE Tag = 'TXT_KEY_BELIEF_UNITY_OF_PROPHETS';
 
 
 -- Sacred Sites
 UPDATE Language_en_US
-SET Text = 'Hotels and all buildings purchased with Faith provide +3 [ICON_TOURISM] Tourism each. World and Natural Wonders gain +4 [ICON_TOURISM] Tourism each. Hermitage provides +10 [ICON_CULTURE] Culture and +10 [ICON_TOURISM] Tourism.'
+SET Text = 'Hotels and all buildings purchased with [ICON_PEACE] Faith provide +3 [ICON_TOURISM] Tourism each. World and Natural Wonders gain +4 [ICON_TOURISM] Tourism each. Hermitage provides +10 [ICON_CULTURE] Culture and +10 [ICON_TOURISM] Tourism.'
 WHERE Tag = 'TXT_KEY_BELIEF_SACRED_SITES';
 
 

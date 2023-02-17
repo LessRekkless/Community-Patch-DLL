@@ -64,7 +64,7 @@
 			<Text>Recon units are most vulnerable near coastal or mountainous tiles, where Barbarians can often surprise and trap them.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_VPUI_TIP_11">
-			<Text>Founding a religion isn't crucial if you know you can take the Holy City of your neighbor.</Text>
+			<Text>Founding a Religion isn't crucial if you know you can take the Holy City of your neighbor.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_VPUI_TIP_12">
 			<Text>Even if you aren't aiming for a Diplomatic Victory, City-State Embassies will prevent you from being left at the mercy of more influential civilizations after the World Congress is founded.</Text>
@@ -106,7 +106,7 @@
 			<Text>Issue move orders with SHIFT+RCLICK to create waypoints.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_VPUI_TIP_25">
-			<Text>CTRL+RCLICK issues a 'Move and Act' order. Workers repair tiles and improve resources, Missionaries spread their religion, Diplomatic Units spread influence, Archaeologists dig, and Combat Units go into Fortify or Alert mode.</Text>
+			<Text>CTRL+RCLICK issues a 'Move and Act' order. Workers repair tiles and improve resources, Missionaries spread their Religion, Diplomatic Units spread influence, Archaeologists dig, and Combat Units go into Fortify or Alert mode.</Text>
 		</Replace>
 		<Replace Tag="TXT_KEY_VPUI_TIP_26">
 			<Text>When voting for World Congress resolutions, right-click to assign all delegates and middle-click or shift-click to assign ten.</Text>

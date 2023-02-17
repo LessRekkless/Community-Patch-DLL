@@ -120,7 +120,7 @@
 			<Text>{1_Spaceship}% [ICON_PRODUCTION] Production when building SS Parts</Text>
 		</Row>
 		<Row Tag="TXT_KEY_LEAGUE_OVERVIEW_EFFECT_SUMMARY_SPACESHIP_PURCHASE">
-			<Text>+{1_Spaceship}% costs for [ICON_GOLD] Gold purchases of SS parts and [ICON_PEACE] Faith purchases of Great Engineers</Text>
+			<Text>+{1_Spaceship}% costs for [ICON_GOLD] Gold purchases of SS parts and [ICON_PEACE] Faith purchases of [ICON_GREAT_ENGINEER] Great Engineers</Text>
 		</Row>
 		<Row Tag="TXT_KEY_RESOLUTION_WORLD_WAR">
 			<Text>Casus Belli</Text>

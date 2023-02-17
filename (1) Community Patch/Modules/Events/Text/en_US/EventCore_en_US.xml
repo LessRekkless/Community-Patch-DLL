@@ -300,7 +300,7 @@
 		</Row>
 
 		<Row Tag="TXT_KEY_NEED_COASTAL_CITIES">
-			<Text>[NEWLINE] [ICON_BULLET] Requires {1_Desc} coastal city/cities</Text>
+			<Text>[NEWLINE] [ICON_BULLET] Requires {1_Desc} Coastal City/Cities</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_NEED_BE_VASSAL">
@@ -398,11 +398,11 @@
 		</Row>
 
 		<Row Tag="TXT_KEY_NEED_NO_PLAYER_MAJORITY_RELIGION">
-			<Text>[NEWLINE] [ICON_BULLET] City must not follow your majority Religion</Text>
+			<Text>[NEWLINE] [ICON_BULLET] City must not follow your Majority Religion</Text>
 		</Row>
 
 		<Row Tag="TXT_KEY_NEED_PLAYER_MAJORITY_RELIGION">
-			<Text>[NEWLINE] [ICON_BULLET] City must follow your majority Religion</Text>
+			<Text>[NEWLINE] [ICON_BULLET] City must follow your Majority Religion</Text>
 		</Row>
 		
 		<Row Tag="TXT_KEY_NEED_NO_PLAYER_RELIGION">

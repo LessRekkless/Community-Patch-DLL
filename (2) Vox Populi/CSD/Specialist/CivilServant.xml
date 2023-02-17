@@ -56,7 +56,7 @@
 			<Plurality>1|2</Plurality>
 		</Row>
 		<Row Tag="TXT_KEY_SPECIALIST_CIVIL_SERVANT_STRATEGY">
-			<Text>Civil Servants produce 1 [ICON_RESEARCH] Science, 1 [ICON_CULTURE] Culture, and 2 [ICON_GOLD] Gold, and speed the creation of Great Diplomats.</Text>
+			<Text>Civil Servants produce 1 [ICON_RESEARCH] Science, 1 [ICON_CULTURE] Culture, and 2 [ICON_GOLD] Gold, and speed the creation of [ICON_DIPLOMAT] Great Diplomats.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_SPECIALIST_CIVIL_SERVANT_SLOTS">
 			<Text>Civil Servant Slots:</Text>

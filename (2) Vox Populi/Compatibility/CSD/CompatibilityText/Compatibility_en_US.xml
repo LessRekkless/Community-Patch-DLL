@@ -7,7 +7,7 @@
 			<Text>[COLOR_GREEN]Civil Servant[ENDCOLOR]</Text>
 		</Row>
 		<Row Tag="TXT_KEY_SPECIALISTSANDGP_CIVIL_SERVANT_HEADING3_BODY">
-			<Text>Civil Servants generate a variety of yields as well as points towards Great Diplomats. These units are essential if you are trying to win a Diplomatic Victory, or would like to earn a few more City-State alliances.</Text>
+			<Text>Civil Servants generate a variety of yields as well as points towards [ICON_DIPLOMAT] Great Diplomats. These units are essential if you are trying to win a Diplomatic Victory, or would like to earn a few more City-State alliances.</Text>
 		</Row>
 		<Row Tag="TXT_KEY_SPECIALISTSANDGP_CIVIL_SERVANT_ADV_QUEST">
 			<Text>What do Civil Servants do?</Text>

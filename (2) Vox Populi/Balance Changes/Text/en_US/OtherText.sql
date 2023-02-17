@@ -23,12 +23,12 @@ WHERE Tag = 'TXT_KEY_POP_CSTATE_BULLY_FACTOR_UNIT_RELUCTANCE';
 
 -- Aesthetics Change
 UPDATE Language_en_US
-SET Text = 'When improved with an Archaeological Dig, a Hidden Antiquity Site can then yield an Artifact that can be placed in a Great Work of Art slot, or be transformed into a Landmark improvement. Hidden Antiquity Sites are only visible to civs that have all the policies in the Artistry policy tree.'
+SET Text = 'When improved with an Archaeological Dig, a Hidden Antiquity Site can then yield an Artifact that can be placed in a [ICON_GREAT_WORK] Great Work of Art slot, or be transformed into a Landmark improvement. Hidden Antiquity Sites are only visible to civs that have all the policies in the Artistry policy tree.'
 WHERE Tag = 'TXT_KEY_RESOURCE_HIDDEN_ARTIFACTS_HELP';
 
 -- Help Text Changes
 UPDATE Language_en_US
-SET Text = '[ICON_TOURISM] Tourism is the primary yield you will use to spread your cultural influence to other civilizations. It is generated passively by [COLOR_POSITIVE_TEXT]Great Works[ENDCOLOR] or [COLOR_POSITIVE_TEXT]Artifacts[ENDCOLOR][COLOR_YELLOW], and actively by [ENDCOLOR][COLOR_POSITIVE_TEXT]Historic Events[ENDCOLOR][COLOR_YELLOW] (for more on ''Historic Events,'' see the section with this label) or completing [ENDCOLOR][COLOR_POSITIVE_TEXT]Trade Routes[ENDCOLOR][COLOR_YELLOW] (if you have constructed buildings that grant such bonuses)[ENDCOLOR]. As you place more and more Great Works and Artifacts into your Museums, Amphitheaters, Opera Houses, etc., your [ICON_TOURISM] Tourism will continue to increase. Additionally, you can boost your [ICON_TOURISM] Tourism output quite a bit through Open Borders, Trade Routes, shared Religion, and certain Ideological Tenets.'
+SET Text = '[ICON_TOURISM] Tourism is the primary yield you will use to spread your cultural influence to other civilizations. It is generated passively by [COLOR_POSITIVE_TEXT]Great Works[ENDCOLOR] or [COLOR_POSITIVE_TEXT]Artifacts[ENDCOLOR][COLOR_YELLOW], and actively by [ENDCOLOR][COLOR_POSITIVE_TEXT]Historic Events[ENDCOLOR][COLOR_YELLOW] (for more on ''Historic Events,'' see the section with this label) or completing [ENDCOLOR][COLOR_POSITIVE_TEXT]Trade Routes[ENDCOLOR][COLOR_YELLOW] (if you have constructed buildings that grant such bonuses)[ENDCOLOR]. As you place more and more [ICON_GREAT_WORK] Great Works and Artifacts into your Museums, Amphitheaters, Opera Houses, etc., your [ICON_TOURISM] Tourism will continue to increase. Additionally, you can boost your [ICON_TOURISM] Tourism output quite a bit through Open Borders, Trade Routes, shared Religion, and certain Ideological Tenets.'
 WHERE Tag = 'TXT_KEY_CULTURE_TOURISM_HEADING2_BODY';
 
 UPDATE Language_en_US
@@ -38,7 +38,7 @@ WHERE Tag = 'TXT_KEY_CULTURE_TOURISM_HEADING2_TITLE';
 -- Capture Popup
 
 UPDATE Language_en_US	
-SET Text = '[COLOR_POSITIVE_TEXT]Puppeting[ENDCOLOR] causes the following:[NEWLINE][ICON_BULLET] Generates 80% less Gold, Science, Culture, Tourism, and Faith than a normal city.[NEWLINE][ICON_BULLET] No longer produces Great Person Points.[NEWLINE][ICON_BULLET] You [COLOR_POSITIVE_TEXT]cannot choose what it produces[ENDCOLOR] or spend Gold in the City.[NEWLINE][ICON_BULLET] Generates 1 [ICON_HAPPINESS_3] Unhappiness for every 4 [ICON_CITIZEN] Citizens in the City.[NEWLINE][ICON_BULLET] Does not increase the cost of Social Policies, Technologies, or Tourism.[NEWLINE][NEWLINE]If you choose this, you may later Annex the City at any point.'
+SET Text = '[COLOR_POSITIVE_TEXT]Puppeting[ENDCOLOR] causes the following:[NEWLINE][ICON_BULLET] Generates 80% less [ICON_GOLD] Gold, [ICON_RESEARCH] Science, [ICON_CULTURE] Culture, [ICON_TOURISM] Tourism, and [ICON_PEACE] Faith than a normal City.[NEWLINE][ICON_BULLET] No longer produces [ICON_GREAT_PEOPLE] Great Person Points.[NEWLINE][ICON_BULLET] You [COLOR_POSITIVE_TEXT]cannot choose what it produces[ENDCOLOR] or spend Gold in the City.[NEWLINE][ICON_BULLET] Generates 1 [ICON_HAPPINESS_3] Unhappiness for every 4 [ICON_CITIZEN] Citizens in the City.[NEWLINE][ICON_BULLET] Does not increase the cost of Social Policies, Technologies, or Tourism.[NEWLINE][NEWLINE]If you choose this, you may later Annex the City at any point.'
 WHERE Tag = 'TXT_KEY_POPUP_CITY_CAPTURE_INFO_PUPPET';
 
 UPDATE Language_en_US	
@@ -46,7 +46,7 @@ SET Text = '[COLOR_POSITIVE_TEXT]Annexing[ENDCOLOR] causes the following:[NEWLIN
 WHERE Tag = 'TXT_KEY_POPUP_CITY_CAPTURE_INFO_ANNEX';
 
 UPDATE Language_en_US	
-SET Text = '[COLOR_POSITIVE_TEXT]Razing[ENDCOLOR] causes the following:[NEWLINE][ICON_BULLET] City loses [ICON_CITIZEN] Population each turn until it reaches 0 population and is removed from the game.[NEWLINE][ICON_BULLET] Produces [ICON_HAPPINESS_4] Unhappiness equal to the City''s [ICON_CITIZEN] Population.[NEWLINE][ICON_BULLET] Increases your [COLOR_POSITIVE_TEXT]War Score[ENDCOLOR] every time Population is reduced.[NEWLINE][ICON_BULLET] Friendly units within city borders heal as if inside the city (looting).[NEWLINE][ICON_BULLET] May generate [COLOR_NEGATIVE_TEXT]Partisans[ENDCOLOR] loyal to the former owner (if you are still at war with this player) or barbarians each turn while razing.'
+SET Text = '[COLOR_POSITIVE_TEXT]Razing[ENDCOLOR] causes the following:[NEWLINE][ICON_BULLET] City loses [ICON_CITIZEN] Population each turn until it reaches 0 population and is removed from the game.[NEWLINE][ICON_BULLET] Produces [ICON_HAPPINESS_4] Unhappiness equal to the City''s [ICON_CITIZEN] Population.[NEWLINE][ICON_BULLET] Increases your [COLOR_POSITIVE_TEXT]War Score[ENDCOLOR] every time Population is reduced.[NEWLINE][ICON_BULLET] Friendly units within City borders heal as if inside the City (looting).[NEWLINE][ICON_BULLET] May generate [COLOR_NEGATIVE_TEXT]Partisans[ENDCOLOR] loyal to the former owner (if you are still at war with this player) or barbarians each turn while razing.'
 WHERE Tag = 'TXT_KEY_POPUP_CITY_CAPTURE_INFO_RAZE';
 
 -- Citizen Food Consumption
@@ -119,7 +119,7 @@ WHERE Tag = 'TXT_KEY_NOTIFICATION_MINOR_NOW_ALLIES_MILITARISTIC';
 -- Change instructions for Ideologies
 
 UPDATE Language_en_US
-SET Text = 'The three Ideology trees, Freedom, Order, and Autocracy, have greatly expanded in Brave New World. All civilizations in the game, [COLOR_YELLOW]on acquiring 18 Policies and having advanced at least to the Industrial Era, or upon reaching the Atomic Era,[ENDCOLOR] will be required to choose an Ideology for their civilization. Each Ideology tree contains 3 tiers of "tenets" that you use to customize your Ideology, with the third and final tier holding the most powerful benefits. As with regular Social Policies, players use Culture to purchase additional tenets as they move through the game.[NEWLINE][NEWLINE]Civilizations that share a common Ideology will receive benefits with their diplomatic relationships. Civilizations that have conflicting Ideologies have multiple side-effects. For example, a negative effect on their diplomatic relationship and happiness penalties take effect if an opposing Ideology has a stronger Cultural influence on your people. If you let your people become too unhappy, there is a chance that your cities may declare that they are joining your opponents empire. As a last resort, you, or other players, can resort to a "Revolution" to switch Ideologies to one that is preferable to your people.[NEWLINE][NEWLINE]For more information on Ideological Tenets, click on the "Social Policies" tab along the top of the Civilopedia, and scroll down to the Order, Freedom, and Autocracy sections.'
+SET Text = 'The three Ideology trees, Freedom, Order, and Autocracy, have greatly expanded in Brave New World. All civilizations in the game, [COLOR_YELLOW]on acquiring 18 Policies and having advanced at least to the Industrial Era, or upon reaching the Atomic Era,[ENDCOLOR] will be required to choose an Ideology for their civilization. Each Ideology tree contains 3 tiers of "tenets" that you use to customize your Ideology, with the third and final tier holding the most powerful benefits. As with regular Social Policies, players use [ICON_CULTURE] Culture to purchase additional tenets as they move through the game.[NEWLINE][NEWLINE]Civilizations that share a common Ideology will receive benefits with their diplomatic relationships. Civilizations that have conflicting Ideologies have multiple side-effects. For example, a negative effect on their diplomatic relationship and happiness penalties take effect if an opposing Ideology has a stronger Cultural influence on your people. If you let your people become too unhappy, there is a chance that your cities may declare that they are joining your opponents empire. As a last resort, you, or other players, can resort to a "Revolution" to switch Ideologies to one that is preferable to your people.[NEWLINE][NEWLINE]For more information on Ideological Tenets, click on the "Social Policies" tab along the top of the Civilopedia, and scroll down to the Order, Freedom, and Autocracy sections.'
 WHERE Tag = 'TXT_KEY_SOCIALPOLICY_IDEOLOGY_HEADING3_BODY';
 
 UPDATE Language_en_US
@@ -163,7 +163,7 @@ SET Text = 'Signals the start of the space race, allowing your Cities to build S
 WHERE Tag = 'TXT_KEY_PROJECT_APOLLO_PROGRAM_HELP';
 
 UPDATE Language_en_US
-SET Text = 'The Apollo Program is the start of the space race. It allows construction of spaceship parts. Each civilization must complete this project before they can construct spaceship parts. If you are part of the first global team to complete this, you will receive a free Great Scientist near your Capital, and a Golden Age will begin.'
+SET Text = 'The Apollo Program is the start of the space race. It allows construction of spaceship parts. Each civilization must complete this project before they can construct spaceship parts. If you are part of the first global team to complete this, you will receive a free [ICON_GREAT_SCIENTIST] Great Scientist near your [ICON_CAPITAL] Capital, and a [ICON_GOLDEN_AGE] Golden Age will begin.'
 WHERE Tag = 'TXT_KEY_PROJECT_APOLLO_PROGRAM_STRATEGY';
 
 UPDATE Language_en_US
@@ -179,7 +179,7 @@ SET Text = 'Military Strategy'
 WHERE Tag = 'TXT_KEY_TECH_ARCHERY_TITLE';
 
 UPDATE Language_en_US
-SET Text = 'Military strategy is a set of ideas implemented by military organizations to pursue desired strategic goals. Derived from the Greek word strategos, the term strategy was seen in its narrow sense as the art of the general, or the art of arrangement of troops. Military strategy deals with the planning and conduct of campaigns, the movement and disposition of forces, and the deception of the enemy. The father of Western modern strategic studies, Carl von Clausewitz (1780–1831), defined military strategy as the employment of battles to gain the end of war. Sun Tzu (544–496 BC) is often considered as the father of Eastern military strategy and greatly influenced Chinese, Japanese, Korean and Vietnamese historical and modern war tactics. The Eastern military strategy differs from the Western by focusing more on asymmetric warfare and deception.  In India, Chanakya has created an important strategic and political compendium with his seminal text Arthashastra.'
+SET Text = 'Military strategy is a set of ideas implemented by military organizations to pursue desired strategic goals. Derived from the Greek word strategos, the term strategy was seen in its narrow sense as the art of the general, or the art of arrangement of troops. Military strategy deals with the planning and conduct of campaigns, the movement and disposition of forces, and the deception of the enemy. The father of Western modern strategic studies, Carl von Clausewitz (1780–1831), defined military strategy as the employment of battles to gain the end of war. Sun Tzu (544–496 BC) is often considered as the father of Eastern military strategy and greatly influenced Chinese, Japanese, Korean, and Vietnamese historical and modern war tactics. The Eastern military strategy differs from the Western by focusing more on asymmetric warfare and deception.  In India, Chanakya has created an important strategic and political compendium with his seminal text Arthashastra.'
 WHERE Tag = 'TXT_KEY_TECH_ARCHERY_DESC';
 
 UPDATE Language_en_US
@@ -199,7 +199,7 @@ SET Text = 'Receive an additional [ICON_INTERNATIONAL_TRADE] Trade Route. Allows
 WHERE Tag = 'TXT_KEY_TECH_HORSEBACK_RIDING_HELP';
 
 UPDATE Language_en_US
-SET Text = 'Sailing is the art of harnessing the power of the wind to move a boat over the water. To be successful, sailing required the mastery of a number of diverse skills. First, the culture must be able to construct a seaworthy craft. Second, they must be able to construct some sort of sturdy sheets (sails) which can catch the wind and transmit its energy to the hull. Third they must be able to build the various ropes and cleats and pulleys used to control the sails of the ship, and finally they must be able to successfully navigate the vessel from point to point without getting lost or capsizing or suffering some other misfortune.[NEWLINE][NEWLINE]The earliest recorded evidence of watercraft can be found in illustrations in Egypt which date from around 4,000 BC. As a riparian (river-based) civilization, the Egyptians were excellent sailors. Many of their vessels contained both oars and sails, the former being used when the winds were not strong enough or weren not coming from a favorable direction.[NEWLINE][NEWLINE]By 3000 BC the Egyptians were venturing out into the Mediterranean Sea in their vessels, steering the lengthy journey across the open water to Crete and later Phoenicia. The Egyptians also sailed down the coast of Africa, looking for knowledge, trade and treasure.[NEWLINE][NEWLINE]The earliest warships - biremes and triremes and the like - were powered by oar and sail and possessed rams or beaks on their prows. During battle the helmsman would attempt to ram the enemy vessel at high speed, while avoiding enemy attempts to do the same thing. Some vessels were equipped with archers to fire at enemy craft from longer distance, while others had soldiers aboard; these vessels sought to come alongside the enemy craft so that their soldiers could board the other ship and take it by storm.[NEWLINE][NEWLINE]The Greeks - especially the Athenians and the island colonies - were masters at naval warfare. One of the reasons that they were able to defeat their much larger and more powerful neighbor, Persia, was that the Athenian navy dominated the Aegean Sea and thus constantly threatened the increasingly lengthy supply chain of Persia.'
+SET Text = 'Sailing is the art of harnessing the power of the wind to move a boat over the water. To be successful, sailing required the mastery of a number of diverse skills. First, the culture must be able to construct a seaworthy craft. Second, they must be able to construct some sort of sturdy sheets (sails) which can catch the wind and transmit its energy to the hull. Third they must be able to build the various ropes and cleats and pulleys used to control the sails of the ship, and finally they must be able to successfully navigate the vessel from point to point without getting lost or capsizing or suffering some other misfortune.[NEWLINE][NEWLINE]The earliest recorded evidence of watercraft can be found in illustrations in Egypt which date from around 4,000 BC. As a riparian (river-based) civilization, the Egyptians were excellent sailors. Many of their vessels contained both oars and sails, the former being used when the winds were not strong enough or weren not coming from a favorable direction.[NEWLINE][NEWLINE]By 3000 BC the Egyptians were venturing out into the Mediterranean Sea in their vessels, steering the lengthy journey across the open water to Crete and later Phoenicia. The Egyptians also sailed down the coast of Africa, looking for knowledge, trade, and treasure.[NEWLINE][NEWLINE]The earliest warships - biremes and triremes and the like - were powered by oar and sail and possessed rams or beaks on their prows. During battle the helmsman would attempt to ram the enemy vessel at high speed, while avoiding enemy attempts to do the same thing. Some vessels were equipped with archers to fire at enemy craft from longer distance, while others had soldiers aboard; these vessels sought to come alongside the enemy craft so that their soldiers could board the other ship and take it by storm.[NEWLINE][NEWLINE]The Greeks - especially the Athenians and the island colonies - were masters at naval warfare. One of the reasons that they were able to defeat their much larger and more powerful neighbor, Persia, was that the Athenian navy dominated the Aegean Sea and thus constantly threatened the increasingly lengthy supply chain of Persia.'
 WHERE Tag = 'TXT_KEY_TECH_OPTICS_DESC';
 
 UPDATE Language_en_US
@@ -219,7 +219,7 @@ SET Text = 'Allows you to build the [COLOR_POSITIVE_TEXT]Cannon[ENDCOLOR], a pow
 WHERE Tag = 'TXT_KEY_TECH_METALLURGY_HELP';
 
 UPDATE Language_en_US
-SET Text = 'Allows you to build the [COLOR_POSITIVE_TEXT]Factory[ENDCOLOR], a building which greatly improves the [ICON_PRODUCTION] Production of a city.'
+SET Text = 'Allows you to build the [COLOR_POSITIVE_TEXT]Factory[ENDCOLOR], a building which greatly improves the [ICON_PRODUCTION] Production of a City.'
 WHERE Tag = 'TXT_KEY_TECH_INDUSTRIALIZATION_HELP';
 -- Fix Steam Power Text
 
@@ -310,7 +310,7 @@ WHERE Tag = 'TXT_KEY_TECH_RADAR_HELP';
 
 -- Fix Compass Text
 UPDATE Language_en_US
-SET Text = 'Receive an additional [ICON_INTERNATIONAL_TRADE] Trade Route. Allows you to build the [COLOR_POSITIVE_TEXT]Harbor[ENDCOLOR], which creates city connections from cities to the capital over the water, producing [ICON_GOLD] Gold. Additionally, the [ICON_FOOD] Food yield from Fishing Boats is increased.'
+SET Text = 'Receive an additional [ICON_INTERNATIONAL_TRADE] Trade Route. Allows you to build the [COLOR_POSITIVE_TEXT]Harbor[ENDCOLOR], which creates City Connections from Cities to the [ICON_CAPITAL] Capital over the water, producing [ICON_GOLD] Gold. Additionally, the [ICON_FOOD] Food yield from Fishing Boats is increased.'
 WHERE Tag = 'TXT_KEY_TECH_COMPASS_HELP';
 
 -- Fix Metal Casting Text
@@ -320,7 +320,7 @@ WHERE Tag = 'TXT_KEY_TECH_METAL_CASTING_HELP';
 
 -- Fix Construction Text
 UPDATE Language_en_US
-SET Text = 'Allows you to build the [COLOR_POSITIVE_TEXT]Arena[ENDCOLOR], which improves [ICON_HAPPINESS_1] Happiness in the empire, which in turn helps your city growth and makes [ICON_GOLDEN_AGE] Golden Ages more likely.'
+SET Text = 'Allows you to build the [COLOR_POSITIVE_TEXT]Arena[ENDCOLOR], which improves [ICON_HAPPINESS_1] Happiness in the empire, which in turn helps your City Growth and makes [ICON_GOLDEN_AGE] Golden Ages more likely.'
 WHERE Tag = 'TXT_KEY_TECH_CONSTRUCTION_HELP';
 
 -- Fix Wheel Text
@@ -340,7 +340,7 @@ SET Text = 'Allows you to build the [COLOR_POSITIVE_TEXT]Catapult[ENDCOLOR], a p
 WHERE Tag = 'TXT_KEY_TECH_MATHEMATICS_HELP';
 
 UPDATE Language_en_US
-SET Text = 'Allows you to build the [COLOR_POSITIVE_TEXT]Temple[ENDCOLOR], which increases the [ICON_PEACE] Faith output of a city. Also allows you to build the [COLOR_POSITIVE_TEXT]Courthouse[ENDCOLOR], a building which reduces the [ICON_HAPPINESS_4] Unhappiness from [ICON_OCCUPIED] Occupied Cities.'
+SET Text = 'Allows you to build the [COLOR_POSITIVE_TEXT]Temple[ENDCOLOR], which increases the [ICON_PEACE] Faith output of a City. Also allows you to build the [COLOR_POSITIVE_TEXT]Courthouse[ENDCOLOR], a building which reduces the [ICON_HAPPINESS_4] Unhappiness from [ICON_OCCUPIED] Occupied Cities.'
 WHERE Tag = 'TXT_KEY_TECH_PHILOSOPHY_HELP';
 
 UPDATE Language_en_US

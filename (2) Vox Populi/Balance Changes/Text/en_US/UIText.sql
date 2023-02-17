@@ -25,7 +25,7 @@ WHERE Tag = 'TXT_KEY_SUPPLY_DEFICIT_PENALTY';
 
 -- Wonders
 UPDATE Language_en_US
-SET Text = 'Wonders are the remarkable, one-of-a-kind buildings that ensure that a civilization will be remembered throughout all of history. Wonders engage the mind and lift the spirits.[NEWLINE][NEWLINE]The Pyramids, Notre Dame Cathedral, and Stonehenge are examples of wonders. Wonders require much time and energy from your cities to construct, but once completed, they provide your civilization with many benefits.[NEWLINE][NEWLINE]There are three basic types of wonders: World Wonders, National Wonders and Project Wonders. Only one copy of a World Wonder may be constructed anywhere in the world in a given game. National Wonders are less exclusive: each nation may construct one (but only one) copy of a National Wonder.[NEWLINE][NEWLINE][COLOR_POSITIVE_TEXT]World Wonder Production Modifiers[ENDCOLOR]: In addition to certain Traits and Policies, [ICON_RES_MARBLE] Marble and [ICON_RES_STONE] Stone increase the production modifier of cities with these resources nearby. Marble increases Wonder production by 15% for all pre-Industrial Wonders, whereas Stone increases Wonder production by 10% for all pre-Medieval Wonders.[NEWLINE][NEWLINE][COLOR_POSITIVE_TEXT]World Wonder Production Costs[ENDCOLOR]: For every Wonder you control, the cost of future Wonders goes up. This cost varies based on the Era of the Wonder.[NEWLINE][ICON_BULLET] [COLOR_POSITIVE_TEXT]For every owned Wonder of the same Era: 25%. [NEWLINE][ICON_BULLET] [COLOR_POSITIVE_TEXT]For every owned Wonder from the previous Era: 15%. [NEWLINE][ICON_BULLET] [COLOR_POSITIVE_TEXT]For every owned Wonder from two Eras prior: 10% (Wonders earlier than two eras do not count).[NEWLINE][NEWLINE]If you build too many Wonders during an Era, your ability to gain future Wonders will be compromised, so don''t be too greedy!'
+SET Text = 'Wonders are the remarkable, one-of-a-kind buildings that ensure that a civilization will be remembered throughout all of history. Wonders engage the mind and lift the spirits.[NEWLINE][NEWLINE]The Pyramids, Notre Dame Cathedral, and Stonehenge are examples of wonders. Wonders require much time and energy from your Cities to construct, but once completed, they provide your civilization with many benefits.[NEWLINE][NEWLINE]There are three basic types of wonders: World Wonders, National Wonders and Project Wonders. Only one copy of a World Wonder may be constructed anywhere in the world in a given game. National Wonders are less exclusive: each nation may construct one (but only one) copy of a National Wonder.[NEWLINE][NEWLINE][COLOR_POSITIVE_TEXT]World Wonder [ICON_PRODUCTION] Production Modifiers[ENDCOLOR]: In addition to certain Traits and Policies, [ICON_RES_MARBLE] Marble and [ICON_RES_STONE] Stone increase the production modifier of Cities with these resources nearby. Marble increases Wonder production by 15% for all pre-Industrial Wonders, whereas Stone increases Wonder production by 10% for all pre-Medieval Wonders.[NEWLINE][NEWLINE][COLOR_POSITIVE_TEXT]World Wonder [ICON_PRODUCTION] Production Costs[ENDCOLOR]: For every Wonder you control, the cost of future Wonders goes up. This cost varies based on the Era of the Wonder.[NEWLINE][ICON_BULLET] [COLOR_POSITIVE_TEXT]For every owned Wonder of the same Era: 25%. [NEWLINE][ICON_BULLET] [COLOR_POSITIVE_TEXT]For every owned Wonder from the previous Era: 15%. [NEWLINE][ICON_BULLET] [COLOR_POSITIVE_TEXT]For every owned Wonder from two Eras prior: 10% (Wonders earlier than two eras do not count).[NEWLINE][NEWLINE]If you build too many Wonders during an Era, your ability to gain future Wonders will be compromised, so don''t be too greedy!'
 WHERE Tag = 'TXT_KEY_PEDIA_WONDERS_HELP_TEXT';
 
 -- Barb CS
@@ -45,7 +45,7 @@ SET Text = '[COLOR_YELLOW]Cultural Victory[ENDCOLOR]'
 WHERE Tag = 'TXT_KEY_CULTURE_VICTORY_HEADING2_TITLE';
 
 UPDATE Language_en_US
-SET Text = 'You no longer win a Cultural Victory by fully exploring five Social Policy branches. Instead, you must become the dominant cultural influence in every civilization in the game using Tourism. [COLOR_YELLOW]You must also have two Tier 3 Tenets of an Ideology, your people must be Content, and the Citizen Earth Protocol wonder must be constructed. Once these requirements are met, you can construct the Citizen Earth Protocol to win this victory.[ENDCOLOR] See the section on Victory for more information.'
+SET Text = 'You no longer win a Cultural Victory by fully exploring five Social Policy branches. Instead, you must become the dominant cultural influence in every civilization in the game using [ICON_TOURISM] Tourism. [COLOR_YELLOW]You must also have two Tier 3 Tenets of an Ideology, your people must be Content, and the Citizen Earth Protocol wonder must be constructed. Once these requirements are met, you can construct the Citizen Earth Protocol to win this victory.[ENDCOLOR] See the section on Victory for more information.'
 WHERE Tag = 'TXT_KEY_SOCIALPOLICY_CULTUREVICTORY_HEADING2_BODY';
 
 UPDATE Language_en_US
@@ -53,7 +53,7 @@ SET Text = '[COLOR_YELLOW]Cultural Victory[ENDCOLOR]'
 WHERE Tag = 'TXT_KEY_SOCIALPOLICY_CULTUREVICTORY_HEADING2_TITLE';
 
 UPDATE Language_en_US
-SET Text = 'To win a Cultural Victory, you must become the dominant cultural influence in every civilization in the game [COLOR_YELLOW]and construct the Citizen Earth Protocol. You must also have two Tier 3 Tenets of an Ideology, and your people must be Content[ENDCOLOR]. Cultural Influence is achieved through Tourism generated by Great Works that you create, and artifacts that you discover. The Tourism you generate has a constant impact on other civilizations, and its effect is amplified through Open Borders, Trade Routes, shared Religion and Ideologies, Research Agreements, etc.[NEWLINE][NEWLINE]When your cumulative Tourism output (for the entire game) surpasses the cumulative Culture output of each remaining civilization in the game, [COLOR_YELLOW]you will be able to construct the Citizen Earth Protocol if you also have an ideology and your population is Content[ENDCOLOR].'
+SET Text = 'To win a Cultural Victory, you must become the dominant cultural influence in every civilization in the game [COLOR_YELLOW]and construct the Citizen Earth Protocol. You must also have two Tier 3 Tenets of an Ideology, and your people must be Content[ENDCOLOR]. Cultural Influence is achieved through [ICON_TOURISM] Tourism generated by [ICON_GREAT_WORK] Great Works that you create, and artifacts that you discover. The [ICON_TOURISM] Tourism you generate has a constant impact on other civilizations, and its effect is amplified through Open Borders, Trade Routes, shared Religion and Ideologies, Research Agreements, etc.[NEWLINE][NEWLINE]When your cumulative [ICON_TOURISM] Tourism output (for the entire game) surpasses the cumulative [ICON_CULTURE] Culture output of each remaining civilization in the game, [COLOR_YELLOW]you will be able to construct the Citizen Earth Protocol if you also have an ideology and your population is Content[ENDCOLOR].'
 WHERE Tag = 'TXT_KEY_VICTORY_CULTURAL_HEADING3_BODY';
 
 UPDATE Language_en_US
@@ -141,7 +141,7 @@ SET Text = '[COLOR_YELLOW]Cities Firing at Attackers[ENDCOLOR]'
 WHERE Tag = 'TXT_KEY_COMBAT_CITYFIRINGATTACKERS_HEADING3_TITLE';
 
 UPDATE Language_en_US
-SET Text = 'A city has a Ranged Combat Strength equal to its full Strength at the start of combat, and [COLOR_YELLOW]it has a range of 1. This range increases as the game progresses based on researched technologies (look for the "ranged strike" icon in the tech tree for these technologies).[ENDCOLOR] It may attack any one enemy unit within that range. Note that the city''s Ranged Combat Strength doesn''t decline as the city takes damage; it remains equal to the city''s initial Strength until the city is captured.'
+SET Text = 'A City has a Ranged Combat Strength equal to its full Strength at the start of combat, and [COLOR_YELLOW]it has a range of 1. This range increases as the game progresses based on researched technologies (look for the "ranged strike" icon in the tech tree for these technologies).[ENDCOLOR] It may attack any one enemy unit within that range. Note that the City''s Ranged Combat Strength doesn''t decline as the City takes damage; it remains equal to the City''s initial Strength until the City is captured.'
 WHERE Tag = 'TXT_KEY_COMBAT_CITYFIRINGATTACKERS_HEADING3_BODY';
 
 UPDATE Language_en_US
@@ -156,18 +156,18 @@ UPDATE Language_en_US
 SET Text = 'Once their civilization has learned certain technologies (see tech tree), workers can remove forests, jungles, and marshes from tiles. Once these features are removed, they are gone forever.'
 WHERE Tag = 'TXT_KEY_WORKERS_CLEARINGLAND_HEADING2_BODY';
 UPDATE Language_en_US
-SET Text = 'If your civilization is unhappy, then the city will produce less food. The city will produce enough food to feed its citizens, but there is a decrease in growth locally.'
+SET Text = 'If your civilization is unhappy, then the City will produce less food. The City will produce enough food to feed its citizens, but there is a decrease in growth locally.'
 WHERE Tag = 'TXT_KEY_FOOD_UNHAPPINESS_HEADING3_BODY';
 
 UPDATE Language_en_US
-SET Text = 'Settlers can only be constructed in cities of size [COLOR_YELLOW]4[ENDCOLOR] or larger [COLOR_YELLOW]after researching Pottery[ENDCOLOR]. During construction, settlers consume a city''s production and all of the city''s excess food intake. As long as the settler is in production, the city will not grow or add food to its growth bucket. [COLOR_YELLOW]After the construction of the Settler is completed, the city loses one Population. Later in the game, Settlers are replaced by more advanced units which can found cities with additional infrastructure.[ENDCOLOR] See the section on Settlers for more details.'
+SET Text = 'Settlers can only be constructed in Cities of size [COLOR_YELLOW]4[ENDCOLOR] or larger [COLOR_YELLOW]after researching Pottery[ENDCOLOR]. During construction, settlers consume a City''s production and all of the City''s excess food intake. As long as the settler is in production, the City will not grow or add food to its growth bucket. [COLOR_YELLOW]After the construction of the Settler is completed, the City loses one Population. Later in the game, Settlers are replaced by more advanced units which can found Cities with additional infrastructure.[ENDCOLOR] See the section on Settlers for more details.'
 WHERE Tag = 'TXT_KEY_FOOD_SETTLERS_HEADING2_BODY';
 UPDATE Language_en_US
 SET Text = '[COLOR_YELLOW]Settlers And Food Production[ENDCOLOR]'
 WHERE Tag = 'TXT_KEY_FOOD_SETTLERS_HEADING2_TITLE';
 
 UPDATE Language_en_US
-SET Text = 'Periodically a city may request that you acquire [COLOR_YELLOW]or possess[ENDCOLOR] a specific luxury resource. If you do so, the city will go into "We Love the King Day" for [COLOR_YELLOW]10[ENDCOLOR] turns, during which the city''s growth rate is increased by 25%. When the [COLOR_YELLOW]10[ENDCOLOR] turns are over, the city will demand another luxury resource. Filling that request will cause the city to resume WLtKD for another [COLOR_YELLOW]10[ENDCOLOR] turns.'
+SET Text = 'Periodically a City may request that you acquire [COLOR_YELLOW]or possess[ENDCOLOR] a specific luxury resource. If you do so, the City will go into "We Love the King Day" for [COLOR_YELLOW]10[ENDCOLOR] turns, during which the City''s growth rate is increased by 25%. When the [COLOR_YELLOW]10[ENDCOLOR] turns are over, the City will demand another luxury resource. Filling that request will cause the City to resume WLtKD for another [COLOR_YELLOW]10[ENDCOLOR] turns.'
 WHERE Tag = 'TXT_KEY_RESOURCES_CITYREQUESTS_HEADING3_BODY';
 UPDATE Language_en_US
 SET Text = '[COLOR_YELLOW]We Love the King Day (WLtKD)[ENDCOLOR]'
@@ -180,15 +180,15 @@ WHERE Tag = 'TXT_KEY_NOTIFICATION_OVER_RESOURCE_LIMIT';
 	
 -- Text Changes for Spies in Cities
 UPDATE Language_en_US
-SET Text = '{1_SpyRank} {2_SpyName} cannot steal technologies from, or perform Great Work Heists against {3_CityName}, however they can continue to disrupt the player through additional actions like sabotage.[NEWLINE][NEWLINE]The base Spy Resistance of {4_CityName} is {5_Num}.[NEWLINE][NEWLINE]Security reflects the vulnerability of a city to Espionage. The higher the value, the less vulnerable the city. The base value [COLOR_POSITIVE_TEXT](a scale, from 1 to 10)[ENDCOLOR] is based on the overall prosperity of the city. Spy Resistance may be increased by defensive buildings in the city, such as the Constabulary and the Police Station.'
+SET Text = '{1_SpyRank} {2_SpyName} cannot steal technologies from, or perform Great Work Heists against {3_CityName}, however they can continue to disrupt the player through additional actions like sabotage.[NEWLINE][NEWLINE]The base Spy Resistance of {4_CityName} is {5_Num}.[NEWLINE][NEWLINE]Security reflects the vulnerability of a City to Espionage. The higher the value, the less vulnerable the City. The base value [COLOR_POSITIVE_TEXT](a scale, from 1 to 10)[ENDCOLOR] is based on the overall prosperity of the City. Spy Resistance may be increased by defensive buildings in the City, such as the Constabulary and the Police Station.'
 WHERE Tag = 'TXT_KEY_EO_CITY_POTENTIAL_CANNOT_STEAL_TT';
 
 UPDATE Language_en_US
-SET Text = '{1_SpyRank} {2_SpyName} is in {3_CityName}. While {4_SpyRank} {5_SpyName} is in your city, they will perform counter-espionage operations to capture and kill any enemy spies that try to complete Spy Events.'
+SET Text = '{1_SpyRank} {2_SpyName} is in {3_CityName}. While {4_SpyRank} {5_SpyName} is in your City, they will perform counter-espionage operations to capture and kill any enemy spies that try to complete Spy Events.'
 WHERE Tag = 'TXT_KEY_CITY_SPY_YOUR_CITY_TT';
 
 UPDATE Language_en_US
-SET Text = '{1_SpyRank} {2_SpyName} is in {3_CityName}. While {4_SpyRank} {5_SpyName} is in the city, they establish surveillance and work towards completing Spy Events. {6_SpyRank} {7_SpyName} will also inform you of any intrigue that they discover during their operations.'
+SET Text = '{1_SpyRank} {2_SpyName} is in {3_CityName}. While {4_SpyRank} {5_SpyName} is in the City, they establish surveillance and work towards completing Spy Events. {6_SpyRank} {7_SpyName} will also inform you of any intrigue that they discover during their operations.'
 WHERE Tag = 'TXT_KEY_CITY_SPY_OTHER_CIV_TT';
 
 UPDATE Language_en_US
@@ -221,7 +221,7 @@ WHERE Tag = 'TXT_KEY_CONCEPT_ESPIONAGE_RIG_ELECTION_TOPIC';
 
 
 UPDATE Language_en_US
-SET Text = '[NEWLINE][NEWLINE][COLOR_POSITIVE_TEXT]Spy is operating {1_SpyBonus} {1_SpyBonus: plural 1?Rank; other?Ranks;} higher than normal when rigging elections since this city state is allied to a civ over which you have strong cultural influence. The success chance of coups is also increased.[ENDCOLOR]'
+SET Text = '[NEWLINE][NEWLINE][COLOR_POSITIVE_TEXT]Spy is operating {1_SpyBonus} {1_SpyBonus: plural 1?Rank; other?Ranks;} higher than normal when rigging elections since this City state is allied to a civ over which you have strong cultural influence. The success chance of coups is also increased.[ENDCOLOR]'
 WHERE Tag = 'TXT_KEY_SPY_BONUS_CITY_STATE';
 
 -- Public Opinion
@@ -236,11 +236,11 @@ SET Text = '[ICON_GOLD] Gold spent on Buildings Invests in them, reducing their 
 WHERE Tag = 'TXT_KEY_CITYVIEW_PURCHASE_TT';
 
 UPDATE Language_en_US
-SET Text = 'You can change city construction orders on the City Screen. You can also expend gold to purchase a unit (or invest in a building) on this screen as well. See the City Screen section for details.'
+SET Text = 'You can change City construction orders on the City Screen. You can also expend [ICON_GOLD] Gold to purchase a unit (or invest in a building) on this screen as well. See the City Screen section for details.'
 WHERE Tag = 'TXT_KEY_BUILDINGS_PURCHASING_HEADING3_BODY';
 
 UPDATE Language_en_US
-SET Text = 'You can purchase units with gold, [COLOR_YELLOW]or invest gold in buildings to reduce their construction cost[ENDCOLOR], from within your city screen. This can be helpful if you need something in a hurry, like additional units to defend against an invader.'
+SET Text = 'You can purchase units with [ICON_GOLD] Gold, [COLOR_YELLOW]or invest [ICON_GOLD] Gold in buildings to reduce their construction cost[ENDCOLOR], from within your City screen. This can be helpful if you need something in a hurry, like additional units to defend against an invader.'
 WHERE Tag = 'TXT_KEY_CITIES_PURCHASINGITEM_HEADING3_BODY';
 
 UPDATE Language_en_US
@@ -248,7 +248,7 @@ SET Text = '[COLOR_YELLOW]Purchasing an Item[ENDCOLOR]'
 WHERE Tag = 'TXT_KEY_CITIES_PURCHASINGITEM_HEADING3_TITLE';
 
 UPDATE Language_en_US
-SET Text = 'You can spend gold to purchase units [COLOR_YELLOW]or invest in a building[ENDCOLOR] in a city. Click on a unit (if you can afford it!) and it will be immediately trained in the city, and the amount deducted from your treasury. [COLOR_YELLOW]If you click on a building, you will invest in it, reducing the production cost of the building by 50%.[ENDCOLOR][NEWLINE][NEWLINE]Note that "projects" - the Manhattan Project, etc. - cannot be purchased.'
+SET Text = 'You can spend [ICON_GOLD] Gold to purchase units [COLOR_YELLOW]or invest in a building[ENDCOLOR] in a City. Click on a unit (if you can afford it!) and it will be immediately trained in the City, and the amount deducted from your treasury. [COLOR_YELLOW]If you click on a building, you will invest in it, reducing the production cost of the building by 50%.[ENDCOLOR][NEWLINE][NEWLINE]Note that "projects" - the Manhattan Project, etc. - cannot be purchased.'
 WHERE Tag = 'TXT_KEY_GOLD_PURCHASEUNITS_HEADING3_BODY';
 
 UPDATE Language_en_US
@@ -282,7 +282,7 @@ SET Text = '+{1_Num}% Bonus from Diplomat[NEWLINE]'
 WHERE Tag = 'TXT_KEY_CO_PLAYER_TOURISM_PROPAGANDA';
 
 UPDATE Language_en_US
-SET Text = 'Do you want this spy to be a diplomat? A spy can be a diplomat if they are placed in the capital of another civilization you are not at war with. (If war is declared, your spy will escape the city.) A diplomat will not attempt to steal technology from the other player but will still provide intrigue. Once the World Congress convenes, you will be able to determine their opinion on proposals and trade for their support if needed. Diplomats automatically provide a boost to [ICON_TOURISM] Tourism output to the target civilization.'
+SET Text = 'Do you want this spy to be a diplomat? A spy can be a diplomat if they are placed in the capital of another civilization you are not at war with. (If war is declared, your spy will escape the City.) A diplomat will not attempt to steal technology from the other player but will still provide intrigue. Once the World Congress convenes, you will be able to determine their opinion on proposals and trade for their support if needed. Diplomats automatically provide a boost to [ICON_TOURISM] Tourism output to the target civilization.'
 WHERE Tag = 'TXT_KEY_SPY_BE_DIPLOMAT';
 
 -- Update text for tooltips based on what you changed above.
@@ -346,7 +346,7 @@ SET Text = 'Barbarian Encampment'
 WHERE Tag = 'TXT_KEY_IMPROVEMENT_ENCAMPMENT';
 
 UPDATE Language_en_US
-SET Text = 'A Barbarian Encampment is a temporary settlement by a group of rampaging barbarians intent upon overthrowing and destroying your civilization. These perpetual thorns in the sides of civilizations are capable of spitting out an unending stream of angry barbarians, all who seek to overrun your cities, pillage your lands and stare lewdly at your women. Encampments near to your cities should be destroyed without question. Encampments nearer to competing civilizations may be left to harass your foes, if you are that kind of sneaky leader...'
+SET Text = 'A Barbarian Encampment is a temporary settlement by a group of rampaging barbarians intent upon overthrowing and destroying your civilization. These perpetual thorns in the sides of civilizations are capable of spitting out an unending stream of angry barbarians, all who seek to overrun your Cities, pillage your lands, and stare lewdly at your women. Encampments near to your Cities should be destroyed without question. Encampments nearer to competing civilizations may be left to harass your foes, if you are that kind of sneaky leader...'
 WHERE Tag = 'TXT_KEY_IMPROVEMENT_BARBARIAN_CAMP_PEDIA';
 
 -- CS Protection Tooltip for new influence perk
@@ -383,7 +383,7 @@ INSERT INTO Language_en_US (Tag, Text)
 VALUES ('TXT_KEY_BUILD_FARM_REC', 'It will boost your [ICON_FOOD] Food output on this tile. Farms adjacent to two other Farms and/or to Fresh Water gain +1 [ICON_FOOD] Food.');
 
 UPDATE Language_en_US
-SET Text = 'Farms can be constructed on most any land to improve the output of food on the tile. Farms gain +1 Food for every two adjacent Farms and/or if Fresh Water is available.[NEWLINE][NEWLINE]Farming is one of the earliest and most important of all human professions, as it allowed mankind to stop migrating and settle in one location without depleting the local resources.'
+SET Text = 'Farms can be constructed on most any land to improve the output of food on the tile. Farms gain +1 [ICON_FOOD] Food for every two adjacent Farms and/or if Fresh Water is available.[NEWLINE][NEWLINE]Farming is one of the earliest and most important of all human professions, as it allowed mankind to stop migrating and settle in one location without depleting the local resources.'
 WHERE Tag = 'TXT_KEY_CIV5_IMPROVEMENTS_FARM_TEXT';
 
 INSERT INTO Language_en_US (Tag, Text)
@@ -412,15 +412,15 @@ SET Text = 'Does the village provide gold?'
 WHERE Tag = 'TXT_KEY_GOLD_TRADINGPOST_ADV_QUEST';
 
 UPDATE Language_en_US
-SET Text = 'Construct a Village improvement in a tile to increase its gold output. Earns additional gold and production if placed on a Road or Railroad that connects two owned cities and/or if a Trade Route, either internal or international, passes over it. Cannot be built adjacent to one another.'
+SET Text = 'Construct a Village improvement in a tile to increase its [ICON_GOLD] Gold output. Earns additional [ICON_GOLD] Gold and [ICON_PRODUCTION] Production if placed on a Road or Railroad that connects two owned Cities and/or if a Trade Route, either internal or international, passes over it. Cannot be built adjacent to one another.'
 WHERE Tag = 'TXT_KEY_GOLD_TRADINGPOST_HEADING3_BODY';
 
 UPDATE Language_en_US
-SET Text = 'The village increases output of a tile by 3 gold and 1 culture. It does not access a resource. It generates additional gold and production if on a route and/or if built on a trade route.[NEWLINE]Technology Required: Currency[NEWLINE]Construction Time: 5 Turns[NEWLINE]May Be Constructed On: Any land tile but ice. Cannot be built adjacent to one another.'
+SET Text = 'The village increases output of a tile by 3 [ICON_GOLD] Gold and 1 [ICON_CULTURE] culture. It does not access a resource. It generates additional [ICON_GOLD] Gold and [ICON_PRODUCTION] Production if on a route and/or if built on a trade route.[NEWLINE]Technology Required: Currency[NEWLINE]Construction Time: 5 Turns[NEWLINE]May Be Constructed On: Any land tile but ice. Cannot be built adjacent to one another.'
 WHERE Tag = 'TXT_KEY_WORKERS_TRADINGPOST_HEADING3_BODY';
 
 UPDATE Language_en_US
-SET Text = 'If there is a road between your capital and another of your cities, those cities have a "city connection." City connections give your civilization gold bonuses each turn, the amount depending upon the size of the cities involved. ([COLOR_YELLOW]Lighthouses[ENDCOLOR] can also create city connections between coastal cities.) See the section on City Connections for details.'
+SET Text = 'If there is a road between your capital and another of your Cities, those Cities have a "City Connection." City Connections give your civilization gold bonuses each turn, the amount depending upon the size of the Cities involved. ([COLOR_YELLOW]Lighthouses[ENDCOLOR] can also create City Connections between coastal Cities.) See the section on City Connections for details.'
 WHERE Tag = 'TXT_KEY_WORKERS_TRADEROUTES_HEADING3_BODY';
 
 UPDATE Language_en_US
@@ -432,7 +432,7 @@ SET Text = '[COLOR_GREEN]The Village[ENDCOLOR]'
 WHERE Tag = 'TXT_KEY_GOLD_TRADINGPOST_HEADING3_TITLE';
 
 UPDATE Language_en_US
-SET Text = 'During a game, you will create "workers" - non-military units who will "improve" the land around your cities, increasing productivity or providing access to a nearby "resource." Improvements include farms, villages, lumber mills, quarries, mines, and more. During wartime your enemy may "pillage" (destroy) your improvements. Pillaged improvements are ineffective until a worker has "repaired" them.'
+SET Text = 'During a game, you will create "workers" - non-military units who will "improve" the land around your Cities, increasing productivity or providing access to a nearby "resource." Improvements include farms, villages, lumber mills, quarries, mines, and more. During wartime your enemy may "pillage" (destroy) your improvements. Pillaged improvements are ineffective until a worker has "repaired" them.'
 WHERE Tag = 'TXT_KEY_PEDIA_IMPROVEMENT_HELP_TEXT';
 
 UPDATE Language_en_US
@@ -458,7 +458,7 @@ SET Text = '[NEWLINE][COLOR_POSITIVE_TEXT]Creating a Landmark in another civ''s 
 WHERE Tag = 'TXT_KEY_CHOOSE_ARCH_LANDMARK_MAJOR_CIV';
 
 UPDATE Language_en_US
-SET Text = '[NEWLINE][COLOR_POSITIVE_TEXT]Creating a Landmark in a city state''s territory will generate +3 Empire-Wide [ICON_HAPPINESS_1] Happiness for the builder and plot owner, and will give you a large, one-time influence boost with that city state.[ENDCOLOR]'
+SET Text = '[NEWLINE][COLOR_POSITIVE_TEXT]Creating a Landmark in a City state''s territory will generate +3 Empire-Wide [ICON_HAPPINESS_1] Happiness for the builder and plot owner, and will give you a large, one-time influence boost with that City state.[ENDCOLOR]'
 WHERE Tag = 'TXT_KEY_CHOOSE_ARCH_LANDMARK_MINOR_CIV';
 
 
@@ -525,7 +525,7 @@ WHERE Tag = 'TXT_KEY_TP_UNHAPPINESS_SPECIALISTS';
 -- Tutorial Text
 
 UPDATE Language_en_US
-SET Text = 'The happiness system in Vox Populi is completely revised, favoring neither tall nor wide playstyles. Happiness is now based on a cause-and-effect mechanism that makes your empire feel far more alive, and dynamic, than ever before. [NEWLINE][NEWLINE]Happiness and Unhappiness are calculated locally for each City in your Empire. When the Local Unhappiness in a City exceeds the Local Happiness, the City grows slower than normally, and Production will be reduced when producing a Settler or Military Unit. This is also indicated by an [ICON_HAPPINESS_3] Unhappiness Icon displayed under the City Banner. Special rules apply for Puppet Cities and Occupied Cities.[NEWLINE][NEWLINE]The sum of the Happiness in all Cities of your Empire is compared to the sum of the Unhappiness in all of your Cities to determine the Approval Rating, which is displayed on the status line of the Main Screen (in the upper left-hand corner of the game). Watch it carefully. If it starts to drop below 50%, your population is getting restless, resulting in a growth reduction in all cities, a penalty when producing Settlers, and reduced combat strength. If it starts to dip below 35%, you are in trouble. Barbarians will spawn in your empire, and cities may abandon your empire and join other civilizations. You can get an overview of the different sources of your Happiness and Unhappiness by hovering your cursor over the status line.'
+SET Text = 'The happiness system in Vox Populi is completely revised, favoring neither tall nor wide playstyles. Happiness is now based on a cause-and-effect mechanism that makes your empire feel far more alive, and dynamic, than ever before. [NEWLINE][NEWLINE]Happiness and Unhappiness are calculated locally for each City in your Empire. When the Local Unhappiness in a City exceeds the Local Happiness, the City grows slower than normally, and [ICON_PRODUCTION] Production will be reduced when producing a Settler or Military Unit. This is also indicated by an [ICON_HAPPINESS_3] Unhappiness Icon displayed under the City Banner. Special rules apply for Puppet Cities and Occupied Cities.[NEWLINE][NEWLINE]The sum of the Happiness in all Cities of your Empire is compared to the sum of the Unhappiness in all of your Cities to determine the Approval Rating, which is displayed on the status line of the Main Screen (in the upper left-hand corner of the game). Watch it carefully. If it starts to drop below 50%, your population is getting restless, resulting in a growth reduction in all Cities, a penalty when producing Settlers, and reduced combat strength. If it starts to dip below 35%, you are in trouble. Barbarians will spawn in your empire, and Cities may abandon your empire and join other civilizations. You can get an overview of the different sources of your Happiness and Unhappiness by hovering your cursor over the status line.'
 WHERE Tag = 'TXT_KEY_HAPPINESS_HEADING1_BODY';
 
 UPDATE Language_en_US
@@ -577,19 +577,19 @@ SET InsertBefore = 'CONCEPT_HAPPINESS_NEED_THRESHOLDS',
 WHERE Type = 'CONCEPT_HAPPINESS_CAUSES_UNHAPPINESS';
 
 UPDATE Language_en_US
-SET Text = 'The Unhappiness a city produces is no longer equal to the number of citizens in it, although population still strongly affects Unhappiness. Unhappiness in Vox Populi is caused by several sources, each of them contributing to the total Unhappiness a city has. A detailed overview of the sources of Unhappiness in a city can be seen by hovering over the "[ICON_HAPPINESS_3] Unhappiness" tab in the City Screen. The total amount of Unhappiness in a city cannot exceed the city''s population, no matter how much Unhappiness is generated from the different sources. The only exception to this is Unhappiness from Urbanization, which always applies, even if it puts the total Unhappiness of your city above its population. The possible sources of Unhappiness are the following: [NEWLINE][NEWLINE][COLOR_NEGATIVE_TEXT]Unhappiness from Needs[ENDCOLOR]: Often, most of the Unhappiness in a city is caused by various Needs. With the exception of Religious Unrest, Unhappiness arises in a city if its output of a certain yield per citizen (like gold per citizen, science per citizen, etc.) is lower than the respective Needs Threshold, a reference value which is calculated based on the yields in other cities worldwide. The lower the city''s yield output per citizen is, the higher the generated Unhappiness will be. It is therefore necessary to keep yields in your cities increasing, as your population will become more and more demanding over time due to the stronger competition (other cities grow as well, increasing the Needs Thresholds). Avoiding population growth can help in keeping Unhappiness from Needs manageable, and certain Building and Policies reduce Unhappiness from Needs by a fixed amount. There are five main Needs, four based on different yield types and one based on religious diversity:[NEWLINE]
-[COLOR_NEGATIVE_TEXT]Distress[ENDCOLOR]: Distress is based on the sum of your [ICON_FOOD] food and [ICON_PRODUCTION] production yields. Internal Trade Routes can be used to increase a city''s food or production output, and thus counter Distress. The Farming Process also counters Distress.[NEWLINE]
-[COLOR_NEGATIVE_TEXT]Poverty[ENDCOLOR]: Poverty is based on the [ICON_GOLD] gold yield of a city. To counteract Poverty, increase the city''s gold output, for example by working tiles that provide gold or by constructing buildings like the Market. International Trade Routes give their gold to their city of origin, so sending Trade Routes from impoverished cities can also help counter Poverty. The Wealth process also counters Poverty.[NEWLINE]
-[COLOR_NEGATIVE_TEXT]Illiteracy[ENDCOLOR]: Illiteracy is based on the [ICON_RESEARCH] science yield of a city. Constructing science buildings or establishing Trade Routes to more advanced civilizations can help reduce Illiteracy. The Research process also counters Illiteracy.[NEWLINE]
-[COLOR_NEGATIVE_TEXT]Boredom[ENDCOLOR]: Boredom is based on the [ICON_CULTURE] culture yield of a city. Boredom is especially concerning, as other civilizations get a tourism bonus toward you if you have high levels of Boredom. Buildings providing culture per turn and Trade Routes to more cultured civilizations can counteract Boredom. Great Works can also be moved to bored cities to increase their culture output. Finally, the Arts process also counters Boredom.[NEWLINE]
-[COLOR_NEGATIVE_TEXT]Religious Unrest[ENDCOLOR]: Religious Unrest is produced by religious diversity rather than city yields. If a city has a majority religion, 1 Unhappiness is generated for every 2 citizens not following the majority religion (this base value is affected by Need Modifiers). This can be reduced by using Missionaries, Inquisitors, or Great Prophets to remove religious minorities.[NEWLINE]
+SET Text = 'The Unhappiness a City produces is no longer equal to the number of citizens in it, although population still strongly affects Unhappiness. Unhappiness in Vox Populi is caused by several sources, each of them contributing to the total Unhappiness a City has. A detailed overview of the sources of Unhappiness in a City can be seen by hovering over the "[ICON_HAPPINESS_3] Unhappiness" tab in the City Screen. The total amount of Unhappiness in a City cannot exceed the City''s population, no matter how much Unhappiness is generated from the different sources. The only exception to this is Unhappiness from Urbanization, which always applies, even if it puts the total Unhappiness of your City above its population. The possible sources of Unhappiness are the following: [NEWLINE][NEWLINE][COLOR_NEGATIVE_TEXT]Unhappiness from Needs[ENDCOLOR]: Often, most of the Unhappiness in a City is caused by various Needs. With the exception of Religious Unrest, Unhappiness arises in a City if its output of a certain yield per citizen (like gold per citizen, science per citizen, etc.) is lower than the respective Needs Threshold, a reference value which is calculated based on the yields in other Cities worldwide. The lower the City''s yield output per citizen is, the higher the generated Unhappiness will be. It is therefore necessary to keep yields in your Cities increasing, as your population will become more and more demanding over time due to the stronger competition (other Cities grow as well, increasing the Needs Thresholds). Avoiding population growth can help in keeping Unhappiness from Needs manageable, and certain Building and Policies reduce Unhappiness from Needs by a fixed amount. There are five main Needs, four based on different yield types and one based on religious diversity:[NEWLINE]
+[COLOR_NEGATIVE_TEXT]Distress[ENDCOLOR]: Distress is based on the sum of your [ICON_FOOD] Food and [ICON_PRODUCTION] Production yields. Internal Trade Routes can be used to increase a City''s [ICON_FOOD] Food or [ICON_PRODUCTION] Production output, and thus counter Distress. The Farming Process also counters Distress.[NEWLINE]
+[COLOR_NEGATIVE_TEXT]Poverty[ENDCOLOR]: Poverty is based on the [ICON_GOLD] Gold yield of a City. To counteract Poverty, increase the City''s [ICON_GOLD] Gold output, for example by working tiles that provide [ICON_GOLD] Gold or by constructing buildings like the Market. International Trade Routes give their [ICON_GOLD] Gold to their City of origin, so sending Trade Routes from impoverished Cities can also help counter Poverty. The Wealth process also counters Poverty.[NEWLINE]
+[COLOR_NEGATIVE_TEXT]Illiteracy[ENDCOLOR]: Illiteracy is based on the [ICON_RESEARCH] Science yield of a City. Constructing science buildings or establishing Trade Routes to more advanced civilizations can help reduce Illiteracy. The Research process also counters Illiteracy.[NEWLINE]
+[COLOR_NEGATIVE_TEXT]Boredom[ENDCOLOR]: Boredom is based on the [ICON_CULTURE] Culture yield of a City. Boredom is especially concerning, as other civilizations get a [ICON_TOURISM] Tourism bonus toward you if you have high levels of Boredom. Buildings providing [ICON_CULTURE] Culture per turn and Trade Routes to more cultured Civilizations can counteract Boredom. [ICON_GREAT_WORK] Great Works can also be moved to bored Cities to increase their [ICON_CULTURE] Culture output. Finally, the Arts process also counters Boredom.[NEWLINE]
+[COLOR_NEGATIVE_TEXT]Religious Unrest[ENDCOLOR]: Religious Unrest is produced by religious diversity rather than City yields. If a City has a Majority Religion, 1 Unhappiness is generated for every 2 citizens not following the Majority Religion (this base value is affected by Need Modifiers). This can be reduced by using Missionaries, Inquisitors, or [ICON_PROPHET] Great Prophets to remove religious minorities.[NEWLINE]
 
-[NEWLINE][NEWLINE][COLOR_NEGATIVE_TEXT]Other sources of Unhappiness[ENDCOLOR]: In addition to Unhappiness from Needs, there are also some other sources of Unhappiness that can affect a city.[NEWLINE]
-[COLOR_NEGATIVE_TEXT]Famine[ENDCOLOR]: If a city''s food output is below zero, it gains 1 Unhappiness for each point of food lost per turn. Thus, a starving city can increase Unhappiness tremendously. This often happens when enemy units start pillaging and blocking tiles from being worked, causing mass starvation.[NEWLINE]
-[COLOR_NEGATIVE_TEXT]Pillaged Tiles[ENDCOLOR]: A city gains 1 Unhappiness for every two pillaged tiles in its vicinity. People don''t like seeing their houses burning and will start generating Unhappiness until you do something about it.[NEWLINE]
-[COLOR_NEGATIVE_TEXT]Isolation[ENDCOLOR]: An isolated city produces 1 Unhappiness for every 3 Citizens. A city is isolated if it lacks a City Connection to the capital via a road, Lighthouse, or Trade Route. Note that Isolation can occur if a road or lighthouse connection is broken because of a military blockade. Trade Routes are not directly affected by blockades, but may be pillaged by the enemy units if not protected.[NEWLINE]
-[COLOR_NEGATIVE_TEXT]Urbanization[ENDCOLOR]: Each Specialist in the city produces 1 Unhappiness, representing the effects of people living in large cities such as pollution and a high population density. Unlike the other sources of Unhappiness, Unhappiness from Urbanization is always added to the total Unhappiness a city has, even if this puts the total Unhappiness of a city above its population. Some buildings and policies allow a city to have "free" Specialists which generate no Urbanization.[NEWLINE]
-[COLOR_NEGATIVE_TEXT]War Weariness[ENDCOLOR]: If you are in a prolonged conflict or suffer high losses in war, your citizens will be unhappy due to War Weariness. War Weariness develops in every city and can significantly increase the empire''s total unhappiness. For more details on War Weariness, see the corresponding entry in the Combat Rules Section.[NEWLINE]
+[NEWLINE][NEWLINE][COLOR_NEGATIVE_TEXT]Other sources of Unhappiness[ENDCOLOR]: In addition to Unhappiness from Needs, there are also some other sources of Unhappiness that can affect a City.[NEWLINE]
+[COLOR_NEGATIVE_TEXT]Famine[ENDCOLOR]: If a City''s food output is below zero, it gains 1 Unhappiness for each point of food lost per turn. Thus, a starving City can increase Unhappiness tremendously. This often happens when enemy units start pillaging and blocking tiles from being worked, causing mass starvation.[NEWLINE]
+[COLOR_NEGATIVE_TEXT]Pillaged Tiles[ENDCOLOR]: A City gains 1 Unhappiness for every two pillaged tiles in its vicinity. People don''t like seeing their houses burning and will start generating Unhappiness until you do something about it.[NEWLINE]
+[COLOR_NEGATIVE_TEXT]Isolation[ENDCOLOR]: An isolated City produces 1 Unhappiness for every 3 Citizens. A City is isolated if it lacks a City Connection to the [ICON_CAPITL] Capital via a road, Lighthouse, or Trade Route. Note that Isolation can occur if a road or lighthouse Connection is broken because of a military blockade. Trade Routes are not directly affected by blockades, but may be pillaged by the enemy units if not protected.[NEWLINE]
+[COLOR_NEGATIVE_TEXT]Urbanization[ENDCOLOR]: Each Specialist in the City produces 1 Unhappiness, representing the effects of people living in large cities such as pollution and a high population density. Unlike the other sources of Unhappiness, Unhappiness from Urbanization is always added to the total Unhappiness a City has, even if this puts the total Unhappiness of a City above its population. Some buildings and policies allow a City to have "free" Specialists which generate no Urbanization.[NEWLINE]
+[COLOR_NEGATIVE_TEXT]War Weariness[ENDCOLOR]: If you are in a prolonged conflict or suffer high losses in war, your citizens will be unhappy due to War Weariness. War Weariness develops in every City and can significantly increase the empire''s total unhappiness. For more details on War Weariness, see the corresponding entry in the Combat Rules Section.[NEWLINE]
 [COLOR_NEGATIVE_TEXT]Public Opinion[ENDCOLOR]: Later in the game, other civilizations might exert Ideological Pressure on you, influencing your citizens. If citizens are less than Content with your choice of ideology, they will generate Unhappiness from Public Opinion. If this Unhappiness is too high and your empire is unhappy, you may be forced to switch Ideologies.'
 WHERE Tag = 'TXT_KEY_HAPPINESS_CAUSESUNHAPPINESS_HEADING2_BODY';
 
@@ -597,7 +597,7 @@ UPDATE Language_en_US
 SET Text = '[COLOR_GREEN]What Causes Unhappiness[ENDCOLOR]'
 WHERE Tag = 'TXT_KEY_HAPPINESS_CAUSESUNHAPPINESS_HEADING2_TITLE';
 
--- Text for city view tooltip.
+-- Text for City view tooltip.
 INSERT INTO Language_en_US (
 Text, Tag)
 SELECT '[NEWLINE][ICON_BULLET][ICON_HAPPINESS_1] Local Happiness Modifier: {1_Num}%', 'TXT_KEY_FOODMOD_HAPPY';
@@ -607,13 +607,13 @@ Text, Tag)
 SELECT '[NEWLINE][ICON_BULLET]Modified due to Happiness: {1_Num}%', 'TXT_KEY_PRODMOD_BALANCE_HAPPINESS_MOD';
 
 
--- Text for city view tooltip.
+-- Text for City view tooltip.
 UPDATE Language_en_US
 SET Text = '[NEWLINE][ICON_BULLET][COLOR_WARNING_TEXT][ICON_HAPPINESS_3] Unhappiness Modifier: {1_Num}%[ENDCOLOR]'
 WHERE Tag = 'TXT_KEY_FOODMOD_UNHAPPY';
 
 
--- Text for city view tooltip.
+-- Text for City view tooltip.
 UPDATE Language_en_US
 SET Text = '[ICON_BULLET][COLOR_POSITIVE_TEXT]+{1_Num}[ENDCOLOR] from your [ICON_GOLDEN_AGE] Golden Age.'
 WHERE Tag = 'TXT_KEY_TP_CULTURE_FROM_GOLDEN_AGE';
@@ -635,43 +635,43 @@ SET Text = 'Your approval rating is less than 50%!'
 WHERE Tag = 'TXT_KEY_TP_EMPIRE_UNHAPPY';
 
 UPDATE Language_en_US
-SET Text = 'Your approval rating is at least 50%. [ICON_HAPPINESS_1] Happy Cities will [ICON_FOOD] Grow more quickly, but [ICON_HAPPINESS_3] Unhappy Cities will suffer penalties to [ICON_FOOD] Growth, Military Unit costs and Settler costs.'
+SET Text = 'Your approval rating is at least 50%. [ICON_HAPPINESS_1] Happy Cities will [ICON_FOOD] Grow more quickly, but [ICON_HAPPINESS_3] Unhappy Cities will suffer penalties to [ICON_FOOD] Growth, Military Unit costs, and Settler costs.'
 WHERE Tag = 'TXT_KEY_TP_TOTAL_HAPPINESS';
 
 -- TOOLTIPS FOR TOP BAR
 
--- Text for city view tooltip.
+-- Text for City view tooltip.
 INSERT INTO Language_en_US (Text, Tag)
 VALUES ('{1_Num} due to [ICON_HAPPINESS_1] Happiness.', 'TXT_KEY_TP_GOLD_GAINED_FROM_HAPPINESS');
 
 
--- Text for city view tooltip.
+-- Text for City view tooltip.
 INSERT INTO Language_en_US (Text, Tag)
 VALUES ('{1_NUM} due to [ICON_HAPPINESS_3] Unhappiness.', 'TXT_KEY_TP_GOLD_LOST_FROM_UNHAPPINESS');
 
--- Text for city view tooltip.
+-- Text for City view tooltip.
 INSERT INTO Language_en_US (Text, Tag)
 VALUES ('[ICON_BULLET] [COLOR_POSITIVE_TEXT]+{1_Num}[ENDCOLOR] due to [ICON_HAPPINESS_1] Happiness.', 'TXT_KEY_TP_FAITH_GAINED_FROM_HAPPINESS');
 
 
--- Text for city view tooltip.
+-- Text for City view tooltip.
 INSERT INTO Language_en_US (Text, Tag)
 VALUES ('[ICON_BULLET] [COLOR_NEGATIVE_TEXT]{1_NUM}[ENDCOLOR] due to [ICON_HAPPINESS_3] Unhappiness.', 'TXT_KEY_TP_FAITH_LOST_FROM_UNHAPPINESS');
 
--- Text for city view tooltip.
+-- Text for City view tooltip.
 INSERT INTO Language_en_US (Text, Tag)
 VALUES ('[ICON_BULLET] [COLOR_POSITIVE_TEXT]+{1_Num}[ENDCOLOR] [ICON_RESEARCH] due to [ICON_HAPPINESS_1] Happiness.', 'TXT_KEY_TP_SCIENCE_GAINED_FROM_HAPPINESS');
 
 
--- Text for city view tooltip.
+-- Text for City view tooltip.
 INSERT INTO Language_en_US (Text, Tag)
 VALUES ('[ICON_BULLET] [COLOR_NEGATIVE_TEXT]{1_Num}[ENDCOLOR] [ICON_RESEARCH] due to [ICON_HAPPINESS_3] Unhappiness.', 'TXT_KEY_TP_SCIENCE_LOST_FROM_UNHAPPINESS');
 
--- Text for city view tooltip.
+-- Text for City view tooltip.
 INSERT INTO Language_en_US (Text, Tag)
 VALUES ('[ICON_BULLET] [COLOR_NEGATIVE_TEXT]{1_NUM}[ENDCOLOR] due to [ICON_HAPPINESS_3] Unhappiness.', 'TXT_KEY_TP_CULTURE_LOST_FROM_UNHAPPINESS');
 
--- Text for city view tooltip.
+-- Text for City view tooltip.
 INSERT INTO Language_en_US (Text, Tag)
 VALUES ('[ICON_BULLET] [COLOR_POSITIVE_TEXT]+{1_Num}[ENDCOLOR] due to [ICON_HAPPINESS_1] Happiness.', 'TXT_KEY_TP_CULTURE_GAINED_FROM_HAPPINESS');
 
@@ -705,7 +705,7 @@ WHERE Tag = 'TXT_KEY_CIV5_RESOURCE_STONE_TEXT';
 -- Lumber Mill
 
 UPDATE Language_en_US
-SET Text = 'A Lumber Mill allows you to improve the Production and Gold output of forest and jungle tiles. Gains additional Gold and Production for every two adjacent Lumber Mills, so try to build them in clusters of three if possible.'
+SET Text = 'A Lumber Mill allows you to improve the [ICON_PRODUCTION] Production and [ICON_GOLD] Gold output of forest and jungle tiles. Gains additional [ICON_GOLD] Gold and [ICON_PRODUCTION] Production for every two adjacent Lumber Mills, so try to build them in clusters of three if possible.'
 WHERE Tag = 'TXT_KEY_CIV5_IMPROVEMENTS_LUMBERMILL_TEXT';
 
 UPDATE Language_en_US
@@ -715,7 +715,7 @@ WHERE Tag = 'TXT_KEY_BUILD_LUMBERMILL_REC';
 -- We Love the King Day
 
 UPDATE Language_en_US
-SET Text = 'Because you have {1_Resource:textkey}, the city of {2_CityName:textkey} enters "We Love the King Day", giving it a [ICON_FOOD] growth bonus!'
+SET Text = 'Because you have {1_Resource:textkey}, the City of {2_CityName:textkey} enters "We Love the King Day", giving it a [ICON_FOOD] growth bonus!'
 WHERE Tag = 'TXT_KEY_NOTIFICATION_CITY_WLTKD';
 
 -- Founding Cities
@@ -726,12 +726,12 @@ WHERE Tag = 'TXT_KEY_CITIES_WHERETOCONSTRUCT_HEADING2_TITLE';
 
 	
 UPDATE Language_en_US
-SET Text = 'Cities should be founded in locations with plenty of food and production and with access to resources such as wheat, fish, and cattle. Cities founded on hills gain a defensive bonus, making it harder for enemies to capture them. It''s often a good idea to build a city on a river or coastal hex, as cities built in different locations have different starting yields:[NEWLINE][ICON_BULLET] Cities on hills: 2 [ICON_FOOD], 2 [ICON_PRODUCTION] Production.[NEWLINE][ICON_BULLET] Cities on flat land or mountains next to fresh water: 3 [ICON_FOOD] Food, 1 [ICON_PRODUCTION] Production.[NEWLINE][ICON_BULLET] Cities on mountains without fresh water: 2 [ICON_FOOD] Food, 2 [ICON_PRODUCTION] Production, 1 [ICON_GOLD] Gold.[NEWLINE][ICON_BULLET] Cities on flat land without fresh water: 2 [ICON_FOOD], 1 [ICON_PRODUCTION] Production, 1 [ICON_GOLD] Gold.'
+SET Text = 'Cities should be founded in locations with plenty of food and production and with access to resources such as wheat, fish, and cattle. Cities founded on hills gain a defensive bonus, making it harder for enemies to capture them. It''s often a good idea to build a City on a river or coastal hex, as Cities built in different locations have different starting yields:[NEWLINE][ICON_BULLET] Cities on hills: 2 [ICON_FOOD], 2 [ICON_PRODUCTION] Production.[NEWLINE][ICON_BULLET] Cities on flat land or mountains next to fresh water: 3 [ICON_FOOD] Food, 1 [ICON_PRODUCTION] Production.[NEWLINE][ICON_BULLET] Cities on mountains without fresh water: 2 [ICON_FOOD] Food, 2 [ICON_PRODUCTION] Production, 1 [ICON_GOLD] Gold.[NEWLINE][ICON_BULLET] Cities on flat land without fresh water: 2 [ICON_FOOD], 1 [ICON_PRODUCTION] Production, 1 [ICON_GOLD] Gold.'
 WHERE Tag = 'TXT_KEY_CITIES_WHERETOCONSTRUCT_HEADING2_BODY';
 
 -- Trade Routes
 UPDATE Language_en_US
-SET Text = 'Trade Routes are established between two cities of different civilizations, providing Gold to each every turn. The civilization that the Trade Route originates from gets a larger sum of Gold than the destination civilization. The amount of Gold a Trade Route produces is dependent upon the resource diversity and revenue of the origin city.[NEWLINE][NEWLINE]Trade Routes can also be created between two cities of the same civilization. Once the origin city has a Granary, it can send Food to the destination city, and once it has a Workshop it can send Production. These types of internal Trade Routes do not benefit the origin city.[NEWLINE][NEWLINE]You can only have a limited number of Trade Routes at any time. Researching certain technologies increases the number of routes you have available. For details about your existing Trade Routes, open the Trade Route Overview screen, located in the Additional Information drop-down menu.[NEWLINE][NEWLINE]The distance that Trade Routes can travel is affected by roads, terrain, hostile troops, and features. Keep this in mind when expanding, and when trying to link cities via trade routes.'
+SET Text = 'Trade Routes are established between two Cities of different civilizations, providing [ICON_GOLD] Gold to each every turn. The civilization that the Trade Route originates from gets a larger sum of [ICON_GOLD] Gold than the destination civilization. The amount of [ICON_GOLD] Gold a Trade Route produces is dependent upon the resource diversity and revenue of the origin City.[NEWLINE][NEWLINE]Trade Routes can also be created between two Cities of the same Civilization. Once the origin City has a Granary, it can send [ICON_FOOD] Food to the destination City, and once it has a Workshop it can send [ICON_PRODUCTION] Production. These types of internal Trade Routes do not benefit the origin City.[NEWLINE][NEWLINE]You can only have a limited number of Trade Routes at any time. Researching certain technologies increases the number of routes you have available. For details about your existing Trade Routes, open the Trade Route Overview screen, located in the Additional Information drop-down menu.[NEWLINE][NEWLINE]The distance that Trade Routes can travel is affected by roads, terrain, hostile troops, and features. Keep this in mind when expanding, and when trying to link Cities via trade routes.'
 WHERE Tag = 'TXT_KEY_TRADE_ROUTES_HEADING2_BODY';
 
 -- Moai
@@ -773,11 +773,11 @@ WHERE Tag = 'TXT_KEY_CHOOSE_INTERNATIONAL_TRADE_ROUTE_ITEM_TT_RESOURCE_DIFFERENT
 
 
 UPDATE Language_en_US
-SET Text = 'Artifact will be placed in nearest Great Work of Art slot. Artifact provides +3 [ICON_CULTURE] Culture and +4 [ICON_TOURISM] Tourism. Archaeologist will be consumed.'
+SET Text = 'Artifact will be placed in nearest [ICON_GREAT_WORK] Great Work of Art slot. Artifact provides +3 [ICON_CULTURE] Culture and +4 [ICON_TOURISM] Tourism. Archaeologist will be consumed.'
 WHERE Tag = 'TXT_KEY_CHOOSE_ARCH_ARTIFACT_RESULT';
 
 UPDATE Language_en_US
-SET Text = 'Ancient writing will be placed in nearest Great Work of Writing slot. Writing provides +3 [ICON_CULTURE] Culture and +4 [ICON_TOURISM] Tourism. Archaeologist will be consumed.'
+SET Text = 'Ancient writing will be placed in nearest [ICON_GREAT_WORK] Great Work of Writing slot. Writing provides +3 [ICON_CULTURE] Culture and +4 [ICON_TOURISM] Tourism. Archaeologist will be consumed.'
 WHERE Tag = 'TXT_KEY_CHOOSE_ARCH_WRITTEN_ARTIFACT_RESULT';
 
 
@@ -833,11 +833,11 @@ SET Text = '[COLOR_NEGATIVE_TEXT]{1_Num}%[ENDCOLOR]'
 WHERE Tag = 'TXT_KEY_CO_PUBLIC_OPINION_UNHAPPINESS';
 
 UPDATE Language_en_US
-SET Text = 'Current Empire-Wide [ICON_HAPPINESS_1] Happiness, from 0-100%[NEWLINE][NEWLINE]At 50% or below the civilization will start to lose cities to revolt and may change to the public''s Preferred Ideology (you can find that preference in the Public Opinion tooltip).'
+SET Text = 'Current Empire-Wide [ICON_HAPPINESS_1] Happiness, from 0-100%[NEWLINE][NEWLINE]At 50% or below the civilization will start to lose Cities to revolt and may change to the public''s Preferred Ideology (you can find that preference in the Public Opinion tooltip).'
 WHERE Tag = 'TXT_KEY_CO_VICTORY_EXCESS_HAPPINESS_HEADER_TT';
 
 UPDATE Language_en_US
-SET Text = 'With [ICON_GOLD] Gold you may purchase land and units, or invest in buildings in your cities.'
+SET Text = 'With [ICON_GOLD] Gold you may purchase land and units, or invest in buildings in your Cities.'
 WHERE Tag = 'TXT_KEY_TP_GOLD_EXPLANATION';
 
 UPDATE Language_en_US
@@ -850,7 +850,7 @@ SET Text = 'Alternative Energy'
 WHERE Tag = 'TXT_KEY_TECH_ECOLOGY_TITLE';
 
 UPDATE Language_en_US
-SET Text = 'Renewable, or alternative energy is energy that is collected from renewable resources, which are naturally replenished on a human timescale, such as sunlight, wind, rain, tides, waves, and geothermal heat. Renewable energy often provides energy in four important areas: electricity generation, air and water heating/cooling, transportation, and rural (off-grid) energy services.'
+SET Text = 'Renewable, or alternative energy is energy that is collected from renewable resources, which are naturally replenished on a human timescale, such as sunlight, wind, rain, tides, waves, and geothermal heat. Renewable energy often provides energy in four important areas: electriCity generation, air and water heating/cooling, transportation, and rural (off-grid) energy services.'
 WHERE Tag = 'TXT_KEY_TECH_ECOLOGY_DESC';
 
 UPDATE Language_en_US

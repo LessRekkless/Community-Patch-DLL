@@ -403,7 +403,7 @@
 			<Text>Protection of their lands: {1_Num}</Text>
 		</Row>
 		<Row Tag="TXT_KEY_VO_TREATMENT_RELIGION">
-			<Text>Shared religion interests: {1_Num}</Text>
+			<Text>Shared Religion interests: {1_Num}</Text>
 		</Row>
 		<Row Tag="TXT_KEY_VO_TREATMENT_TRADE_ROUTE">
 			<Text>Trade Routes with them: {1_Num}</Text>

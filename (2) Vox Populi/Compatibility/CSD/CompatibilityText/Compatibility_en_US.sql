@@ -33,11 +33,11 @@ SET Text = '+4 [ICON_GOLDEN_AGE] Golden Age points.[NEWLINE][NEWLINE]+5 [ICON_GO
 WHERE Tag = 'TXT_KEY_BUILDING_APOSTOLIC_PALACE_HELP';
 
 UPDATE Language_en_US
-SET Text = '+5 [ICON_CULTURE] Culture from all [ICON_RELIGION] Holy Sites.[NEWLINE][NEWLINE]May only be constructed in a Holy City, and only if at least 15% of the global population follows your [ICON_RELIGION] Religion (scaling with map size). -1 [ICON_HAPPINESS_3] Unhappiness from Religious Unrest, and allows you to select a [COLOR_POSITIVE_TEXT]Reformation Belief[ENDCOLOR].[NEWLINE][NEWLINE]Boosts Pressure of [ICON_RELIGION] Religious Majority emanating from this city by 25%, and increases City resistance to conversion by 20%.[NEWLINE][NEWLINE]Receive 1 [COLOR_POSITIVE_TEXT]Additional[ENDCOLOR] [ICON_DIPLOMAT] Delegate in the World Congress for every 10 Cities following your [ICON_RELIGION] Religion.'
+SET Text = '+5 [ICON_CULTURE] Culture from all [ICON_RELIGION] Holy Sites.[NEWLINE][NEWLINE]May only be constructed in a Holy City, and only if at least 15% of the global population follows your [ICON_RELIGION] Religion (scaling with map size). -1 [ICON_HAPPINESS_3] Unhappiness from Religious Unrest, and allows you to select a [COLOR_POSITIVE_TEXT]Reformation Belief[ENDCOLOR].[NEWLINE][NEWLINE]Boosts Pressure of [ICON_RELIGION] Religious Majority emanating from this City by 25%, and increases City resistance to conversion by 20%.[NEWLINE][NEWLINE]Receive 1 [COLOR_POSITIVE_TEXT]Additional[ENDCOLOR] [ICON_DIPLOMAT] Delegate in the World Congress for every 10 Cities following your [ICON_RELIGION] Religion.'
 WHERE Tag = 'TXT_KEY_BUILDING_GRAND_OSSUARY_HELP';
 
 UPDATE Language_en_US
-SET Text = 'Specialists are citizens who have been assigned to work in a building constructed in their city. There are [COLOR_YELLOW]five[ENDCOLOR] kinds of specialists in Civilization V: Scientists, Merchants, Artists, Engineers, [COLOR_YELLOW]and Civil Servants[ENDCOLOR]. A museum, for example, allows one or two citizens to be assigned to work in the building as Artist specialists. Not all buildings allow specialists to be assigned to them. See the individual building entries for details.'
+SET Text = 'Specialists are [ICON_CITIZEN] Citizens who have been assigned to work in a building constructed in their City. There are [COLOR_YELLOW]five[ENDCOLOR] kinds of specialists in Civilization V: Scientists, Merchants, Artists, Engineers, [COLOR_YELLOW]and Civil Servants[ENDCOLOR]. A museum, for example, allows one or two [ICON_CITIZEN] Citizens to be assigned to work in the building as Artist specialists. Not all buildings allow specialists to be assigned to them. See the individual building entries for details.'
 WHERE Tag = 'TXT_KEY_CITIES_SPECIALISTS_HEADING2_BODY';
 
 UPDATE Language_en_US
@@ -49,7 +49,7 @@ SET Text = '[COLOR_YELLOW]Benefits of Specialists[ENDCOLOR]'
 WHERE Tag = 'TXT_KEY_CITIES_BENEFITSSPECIALISTS_HEADING3_TITLE';
 
 UPDATE Language_en_US
-SET Text = 'Specialists provide the following benefits:[NEWLINE][NEWLINE]Artists increase a city''s cultural output and speed the creation of Great Artists.[NEWLINE][NEWLINE]Merchants increase a city''s gold output and speed the creation of Great Merchants.[NEWLINE][NEWLINE]Scientists increase a city''s science output and speed the creation of Great Scientists.[NEWLINE][NEWLINE]Engineers increase a city''s production output and speed the creation of Great Engineers.[NEWLINE][NEWLINE][COLOR_YELLOW]Civil Servants provide a small amount of many yields and speed the creation of Great Diplomats.[ENDCOLOR]'
+SET Text = 'Specialists provide the following benefits:[NEWLINE][NEWLINE]Artists increase a City''s cultural output and speed the creation of [ICON_GREAT_ARTIST] Great Artists.[NEWLINE][NEWLINE]Merchants increase a City''s [ICON_GOLD] Gold output and speed the creation of [ICON_GREAT_MERCHANT] Great Merchants.[NEWLINE][NEWLINE]Scientists increase a City''s [ICON_RESEARCH] Science output and speed the creation of [ICON_GREAT_SCIENTIST] Great Scientists.[NEWLINE][NEWLINE]Engineers increase a City''s production output and speed the creation of [ICON_GREAT_ENGINEER] Great Engineers.[NEWLINE][NEWLINE][COLOR_YELLOW]Civil Servants provide a small amount of many yields and speed the creation of [ICON_DIPLOMAT] Great Diplomats.[ENDCOLOR]'
 WHERE Tag = 'TXT_KEY_CITIES_BENEFITSSPECIALISTS_HEADING3_BODY';
 
 UPDATE Language_en_US
@@ -57,11 +57,11 @@ SET Text = '+1 [ICON_RES_PAPER] Paper, and 1 [COLOR_POSITIVE_TEXT]Free[ENDCOLOR]
 WHERE Tag = 'TXT_KEY_BUILDING_COURT_SCRIBE_HELP';
 
 UPDATE Language_en_US
-SET Text = 'This National Wonder gives a small production boost when building diplomatic units in the capital, and one [ICON_RES_PAPER] Paper resource. Build this building if you want to secure a city-state ally or two during the first few eras of the game. The additional yields from City-State Friends and Allies increases the value of early positive City-State relations.'
+SET Text = 'This National Wonder gives a small production boost when building diplomatic units in the capital, and one [ICON_RES_PAPER] Paper resource. Build this building if you want to secure a City-State Ally or two during the first few eras of the game. The additional yields from City-State Friends and Allies increases the value of early positive City-State relations.'
 WHERE Tag = 'TXT_KEY_BUILDING_COURT_SCRIBE_STRATEGY';
 
 UPDATE Language_en_US
-SET Text = 'This National Wonder cannot be built unless the city has a Public School. Build this national wonder to receive additional Delegates in the World Congress based on the number of Defensive Pacts and Vassals you currently have. You will also receive a large boost to the Culture and Science output of the city where it is built.'
+SET Text = 'This National Wonder cannot be built unless the City has a Public School. Build this national wonder to receive additional Delegates in the World Congress based on the number of Defensive Pacts and Vassals you currently have. You will also receive a large boost to the [ICON_CULTURE] Culture and [ICON_RESEARCH] Science output of the City where it is built.'
 WHERE Tag = 'TXT_KEY_BUILDING_PALACE_SCIENCE_CULTURE_STRATEGY';
 
 UPDATE Language_en_US
@@ -69,7 +69,7 @@ SET Text = 'Requires [COLOR_MAGENTA]Order[ENDCOLOR]. +5% [ICON_CULTURE] Culture 
 WHERE Tag = 'TXT_KEY_BUILDING_PALACE_SCIENCE_CULTURE_HELP';
 
 UPDATE Language_en_US
-SET Text = 'This National Wonder cannot be built unless the city has a Military Academy. Build this national wonder to receive additional Delegates in the World Congress based on the number of enemy Capitals you have conquered. You will also receive a large boost to the Tourism and Production output of the city where it is built.'
+SET Text = 'This National Wonder cannot be built unless the City has a Military Academy. Build this national wonder to receive additional Delegates in the World Congress based on the number of enemy Capitals you have conquered. You will also receive a large boost to the [ICON_TOURISM] Tourism and [ICON_PRODUCTION] Production output of the City where it is built.'
 WHERE Tag = 'TXT_KEY_BUILDING_EHRENHALLE_STRATEGY';
 
 UPDATE Language_en_US
@@ -77,7 +77,7 @@ SET Text = 'Requires [COLOR_MAGENTA]Autocracy[ENDCOLOR]. +15 [ICON_TOURISM] Tour
 WHERE Tag = 'TXT_KEY_BUILDING_EHRENHALLE_HELP';
 
 UPDATE Language_en_US
-SET Text = 'This National Wonder cannot be built unless the city has a Stock Exchange. Build this national wonder to receive additional Delegates in the World Congress based on the number of Declaration of Friendships you currently have with other players. You will also receive a large boost to the Food and Gold output of the city where it is built.'
+SET Text = 'This National Wonder cannot be built unless the City has a Stock Exchange. Build this national wonder to receive additional Delegates in the World Congress based on the number of Declaration of Friendships you currently have with other players. You will also receive a large boost to the [ICON_FOOD] Food and [ICON_GOLD] Gold output of the City where it is built.'
 WHERE Tag = 'TXT_KEY_BUILDING_FINANCE_CENTER_STRATEGY';
 
 UPDATE Language_en_US
@@ -85,7 +85,7 @@ SET Text = 'Requires [COLOR_MAGENTA]Freedom[ENDCOLOR]. +5% [ICON_FOOD] Food and 
 WHERE Tag = 'TXT_KEY_BUILDING_FINANCE_CENTER_HELP';
 
 UPDATE Language_en_US
-SET Text = 'This National Wonder cannot be built unless the city has a Chancery. Build it to receive a production speed increase for Diplomatic Units in the city where it is built, increased movement and influence for all your Diplomatic Units and the ability to allow your Diplomatic Units to ignore terrain penalties.'
+SET Text = 'This National Wonder cannot be built unless the City has a Chancery. Build it to receive a production speed increase for Diplomatic Units in the City where it is built, increased movement and influence for all your Diplomatic Units, and the ability to allow your Diplomatic Units to ignore terrain penalties.'
 WHERE Tag = 'TXT_KEY_BUILDING_PRINTING_PRESS_STRATEGY';
 
 UPDATE Language_en_US
@@ -93,7 +93,7 @@ SET Text = '+1 [ICON_RES_PAPER] Paper. +20% [ICON_PRODUCTION] Production of Dipl
 WHERE Tag = 'TXT_KEY_BUILDING_PRINTING_PRESS_HELP';
 
 UPDATE Language_en_US
-SET Text = 'This National Wonder cannot be built unless the city has a Wire Service. Build it to receive a production speed increase for Diplomatic Units in the city where it is built, increased movement and influence for all your Diplomatic Units and the ability to send your Diplomatic Units through rival territory without an [COLOR_POSITIVE_TEXT]Open Borders[ENDCOLOR] agreement.'
+SET Text = 'This National Wonder cannot be built unless the City has a Wire Service. Build it to receive a production speed increase for Diplomatic Units in the City where it is built, increased movement and influence for all your Diplomatic Units, and the ability to send your Diplomatic Units through rival territory without an [COLOR_POSITIVE_TEXT]Open Borders[ENDCOLOR] agreement.'
 WHERE Tag = 'TXT_KEY_BUILDING_FOREIGN_OFFICE_STRATEGY';
 
 UPDATE Language_en_US
@@ -103,12 +103,12 @@ WHERE Tag = 'TXT_KEY_BUILDING_FOREIGN_OFFICE_HELP';
 -- Merchant Mission
 
 UPDATE Language_en_US
-SET Text = 'If the unit is inside City-State territory that you are not at war with, this order will expend the unit.[COLOR_POSITIVE_TEXT] There are three units capable of this Mission, each with different abilities:[ENDCOLOR][NEWLINE][ICON_BULLET]   [COLOR_POSITIVE_TEXT]Diplomatic Units:[ENDCOLOR] Receive [ICON_INFLUENCE] Influence with the City-State based on the unit''s promotions.[NEWLINE][ICON_BULLET]   [COLOR_POSITIVE_TEXT]Great Diplomats:[ENDCOLOR] Receive a large amount of [ICON_INFLUENCE] Influence with the City-State and the [ICON_INFLUENCE] of all other major civilizations known to the City-State will be decreased with this City-State by the same amount. Gain 1 [ICON_RES_PAPER] Paper.[NEWLINE][ICON_BULLET]   [COLOR_POSITIVE_TEXT]Great Merchant:[ENDCOLOR] Receive a large amount of [ICON_GOLD] Gold and an instant "We Love the King Day" in all owned cities, scaling by 1 turn for every owned Town that you control. This action will consume the unit.'
+SET Text = 'If the unit is inside City-State territory that you are not at war with, this order will expend the unit.[COLOR_POSITIVE_TEXT] There are three units capable of this Mission, each with different abilities:[ENDCOLOR][NEWLINE][ICON_BULLET]   [COLOR_POSITIVE_TEXT]Diplomatic Units:[ENDCOLOR] Receive [ICON_INFLUENCE] Influence with the City-State based on the unit''s promotions.[NEWLINE][ICON_BULLET]   [COLOR_POSITIVE_TEXT]Great Diplomats:[ENDCOLOR] Receive a large amount of [ICON_INFLUENCE] Influence with the City-State and the [ICON_INFLUENCE] of all other major civilizations known to the City-State will be decreased with this City-State by the same amount. Gain 1 [ICON_RES_PAPER] Paper.[NEWLINE][ICON_BULLET]   [COLOR_POSITIVE_TEXT]Great Merchant:[ENDCOLOR] Receive a large amount of [ICON_GOLD] Gold and an instant "We Love the King Day" in all owned Cities, scaling by 1 turn for every owned Town that you control. This action will consume the unit.'
 WHERE Tag = 'TXT_KEY_MISSION_CONDUCT_TRADE_MISSION_HELP';
 
 -- Philanthropy
 UPDATE Language_en_US
-SET Text = '[COLOR_POSITIVE_TEXT]Foreign Service[ENDCOLOR][NEWLINE]Receive 1 [ICON_SPY] Spy (plus one Spy for every 10 [ICON_CITY_STATE] City-States, if at least 20 city-states ever existed). +1 of every Strategic Resource for every three City-State Alliances you maintain. Earn [ICON_DIPLOMAT] Great Diplomats 50% faster, and gain +50% Rewards from City-State Quests.'
+SET Text = '[COLOR_POSITIVE_TEXT]Foreign Service[ENDCOLOR][NEWLINE]Receive 1 [ICON_SPY] Spy (plus one Spy for every 10 [ICON_CITY_STATE] City-States, if at least 20 City-States ever existed). +1 of every Strategic Resource for every three City-State Alliances you maintain. Earn [ICON_DIPLOMAT] Great Diplomats 50% faster, and gain +50% Rewards from City-State Quests.'
 WHERE Tag = 'TXT_KEY_POLICY_PHILANTHROPY_HELP';
 
 UPDATE Language_en_US
