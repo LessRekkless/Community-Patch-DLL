@@ -620,7 +620,7 @@
 
 	-- Bonus VS Helicopters (name change to match PEDIA name)
 	UPDATE Language_en_US
-	SET Text = 'Bonus vs Helicopters (150)'
+	SET Text = 'Beyond Sight'
 	WHERE Tag = 'TXT_KEY_PROMOTION_ANTI_HELICOPTER';
 
 	INSERT INTO Language_en_US (Tag, Text)
