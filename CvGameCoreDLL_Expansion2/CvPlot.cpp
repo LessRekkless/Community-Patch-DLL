@@ -5844,7 +5844,6 @@ void CvPlot::updatePotentialCityWork()
 void CvPlot::setOwner(PlayerTypes eNewValue, int iAcquiringCityID, bool bCheckUnits, bool)
 {
 	IDInfo* pUnitNode = NULL;
-	CvCity* pOldCity = NULL;
 	CvString strBuffer;
 	int iI = 0;
 
@@ -5857,7 +5856,8 @@ void CvPlot::setOwner(PlayerTypes eNewValue, int iAcquiringCityID, bool bCheckUn
 
 		GC.getGame().addReplayMessage(REPLAY_MESSAGE_PLOT_OWNER_CHANGE, eNewValue, "", getX(), getY());
 
-		pOldCity = getPlotCity();
+		CvCity* pOldCity = getPlotCity();
+		CvCity* pOldOwningCity = getEffectiveOwningCity();
 
 		{
 			setOwnershipDuration(0);
@@ -5947,6 +5947,10 @@ void CvPlot::setOwner(PlayerTypes eNewValue, int iAcquiringCityID, bool bCheckUn
 				if (eImprovement != NO_IMPROVEMENT)
 				{
 					GET_PLAYER(eOldOwner).changeImprovementCount(eImprovement, -1, eOldOwner == eBuilder);
+					if (pOldOwningCity->GetID() != iAcquiringCityID)
+					{
+						pOldOwningCity->ChangeImprovementCount(eImprovement, -1);
+					}
 
 					// Remove siphoned resources
 					CvImprovementEntry* pImprovementInfo = GC.getImprovementInfo(eImprovement);
@@ -6089,6 +6093,7 @@ void CvPlot::setOwner(PlayerTypes eNewValue, int iAcquiringCityID, bool bCheckUn
 			pUnitNode = headUnitNode();
 
 			// if the plot is being worked and the city is about to change then put the citizen somewhere else
+			// (I think this is done because we don't want to updateYield() until the end of this function)
 			if (!m_owningCityOverride.isInvalid() && iAcquiringCityID!=m_owningCityOverride.iID)
 			{
 				//could be that the plot was loaned to another city
@@ -6188,6 +6193,12 @@ void CvPlot::setOwner(PlayerTypes eNewValue, int iAcquiringCityID, bool bCheckUn
 				if(eImprovement != NO_IMPROVEMENT)
 				{
 					GET_PLAYER(eNewValue).changeImprovementCount(eImprovement, 1, getOwner() == eBuilder);
+					// city owner changes hands later or maybe earlier? ugh
+					if (pOldOwningCity->GetID() != iAcquiringCityID)
+					{
+						CvCity* pNewOwningCity = ::GetPlayerCity(IDInfo(eNewValue, iAcquiringCityID));
+						pNewOwningCity->ChangeImprovementCount(eImprovement, 1);
+					}
 
 					// Add siphoned resources
 					CvImprovementEntry* pImprovementInfo = GC.getImprovementInfo(eImprovement);
@@ -7475,6 +7486,7 @@ void CvPlot::setImprovementType(ImprovementTypes eNewValue, PlayerTypes eBuilder
 			{	
 				CvPlayer& owningPlayer = GET_PLAYER(owningPlayerID);
 				owningPlayer.changeImprovementCount(eOldImprovement, -1, eOldBuilder == owningPlayerID);
+				pOwningCity->ChangeImprovementCount(eOldImprovement, -1);
 
 				// Siphon resource changes
 				if(oldImprovementEntry.GetLuxuryCopiesSiphonedFromMinor() > 0 && eOldBuilder != NO_PLAYER)
@@ -7819,6 +7831,7 @@ void CvPlot::setImprovementType(ImprovementTypes eNewValue, PlayerTypes eBuilder
 			{
 				CvPlayer& owningPlayer = GET_PLAYER(owningPlayerID);
 				owningPlayer.changeImprovementCount(eNewValue, 1, eBuilder == owningPlayerID);
+				pOwningCity->ChangeImprovementCount(eNewValue, 1);
 
 				//DLC_04 Achievement
 				if (MOD_API_ACHIEVEMENTS)
@@ -9043,11 +9056,25 @@ void CvPlot::setOwningCity(PlayerTypes ePlayer, int iCityID)
 	if (ePlayer != getOwner())
 		CUSTOMLOG("warning: assigning a plot to a city which is owned by a different player!");
 
+	CvCity*	pOldCity = getOwningCity();
+	IDInfo sCityInfo = IDInfo(getOwner(), iCityID);
+
+	ImprovementTypes eImprovement = getImprovementType();
+	if (eImprovement != NO_IMPROVEMENT)
+	{
+		CvCity* pOverrideCity = getOwningCityOverride();
+		if (pOverrideCity == NULL && pOldCity != NULL)
+			pOldCity->ChangeImprovementCount(eImprovement, -1);
+
+		CvCity* pNewCity = ::GetPlayerCity(sCityInfo);
+		if (pNewCity != NULL)
+			pNewCity->ChangeImprovementCount(eImprovement, 1);
+	}
+
 	//always reset the override as well
 	setOwningCityOverride(NULL);
 
-	CvCity*	pOldCity = getOwningCity();
-	m_owningCity = IDInfo(getOwner(), iCityID);
+	m_owningCity = sCityInfo;
 
 	//if ownership changed, make sure the old city stops working the plot
 	if (pOldCity != NULL && pOldCity->GetCityCitizens()->IsWorkingPlot(this))
@@ -9147,7 +9174,7 @@ CvCity* CvPlot::getOwningCityOverride() const
 }
 
 //	--------------------------------------------------------------------------------
-void CvPlot::setOwningCityOverride(const CvCity* pNewValue)
+void CvPlot::setOwningCityOverride(CvCity* pNewValue)
 {
 	CvCity* pCurrentCity = getOwningCityOverride();
 	if ( pNewValue != pCurrentCity )
@@ -9159,6 +9186,15 @@ void CvPlot::setOwningCityOverride(const CvCity* pNewValue)
 		else
 		{
 			m_owningCityOverride.reset();
+		}
+
+		ImprovementTypes eImprovement = getImprovementType();
+		if (eImprovement != NO_IMPROVEMENT)
+		{
+			if (pCurrentCity != NULL)
+				pCurrentCity->ChangeImprovementCount(eImprovement, -1);
+			if (pNewValue != NULL)
+				pNewValue->ChangeImprovementCount(eImprovement, 1);
 		}
 
 		// Remove citizen from this plot if another city was using it
