@@ -14353,7 +14353,7 @@ void CvCity::processBuilding(BuildingTypes eBuilding, int iChange, bool bFirst, 
 	CvBuildingClassInfo* pkBuildingClassInfo = GC.getBuildingClassInfo(eBuildingClass);
 
 	// Is this a Corporation building?
-	CvCorporationEntry* pkCorporationInfo;
+	CvCorporationEntry* pkCorporationInfo = NULL;
 	CorporationTypes eCorporation = NO_CORPORATION;
 	if (pkBuildingClassInfo)
 	{
