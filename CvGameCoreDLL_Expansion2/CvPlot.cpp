@@ -5885,7 +5885,7 @@ void CvPlot::setOwner(PlayerTypes eNewValue, int iAcquiringCityID, bool bCheckUn
 			if (isOwned())
 			{
 #if defined(MOD_BALANCE_CORE)
-				if (pFeatureInfo && eOldOwner != NO_PLAYER)
+				if (pFeatureInfo)
 				{
 					if (pFeatureInfo->getInBorderHappiness() > 0)
 						GET_PLAYER(eOldOwner).SetNaturalWonderOwned(eFeature, false);
@@ -6007,7 +6007,7 @@ void CvPlot::setOwner(PlayerTypes eNewValue, int iAcquiringCityID, bool bCheckUn
 						iQuantity = 1;
 					}
 
-					if (eOldOwner != NO_PLAYER && eResourceFromImprovement != NO_RESOURCE && (getResourceType() != NO_RESOURCE && getResourceType() != eResourceFromImprovement))
+					if (eResourceFromImprovement != NO_RESOURCE && (getResourceType() != NO_RESOURCE && getResourceType() != eResourceFromImprovement))
 					{
 						setResourceType(NO_RESOURCE, 0);
 					}
@@ -6043,13 +6043,14 @@ void CvPlot::setOwner(PlayerTypes eNewValue, int iAcquiringCityID, bool bCheckUn
 				}
 			}
 
-			// This plot is ABOUT TO BE owned. Pop Goody Huts/remove barb camps, etc. Otherwise it will try to reduce the # of Improvements we have in our borders, and these guys shouldn't apply to that count
+			// This plot is ABOUT TO BE owned. Pop Goody Huts/remove barb camps, etc. Otherwise it will try to increase/reduce the # of Improvements we have in our borders, and these guys shouldn't apply to that count
 			if(eNewValue != NO_PLAYER)
 			{
 				// Pop Goody Huts here
 				if(isGoody())
 				{
 					GET_PLAYER(eNewValue).doGoody(this, NULL);
+					eImprovement = NO_IMPROVEMENT;
 				}
 
 				// If there's a camp here, clear it
@@ -6058,6 +6059,7 @@ void CvPlot::setOwner(PlayerTypes eNewValue, int iAcquiringCityID, bool bCheckUn
 					setImprovementType(NO_IMPROVEMENT);
 					CvBarbarians::DoBarbCampCleared(this, eNewValue);
 					SetPlayerThatClearedBarbCampHere(eNewValue);
+					eImprovement = NO_IMPROVEMENT;
 				}
 
 				// Transfer responsibility of routes and improvements if the plot is now owned by someone else
@@ -6194,7 +6196,7 @@ void CvPlot::setOwner(PlayerTypes eNewValue, int iAcquiringCityID, bool bCheckUn
 				{
 					GET_PLAYER(eNewValue).changeImprovementCount(eImprovement, 1, getOwner() == eBuilder);
 					// city owner changes hands later or maybe earlier? ugh
-					if (pOldOwningCity->GetID() != iAcquiringCityID)
+					if (pOldOwningCity == NULL || pOldOwningCity->GetID() != iAcquiringCityID)
 					{
 						CvCity* pNewOwningCity = ::GetPlayerCity(IDInfo(eNewValue, iAcquiringCityID));
 						pNewOwningCity->ChangeImprovementCount(eImprovement, 1);
