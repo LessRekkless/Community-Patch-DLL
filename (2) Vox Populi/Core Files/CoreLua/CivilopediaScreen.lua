@@ -6413,9 +6413,9 @@ CivilopediaCategory[CategoryImprovements].SelectArticle = function( improvementI
 			end
 			for row in GameInfo.Improvement_YieldPerXAdjacentImprovement ( condition ) do
 				numYields = numYields + 1;
-				local OtherImprovement = GameInfo.Improvements[row.ImprovementType];
+				local OtherImprovement = GameInfo.Improvements[row.OtherImprovementType];
 				if OtherImprovement then
-					improvementString = Local.ConverTextKey(OtherImprovement.Description)..": ";
+					improvementString = Locale.ConvertTextKey(OtherImprovement.Description)..": ";
 					if (OtherImprovement ~= baseImprovement) then
 						baseImprovement = OtherImprovement;
 						if(fullstring == "") then
@@ -6426,17 +6426,25 @@ CivilopediaCategory[CategoryImprovements].SelectArticle = function( improvementI
 					end
 					yieldString = tostring(row.Yield);
 					if row.NumRequired > 1 then
-						yieldString = yieldString .. "/" .. tostring(numRequiredValue);
+						yieldString = yieldString .. "/" .. tostring(row.NumRequired);
 					end
-					yieldString = "+" .. yieldString .. GameInfo.Yields[row.YieldType].IconString .. " ";
-					fullstring = fullstring .. Locale.ConvertTextKey( yieldString );
+					yieldString = " +" .. yieldString .. GameInfo.Yields[row.YieldType].IconString;
+					local teststring = fullstring .. Locale.ConvertTextKey( yieldString );
+					-- SetText will extract x and y dimensions of the label; use this to determine if we need to wrap
+					Controls.AdjacentImprovYieldLabel:SetText( teststring );
+					contentSize = Controls.AdjacentImprovYieldLabel:GetSize();
+					if contentSize.x > narrowInnerFrameWidth then
+						fullstring = fullstring .. "[NEWLINE]  " .. Locale.ConvertTextKey( yieldString );
+					else
+						fullstring = teststring;
+					end
 				end
 			end
 			if numYields == 0 then
 				Controls.AdjacentImprovYieldFrame:SetHide( true );
 			else
-				Controls.AdjacentImprovYieldLabel:SetText( fullstring );
 				Controls.AdjacentImprovYieldFrame:SetHide( false );
+				UpdateNarrowTextBlock( fullstring, Controls.AdjacentImprovYieldLabel, Controls.AdjacentImprovYieldInnerFrame, Controls.AdjacentImprovYieldFrame );
 			end
 			--END
 
