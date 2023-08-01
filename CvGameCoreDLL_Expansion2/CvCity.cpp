@@ -20365,8 +20365,8 @@ void CvCity::UpdateYieldPerXImprovement(YieldTypes eYield, ImprovementTypes eImp
 	//Passed in an improvement? Let's only update that.
 	if (eImprovement != NO_IMPROVEMENT)
 	{
-		fBaseYieldLocal = GetYieldPerXImprovementGlobal(eImprovement, eYield);
-		fBaseYieldGlobal = GetYieldPerXImprovementLocal(eImprovement, eYield);
+		fBaseYieldLocal = GetYieldPerXImprovementLocal(eImprovement, eYield);
+		fBaseYieldGlobal = GetYieldPerXImprovementGlobal(eImprovement, eYield);
 
 		if (fBaseYieldGlobal != 0)
 		{
