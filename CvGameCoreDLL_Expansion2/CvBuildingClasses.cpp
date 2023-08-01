@@ -3293,7 +3293,7 @@ int* CvBuildingEntry::GetYieldFromFaithPurchaseArray() const
 	return m_piYieldFromFaithPurchase;
 }
 
-/// Does this Policy grant yields from constructing buildings?
+/// Does this Policy grant yields from an internal trade route completing?
 int CvBuildingEntry::GetYieldFromInternalTREnd(int i) const
 {
 	CvAssertMsg(i < NUM_YIELD_TYPES, "Index out of bounds");
@@ -3307,7 +3307,7 @@ int* CvBuildingEntry::GetYieldFromInternalTREndArray() const
 }
 
 
-/// Does this Policy grant yields from constructing buildings?
+/// Does this Policy grant yields from an internal trade route running?
 int CvBuildingEntry::GetYieldFromInternal(int i) const
 {
 	CvAssertMsg(i < NUM_YIELD_TYPES, "Index out of bounds");
@@ -3321,7 +3321,7 @@ int* CvBuildingEntry::GetYieldFromInternalArray() const
 }
 
 
-/// Does this Policy grant yields from constructing buildings?
+/// Does this Policy modify yields from processes?
 int CvBuildingEntry::GetYieldFromProcessModifier(int i) const
 {
 	CvAssertMsg(i < NUM_YIELD_TYPES, "Index out of bounds");
