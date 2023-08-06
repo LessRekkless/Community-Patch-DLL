@@ -35982,9 +35982,9 @@ FDataStream& operator>>(FDataStream& loadFrom, SCityExtraYields& writeTo)
 	loadFrom >> writeTo.forFeatureUnimproved;
 
 	loadFrom >> writeTo.forImprovement;
-	loadFrom << writeTo.fromImprovement;
-	loadFrom << writeTo.fromImprovementLocal;
-	loadFrom << writeTo.fromImprovementGlobal;
+	loadFrom >> writeTo.fromImprovement;
+	loadFrom >> writeTo.fromImprovementLocal;
+	loadFrom >> writeTo.fromImprovementGlobal;
 	loadFrom >> writeTo.forSpecialist;
 	loadFrom >> writeTo.forResource;
 	loadFrom >> writeTo.forPlot;
