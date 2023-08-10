@@ -16611,7 +16611,6 @@ void CvCity::UpdateReligion(ReligionTypes eNewMajority, bool bRecalcPlotYields)
 		UpdateYieldPerXTerrainFromReligion(eYield);
 		UpdateYieldPerXFeature(eYield);
 		UpdateYieldPerXTerrain(eYield, TERRAIN_MOUNTAIN);
-		UpdateYieldPerXFeature(eYield);
 		updateExtraSpecialistYield(eYield);
 	}
 #endif
@@ -19956,7 +19955,6 @@ void CvCity::UpdateYieldPerXTerrainFromReligion(YieldTypes eYield, TerrainTypes 
 			//Passed in a Terrain? Use that.
 			if (eTerrain != NO_TERRAIN)
 			{
-				iYield = 0;
 				iBaseYieldReligion = pReligion->m_Beliefs.GetYieldPerXTerrainTimes100(eTerrain, eYield, getOwner(), this);
 				if (iBaseYieldReligion > 0)
 				{
@@ -20000,7 +19998,6 @@ void CvCity::UpdateYieldPerXTerrainFromReligion(YieldTypes eYield, TerrainTypes 
 				for (int iI = 0; iI < GC.getNumTerrainInfos(); iI++)
 				{
 					eTerrain = (TerrainTypes)iI;
-					iYield = 0;
 					if (eTerrain == NO_TERRAIN)
 					{
 						continue;
@@ -20095,8 +20092,6 @@ void CvCity::UpdateYieldPerXFeature(YieldTypes eYield, FeatureTypes eFeature)
 	//If we passed in a feature, let's only refresh that.
 	if (eFeature != NO_FEATURE)
 	{
-		iYieldBase = 0;
-		iYieldReligion = 0;
 		if (pReligion)
 		{
 			iBaseYieldReligion = pReligion->m_Beliefs.GetYieldPerXFeatureTimes100(eFeature, eYield, getOwner(), this);
