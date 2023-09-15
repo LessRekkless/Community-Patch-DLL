@@ -15477,7 +15477,7 @@ void CvCity::processBuilding(BuildingTypes eBuilding, int iChange, bool bFirst, 
 					const CvReligion* pReligion = GetCityReligions()->GetMajorityReligion();
 					if (pReligion != NULL)
 					{
-						if (pReligion->m_Beliefs.IsBuildingClassEnabled((BuildingClassTypes)pBuildingInfo->GetBuildingClassType(), getOwner(), this))
+						if (pReligion->m_Beliefs.IsBuildingClassEnabled(eBuildingClass, getOwner(), this))
 						{
 							ChangeReligiousPressureModifier(eMajority, pBuildingInfo->GetReligiousPressureModifier() * iChange);
 							bSpecificFaithOnly = true;
