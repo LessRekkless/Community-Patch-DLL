@@ -2069,27 +2069,32 @@ int CvBuilderTaskingAI::ScorePlotBuild(CvPlot* pPlot, ImprovementTypes eImprovem
 				{
 					bool bAdjacent = false;
 					bool bAdjacentDesire = false;
-					for(uint ui = 0; ui < NUM_YIELD_TYPES; ui++)
+					bool bTileClaimDesire = false;
+
+					if(m_pPlayer->GetPlayerTraits()->TerrainClaimBoost(pPlot->getTerrainType()))
 					{
-						if(pkImprovementInfo->GetYieldPerXAdjacentImprovement((YieldTypes)ui, eImprovement).first > 0)
+						bTileClaimDesire = true;
+					}
+					else
+					{
+						// to be removed
+						for(uint ui = 0; ui < NUM_YIELD_TYPES; ui++)
 						{
-							bAdjacentDesire = true;
-							break;
-						}
-						else if(pkImprovementInfo->GetYieldAdjacentSameType((YieldTypes)ui) > 0)
-						{
-							bAdjacentDesire = true;
-							break;
-						}
-						else if(pkImprovementInfo->GetYieldAdjacentTwoSameType((YieldTypes)ui) > 0)
-						{
-							bAdjacentDesire = true;
-							break;
+							if(pkImprovementInfo->GetYieldAdjacentSameType((YieldTypes)ui) > 0)
+							{
+								bAdjacentDesire = true;
+								break;
+							}
+							else if(pkImprovementInfo->GetYieldAdjacentTwoSameType((YieldTypes)ui) > 0)
+							{
+								bAdjacentDesire = true;
+								break;
+							}
 						}
 					}
 					//If yield bonus is granted from it being adjacent...
 					CvPlot* pAdjacentPlot;
-					if(bAdjacentDesire)
+					if(bAdjacentDesire || bTileClaimDesire)
 					{
 						for(int iDirectionLoop = 0; iDirectionLoop < NUM_DIRECTION_TYPES; iDirectionLoop++)
 						{
@@ -2097,21 +2102,46 @@ int CvBuilderTaskingAI::ScorePlotBuild(CvPlot* pPlot, ImprovementTypes eImprovem
 
 							if(pAdjacentPlot != NULL)
 							{
-								if((pAdjacentPlot->getOwner() == m_pPlayer->GetID()) && (pAdjacentPlot->getImprovementType() == eImprovement))
+								bool bAdjacentBenefits = false;
+								if (bAdjacentDesire)
 								{
-									//Is the plot outside our land, but we can build on it, and get an adjacency bonus? Let's capitalize on this.
+									CvImprovementEntry* pkAdjacentImprovementInfo = GC.getImprovementInfo(pAdjacentPlot->getImprovementType());
+									for(uint ui = 0; ui < NUM_YIELD_TYPES; ui++)
+									{
+										if(pkAdjacentImprovementInfo->GetYieldPerXAdjacentImprovement((YieldTypes)ui, eImprovement).first > 0)
+										{
+											bAdjacentBenefits = true;
+											break;
+										}
+									}
+									if((pAdjacentPlot->getOwner() == m_pPlayer->GetID()) && (bAdjacentBenefits || (/*To be removed*/ pAdjacentPlot->getImprovementType() == eImprovement)))
+									{
+										//Is the plot outside our land, but we can build on it, and get an adjacency bonus? Let's capitalize on this.
+										iSecondaryScore += iSmallBuff;
+										if(m_bLogging)
+										{
+											CvString strTemp;
+											strTemp.Format("Weight,Found a Tile outside our Territory for our UI with Adjacency Bonus,%s,%i,,,%i, %i", GC.getBuildInfo(eBuild)->GetType(), iScore, pPlot->getX(), pPlot->getY());
+											LogInfo(strTemp, m_pPlayer);
+										}
+										bAdjacent = true;
+									}
+								}
+								if(bTileClaimDesire && pAdjacentPlot->getOwner() != m_pPlayer->GetID() && pAdjacentPlot->getTerrainType() == pPlot->getTerrainType())
+								{
+									//Is the plot outside our land, but we can build on it, and we will gain extra tiles if it's claimed? Let's make it more likely to be claimed.
 									iSecondaryScore += iSmallBuff;
 									if(m_bLogging)
 									{
 										CvString strTemp;
-										strTemp.Format("Weight,Found a Tile outside our Territory for our UI with Adjacency Bonus,%s,%i,,,%i, %i", GC.getBuildInfo(eBuild)->GetType(), iScore, pPlot->getX(), pPlot->getY());
+										strTemp.Format("Weight,Found a Tile outside our Territory for our UA with Tile Claim Bonus,%s,%i,,,%i, %i", GC.getBuildInfo(eBuild)->GetType(), iScore, pPlot->getX(), pPlot->getY());
 										LogInfo(strTemp, m_pPlayer);
 									}
 									bAdjacent = true;
-									break;
 								}
 							}
 						}
+						// to be removed. Don't bother placing improvements outside unless a tile in our borders will benefit immediately
 						if(!bAdjacent)
 						{
 							iSecondaryScore += iSmallBuff;
