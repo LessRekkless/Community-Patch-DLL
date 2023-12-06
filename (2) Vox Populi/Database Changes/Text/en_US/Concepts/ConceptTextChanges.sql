@@ -162,7 +162,7 @@ UPDATE Language_en_US
 SET Text = '[COLOR_YELLOW]Cultural Victory[ENDCOLOR]'
 WHERE Tag = 'TXT_KEY_SOCIALPOLICY_CULTUREVICTORY_HEADING2_TITLE';
 UPDATE Language_en_US
-SET Text = 'You no longer win a Cultural Victory by fully exploring five Social Policy branches. Instead, you must become the dominant cultural influence in every civilization in the game using Tourism. [COLOR_YELLOW]You must also have two Tier 3 Tenets of an Ideology, your people must be Content, and the Citizen Earth Protocol wonder must be constructed. Once these requirements are met, you can construct the Citizen Earth Protocol to win this victory.[ENDCOLOR] See the section on Victory for more information.'
+SET Text = 'You no longer win a Cultural Victory by fully exploring five Social Policy branches. Instead, you must become the dominant cultural influence in every civilization in the game using Tourism. [COLOR_YELLOW]You must also have two Tier 3 Tenets of an Ideology, and your people must be Content. Once these requirements are met, you can then construct the Citizen Earth Protocol wonder to win.[ENDCOLOR] See the section on Victory for more information.'
 WHERE Tag = 'TXT_KEY_SOCIALPOLICY_CULTUREVICTORY_HEADING2_BODY';
 
 UPDATE Language_en_US
@@ -176,7 +176,20 @@ UPDATE Language_en_US
 SET Text = '[COLOR_YELLOW]Tourism[ENDCOLOR]'
 WHERE Tag = 'TXT_KEY_CULTURE_TOURISM_HEADING2_TITLE';
 UPDATE Language_en_US
-SET Text = '[ICON_TOURISM] Tourism is the primary yield you will use to spread your cultural influence to other civilizations. It is generated passively by [COLOR_POSITIVE_TEXT]Buildings[ENDCOLOR], [COLOR_POSITIVE_TEXT]Great Works[ENDCOLOR] or [COLOR_POSITIVE_TEXT]Artifacts[ENDCOLOR][COLOR_YELLOW], and actively by [ENDCOLOR][COLOR_POSITIVE_TEXT]Historic Events[ENDCOLOR][COLOR_YELLOW] (for more on "Historic Events", see the section with this label) or completing [ENDCOLOR][COLOR_POSITIVE_TEXT]Trade Routes[ENDCOLOR][COLOR_YELLOW] (if you have constructed buildings that grant such bonuses)[ENDCOLOR]. As you place more and more Great Works and Artifacts into your Museums, Amphitheaters, Opera Houses, etc., your [ICON_TOURISM] Tourism will continue to increase. Additionally, you can boost your [ICON_TOURISM] Tourism output quite a bit through Open Borders, Trade Routes, shared Religion, and certain Ideological Tenets.'
+SET Text = '[ICON_TOURISM] Tourism is the primary yield you will use to spread your cultural influence to other civilizations. It is generated passively by [COLOR_POSITIVE_TEXT]Buildings[ENDCOLOR], [COLOR_POSITIVE_TEXT]Great Works[ENDCOLOR] or [COLOR_POSITIVE_TEXT]Artifacts[ENDCOLOR][COLOR_YELLOW], and actively by [ENDCOLOR][COLOR_POSITIVE_TEXT]Historic Events[ENDCOLOR][COLOR_YELLOW] (for more on "Historic Events", see the section with this label) or completing [ENDCOLOR][COLOR_POSITIVE_TEXT]Trade Routes[ENDCOLOR][COLOR_YELLOW] (if you have constructed buildings that grant such bonuses)[ENDCOLOR]. As you place more and more Great Works and Artifacts into your Museums, Amphitheaters, Opera Houses, etc., your [ICON_TOURISM] Tourism will continue to increase.[NEWLINE]
+
+	[NEWLINE][COLOR_YELLOW]Your [ICON_TOURISM] Tourism is multiplied with each player in the following ways (minimum [COLOR_NEGATIVE_TEXT]-100%[ENDCOLOR]):[NEWLINE]
+	[ICON_BULLET]Open Border([COLOR_POSITIVE_TEXT]+15%[ENDCOLOR]): Trade Open Borders to the player.[NEWLINE]
+	[ICON_BULLET]Trade Route ([COLOR_POSITIVE_TEXT]+10%[ENDCOLOR]): Any Trade Route connecting your City with their City.[NEWLINE]
+	[ICON_BULLET]Diplomat ([COLOR_POSITIVE_TEXT]+10%[ENDCOLOR]): Place a Diplomat in their Capital City.[NEWLINE]
+	[ICON_BULLET]Vassal ([COLOR_POSITIVE_TEXT]+33%[ENDCOLOR]): Always active with a player who is your Vassal.[NEWLINE]
+	[ICON_BULLET]Great Musician ([COLOR_POSITIVE_TEXT]+100%[ENDCOLOR]): Expend a Great Musician inside their borders. Also gives a [COLOR_POSITIVE_TEXT]+50%[ENDCOLOR] bonus with all other players.[NEWLINE]
+	[ICON_BULLET]Shared Religion ([COLOR_POSITIVE_TEXT]+25%[ENDCOLOR]): Have the same Religion as the player.[NEWLINE]
+	[ICON_BULLET]Different Ideologies ([COLOR_NEGATIVE_TEXT]-10%[ENDCOLOR]): Have a different Ideology than the player.[NEWLINE]
+	[ICON_BULLET]Boredom ([COLOR_NEGATIVE_TEXT]-X%[ENDCOLOR]): Equal to the difference in Boredom between your two empires, if you have more.[NEWLINE]
+	[ICON_BULLET]Number of Cities ([COLOR_NEGATIVE_TEXT]-X%[ENCOLOR]): [COLOR_NEGATIVE_TEXT]-5%[ENDCOLOR] per City you own more than the other player, excluding Puppets.[NEWLINE]
+	
+	[NEWLINE]Additionally, certain player Abilities, Policies, Tenets, Corporations, and World Congress proposals can change this modifier. Other Abilities instead directly multiply the tourism generated in a city.'
 WHERE Tag = 'TXT_KEY_CULTURE_TOURISM_HEADING2_BODY';
 
 UPDATE Language_en_US
