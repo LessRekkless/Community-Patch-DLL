@@ -283,7 +283,7 @@ public:
 	int GetTourism();
 	int GetTourismModifierWith(PlayerTypes ePlayer) const;
 	CvString GetTourismModifierWithTooltip(PlayerTypes ePlayer) const;
-	int GetTourismModifierSharedReligion() const;
+	int GetTourismModifierSharedReligion(PlayerTypes ePlayer) const;
 	int GetTourismModifierTradeRoute() const;
 	int GetTourismModifierOpenBorders() const;
 	int GetFranchiseModifier(PlayerTypes ePlayer, bool bJustCheckOne = false) const;

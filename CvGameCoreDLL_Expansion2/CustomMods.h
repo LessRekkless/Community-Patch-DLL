@@ -446,6 +446,8 @@
 #define MOD_RELIGION_LOCAL_RELIGIONS                gCustomMods.isRELIGION_LOCAL_RELIGIONS()
 // if true, you need a trade route to get passive religious pressure to a city
 #define MOD_RELIGION_PASSIVE_SPREAD_WITH_CONNECTION_ONLY gCustomMods.isRELIGION_PASSIVE_SPREAD_WITH_CONNECTION_ONLY()
+// Tourism from Shared Religion scales with number of cities/followers
+#define MOD_RELIGION_SCALING_TOURISM				gCustomMods.isRELIGION_SCALING_TOURISM()
 // Enables several additional tables related to beliefs
 #define MOD_RELIGION_EXTENSIONS						gCustomMods.isRELIGION_EXTENSIONS()
 // Civilizations benefit from their pantheons even after converted to another religion
@@ -1464,6 +1466,7 @@ public:
 	MOD_OPT_DECL(RELIGION_POLICY_BRANCH_FAITH_GP);
 	MOD_OPT_DECL(RELIGION_LOCAL_RELIGIONS);
 	MOD_OPT_DECL(RELIGION_PASSIVE_SPREAD_WITH_CONNECTION_ONLY);
+	MOD_OPT_DECL(RELIGION_SCALING_TOURISM);
 	MOD_OPT_DECL(RELIGION_EXTENSIONS);
 	MOD_OPT_DECL(RELIGION_PERMANENT_PANTHEON);
 

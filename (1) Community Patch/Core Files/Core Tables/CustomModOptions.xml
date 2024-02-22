@@ -418,6 +418,8 @@
     <Row Class="5" Name="RELIGION_LOCAL_RELIGIONS" Value="0" DbUpdates="1"/>
     <!-- disable passive religious pressure without trade route or city connection -->
     <Row Class="5" Name="RELIGION_PASSIVE_SPREAD_WITH_CONNECTION_ONLY" Value="0"/>
+    <!-- Tourism from Shared Religion scales relative to population/cities following religion -->
+    <Row Class="5" Name="RELIGION_SCALING_TOURISM" Value="0"/>
     <!-- 
 	Various new tables and logics for beliefs. Currently, this is required to activate:
 		- Table 'Belief_FreePromotions'. Columns are 'BeliefType', 'PromotionType'.

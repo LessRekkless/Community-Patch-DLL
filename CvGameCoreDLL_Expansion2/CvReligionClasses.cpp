@@ -2188,7 +2188,7 @@ bool CvGameReligions::IsPantheonBeliefAvailable(BeliefTypes eBelief)
 	return false;
 }
 
-/// Number of followers of this religion
+/// Number of followers of this religion (include ePlayer for followers in just that player's cities, although I think this duplicates GetNumDomesticFollowers())
 #if defined(MOD_BALANCE_CORE)
 int CvGameReligions::GetNumFollowers(ReligionTypes eReligion, PlayerTypes ePlayer) const
 #else
