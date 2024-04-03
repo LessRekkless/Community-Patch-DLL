@@ -20309,7 +20309,10 @@ void CvCity::ChangeYieldPerXImprovementLocal(ImprovementTypes eImprovement, Yiel
 
 	SCityExtraYields& y = m_yieldChanges[eYield];
 	if (ModifierUpdateInsertRemove(y.fromImprovementLocal, eImprovement, fChange, true))
+	{
+		UpdateYieldPerXImprovement(eYield, eImprovement);
 		updateYield(false);
+	}
 }
 //	--------------------------------------------------------------------------------
 fraction CvCity::GetYieldPerXImprovementGlobal(ImprovementTypes eImprovement, YieldTypes eYield) const
@@ -20329,7 +20332,10 @@ void CvCity::ChangeYieldPerXImprovementGlobal(ImprovementTypes eImprovement, Yie
 
 	SCityExtraYields& y = m_yieldChanges[eYield];
 	if (ModifierUpdateInsertRemove(y.fromImprovementGlobal, eImprovement, fChange, true))
+	{
+		UpdateYieldPerXImprovement(eYield, eImprovement);
 		updateYield(false);
+	}
 }
 //	--------------------------------------------------------------------------------
 //	total yield due to all instances of Improvement
@@ -20377,7 +20383,7 @@ void CvCity::UpdateYieldPerXImprovement(YieldTypes eYield, ImprovementTypes eImp
 		}
 		if (fYield != 0)
 		{
-			//fDifference determines +/- of difference of old value
+			//Determine +/- of difference from old value
 			int iOriginal = GetYieldPerXImprovement(eImprovement, eYield).Truncate();
 			int iDifference = fYield.Truncate() - iOriginal;
 
