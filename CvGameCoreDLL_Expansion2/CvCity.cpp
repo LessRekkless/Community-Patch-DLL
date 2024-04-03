@@ -19834,7 +19834,10 @@ void CvCity::ChangeYieldPerXTerrainFromBuildingsTimes100(TerrainTypes eTerrain, 
 
 	SCityExtraYields& y = m_yieldChanges[eYield];
 	if (ModifierUpdateInsertRemove(y.forTerrainFromBuildings, eTerrain, iChange, true))
-		updateYield(false);
+		{
+			// UpdateYieldPerXTerrain(eYield, eTerrain);
+			updateYield(false);
+		}
 }
 //	--------------------------------------------------------------------------------
 //	total yield due to all instances of Terrain
@@ -20031,8 +20034,9 @@ void CvCity::ChangeYieldPerXFeatureFromBuildingsTimes100(FeatureTypes eFeature, 
 	SCityExtraYields& y = m_yieldChanges[eYield];
 	if (ModifierUpdateInsertRemove(y.forFeatureFromBuildings, eFeature, iChange, true))
 	{
+		// UpdateYieldPerXFeature(eYield, eFeature);
 		updateYield(false);
-		UpdateYieldPerXFeature(eYield, eFeature);
+		UpdateYieldPerXFeature(eYield, eFeature); // move in front
 	}
 }
 //	--------------------------------------------------------------------------------
