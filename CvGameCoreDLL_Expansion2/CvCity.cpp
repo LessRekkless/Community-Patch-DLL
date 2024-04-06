@@ -19835,7 +19835,7 @@ void CvCity::ChangeYieldPerXTerrainFromBuildingsTimes100(TerrainTypes eTerrain, 
 	SCityExtraYields& y = m_yieldChanges[eYield];
 	if (ModifierUpdateInsertRemove(y.forTerrainFromBuildings, eTerrain, iChange, true))
 		{
-			// UpdateYieldPerXTerrain(eYield, eTerrain);
+			UpdateYieldPerXTerrain(eYield, eTerrain);
 			updateYield(false);
 		}
 }
@@ -19922,6 +19922,7 @@ void CvCity::UpdateYieldPerXTerrain(YieldTypes eYield, TerrainTypes eTerrain)
 }
 
 //	--------------------------------------------------------------------------------
+//	total yield due to all instances of Terrain (base rate is stored in a religion property)
 int CvCity::GetYieldPerXTerrainFromReligion(TerrainTypes eTerrain, YieldTypes eYield) const
 {
 	VALIDATE_OBJECT
@@ -20034,9 +20035,8 @@ void CvCity::ChangeYieldPerXFeatureFromBuildingsTimes100(FeatureTypes eFeature, 
 	SCityExtraYields& y = m_yieldChanges[eYield];
 	if (ModifierUpdateInsertRemove(y.forFeatureFromBuildings, eFeature, iChange, true))
 	{
-		// UpdateYieldPerXFeature(eYield, eFeature);
+		UpdateYieldPerXFeature(eYield, eFeature);
 		updateYield(false);
-		UpdateYieldPerXFeature(eYield, eFeature); // move in front
 	}
 }
 //	--------------------------------------------------------------------------------
