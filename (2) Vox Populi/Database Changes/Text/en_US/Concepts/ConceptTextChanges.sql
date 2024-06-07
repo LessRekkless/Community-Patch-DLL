@@ -184,7 +184,7 @@ SET Text = '[ICON_TOURISM] Tourism is the primary yield you will use to spread y
 	[ICON_BULLET]Diplomat ([COLOR_POSITIVE_TEXT]+10%[ENDCOLOR]): Place a Diplomat in their Capital City.[NEWLINE]
 	[ICON_BULLET]Vassal ([COLOR_POSITIVE_TEXT]+33%[ENDCOLOR]): Always active with a player who is your Vassal.[NEWLINE]
 	[ICON_BULLET]Great Musician ([COLOR_POSITIVE_TEXT]+100%[ENDCOLOR]): Expend a Great Musician inside their borders. Also gives a [COLOR_POSITIVE_TEXT]+50%[ENDCOLOR] bonus with all other players.[NEWLINE]
-	[ICON_BULLET]Shared Religion ([COLOR_POSITIVE_TEXT]+25%[ENDCOLOR]): Have the same Religion as the player.[NEWLINE]
+	[ICON_BULLET]Shared Religion ([COLOR_POSITIVE_TEXT]+X%[ENDCOLOR]): Equal to the percentage of the player''s population following your Religion (maximum [COLOR_POSITIVE_TEXT]+50%[ENDCOLOR]).[NEWLINE]
 	[ICON_BULLET]Different Ideologies ([COLOR_NEGATIVE_TEXT]-10%[ENDCOLOR]): Have a different Ideology than the player.[NEWLINE]
 	[ICON_BULLET]Boredom ([COLOR_NEGATIVE_TEXT]-X%[ENDCOLOR]): Equal to the difference in Boredom between your two empires, if you have more.[NEWLINE]
 	[ICON_BULLET]Number of Cities ([COLOR_NEGATIVE_TEXT]-X%[ENCOLOR]): [COLOR_NEGATIVE_TEXT]-5%[ENDCOLOR] per City you own more than the other player, excluding Puppets.[NEWLINE]
