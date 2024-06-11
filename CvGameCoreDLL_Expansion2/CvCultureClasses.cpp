@@ -5131,7 +5131,7 @@ CvString CvPlayerCulture::GetTourismModifierWithTooltip(PlayerTypes eTargetPlaye
 	{
 		szRtnValue += "[COLOR_GREY]" + GetLocalizedText("TXT_KEY_CO_PLAYER_TOURISM_TRADE_ROUTE", 0) + "[ENDCOLOR]";
 	}
-	if (ePlayerReligion == NO_RELIGION || !kTargetPlayer.GetReligions()->HasReligionInMostCities(ePlayerReligion))
+	if (ePlayerReligion == NO_RELIGION || iSharedReligionModifier <= 0)
 	{
 		szRtnValue += "[COLOR_GREY]" + GetLocalizedText("TXT_KEY_CO_PLAYER_TOURISM_RELIGION_NOTE", 0) + "[ENDCOLOR]";
 	}
