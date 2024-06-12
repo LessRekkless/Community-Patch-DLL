@@ -1976,7 +1976,7 @@ SET Text = '{1_Num} [ICON_TOURISM] Tourism from buildings purchased with [ICON_P
 WHERE Tag = 'TXT_KEY_CO_CITY_TOURISM_FAITH_BUILDINGS';
 
 UPDATE Language_en_US
-SET Text = 'Trade Route between Empires'
+SET Text = '+{1_Num}% Bonus from Trade Route between Empires[NEWLINE]'
 WHERE Tag = 'TXT_KEY_CO_PLAYER_TOURISM_TRADE_ROUTE';
 
 
