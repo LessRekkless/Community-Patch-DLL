@@ -1,4 +1,4 @@
-/*	-------------------------------------------------------------------------------------------------------
+﻿/*	-------------------------------------------------------------------------------------------------------
 	© 1991-2012 Take-Two Interactive Software and its subsidiaries.  Developed by Firaxis Games.  
 	Sid Meier's Civilization V, Civ, Civilization, 2K Games, Firaxis Games, Take-Two Interactive Software 
 	and their respective logos are all trademarks of Take-Two interactive Software, Inc.  
@@ -24528,7 +24528,7 @@ int CvPlayer::CalculateReligionVotesFromImprovements(const CvReligion *pReligion
 {
 	int iNumImprovementInfos = GC.getNumImprovementInfos();
 	
-	std::pair<int, int> fTotalVotes = std::make_pair(0, 1);
+	fraction fTotalVotes = 0;
 	
 	for (int jJ = 0; jJ < iNumImprovementInfos; jJ++)
 	{
@@ -24536,14 +24536,11 @@ int CvPlayer::CalculateReligionVotesFromImprovements(const CvReligion *pReligion
 		if (iNumImprovements > 0)
 		{
 			// number of votes per improvement (a fraction less than one)
-			std::pair<int, int> fPotentialVotes = pReligion->m_Beliefs.GetVoteFromOwnedImprovement((ImprovementTypes)jJ, m_eID); // more likely to be zero
-			if (fPotentialVotes.first > 0)
-			{
-				AddFractionToReference(fTotalVotes, std::make_pair(iNumImprovements * fPotentialVotes.first, fPotentialVotes.second));
-			}
+			fraction fPotentialVotes = pReligion->m_Beliefs.GetVoteFromOwnedImprovement((ImprovementTypes)jJ, m_eID); // more likely to be zero
+			fTotalVotes += fPotentialVotes * iNumImprovements;
 		}
 	}
-	return fTotalVotes.first / fTotalVotes.second;
+	return fTotalVotes.Truncate();
 }
 
 //	--------------------------------------------------------------------------------
